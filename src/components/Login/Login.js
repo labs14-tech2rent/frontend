@@ -47,7 +47,7 @@ login = e => {
  console.log(`LOGIN : ${this.state.credentials}`)
  this.props.login(this.state.credentials).then(() => {
    if(this.props.loggedIn === true) { //if logged in passes and user exists
-  this.props.history.push('/users')
+  this.props.history.push('/home')
    }
 });
 }

@@ -10,7 +10,8 @@ class Main extends React.Component {
 
 	return (
 		<div>
-			<h1>Hello World</h1>
+			{this.props.users.map(user => 
+				<h3>{user.username}</h3>)}
 		</div>
 	); 
 }

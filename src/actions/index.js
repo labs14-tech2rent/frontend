@@ -53,9 +53,9 @@ export const getData = () => dispatch => {
     return axiosWithAuth()
         .get('http://labstech2rentstaging.herokuapp.com/api/users')
         .then(res => {
+            console.log(res)
             
-            
-            dispatch({ type: SUBMIT_SUCCESS, payload: res.data.users})
+            dispatch({ type: SUBMIT_SUCCESS, payload: res.data})
         })
         .catch(err => {
             console.log(err)

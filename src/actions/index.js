@@ -8,7 +8,7 @@ export const SIGNUP_FAIL = "SIGNUP_FAIL;"
 export const signUp = creds => dispatch => {
     dispatch({ type: SIGNUP_START });
     return axios
-        .post('http://labstech2rentstaging.herokuapp.com/api/auth/register', creds)
+        .post('http://labstech2rent.herokuapp.com/api/auth/register', creds)
         .then(res => {
             console.log(res)
             //it returns a token as a result and we are setting that token to local storage for now
@@ -29,7 +29,7 @@ export const login = creds => dispatch => {
     //login takes credentials -- username and pass --
     dispatch({ type: LOGIN_START });
     return axios
-        .post('http://labstech2rentstaging.herokuapp.com/api/auth/login', creds)
+        .post('http://labstech2rent.herokuapp.com/api/auth/login', creds)
         .then(res => {
             console.log(`${res}`)
             // token is received and set to local storage
@@ -51,7 +51,7 @@ export const getData = () => dispatch => {
  
     // token that is on payload is used and placed in the header of 'axiosWithAuth' -- this is what gives us access to data
     return axiosWithAuth()
-        .get('http://labstech2rentstaging.herokuapp.com/api/users')
+        .get('http://labstech2rent.herokuapp.com/api/users')
         .then(res => {
             console.log(res)
             // if successful then set the data to the payload

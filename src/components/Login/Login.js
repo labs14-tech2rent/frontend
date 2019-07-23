@@ -102,7 +102,8 @@ changeForm = e => {
       {this.props.error && this.state.loginForm && <p className="error">Invalid Username or Password</p>}
       {this.props.error && this.state.signupForm && <p className="error">User already exists, please select another username</p>}
       {this.props.newUser && this.state.loginForm && <p className="new-user">You have successfully created a new user</p>}
-      <p>Not a registered user?</p>
+	  <p>Not a registered user?</p>
+	  <button onClick={this.props.auth.login} >Login Here</button>
       <button className="register" onClick={this.changeForm}> 
         {this.state.loginForm ? "Register" : "Go Back"} 
       </button>
@@ -111,12 +112,13 @@ changeForm = e => {
   }
 }
 
-const mapStateToProps = ({isLoggingIn, error, newUser, pending, loggedIn}) => ({
+const mapStateToProps = ({isLoggingIn, error, newUser, pending, loggedIn, auth}) => ({
   isLoggingIn,
   error,
   newUser,
   pending,
-  loggedIn
+  loggedIn,
+  auth
 
 });
 // grabbing login and signup from actions file... mapping the state to the props

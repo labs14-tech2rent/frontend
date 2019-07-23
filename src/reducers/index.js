@@ -1,5 +1,6 @@
 import {LOGOUT, RESET, LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, SUBMIT_START, SUBMIT_SUCCESS, SUBMIT_FAIL} from '../actions'
-
+import Auth from '../Auth'
+const auth = new Auth();
 const initialState = {
     users: [],
     isLoggingIn: false,
@@ -10,12 +11,13 @@ const initialState = {
     credentials: [],
     newUser: false,
     user: {},
-    loggedIn: false
+    loggedIn: false,
+    auth
 
 
     // Array characters, Boolean fetching, null error.
   };
-
+ 
   export const rootReducer = (state=initialState, action)=> {
     switch (action.type) {
        

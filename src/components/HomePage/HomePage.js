@@ -13,6 +13,7 @@ class Main extends React.Component {
 
 	return (
 		<div>
+		<h1>Welcome to a Protected Page!</h1>
 			{this.props.users.map(user => 
 				//map over the state of users
 				<h3>{user.username}</h3>)}

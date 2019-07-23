@@ -8,5 +8,6 @@ export default class Auth {
         audience: "http://localhost:3000/userinfo",
         responseType: "token id_token",
         scope: "openid"
+        
     })
 }

@@ -13,14 +13,14 @@ class Login extends React.Component {
     credentials: {
         username: '',
         password: '',
-   
+  
 	},
 	
 	//user state used for signup
     user: {
         username: '',
         password: '',
-   
+  
         }
 }
 
@@ -29,11 +29,11 @@ handleChange = e => {
 
   //ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
   if (this.state.loginForm === true) {
-     
+    
   this.setState({
       credentials: {
-           ...this.state.credentials,
-           [e.target.name] : e.target.value
+          ...this.state.credentials,
+          [e.target.name] : e.target.value
 
       }
   })

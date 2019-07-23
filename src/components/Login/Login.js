@@ -88,9 +88,11 @@ changeForm = e => {
 }
 
   render() {
+	 
   return ( //  conditionally renders content based on login form or sign up form state. 
+	
 	<div className="App"> 
-
+    
 	<h1>{this.state.loginForm ? "Login" : "Sign Up"}</h1>
       <form onSubmit={ this.state.loginForm ? this.login : this.signup}> 
         <label htmlFor="username">Username</label>
@@ -106,9 +108,10 @@ changeForm = e => {
 	  <button onClick={this.props.auth.login} >Login Here</button>
       <button className="register" onClick={this.changeForm}> 
         {this.state.loginForm ? "Register" : "Go Back"} 
-      </button>
+	  </button>
+	  
     </div>
-  );
+  ); 
   }
 }
 

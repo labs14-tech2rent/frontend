@@ -9,6 +9,7 @@ export default class Auth {
         clientID: "kFpGm0tbpc2lUax1Il5S0vS54opwh3iv",
         redirectUri: "http://localhost:3000/callback",
         responseType: "token id_token",
+        audeince: "https://dev-gco3gwsp.auth0.com/userinfo",
         scope: "openid"
     })
 

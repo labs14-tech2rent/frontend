@@ -4,17 +4,32 @@ import { Route } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
+
 //import auth from './Auth'
 import {connect} from 'react-redux';
 class App extends React.Component {
 	render() {
+		let mainComponent = "";
+		switch(this.props.location.pathname) {
+			case "":
+				mainComponent = <Route exact path='/login' component={Login} />
+				break;
+			case "/callback":
+				mainComponent = <Route exact path='/callback' component={Callback } /> 
+				 
+				break;
+	
+			case "/home":
+					mainComponent = this.props.auth.isAuthenticated() ? <Route exact path='/home' component={HomePage } /> : <Route exact path='/login' component={Login} />	
+					break;
+			default: 
+			mainComponent = <Route exact path='/login' component={Login} />	
+		}
+		
 	return (
 		<div className='App'>
 			<header className='App-header'>
-				
-				<Route exact path='/home' component={this.props.auth.isAuthenticated() ? Login : HomePage} />
-				<Route exact path='/login' component={Login} />
-				<Route exact path='/callback' component={Callback} />
+				{mainComponent}
 			</header>
 		</div>
 	);

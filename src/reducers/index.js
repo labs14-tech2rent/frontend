@@ -48,7 +48,8 @@ const initialState = {
             return {
             ...state,
             isLoading: true,
-            submitFail: false
+            submitFail: false,
+            auth
             }
             case SUBMIT_FAIL:
             return {

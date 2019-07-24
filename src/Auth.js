@@ -9,7 +9,7 @@ export default class Auth {
         clientID: "kFpGm0tbpc2lUax1Il5S0vS54opwh3iv",
         redirectUri: "http://localhost:3000/callback",
         responseType: "token id_token",
-        audeince: "https://dev-gco3gwsp.auth0.com/userinfo",
+        audience: "https://dev-gco3gwsp.auth0.com/userinfo",
         scope: "openid"
     })
 
@@ -23,13 +23,16 @@ export default class Auth {
 
     handleAuthentication( ) {
         this.auth0.parseHash((err, authResults) => {
+            console.log(authResults)
             if (authResults && authResults.accessToken && authResults.idToken) {
                 let expiresAt = JSON.stringify((authResults.expiresIn) * 1000 + new Date().getTime())
                 localStorage.setItem("access_token", authResults.accessToken)
                 localStorage.setItem("id_token", authResults.idToken)
                 localStorage.setItem("expires_at", expiresAt)
+                localStorage.setItem('user_id', authResults.idTokenPayload.sub)
                 location.hash = ""
                 location.pathname = LOGIN_SUCCESS_PAGE
+                //console.log(authResults)
             } else if (err) {
                 location.pathname = LOGIN_FAILURE_PAGE
                 console.log(err)

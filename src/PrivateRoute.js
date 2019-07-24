@@ -10,12 +10,12 @@ import {connect} from 'react-redux';
     <Route
       {...rest}
       render={(props) => {
-
+             //if id token and access token are in local storage then render page
         if (localStorage.getItem("id_token") && localStorage.getItem("access_token")) {
           return <Component {...props}/>;
           // console.log("testing")
 
-        } else {
+        } else { /// if not then redirect to login
           return <Redirect to="/login" />;
         }
       }}

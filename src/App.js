@@ -5,6 +5,7 @@ import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
 import PrivateRoute from "./PrivateRoute";
+import Profile from './components/Owner/Profile'
 //import auth from './Auth'
 import {connect} from 'react-redux';
 class App extends React.Component {
@@ -14,14 +15,18 @@ class App extends React.Component {
 			case "":
 				mainComponent = <Route exact path='/login' {...this.props} component={Login} />
 				break;
+
 			case "/callback":
-				mainComponent = <Route exact path='/callback' component={Callback } /> 
-				 
+				mainComponent = <Route exact path='/callback' component={Callback } />  
 				break;
 	
 			case "/home":
 					mainComponent = <PrivateRoute exact path="/home" component={HomePage} />
 					break;
+			case "/profile":
+				mainComponent = <Route exact path="/profile" component={Profile} />
+				break;
+
 			default: 
 			mainComponent = <Route exact path='/login' component={Login} />	
 		}

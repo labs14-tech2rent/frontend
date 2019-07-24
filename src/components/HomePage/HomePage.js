@@ -1,7 +1,7 @@
 import React from 'react';
 //import getData and logOut fns from actions so they can be called here
 import {getData, logOut} from '../../actions'
-
+import './homepage.scss'
 //connect to reaxt redux store
 import {connect} from 'react-redux';
 class Main extends React.Component {
@@ -10,6 +10,14 @@ class Main extends React.Component {
 	  // grab the list of users from getData -- this is in the SUBMIT fns in the actions file
 	this.props.getData()
   }
+
+   logout = e => {
+		localStorage.removeItem("access_token")
+		localStorage.removeItem("id_token")
+		localStorage.removeItem("expires_at")
+		localStorage.removeItem('user_id')
+		this.props.history.push('/login')
+   }
 	render() {
 
 	return (
@@ -19,6 +27,7 @@ class Main extends React.Component {
 				{this.props.users.map(user => 
 					//map over the state of users
 					<h3>{user.username}</h3>)}
+					<button onClick={this.logout}>Log Out</button>
 		</div> 
 	); 
 }

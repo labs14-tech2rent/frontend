@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import './profile.scss'
-
+import Rating from './Rating'
 //import Random from  '../../RandomUserApi'
 class Profile extends React.Component {
     state = {
@@ -40,7 +40,7 @@ class Profile extends React.Component {
                     }</p>  }
                     <p>Freelance Photographer</p>
                     <p> + Add Product</p>
-                    
+                    <Rating />
                 </div>
 
                 <div className="products">

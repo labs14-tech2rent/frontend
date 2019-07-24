@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
-
+import PrivateRoute from "./PrivateRoute";
 //import auth from './Auth'
 import {connect} from 'react-redux';
 class App extends React.Component {
@@ -12,7 +12,7 @@ class App extends React.Component {
 		let mainComponent = "";
 		switch(this.props.location.pathname) {
 			case "":
-				mainComponent = <Route exact path='/login' component={Login} />
+				mainComponent = <Route exact path='/login' {...this.props} component={Login} />
 				break;
 			case "/callback":
 				mainComponent = <Route exact path='/callback' component={Callback } /> 
@@ -20,7 +20,7 @@ class App extends React.Component {
 				break;
 	
 			case "/home":
-					mainComponent = this.props.auth.isAuthenticated() ? <Route exact path='/home' component={HomePage } /> : <Route exact path='/login' component={Login} />	
+					mainComponent = <PrivateRoute exact path="/home" component={HomePage} />
 					break;
 			default: 
 			mainComponent = <Route exact path='/login' component={Login} />	

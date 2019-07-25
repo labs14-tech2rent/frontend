@@ -28,8 +28,16 @@
 
 .checked {
     color: #ccb3ff;
+    &:hover {
+        color: black !important;
+    }
   }
 
 .fa {
     font-size: 16px !important;
+    cursor: pointer;
+    &:hover {
+        color: #ccb3ff; 
+    }
+    
 }

@@ -39,6 +39,7 @@ class Profile extends React.Component {
                         this.state.user.location.state.slice(1) + ' '
                     }</p>  }
                     <p>Freelance Photographer</p>
+                    <br/>
                     <p> + Add Product</p>
                     <Rating />
                 </div>

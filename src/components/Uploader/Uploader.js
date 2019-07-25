@@ -62,6 +62,10 @@ class Uploader extends Component {
       <input
         type="hidden"
         ref={input => (this.uploader = input)}
+        data-multiple="true"
+        data-multiple-min="1"
+        data-multiple-max="5"
+        data-crop="4:3"
         {...attributes}
       />
     );

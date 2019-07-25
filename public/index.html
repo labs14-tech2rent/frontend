@@ -7,6 +7,18 @@
     <meta name="theme-color" content="#000000" />
     <script>
       UPLOADCARE_PUBLIC_KEY = "c18e4aa08d05ce1b6f53";
+      UPLOADCARE_TABS = "file url facebook gdrive gphotos";
+      UPLOADCARE_EFFECTS = "crop,rotate,mirror,flip";
+      UPLOADCARE_IMAGES_ONLY = true;
+      UPLOADCARE_PREVIEW_STEP = true;
+      UPLOADCARE_CLEARABLE = true;
+    </script>
+
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+    <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.js"></script>
+
+    <script>
+      uploadcare.registerTab("preview", uploadcareTabEffects);
     </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a

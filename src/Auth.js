@@ -2,7 +2,7 @@
 import {addUser} from './actions';
 import auth0 from 'auth0-js'
 import axios from 'axios'
-const LOGIN_SUCCESS_PAGE = "/home"
+const LOGIN_SUCCESS_PAGE = "/register"
 const LOGIN_FAILURE_PAGE = "/login"
 
 
@@ -25,8 +25,9 @@ export default class Auth {
     }
 
      addUser(creds) {
+         console.log(creds)
          return axios
-        .post('https://labstech2rent.herokuapp.com//api/users/userIDs', {"auth0_user_id" : creds})
+        .post('https://labstech2rent.herokuapp.com/api/users/userIDs', {"auth0_user_id" : creds})
         .then(res => {
             console.log(res)
            

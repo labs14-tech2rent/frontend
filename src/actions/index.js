@@ -32,7 +32,7 @@ export const SIGNUP_FAIL = "SIGNUP_FAIL;"
 export const signUp = creds => dispatch => {
     dispatch({ type: SIGNUP_START });
     return axios
-        .post('https://labstech2rentstaging.herokuapp.com/api/auth/register', creds)
+        .post('https://labstech2rent.herokuapp.com/api/auth/register', creds)
         .then(res => {
             console.log(res)
             //it returns a token as a result and we are setting that token to local storage for now
@@ -51,14 +51,14 @@ export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
 export const ADD_USER_FAIL = "ADD_USER_FAIL;"
 //takes in 'creds' or 'credentials -- username and pass --, and sends it to the endpoint
 export const addUser = creds => dispatch => {
-    //console.log('hello from add user function')
+    console.log(`Hello From ADD USER: ${creds}`)
     dispatch({ type: ADD_USER_START });
     return axios
-        .post('https://labstech2rent.herokuapp.com//api/auth/register', creds)
+        .post('https://labstech2rentstaging.herokuapp.com/api/auth/register', creds)
         .then(res => {
             console.log(res)
            
-            dispatch({ type: ADD_USER_SUCCESS, payload: res}) /// set token as the payload
+            dispatch({ type: ADD_USER_SUCCESS, payload: res}) /// 
         })
         .catch(err => {
             console.log(err)

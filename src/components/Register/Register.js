@@ -43,7 +43,7 @@ handleChange = e => {
 signup = e => {
   e.preventDefault();
  console.log(this.state.credentials)
- this.props.addUser()
+ this.props.addUser(this.state.credentials)
 // this.props.signUp(this.state.user).then( () => {
 //   if (this.props.error === false) { //if signup err = true, this means user exists, so do not run code below to return to login
 //     this.setState({

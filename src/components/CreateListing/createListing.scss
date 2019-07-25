@@ -1,0 +1,16 @@
+form {
+  display: flex;
+  flex-direction: column;
+
+  .payment-options {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

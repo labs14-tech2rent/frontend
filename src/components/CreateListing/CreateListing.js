@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Uploader from '../Uploader/Uploader';
-import Search from '../Uploader/AutoComplete';
 import 'bootstrap/dist/css/bootstrap.css';
 import './createListing.scss';
 // should have an option for if they want price to be per day of weekly
@@ -24,7 +23,12 @@ class CreateListing extends Component {
     });
   };
 
-  uploadImage = e => {};
+  uploadImage = info => {
+    console.log(info);
+    this.setState({
+      pictures: info.uuid,
+    });
+  };
 
   handleSubmit = e => {};
 
@@ -49,21 +53,19 @@ class CreateListing extends Component {
         <br />
         <Uploader
           id="picture"
-          onChange={this.handleChange}
-          onUploadComplete={info => console.log('Upload completed:', info)}
+          onUploadComplete={info => this.uploadImage(info)}
         />
         <br />
-        <Search />
         <div>
           city:{' '}
           <input
-            name="location"
+            name="city"
             value={this.state.city}
             type="text"
             onChange={this.handleChange}
           />
           state:{' '}
-          <select onChange={this.handleChange}>
+          <select name="state" onChange={this.handleChange}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -118,7 +120,7 @@ class CreateListing extends Component {
           </select>
           zipcode:{' '}
           <input
-            name="location"
+            name="zipcode"
             value={this.state.zipcode}
             type="text"
             onChange={this.handleChange}

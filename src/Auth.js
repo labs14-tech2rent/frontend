@@ -43,16 +43,16 @@ export default class Auth {
                         if(res.auth0_user_id === authResults.idTokenPayload.sub) {
                             //console.log(res.auth0_user_id)
                             console.log('exists')
-                           location.pathname = LOGIN_SUCCESS_PAGE
+                          // location.pathname = LOGIN_SUCCESS_PAGE
                         } else {
                             console.log('does not exist')
-                            location.pathname = LOGIN_REGISTER_PAGE
+                            //location.pathname = LOGIN_REGISTER_PAGE
                         }
                     })
                 })
                 .catch(err => console.log(err))       
             } else if (err) {
-                location.pathname = LOGIN_FAILURE_PAGE
+               // location.pathname = LOGIN_FAILURE_PAGE
                 console.log(err)
             }
         })

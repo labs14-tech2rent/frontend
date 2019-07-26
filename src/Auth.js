@@ -42,11 +42,11 @@ export default class Auth {
                     if (Object.values(res.data).indexOf(authResults.idTokenPayload.sub) > -1) {
                         console.log('exists')
                         console.log(authResults.idTokenPayload.sub)
-                        console.log(res.data.auth0_user_id)
+                        console.log(res.data)
                      } else {
                         console.log('does not exist')
                         console.log(authResults.idTokenPayload.sub)
-                        console.log(res.data.auth0_user_id)
+                        console.log(res.data)
                      }
                     
 

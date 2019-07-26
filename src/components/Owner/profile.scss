@@ -1,0 +1,43 @@
+.profile-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    //background-color: white;
+}
+
+.products {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 45%;
+}
+.user-info {
+    img {
+        border-radius: 50%;
+    }
+
+    p {
+        margin: 0;
+        font-size: 12px;
+        width: 145px;
+        color: black;
+    }
+}
+
+
+.checked {
+    color: #ccb3ff;
+    &:hover {
+        color: black !important;
+    }
+  }
+
+.fa {
+    font-size: 16px !important;
+    cursor: pointer;
+    &:hover {
+        color: #ccb3ff; 
+    }
+    
+}

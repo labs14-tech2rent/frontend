@@ -37,18 +37,15 @@ export default class Auth {
                 localStorage.setItem("expires_at", expiresAt)
                 localStorage.setItem('user_id', authResults.idTokenPayload.sub)
                 location.hash = ""
-                return axios.get('https://labstech2rentstaging.herokuapp.com/api/users/userIDS')
+                axios.get('https://labstech2rentstaging.herokuapp.com/api/users/userIDS')
                 .then(res => {
-                    res.data.filter(res => {
-                        if(res.auth0_user_id === authResults.idTokenPayload.sub) {
-                            //console.log(res.auth0_user_id)
-                            console.log('exists')
-                          // location.pathname = LOGIN_SUCCESS_PAGE
-                        } else {
-                            console.log('does not exist')
-                            //location.pathname = LOGIN_REGISTER_PAGE
-                        }
-                    })
+                    if (Object.values(res.data).indexOf(authResults.idTokenPayload.sub) > -1) {
+                        console.log('exists');
+                     } else {
+                        console.log('does not exist')
+                     }
+                    
+
                 })
                 .catch(err => console.log(err))       
             } else if (err) {

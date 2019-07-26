@@ -37,7 +37,7 @@ export default class Auth {
                 localStorage.setItem("expires_at", expiresAt)
                 localStorage.setItem('user_id', authResults.idTokenPayload.sub)
                 location.hash = ""
-                axios.get('https://labstech2rentstaging.herokuapp.com/api/users/userIDS')
+                return axios.get('https://labstech2rentstaging.herokuapp.com/api/users/userIDS')
                 .then(res => {
                     res.data.map(res => {
                         if(res.auth0_user_id === authResults.idTokenPayload.sub) {

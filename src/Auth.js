@@ -40,11 +40,12 @@ export default class Auth {
                 return axios.get('https://labstech2rentstaging.herokuapp.com/api/users/userIDS')
                  .then(res => {
                     if (Object.values(res.data).indexOf(authResults.idTokenPayload.sub) > -1) {
-                        console.log(authResults.idTokenPayload.sub)
+                        console.log('exists')
+                        console.log(authResults.idTokenPayload.sub.auth0_user_id)
                         console.log(res.data)
                      } else {
                         console.log('does not exist')
-                        console.log(authResults.idTokenPayload.sub)
+                        console.log(authResults.idTokenPayload.sub.auth0_user_id)
                         console.log(res.data)
                      }
                     

@@ -1,0 +1,25 @@
+.register {
+    width: 100%;
+}
+.register-form {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    justify-content: center;
+    margin: 0 auto;
+    & input {
+        height: 2rem;
+        font-size: .8rem;
+        width: 50%;
+        max-width: 25rem;
+        margin: 0 auto;
+    }
+    & button {
+        margin: 0 auto;
+        margin-top: 1rem;
+        height: 2rem;
+    }
+    .back {
+        background-color: red;
+    }
+}

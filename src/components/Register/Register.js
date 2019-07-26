@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {addUser} from '../../actions';
-
+import './register.scss'
 
 class Register extends React.Component {
   state = {
@@ -62,22 +62,19 @@ changeForm = e => {
 
   render() {
   return ( // Line 62, 63, 72, 73, 75 -- conditionally renders content based on login form or sign up form state. 63 calls a separate fn based on form state
-    <div className="App"> 
-    <h1>{this.state.loginForm ? "Login" : "Sign Up"}</h1>
-      <form onSubmit={this.signup}> 
+    <div className="register"> 
+    <h1>Register</h1>
+    <p>Please complete your registration by confirming your name and email.</p>
+      <form onSubmit={this.signup} className="register-form"> 
         <label htmlFor="email">Email</label>
         <input id="email" type="email" name="email" value={this.state.credentials.email } onChange={this.handleChange} required/>
         <label htmlFor="name">Name</label>
         <input id="name" type="text" name="name" value={this.state.credentials.name} onChange={this.handleChange}  required/>
         <button>Submit</button>
+        <button className="back" onClick={() => this.props.history.push('/login')}>Go Back</button>
       </form>
-      {this.props.error && this.state.loginForm && <p className="error">Invalid Username or Password</p>}
-      {this.props.error && this.state.signupForm && <p className="error">User already exists, please select another username</p>}
-      {this.props.newUser && this.state.loginForm && <p className="new-user">You have successfully created a new user</p>}
-      <p>Not a registered user?</p>
-      <button className="register" onClick={this.changeForm}> 
-        {this.state.loginForm ? "Register" : "Go Back"} 
-      </button>
+     
+  
     </div>
   );
   }

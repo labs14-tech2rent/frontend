@@ -9,8 +9,8 @@ class Register extends React.Component {
     signupForm: false,
     credentials: {
         auth0_user_id: '',
-		email: '',
-		name: ''
+        email: '',
+        name: ''
    
     }
 }

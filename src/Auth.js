@@ -39,7 +39,7 @@ export default class Auth {
                 location.hash = ""
                 return axios.get('https://labstech2rentstaging.herokuapp.com/api/users/userIDS')
                 .then(res => {
-                    res.data.map(res => {
+                    res.data.filter(res => {
                         if(res.auth0_user_id === authResults.idTokenPayload.sub) {
                             //console.log(res.auth0_user_id)
                             console.log('exists')

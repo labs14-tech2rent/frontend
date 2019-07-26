@@ -10,7 +10,7 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
         domain: "dev-gco3gwsp.auth0.com",
         clientID: "kFpGm0tbpc2lUax1Il5S0vS54opwh3iv",
-        redirectUri: "https://sharp-wozniak-279070.netlify.com/callback",
+        redirectUri: "http://localhost:3000/callback",
         responseType: "token id_token",
         audience: "https://dev-gco3gwsp.auth0.com/userinfo",
         scope: "openid"
@@ -39,15 +39,16 @@ export default class Auth {
                 location.hash = ""
                 return axios.get('https://labstech2rentstaging.herokuapp.com/api/users/userIDS')
                  .then(res => {
-                    if (Object.values(res.data).indexOf(authResults.idTokenPayload.sub) > -1) {
-                        console.log('exists')
-                        console.log(authResults.idTokenPayload.sub)
-                        console.log(res.data)
-                     } else {
-                        console.log('does not exist')
-                        console.log(authResults.idTokenPayload.sub)
-                        console.log(res.data)
-                     }
+                     res.data.map(res => {console.log(res.toString())})
+                    // if (Object.values(res.data).indexOf(authResults.idTokenPayload.sub) > -1) {
+                    //     console.log('exists')
+                    //     console.log(authResults.idTokenPayload.sub)
+                    //     console.log(res.data)
+                    //  } else {
+                    //     console.log('does not exist')
+                    //     console.log(authResults.idTokenPayload.sub)
+                    //     console.log(res.data)
+                    //  }
                     
 
                 })

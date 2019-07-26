@@ -1,4 +1,4 @@
-# frontend
+# Frontend
 
 
 # 1️⃣ Tech2Rent

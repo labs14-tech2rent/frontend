@@ -4,43 +4,17 @@ import { login, signUp, reset } from '../../actions';
 
 class Login extends React.Component {
   state = {
-    // login and signup form state set for conditional rendering
-    loginForm: true,
-
-    signupForm: false,
-
     // credential state used for login
-
     credentials: {
-        username: '',
-        password: '',
-  
-	},
-	
-	//user state used for signup
-    user: {
-        username: '',
-        password: '',
-  
-        }
-}
-
-    // user state used for signup
-    user: {
       username: '',
       password: '',
     },
   };
 
-  //ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
-  if (this.state.loginForm === true) {
-    
-  this.setState({
-      credentials: {
-          ...this.state.credentials,
-          [e.target.name] : e.target.value
+  handleChange = e => {
+    console.log(e.target.value);
 
-    // if the login form state is true, then set the state of the inputs when typed to equal that of credentials
+    // ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
     if (this.state.loginForm === true) {
       this.setState({
         credentials: {
@@ -63,7 +37,6 @@ class Login extends React.Component {
   login = e => {
     e.preventDefault();
     console.log(`LOGIN : ${this.state.credentials}`);
-
     // when user logs in, send the info to the login fn from the actions file, then redirect to home route
     this.props.login(this.state.credentials).then(() => {
       if (this.props.loggedIn === true) {
@@ -93,28 +66,40 @@ class Login extends React.Component {
     // resets the form after submission
     this.props.reset();
 
+    if (this.state.loginForm) {
+      this.setState({ loginForm: false, signupForm: true });
+      // this.setState({loginForm:false,signupForm:true}
+    } else if (this.state.signupForm) {
+      this.setState({ loginForm: true, signupForm: false });
+    }
+  };
+
   render() {
-	 
-  return ( //  conditionally renders content based on login form or sign up form state. 
-	
-	<div className="App"> 
-		<h1>Tech2Rent</h1>
-	  <button onClick={this.props.auth.login} >Login/Register</button>
-      
-	  
-    </div>
-  ); 
+    return (
+      //  conditionally renders content based on login form or sign up form state.
+
+      <div className="App">
+        <h1>Tech2Rent</h1>
+        <button onClick={this.props.auth.login}>Login/Register</button>
+      </div>
+    );
   }
 }
 
-const mapStateToProps = ({isLoggingIn, error, newUser, pending, loggedIn, auth}) => ({
+const mapStateToProps = ({
   isLoggingIn,
   error,
   newUser,
   pending,
   loggedIn,
-  auth
-
+  auth,
+}) => ({
+  isLoggingIn,
+  error,
+  newUser,
+  pending,
+  loggedIn,
+  auth,
 });
 // grabbing login and signup from actions file... mapping the state to the props
 export default connect(

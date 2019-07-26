@@ -1,34 +1,32 @@
 import axios from 'axios';
 import { axiosWithAuth } from '../axiosWithAuth';
 
-export const RANDOM_USER = "RANDOM_USER";
-export const RANDOM_SUCCESS = "RANDOM_USER";
-export const RANDOM_FAIL = "RANDOM_USER";
-//takes in 'creds' or 'credentials -- username and pass --, and sends it to the endpoint
+export const RANDOM_USER = 'RANDOM_USER';
+export const RANDOM_SUCCESS = 'RANDOM_USER';
+export const RANDOM_FAIL = 'RANDOM_USER';
+// takes in 'creds' or 'credentials -- username and pass --, and sends it to the endpoint
 
-export const random = dispatch =>{
-    dispatch({ type: RANDOM_USER });
-    return axios
-        .get("https://randomuser.me/api/?results=4&inc=name,picture,email,registered")
-        .then(res => {
-            console.log(res)
-            
-            dispatch({ type: RANDOM_SUCCESS, payload: res.data.payload}) 
-        })
-        .catch(err => {
-            console.log(err)
-            dispatch({ type: RANDOM_FAIL, payload: ''})
-        })
+export const random = dispatch => {
+  dispatch({ type: RANDOM_USER });
+  return axios
+    .get(
+      'https://randomuser.me/api/?results=4&inc=name,picture,email,registered'
+    )
+    .then(res => {
+      console.log(res);
 
-}
+      dispatch({ type: RANDOM_SUCCESS, payload: res.data.payload });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: RANDOM_FAIL, payload: '' });
+    });
+};
 
-
-    
-
-export const SIGNUP_START = "SIGNUP_START";
-export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
-export const SIGNUP_FAIL = "SIGNUP_FAIL;"
-//takes in 'creds' or 'credentials -- username and pass --, and sends it to the endpoint
+export const SIGNUP_START = 'SIGNUP_START';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAIL = 'SIGNUP_FAIL;';
+// takes in 'creds' or 'credentials -- username and pass --, and sends it to the endpoint
 export const signUp = creds => dispatch => {
   dispatch({ type: SIGNUP_START });
   return axios
@@ -45,32 +43,29 @@ export const signUp = creds => dispatch => {
     });
 };
 
-}
-
-export const ADD_USER_START = "ADD_USER_START";
-export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
-export const ADD_USER_FAIL = "ADD_USER_FAIL;"
-//takes in 'creds' or 'credentials -- username and pass --, and sends it to the endpoint
+export const ADD_USER_START = 'ADD_USER_START';
+export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';
+export const ADD_USER_FAIL = 'ADD_USER_FAIL;';
+// takes in 'creds' or 'credentials -- username and pass --, and sends it to the endpoint
 export const addUser = creds => dispatch => {
-    console.log(`Hello From ADD USER: ${creds}`)
-    dispatch({ type: ADD_USER_START });
-    return axios
-        .post('https://labstech2rentstaging.herokuapp.com/api/auth/register', creds)
-        .then(res => {
-            console.log(res)
-           
-            dispatch({ type: ADD_USER_SUCCESS, payload: res}) /// 
-        })
-        .catch(err => {
-            console.log(err)
-            dispatch({ type: ADD_USER_FAIL, payload: ''})
-        })
+  console.log(`Hello From ADD USER: ${creds}`);
+  dispatch({ type: ADD_USER_START });
+  return axios
+    .post('https://labstech2rentstaging.herokuapp.com/api/auth/register', creds)
+    .then(res => {
+      console.log(res);
 
-}
+      dispatch({ type: ADD_USER_SUCCESS, payload: res }); // /
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: ADD_USER_FAIL, payload: '' });
+    });
+};
 
-export const LOGIN_START = "LOGIN_START";
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAIL = "LOGIN_FAIL;"
+export const LOGIN_START = 'LOGIN_START';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL;';
 export const login = creds => dispatch => {
   // login takes credentials -- username and pass --
   dispatch({ type: LOGIN_START });

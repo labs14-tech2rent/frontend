@@ -5,10 +5,10 @@ import './homepage.scss'
 //connect to reaxt redux store
 import {connect} from 'react-redux';
 class Main extends React.Component {
+   
   componentDidMount() {
-    // grab the list of users from getData -- this is in the SUBMIT fns in the actions file
-
-    this.props.getData();
+	  // grab the list of users from getData -- this is in the SUBMIT fns in the actions file
+	this.props.getData()
   }
 
    logout = e => {
@@ -31,6 +31,8 @@ class Main extends React.Component {
 		</div> 
 	); 
 }
+};
+
 
 //set the new state of these keys to equal what it was set in the reducers file
 const mapStateToProps = (state) => ({
@@ -41,8 +43,5 @@ const mapStateToProps = (state) => ({
 	auth: state.auth
 })
 
-// / map over the state and set them to prop, also grab the getData fn and logOut fn so they can be referenced and called
-export default connect(
-  mapStateToProps,
-  { getData, logOut }
-)(Main);
+/// map over the state and set them to prop, also grab the getData fn and logOut fn so they can be referenced and called
+export default connect(mapStateToProps,{getData, logOut})(Main)

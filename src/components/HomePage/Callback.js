@@ -1,9 +1,11 @@
 import React from 'react'
 import Auth from '../../Auth'
+import axios from 'axios'
 class Callback extends React.Component {
     componentDidMount() {
         const auth = new Auth()
         auth.handleAuthentication()
+       
     }
     render(){
         return(

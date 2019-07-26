@@ -2,9 +2,9 @@
 import {addUser} from './actions';
 import auth0 from 'auth0-js'
 import axios from 'axios'
-const LOGIN_SUCCESS_PAGE = "/register"
+const LOGIN_SUCCESS_PAGE = "/home"
 const LOGIN_FAILURE_PAGE = "/login"
-
+const LOGIN_REGISTER_PAGE = "/register"
 
 export default class Auth {
     auth0 = new auth0.WebAuth({
@@ -25,19 +25,7 @@ export default class Auth {
         this.auth0.authorize()
     }
 
-     addUser(creds) {
-         console.log(creds)
-         return axios
-        .post('https://labstech2rent.herokuapp.com/api/users/userIDs', {"auth0_user_id" : creds})
-        .then(res => {
-            console.log(res)
-           
-        })
-        .catch(err => {
-            console.log(err)
-           // dispatch({ type: ADD_USER_FAIL, payload: ''})
-        })
-     }
+    
 
     handleAuthentication( ) {
         this.auth0.parseHash((err, authResults) => {
@@ -49,9 +37,20 @@ export default class Auth {
                 localStorage.setItem("expires_at", expiresAt)
                 localStorage.setItem('user_id', authResults.idTokenPayload.sub)
                 location.hash = ""
-                location.pathname = LOGIN_SUCCESS_PAGE
-                this.addUser(localStorage.getItem('user_id'))
-               // console.log(authResults)
+                axios.get('https://labstech2rentstaging.herokuapp.com/api/users/userIDS')
+                .then(res => {
+                    res.data.map(res => {
+                        if(res.auth0_user_id === authResults.idTokenPayload.sub) {
+                            //console.log(res.auth0_user_id)
+                            console.log('exists')
+                           location.pathname = LOGIN_SUCCESS_PAGE
+                        } else {
+                            console.log('does not exist')
+                            location.pathname = LOGIN_REGISTER_PAGE
+                        }
+                    })
+                })
+                .catch(err => console.log(err))       
             } else if (err) {
                 location.pathname = LOGIN_FAILURE_PAGE
                 console.log(err)

@@ -3,7 +3,7 @@
 
 # 1️⃣ Tech2Rent
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+1️⃣ You can find the deployed project at [https://tech2rent.co](https://tech2rent.co/).
 
 ## 4️⃣ Contributors
 
@@ -30,11 +30,11 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](https://trello.com/b/td7jqlMg/labs-14-tech2rent)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://www.notion.so/Tech2Rent-fe7c1d9468e9478e9926f6d1e264fd58#3c3bd675fff6495da7dde3cf5c066583)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+1️⃣ [UX Design files](https://invis.io/MVSVG5SD28C)
 
 🚫 Replace lorem ipsum with a description of your project
 
@@ -68,7 +68,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 #### Front end deployed to `🚫insert service here`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/labs14-tech2rent/backend) built using:
 
 #### 🚫 back end framework goes here
 
@@ -191,4 +191,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/labs14-tech2rent/backend/blob/master/README.md) for details on the backend of our project.

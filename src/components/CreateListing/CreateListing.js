@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './createListing.scss';
@@ -40,7 +41,7 @@ class CreateListing extends Component {
   };
 
   // still waiting on endpoint
-  handleSubmit = () => {};
+  handleSubmit = e => {};
 
   render() {
     console.log(this.state);
@@ -154,4 +155,12 @@ class CreateListing extends Component {
     );
   }
 }
-export default CreateListing;
+
+const mapStateToProps = state => ({
+
+});
+
+export default connect(
+  mapStateToProps,
+  { CreateListing }
+)(CreateListing);

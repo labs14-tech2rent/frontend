@@ -5,9 +5,14 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   SUBMIT_START,
-  SUBMIT_SUCCESS,
+  // SUBMIT_SUCCESS,
   SUBMIT_FAIL,
 } from '../actions';
+import {
+  CREATE_LISTING_SUCCESS,
+  CREATE_LISTING_START,
+  CREATE_LISTING_FAILED,
+} from '../actions/createListing';
 import Auth from '../Auth';
 
 const auth = new Auth();
@@ -23,6 +28,8 @@ const initialState = {
   user: {},
   loggedIn: false,
   auth,
+  creatingListing: false,
+  listing: [],
 
   // Array characters, Boolean fetching, null error.
 };
@@ -80,6 +87,23 @@ export const rootReducer = (state = initialState, action) => {
         error: false,
         user: {},
         loggedIn: false,
+      };
+
+    case CREATE_LISTING_START:
+      return {
+        ...state,
+        creatingListing: true,
+      };
+    case CREATE_LISTING_SUCCESS:
+      return {
+        ...state,
+        listing: action.payload,
+      };
+
+    case CREATE_LISTING_FAILED:
+      return {
+        ...state,
+        error: action.payload,
       };
 
     default:

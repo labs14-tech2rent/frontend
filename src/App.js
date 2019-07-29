@@ -12,42 +12,14 @@ import CreateListing from './components/CreateListing/CreateListing';
 // import auth from './Auth'
 class App extends React.Component {
   render() {
-    let mainComponent = '';
-    switch (this.props.location.pathname) {
-      case '':
-        mainComponent = (
-          <Route exact path="/login" {...this.props} component={Login} />
-        );
-        break;
-
-      case '/callback':
-        mainComponent = <Route exact path="/callback" component={Callback} />;
-        break;
-
-      case '/home':
-        mainComponent = (
-          <PrivateRoute exact path="/home" component={HomePage} />
-        );
-        break;
-      case '/profile':
-        mainComponent = <Route exact path="/profile" component={Profile} />;
-        break;
-
-      case '/register':
-        mainComponent = <Route exact path="/register" component={Register} />;
-        break;
-      case '/create-listing':
-        mainComponent = (
-          <Route path="/create-listing" component={CreateListing} />
-        );
-        break;
-      default:
-        mainComponent = <Route exact path="/login" component={Login} />;
-    }
-
     return (
       <div className="App">
-        <header className="App-header">{mainComponent}</header>
+        <Route exact path="/login" {...this.props} component={Login} />
+        <Route exact path="/callback" component={Callback} />
+        <PrivateRoute exact path="/home" component={HomePage} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/register" component={Register} />
+        <Route path="/create-listing" component={CreateListing} />
       </div>
     );
   }

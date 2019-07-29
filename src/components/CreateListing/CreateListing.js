@@ -156,11 +156,9 @@ class CreateListing extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-
-});
+// const mapStateToProps = state => ({});
 
 export default connect(
-  mapStateToProps,
+  null,
   { CreateListing }
 )(CreateListing);

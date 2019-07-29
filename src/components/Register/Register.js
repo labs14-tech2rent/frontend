@@ -4,25 +4,30 @@ import * as actions from '../../actions';
 import './register.scss'
 
 const Register = props => {
-  const [credentials, setCredentials] = useState({username: '', auth0_user_id: ''})
+  const [credentials, setCredentials] = useState({ email: '', auth0_user_id: ''})
   const dispatch = useDispatch()
   
 
   const handleChange = e => {
     console.log(e.target.value)
-  
+    
     //ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
     // setState({...state, credentials: { [e.target.name] : e.target.value}})
-      setCredentials({ credentials: { [e.target.name] : e.target.value, auth0_user_id: localStorage.getItem('user_id')}})
+      setCredentials({ ...credentials, [e.target.name] : e.target.value, auth0_user_id: localStorage.getItem('user_id')})
     
-   
+      console.log(credentials)
+     
   }
   
+
+  // setMessage(prevState => {
+  //   return { ...prevState, message: val }
+  // });
   const signup = e => {
     e.preventDefault();
    
-   console.log(credentials.credentials)
-   dispatch(actions.addUser(credentials.credentials))
+   console.log(credentials)
+   dispatch(actions.addUser(credentials))
 
   }
 
@@ -35,9 +40,9 @@ const Register = props => {
     <p>Please complete your registration by confirming your name and email.</p>
       <form onSubmit={signup} className="register-form"> 
         <label htmlFor="email">Email</label>
-        <input id="email" type="email" name="email" value={credentials.email } onChange={handleChange} required/>
+        <input id="email" type="email" name="email" onChange={handleChange} required/>
         <label htmlFor="name">Name</label>
-        <input id="name" type="text" name="name" value={credentials.name} onChange={handleChange}  required/>
+        <input id="name" type="text" name="name" onChange={handleChange}  required/>
         <button>Submit</button>
         <button className="back" onClick={() => props.history.push('/login')}>Go Back</button>
       </form>

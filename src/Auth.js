@@ -8,11 +8,11 @@ const LOGIN_FAILURE_PAGE = '/login';
 const LOGIN_REGISTER_PAGE = '/register';
 
 export default class Auth {
-  // Running a new auth0 call and pulling in the required domain and
-  // client id and other values needed for access
+  // Running a new auth0 call and pulling in the required domain and client id and other values needed for access
   auth0 = new auth0.WebAuth({
     domain: 'dev-gco3gwsp.auth0.com',
     clientID: 'kFpGm0tbpc2lUax1Il5S0vS54opwh3iv',
+    // redirectUri: "https://sharp-wozniak-279070.netlify.com/callback",
     redirectUri:
       'http://localhost:3000/callback' ||
       'https://sharp-wozniak-279070.netlify.com/callback',
@@ -20,6 +20,11 @@ export default class Auth {
     audience: 'https://dev-gco3gwsp.auth0.com/userinfo',
     scope: 'openid',
   });
+
+  // binds the login
+  constructor() {
+    this.login = this.login.bind(this);
+  }
 
   // Calls this fn when a user clicks login -- reroutes to a separate login page
   login = () => {

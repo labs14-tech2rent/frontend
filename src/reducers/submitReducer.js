@@ -8,6 +8,7 @@ const initialState = {
   submitFail: false,
   error: false,
   auth,
+  users: [],
 };
 
 export const submitReducer = (state = initialState, action) => {

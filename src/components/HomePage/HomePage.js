@@ -20,14 +20,16 @@ class Main extends React.Component {
   };
 
   render() {
-    console.log(this.props.users);
+    console.log(this.props);
     return (
       <div>
         <h1>Welcome to a Protected Page!</h1>
-        {/* {this.props.users.map(user => (
-          // map over the state of users
-          <h3>{user.username}</h3>
-        ))} */}
+        {this.props.users
+          ? this.props.users.map(user => (
+              // map over the state of users
+              <h3>{user.username}</h3>
+            ))
+          : null}
         <button onClick={this.logout}>Log Out</button>
       </div>
     );
@@ -43,7 +45,8 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-// / map over the state and set them to prop, also grab the getData fn and logOut fn so they can be referenced and called
+// / map over the state and set them to prop, also grab the getData fn
+// and logOut fn so they can be referenced and called
 export default connect(
   mapStateToProps,
   { getData }

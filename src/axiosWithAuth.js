@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const axiosWithAuth = () => {
+const axiosWithAuth = () => {
   const token = localStorage.getItem('token');
   return axios.create({
     headers: {
@@ -10,3 +10,5 @@ export const axiosWithAuth = () => {
     baseURL: 'http://labstech2rentstaging.herokuapp.com',
   });
 };
+
+export default axiosWithAuth;

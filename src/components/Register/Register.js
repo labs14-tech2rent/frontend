@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../actions';
+import { addUser } from '../../actions';
 import './register.scss';
 
 const Register = props => {
@@ -26,7 +26,7 @@ const Register = props => {
     e.preventDefault();
 
     console.log(credentials.credentials);
-    dispatch(actions.addUser(credentials.credentials));
+    dispatch(addUser(credentials.credentials));
   };
 
   return (

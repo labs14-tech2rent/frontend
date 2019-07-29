@@ -10,7 +10,7 @@ const initalState = {
   error: '',
 };
 
-export const rootReducer = (state = initalState, action) => {
+export const createListReducer = (state = initalState, action) => {
   switch (action.type) {
     case CREATE_LISTING_START:
       return {

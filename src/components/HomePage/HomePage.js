@@ -1,7 +1,7 @@
 import React from 'react';
 // import getData and logOut fns from actions so they can be called here
 import { connect } from 'react-redux';
-import { getData, logOut } from '../../actions';
+import { getData } from '../../actions';
 import './homepage.scss';
 // connect to reaxt redux store
 
@@ -20,13 +20,14 @@ class Main extends React.Component {
   };
 
   render() {
+    console.log(this.props.users);
     return (
       <div>
         <h1>Welcome to a Protected Page!</h1>
-        {this.props.users.map(user => (
+        {/* {this.props.users.map(user => (
           // map over the state of users
           <h3>{user.username}</h3>
-        ))}
+        ))} */}
         <button onClick={this.logout}>Log Out</button>
       </div>
     );
@@ -45,5 +46,5 @@ const mapStateToProps = state => ({
 // / map over the state and set them to prop, also grab the getData fn and logOut fn so they can be referenced and called
 export default connect(
   mapStateToProps,
-  { getData, logOut }
+  { getData }
 )(Main);

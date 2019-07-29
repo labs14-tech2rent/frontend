@@ -20,15 +20,10 @@ const Register = props => {
   
   const signup = e => {
     e.preventDefault();
-   //console.log(`LOGIN : ${this.state.credentials}`)
+   
    console.log(credentials.credentials)
    dispatch(actions.addUser(credentials.credentials))
-   //when user logs in, send the info to the login fn from the actions file, then redirect to home route
-  //  this.props.login({credentials}).then(() => {
-  //    if(this.props.loggedIn === true) { //if logged in passes and user exists
-  //   this.props.history.push('/home')
-  //    }
-  // });
+
   }
 
 

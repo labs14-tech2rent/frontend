@@ -14,7 +14,6 @@ const Register = props => {
     console.log(e.target.value);
 
     // ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
-    // setState({...state, credentials: { [e.target.name] : e.target.value}})
     setCredentials({
       credentials: {
         [e.target.name]: e.target.value,
@@ -31,7 +30,7 @@ const Register = props => {
   };
 
   return (
-    // Line 62, 63, 72, 73, 75 -- conditionally renders content based on login form 
+    // Line 62, 63, 72, 73, 75 -- conditionally renders content based on login form
     // or sign up form state. 63 calls a separate fn based on form state
     <div className="register">
       <h1>Register</h1>

@@ -1,9 +1,9 @@
 import React from 'react';
 // import getData and logOut fns from actions so they can be called here
+import { connect } from 'react-redux';
 import { getData, logOut } from '../../actions';
 import './homepage.scss';
 // connect to reaxt redux store
-import { connect } from 'react-redux';
 
 class Main extends React.Component {
   componentDidMount() {

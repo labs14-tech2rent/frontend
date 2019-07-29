@@ -38,28 +38,6 @@ const initialState = {
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case LOGIN_START:
-    //   return {
-    //     ...state,
-    //     loggingIn: true,
-    //     newUser: false,
-    //   };
-    // case LOGIN_SUCCESS:
-    //   return {
-    //     ...state,
-    //     loggingIn: false,
-    //     credentials: action.payload,
-    //     user: action.payload,
-    //     loggedIn: true,
-    //   };
-    // case LOGIN_FAIL:
-    //   return {
-    //     ...state,
-    //     loggingIn: false,
-    //     error: true,
-    //     pending: false,
-    //   };
-
     case SUBMIT_START:
       return {
         ...state,

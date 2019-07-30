@@ -6,7 +6,7 @@ import {
 
 const initalState = {
   creatingListing: false,
-  listing: [],
+  res: [],
   error: '',
 };
 
@@ -20,7 +20,7 @@ export const createListReducer = (state = initalState, action) => {
     case CREATE_LISTING_SUCCESS:
       return {
         ...state,
-        listing: action.payload,
+        res: action.payload,
       };
 
     case CREATE_LISTING_FAILED:

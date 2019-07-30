@@ -10,7 +10,7 @@ export const getData = () => dispatch => {
   // token that is on payload is used and placed in the header of 'axiosWithAuth'
   // -- this is what gives us access to data
   return axiosWithAuth()
-    .get('https://labstech2rent.herokuapp.com/api/users')
+    .get('https://labstech2rentstaging.herokuapp.com/api/users/userIDs')
     .then(res => {
       console.log(res);
       // if successful then set the data to the payload

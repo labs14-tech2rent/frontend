@@ -6,7 +6,7 @@ export const GET_USER_FAIL = 'GET_USER_FAIL';
 
 export const getUserId = user => dispatch => {
   dispatch({ type: GET_USER_START });
-  axios
+  return axios
     .post('https://labstech2rentstaging.herokuapp.com/api/users/findUser', user)
     .then(res => {
       dispatch({ type: GET_USER_SUCCESS, payload: res.data });

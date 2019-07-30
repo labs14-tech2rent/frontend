@@ -1,40 +1,24 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import {connect} from 'react-redux';
-import Auth from './Auth'
-import auth0 from 'auth0-js'
-import axios from 'axios'
- ///make route private and spread in the rest of the props
- const PrivateRoute =  ( {component: Component, ...rest} )  => {
-  
+import React, { useEffect } from "react";
+import { Route } from "react-router-dom";
+import { useAuth0 } from "./react-auth0-wrapper";
 
-   
-  return (
-    
-    <div>  
-   
-    <Route
-    
-      {...rest}
-      
-      render={(props) => {
-    
-      
-             //if id token and access token are in local storage then render page
-        if (localStorage.getItem("id_token") && localStorage.getItem("access_token")) {
-          return <Component {...props}/>;
-          // console.log("testing")
+const PrivateRoute = ({ component: Component, path, ...rest }) => {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
-        } else { /// if not then redirect to login
-          return <Redirect to="/login" />;
-        }
-      }}
-    />
-    </div>); 
+  useEffect(() => {
+    const fn = async () => {
+      if (!isAuthenticated) {
+        await loginWithRedirect({
+          appState: { targetUrl: path }
+        });
+      }
+    };
+    fn();
+  }, [isAuthenticated, loginWithRedirect, path]);
+
+  const render = props => isAuthenticated === true ? <Component {...props} /> : null;
+
+  return <Route path={path} render={render} {...rest} />;
 };
 
-const mapStateToProps = (state) => ({
-  
-})
-export default connect(mapStateToProps,{})(PrivateRoute);
-// export default PrivateRoute;
+export default PrivateRoute;

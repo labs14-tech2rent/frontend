@@ -1,5 +1,6 @@
 /* eslint no-restricted-globals: 0 */
 import {addUser} from './actions';
+import createAuth0Client from '@auth0/auth0-spa-js'
 import auth0 from 'auth0-js'
 import axios from 'axios'
 const LOGIN_EXISTS_PAGE = "/home"
@@ -11,8 +12,8 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
         domain: "dev-gco3gwsp.auth0.com",
         clientID: "kFpGm0tbpc2lUax1Il5S0vS54opwh3iv",
-        redirectUri: "https://sharp-wozniak-279070.netlify.com/callback",
-        //redirectUri: "http://localhost:3000/callback",
+        //redirectUri: "https://sharp-wozniak-279070.netlify.com/callback",
+        redirectUri: "http://localhost:3000/callback",
         responseType: "token id_token",
         audience: "https://dev-gco3gwsp.auth0.com/userinfo",
         scope: "openid"
@@ -25,12 +26,14 @@ export default class Auth {
 
     // Calls this fn when a user clicks login -- reroutes to a separate login page
     login() {
+        console.log('hello from liogin')
         this.auth0.authorize()
     }
 
     
    //calls when user has logged in with auth0
     handleAuthentication( ) {
+        console.log('hellloooooooooo')
         //parses the data to be read
         this.auth0.parseHash((err, authResults) => {
             console.log(authResults)

@@ -19,7 +19,7 @@ class Main extends React.Component {
 		this.props.history.push('/login')
    }
 	render() {
-
+		
 	return (
 		
 		<div>

@@ -2,13 +2,15 @@ import React, {useState} from 'react';
 //import {connect} from 'react-redux';
 //import {login, signUp, reset} from '../../actions';
 import {useSelector, useDispatch} from 'react-redux'
+import checkUser from '../../checkUser'
 import * as actions from '../../actions';
 const Login = (props) => {
 
   const auth = useSelector(store => store.auth)
   let content = ( //  conditionally renders content based on login form or sign up form state. 
 	
-	<div className="App"> 
+  <div className="App"> 
+    {console.log(!checkUser())}
 		<h1>Tech2Rent</h1>
 	  <button onClick={auth.login} >Login/Register</button>
       

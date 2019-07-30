@@ -28,7 +28,7 @@ const Register = props => {
    
    console.log(credentials)
    dispatch(actions.addUser(credentials))
-   props.history.push('/home')
+   //props.history.push('/home')
 
   }
 
@@ -37,6 +37,7 @@ const Register = props => {
  
   return ( // Line 62, 63, 72, 73, 75 -- conditionally renders content based on login form or sign up form state. 63 calls a separate fn based on form state
     <div className="register"> 
+  
     <h1>Register</h1>
     <p>Please complete your registration by confirming your name and email.</p>
       <form onSubmit={signup} className="register-form"> 

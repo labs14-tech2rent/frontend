@@ -8,7 +8,7 @@ export const createListing = (id, listing) => dispatch => {
   dispatch({ type: CREATE_LISTING_START });
   return axios
     .post(
-      `http://labstech2rentstaging.herokuapp.com/api/users/${id}/items`,
+      `https://labstech2rentstaging.herokuapp.com/api/users/${id}/items`,
       listing
     )
     .then(res => {

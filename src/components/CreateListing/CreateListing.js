@@ -11,10 +11,16 @@ import StateDropDown from './StateDropDown';
 import Uploader from '../Uploader/Uploader';
 import { createListing, getUserId } from '../../actions';
 
+// remind change avarage_raiting to average_rating
+
 const CreateListing = () => {
   const dispatch = useDispatch();
-  const userId = { auth0_user_id: localStorage.getItem('user_id') };
-  const user = useSelector(store => store.getUser.user);
+  const userToken = { auth0_user_id: localStorage.getItem('user_id') };
+  const userId = useSelector(store => {
+    if (store.getUser.user.length > 0) {
+      return store.getUser.user[0].id;
+    }
+  });
 
   const [name, setName] = useState('');
   const [picture, setPicture] = useState('');
@@ -28,29 +34,28 @@ const CreateListing = () => {
   const [paymentType, setPayment] = useState('');
   const [count, setCount] = useState(0);
   const [available, setAvailable] = useState(true);
-  const [average_raiting, setRating] = useState(0);
+  const [avarage_raiting, setRating] = useState(0);
   const [condition, setCondition] = useState('worn');
 
   useEffect(() => {
-    dispatch(getUserId(userId));
+    dispatch(getUserId(userToken));
   }, []);
 
   const listing = {
-    users_ownerId: user.id,
+    users_ownerId: userId,
     name,
-    picture,
     price,
+    picture,
+    category,
+    description,
+    available,
+    payment_type: paymentType,
+    avarage_raiting,
+    condition,
+    sub_category: subcategory,
     city,
     state,
     zipcode,
-    category,
-    subcategory,
-    description,
-    paymentType,
-    count,
-    available,
-    average_raiting,
-    condition,
   };
 
   return (
@@ -58,7 +63,7 @@ const CreateListing = () => {
       <form
         onSubmit={e => {
           e.preventDefault();
-          dispatch(createListing(user.id, listing));
+          dispatch(createListing(userId, listing));
         }}
       >
         title:{' '}

@@ -1,13 +1,15 @@
 import React from 'react';
 // import getData and logOut fns from actions so they can be called here
 import { connect } from 'react-redux';
-import { getData } from '../../actions';
+import { getData, getUserId } from '../../actions';
 import './homepage.scss';
 // connect to reaxt redux store
 
 class Main extends React.Component {
   componentDidMount() {
     // grab the list of users from getData -- this is in the SUBMIT fns in the actions file
+    const user = { auth0_user_id: localStorage.getItem('user_id') };
+    this.props.getUserId(user);
     this.props.getData();
   }
 
@@ -37,7 +39,8 @@ class Main extends React.Component {
 }
 
 // set the new state of these keys to equal what it was set in the reducers file
-const mapStateToProps = state => ({
+const mapStateToProps = state => 
+({
   credentials: state.credentials,
   users: state.users,
   user: state.user,
@@ -49,5 +52,5 @@ const mapStateToProps = state => ({
 // and logOut fn so they can be referenced and called
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData, getUserId }
 )(Main);

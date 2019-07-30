@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Login = props => {
+  const dispatch = useDispatch();
   const auth = useSelector(store => store.submit.auth);
   const content = (
     <div className="App">

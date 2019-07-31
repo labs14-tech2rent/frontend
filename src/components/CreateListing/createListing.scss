@@ -1,16 +1,29 @@
-form {
+.create-listing {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-
-  .payment-options {
+  justify-content: center;
+  .banner {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 1029px;
+    }
+  }
+  form {
     display: flex;
     flex-direction: column;
-    align-self: center;
 
-    .option {
+    .payment-options {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      align-self: center;
+
+      .option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
     }
   }
 }

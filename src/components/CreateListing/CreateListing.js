@@ -14,6 +14,7 @@ import StateDropDown from './StateDropDown';
 import Uploader from '../Uploader/Uploader';
 import { createListing, getUserId } from '../../actions';
 import ImagePreview from './ImagePreview';
+import cameraBanner from '../../Images/List tech Screen.png';
 
 const CreateListing = () => {
   const dispatch = useDispatch();
@@ -63,7 +64,10 @@ const CreateListing = () => {
   };
 
   return (
-    <div>
+    <div className="create-listing">
+      <div className="banner">
+        <img src={cameraBanner} alt="" />
+      </div>
       <form
         onSubmit={e => {
           e.preventDefault();

@@ -3,16 +3,10 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
 const ImagePreview = props => {
+  // uses the count state and makes an array from those numbers.
   const imageAmount = Array(props.count)
     .fill(0)
     .map(Number.call, Number);
-
-  const images = imageAmount.map(number => ({
-    src: `https://ucarecdn.com/${props.image}/nth/${number}/`,
-    alt: `image`,
-  }));
-
-  console.log(images);
 
   return (
     <Carousel useKeyboardArrows emulateTouch>

@@ -8,13 +8,12 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import './createListing.scss';
 
+// import of other components I have made.
 import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
 import Uploader from '../Uploader/Uploader';
 import { createListing, getUserId } from '../../actions';
 import ImagePreview from './ImagePreview';
-
-// remind change avarage_raiting to average_rating
 
 const CreateListing = () => {
   const dispatch = useDispatch();
@@ -25,6 +24,7 @@ const CreateListing = () => {
     }
   });
 
+  // react state
   const [name, setName] = useState('');
   const [picture, setPicture] = useState('');
   const [price, setPrice] = useState('');
@@ -40,6 +40,7 @@ const CreateListing = () => {
   const [average_rating, setRating] = useState(0);
   const [condition, setCondition] = useState('');
 
+  // this is called to get the user id.
   useEffect(() => {
     dispatch(getUserId(userToken));
   }, []);
@@ -69,6 +70,7 @@ const CreateListing = () => {
           dispatch(createListing(userId, listing));
         }}
       >
+        {/* conditional render for image preview, will change this later on.  */}
         {picture ? <ImagePreview image={picture} count={count} /> : null}
         title:{' '}
         <input
@@ -104,6 +106,7 @@ const CreateListing = () => {
             onChange={e => setCity(e.target.value)}
           />
           state:
+          {/* put this into its own component */}
           <StateDropDown handleChange={e => setLocation(e.target.value)} />
           zipcode:{' '}
           <input

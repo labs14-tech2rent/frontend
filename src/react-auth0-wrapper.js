@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-
+import auth0 from 'auth0-js'
 import createAuth0Client from "@auth0/auth0-spa-js";
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
-  window.history.replaceState({}, document.title, window.location.pathname);
+  window.history.replaceState({}, document.title, window.location.pathname || window.location.replace('http://localhost:3000/register'))  ;
 
 export const Auth0Context = React.createContext();
 export const useAuth0 = () => useContext(Auth0Context);
@@ -18,6 +18,7 @@ export const Auth0Provider = ({
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
 
+ 
   useEffect(() => {
     const initAuth0 = async () => {
       const auth0FromHook = await createAuth0Client(initOptions);
@@ -37,6 +38,9 @@ export const Auth0Provider = ({
         setUser(user);
         console.log(user)
         localStorage.setItem('user_id', user.sub)
+
+      
+       
       }
 
       setLoading(false);
@@ -84,7 +88,9 @@ export const Auth0Provider = ({
         getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
         logout: (...p) => { 
           auth0Client.logout(...p)
+          console.log(auth0Client)
           localStorage.removeItem('user_id')
+          
          }
       }}
     >

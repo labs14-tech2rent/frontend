@@ -31,6 +31,8 @@ export default class Auth {
     }
 
     
+
+    
    //calls when user has logged in with auth0
     handleAuthentication( ) {
         console.log('hellloooooooooo')

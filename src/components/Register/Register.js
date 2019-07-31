@@ -46,7 +46,7 @@ const Register = props => {
         <label htmlFor="name">Name</label>
         <input id="name" type="text" name="name" onChange={handleChange}  required/>
         <button>Submit</button>
-        <button className="back" onClick={() => props.history.push('/login')}>Go Back</button>
+        <button className="back" onClick={() => props.history.push('/')}>Go Back</button>
       </form>
      
   

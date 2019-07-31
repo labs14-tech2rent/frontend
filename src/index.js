@@ -34,20 +34,19 @@ const store = createStore(rootReducer,
 			
 		// 	// default: 
 		// 	// MainComponent =  window.location.replace('http://localhost:3000/')
-		// } 
-
-async function onRedirectCallback(appState) {
-    window.history.replaceState(
-        {},
-        document.title,
-        appState && appState.targetUrl
-        ? appState.targetUrl
-        : await checkUser() ?  window.location.replace('http://localhost:3000/home') :
-        window.location.replace('http://localhost:3000/register')
-    );
-  
-    };
-      
+        // } 
+        
+        
+        const onRedirectCallback = appState => {
+            window.history.replaceState(
+              {},
+              document.title,
+              appState && appState.targetUrl
+                ? appState.targetUrl
+                : window.location.pathname
+            );
+          };
+          
 
 const AppWithRouter = withRouter(App);
 ReactDOM.render(

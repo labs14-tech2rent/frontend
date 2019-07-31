@@ -1,164 +1,203 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable camelcase */
 /* eslint-disable react/no-unused-state */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+
+import React, { Component, useState, useEffect } from 'react';
+import { connect, useSelector, useDispatch } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './createListing.scss';
 
+// import of other components I have made.
 import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
 import Uploader from '../Uploader/Uploader';
-// should have an option for if they want price to be per day of weekly
-// location should be expanded more to have city, state, and zipcode
-// going to discussing adding more options to item table.
-class CreateListing extends Component {
-  state = {
-    name: '',
-    picture: '',
-    price: '',
-    city: '',
-    state: '',
-    zipcode: '',
-    category: '',
-    subcategory: '',
-    description: '',
-    payment_type: '',
+import { createListing, getUserId } from '../../actions';
+import ImagePreview from './ImagePreview';
+
+const CreateListing = () => {
+  const dispatch = useDispatch();
+  const userToken = { auth0_user_id: localStorage.getItem('user_id') };
+  const userId = useSelector(store => {
+    if (store.getUser.user.length > 0) {
+      return store.getUser.user[0].id;
+    }
+  });
+
+  // react state
+  const [name, setName] = useState('');
+  const [picture, setPicture] = useState('');
+  const [price, setPrice] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setLocation] = useState('');
+  const [zipcode, setZipcode] = useState('');
+  const [category, setCategory] = useState('');
+  const [subcategory, setSubCat] = useState('');
+  const [description, setDescription] = useState('');
+  const [paymentType, setPayment] = useState('');
+  const [count, setCount] = useState(0);
+  const [available, setAvailable] = useState(true);
+  const [average_rating, setRating] = useState(0);
+  const [condition, setCondition] = useState('');
+
+  // this is called to get the user id.
+  useEffect(() => {
+    dispatch(getUserId(userToken));
+  }, []);
+
+  const listing = {
+    users_ownerId: userId,
+    name,
+    price,
+    picture,
+    category,
+    description,
+    available,
+    payment_type: paymentType,
+    average_rating,
+    condition,
+    sub_category: subcategory,
+    city,
+    state,
+    zipcode,
   };
 
-  // handles the changes for every input, radio and dropdown field
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  // handles the upload info for uploadcare uploader
-  uploadImage = info => {
-    console.log(info);
-    this.setState({
-      pictures: info.uuid,
-    });
-  };
-
-  // still waiting on endpoint
-  handleSubmit = e => {};
-
-  render() {
-    console.log(this.state);
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          title:{' '}
+  return (
+    <div>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          dispatch(createListing(userId, listing));
+        }}
+      >
+        {/* conditional render for image preview, will change this later on.  */}
+        {picture ? <ImagePreview image={picture} count={count} /> : null}
+        title:{' '}
+        <input
+          name="name"
+          value={name}
+          type="text"
+          onChange={e => setName(e.target.value)}
+        />
+        price:{' '}
+        <input
+          name="price"
+          value={price}
+          type="number"
+          onChange={e => setPrice(e.target.value)}
+        />
+        <br />
+        {/* The uploadcare uploader */}
+        <Uploader
+          id="picture"
+          onUploadComplete={info => {
+            console.log(info);
+            setCount(info.count);
+            setPicture(info.uuid);
+          }}
+        />
+        <br />
+        <div>
+          city:{' '}
           <input
-            name="name"
-            value={this.state.name}
+            name="city"
+            value={city}
             type="text"
-            onChange={this.handleChange}
+            onChange={e => setCity(e.target.value)}
           />
-          price:{' '}
+          state:
+          {/* put this into its own component */}
+          <StateDropDown handleChange={e => setLocation(e.target.value)} />
+          zipcode:{' '}
           <input
-            name="price"
-            value={this.state.price}
+            name="zipcode"
+            value={zipcode}
             type="number"
-            onChange={this.handleChange}
+            onChange={e => setZipcode(e.target.value)}
           />
-          <br />
-          {/* The uploadcare uploader */}
-          <Uploader
-            id="picture"
-            onUploadComplete={info => this.uploadImage(info)}
-          />
-          <br />
-          <div>
-            city:{' '}
-            <input
-              name="city"
-              value={this.state.city}
-              type="text"
-              onChange={this.handleChange}
-            />
-            state:
-            <StateDropDown handleChange={this.handleChange} />
-            zipcode:{' '}
-            <input
-              name="zipcode"
-              value={this.state.zipcode}
-              type="number"
-              onChange={this.handleChange}
-            />
-          </div>
-          Category:{' '}
+        </div>
+        Category:{' '}
+        <select
+          name="category"
+          value={category}
+          type="text"
+          onChange={e => setCategory(e.target.value)}
+        >
+          <option value="" disabled>
+            Choose Category
+          </option>
+          <option>Mounts</option>
+          <option>Cameras</option>
+          <option>Lenses</option>
+          <option>Lighting</option>
+          <option>Support Equipment</option>
+          <option>Accessories</option>
+        </select>
+        {/* very long file so I refactored it as its own component in ./SubCategory.js */}
+        <SubCategory
+          category={category}
+          handleChange={e => setSubCat(e.target.value)}
+        />
+        Description:{' '}
+        <input
+          name="description"
+          value={description}
+          type="text"
+          onChange={e => setDescription(e.target.value)}
+        />
+        Condition:
+        <div>
           <select
-            name="category"
-            value={this.state.category}
+            name="condition"
+            value={condition}
             type="text"
-            onChange={this.handleChange}
+            onChange={e => setCondition(e.target.value)}
           >
             <option value="" disabled>
-              Choose Category
+              Choose Condition
             </option>
-            <option>Mounts</option>
-            <option>Cameras</option>
-            <option>Lenses</option>
-            <option>Lighting</option>
-            <option>Support Equipment</option>
-            <option>Accessories</option>
+            <option>Like New</option>
+            <option>Used (normal wear)</option>
+            <option>Other (see description)</option>
           </select>
-          {/* very long file so I refactored it as its own component in ./SubCategory.js */}
-          <SubCategory
-            category={this.state.category}
-            handleChange={this.handleChange}
-          />
-          Description:{' '}
-          <input
-            name="description"
-            value={this.state.description}
-            type="text"
-            onChange={this.handleChange}
-          />
-          Payment Preference:
-          <div className="payment-options">
-            <div className="option">
-              <input
-                name="payment_type"
-                value="cash"
-                type="radio"
-                onChange={this.handleChange}
-                checked={this.state.payment_type === 'cash'}
-              />{' '}
-              Cash
-            </div>
-            <div className="option">
-              <input
-                name="payment_type"
-                value="card"
-                type="radio"
-                onChange={this.handleChange}
-                checked={this.state.payment_type === 'card'}
-              />{' '}
-              Card
-            </div>
-            <div className="option">
-              <input
-                name="payment_type"
-                value="both"
-                type="radio"
-                onChange={this.handleChange}
-                checked={this.state.payment_type === 'both'}
-              />{' '}
-              Both
-            </div>
+        </div>
+        Payment Preference:
+        <div className="payment-options">
+          <div className="option">
+            <input
+              name="paymentType"
+              value="cash"
+              type="radio"
+              onChange={e => setPayment(e.target.value)}
+              checked={paymentType === 'cash'}
+            />{' '}
+            Cash
           </div>
-          <button>List Item</button>
-        </form>
-      </div>
-    );
-  }
-}
+          <div className="option">
+            <input
+              name="paymentType"
+              value="card"
+              type="radio"
+              onChange={e => setPayment(e.target.value)}
+              checked={paymentType === 'card'}
+            />{' '}
+            Card
+          </div>
+          <div className="option">
+            <input
+              name="paymentType"
+              value="both"
+              type="radio"
+              onChange={e => setPayment(e.target.value)}
+              checked={paymentType === 'both'}
+            />{' '}
+            Both
+          </div>
+        </div>
+        <button>List Item</button>
+      </form>
+    </div>
+  );
+};
 
-// const mapStateToProps = state => ({});
-
-export default connect(
-  null,
-  { CreateListing }
-)(CreateListing);
+export default CreateListing;

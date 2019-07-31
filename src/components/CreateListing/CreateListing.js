@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unused-state */
 import React, { Component, useState, useEffect } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
@@ -10,6 +9,7 @@ import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
 import Uploader from '../Uploader/Uploader';
 import { createListing, getUserId } from '../../actions';
+import ImagePreview from './ImagePreview';
 
 // remind change avarage_raiting to average_rating
 
@@ -39,7 +39,7 @@ const CreateListing = () => {
 
   useEffect(() => {
     dispatch(getUserId(userToken));
-  }, []);
+  }, [dispatch, userToken]);
 
   const listing = {
     users_ownerId: userId,
@@ -66,6 +66,7 @@ const CreateListing = () => {
           dispatch(createListing(userId, listing));
         }}
       >
+        {picture ? <ImagePreview image={picture} count={count} /> : null}
         title:{' '}
         <input
           name="name"
@@ -85,6 +86,7 @@ const CreateListing = () => {
         <Uploader
           id="picture"
           onUploadComplete={info => {
+            console.log(info);
             setCount(info.count);
             setPicture(info.uuid);
           }}

@@ -1,4 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable camelcase */
 /* eslint-disable react/no-unused-state */
+
 import React, { Component, useState, useEffect } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 
@@ -34,12 +37,12 @@ const CreateListing = () => {
   const [paymentType, setPayment] = useState('');
   const [count, setCount] = useState(0);
   const [available, setAvailable] = useState(true);
-  const [avarage_raiting, setRating] = useState(0);
-  const [condition, setCondition] = useState('worn');
+  const [average_rating, setRating] = useState(0);
+  const [condition, setCondition] = useState('');
 
   useEffect(() => {
     dispatch(getUserId(userToken));
-  }, [dispatch, userToken]);
+  }, []);
 
   const listing = {
     users_ownerId: userId,
@@ -50,7 +53,7 @@ const CreateListing = () => {
     description,
     available,
     payment_type: paymentType,
-    avarage_raiting,
+    average_rating,
     condition,
     sub_category: subcategory,
     city,
@@ -139,6 +142,22 @@ const CreateListing = () => {
           type="text"
           onChange={e => setDescription(e.target.value)}
         />
+        Condition:
+        <div>
+          <select
+            name="condition"
+            value={condition}
+            type="text"
+            onChange={e => setCondition(e.target.value)}
+          >
+            <option value="" disabled>
+              Choose Condition
+            </option>
+            <option>Like New</option>
+            <option>Used (normal wear)</option>
+            <option>Other (see description)</option>
+          </select>
+        </div>
         Payment Preference:
         <div className="payment-options">
           <div className="option">

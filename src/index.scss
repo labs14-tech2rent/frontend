@@ -31,11 +31,16 @@ img {
 $tundora: #4A4A4A;
 $malibu: rgb(141,135,255);
 $malibu-light: rgba(141,135,255,0.59);
+$silver_halice: #AAA8A8;
 
 //VARIABLES
+$light-gray: $silver_halice;
 $medium-gray: $tundora;
 $purple: $malibu;
 $purple-light: $malibu-light;
+
+//GLOBAL CLASSES
+@import './App.scss';
 
 //SASS FILES OF COMPONENTS
 @import './components/Footer/footer';

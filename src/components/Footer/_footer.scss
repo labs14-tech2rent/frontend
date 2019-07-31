@@ -11,9 +11,11 @@
         justify-content: space-between;
         padding-left: 10px;
         padding-right: 25px;
+        padding-top: 8px;
+        padding-bottom: 8px;
 
         &__left {
-            border: 2px solid pink;
+
             width: 40%;
             display: flex;
             color: $malibu-light;
@@ -24,7 +26,11 @@
         }
 
         &__right {
-            border: 2px solid red;
+            width: 30%;
+            color: $malibu-light;
+            font-size: 1.5rem;
+            letter-spacing: -0.15px;
+            line-height: 15px;
         }
     }
 
@@ -41,4 +47,54 @@
             text-decoration: none;
         }
     }
+
+    &-heading {
+        color: white;
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+
+    &-input-wrapper {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    &-icon {
+        position: absolute;
+        top: 8px;
+        left: 5px; 
+        color: rgba(113,113,113,0.82);
+        font-size: 1.5rem;
+    }
+
+    &-input {
+        padding-left: 30px;
+        width: 100%;
+        color: $light-gray;
+        border: none;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        &::placeholder {
+            color: $light-gray;
+        }
+    }
+
+    &-cta {
+        color: $light-gray;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    &-brand {
+        color: #ffffff;
+        font-size: 1.6rem;
+        cursor: pointer;
+
+        &:hover {
+            color: $light-gray;
+        }
+    }
+
 }
+

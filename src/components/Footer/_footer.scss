@@ -1,0 +1,44 @@
+
+.footer {
+    background: $medium-gray;
+
+    &-content {
+        max-width: 1024px;
+        width: 80%;
+        margin: 0 auto;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 25px;
+
+        &__left {
+            border: 2px solid pink;
+            width: 40%;
+            display: flex;
+            color: $malibu-light;
+            font-size: 1.5rem;
+            letter-spacing: -0.15px;
+            line-height: 15px;
+
+        }
+
+        &__right {
+            border: 2px solid red;
+        }
+    }
+
+    &-link {
+        color: inherit;
+        font-size: inherit;
+        text-decoration: none;
+        display: block;
+        padding-top: 4px;
+        padding-bottom: 4px;
+
+        &:hover {
+            color: $malibu;
+            text-decoration: none;
+        }
+    }
+}

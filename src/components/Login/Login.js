@@ -6,11 +6,12 @@ import checkUser from '../../checkUser'
 import * as actions from '../../actions';
 const Login = (props) => {
 
-  const auth = useSelector(store => store.auth)
+  const auth = useSelector(store => store.submit.auth)
   let content = ( //  conditionally renders content based on login form or sign up form state. 
 	
   <div className="App"> 
     {console.log(!checkUser())}
+    {console.log(auth)}
 		<h1>Tech2Rent</h1>
 	  <button onClick={auth.login} >Login/Register</button>
       

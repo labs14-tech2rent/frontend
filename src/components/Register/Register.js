@@ -28,7 +28,7 @@ const Register = props => {
    
    console.log(credentials)
    dispatch(actions.addUser(credentials))
-   //props.history.push('/home')
+   props.history.push('/home')
 
   }
 

@@ -30,6 +30,15 @@ export default class Auth {
         this.auth0.authorize()
     }
 
+    silentAuth() {
+        return new Promise((resolve, reject) => {
+          this.auth0.checkSession({}, (err, authResult) => {
+            if (err) return reject(err);
+            this.setSession(authResult);
+            resolve();
+          });
+        })};
+
     
 
     

@@ -62,9 +62,7 @@ const Register = props => {
           </form>
           <p className="register-agreement">By signing up, I agree to Tech 2 Rent <Link className="register-link">Terms of Service</Link> and <Link className="register-link">Privacy Policy.</Link></p>
       </div>
-        <button className="back" onClick={() => props.history.push('/login')}>
-          Go Back
-        </button>
+        <p className="register-footer">Already have an account? <Link className="register-link" to="/login">Log in here.</Link></p>
     </div>
   );
 };

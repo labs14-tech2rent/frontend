@@ -52,10 +52,20 @@
         color: #FFFFFF;
         padding: 16px;
         border-radius: 4px;
+        border: 3px solid #292F36;
+        
+
+        &:hover {
+            background: #FFFFFF;
+            border: 3px solid #292F36;
+            border-radius: 4px;
+            color:  #292F36;
+            
+        }
     }
 
     &-agreement {
-        margin-bottom: 30px;
+        padding-bottom: 30px;
         font-size: 1.5rem;
         width: 90%;
         margin-left: auto;
@@ -73,26 +83,10 @@
             text-decoration: none;
         }
     }
+
+    &-footer {
+        font-size: 2.2rem;
+        color: $light-gray;
+        text-align: center;
+    }
 }
-// .register-form {
-//     display: flex;
-//     flex-direction: column;
-//     width: 75%;
-//     justify-content: center;
-//     margin: 0 auto;
-//     & input {
-//         height: 2rem;
-//         font-size: .8rem;
-//         width: 50%;
-//         max-width: 25rem;
-//         margin: 0 auto;
-//     }
-//     & button {
-//         margin: 0 auto;
-//         margin-top: 1rem;
-//         height: 2rem;
-//     }
-//     .back {
-//         background-color: red;
-//     }
-// }

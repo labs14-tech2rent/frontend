@@ -3,7 +3,7 @@
 import React from "react";
 import { useAuth0 } from "../../react-auth0-wrapper";
 import {useSelector} from 'react-redux'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import logo from '../../images/t2rlogo.png'
 const NavBar = (props) => {
@@ -15,12 +15,12 @@ const NavBar = (props) => {
     <div className="nav">
       <div className="nav-logo ">
         <img src={logo} alt="tech2rent logo" />
-        <Link to="/"><h3>Tech2Rent</h3></Link>
+        <NavLink to="/"><h3>Tech2Rent</h3></NavLink>
       </div>
-      <Link to="/register" className="howitworks">How it Works</Link>
-      <Link onClick={auth.login}>Log In</Link>
-      <Link onClick={auth.login}>Sign Up</Link>
-      <Link to="/">Help</Link>
+      <NavLink to="/register" className="howitworks">How it Works</NavLink>
+      <NavLink onClick={auth.login}>Log In</NavLink>
+      <NavLink onClick={auth.login}>Sign Up</NavLink>
+      <NavLink to="/">Help</NavLink>
      
     
     </div>

@@ -26,7 +26,7 @@ import axios from 'axios'
           // console.log("testing")
 
         } else { /// if not then redirect to login
-          return <Redirect to="/login" />;
+          return <Redirect to="/" />;
         }
       }}
     />

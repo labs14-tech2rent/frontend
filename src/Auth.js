@@ -18,6 +18,9 @@ export default class Auth {
         audience: "https://dev-gco3gwsp.auth0.com/userinfo",
         scope: "openid"
     })
+
+    
+      
    
       // binds the login
     constructor() {

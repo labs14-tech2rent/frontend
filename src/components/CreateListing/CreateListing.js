@@ -74,52 +74,34 @@ const CreateListing = () => {
           {/* conditional render for image preview, will change this later on.  */}
           <br />
           <div className="left-side">
-            {picture ? (
-              <div className="image-preview">
-                <ImagePreview image={picture} count={count} />
+            <div className="image-items">
+              {picture ? (
+                <div className="image-preview">
+                  <ImagePreview image={picture} count={count} />
+                </div>
+              ) : (
+                <div className="image-holder">
+                  <p>Click Below to Add Images</p>
+                </div>
+              )}
+              <br />
+              {/* The uploadcare uploader */}
+
+              <div className="uploader">
+                <Uploader
+                  className="upload"
+                  id="picture"
+                  onUploadComplete={info => {
+                    setCount(info.count);
+                    setPicture(info.uuid);
+                  }}
+                />
               </div>
-            ) : (
-              <div className="image-holder">+</div>
-            )}
-            <br />
-            {/* The uploadcare uploader */}
-            <input
-              type="hidden"
-              role="uploadcare-uploader"
-              data-image-shrink="1024x1024"
-              data-multiple="true"
-              data-multiple-min="1"
-              data-multiple-max="5"
-              data-crop="4:3, free"
-            />
-            {/* <Uploader
-              id="picture"
-              onUploadComplete={info => {
-                setCount(info.count);
-                setPicture(info.uuid);
-              }}
-            /> */}
+            </div>
             <div>
               <div>
-                Condition: <br />
-                <select
-                  name="condition"
-                  value={condition}
-                  type="text"
-                  onChange={e => setCondition(e.target.value)}
-                  className="condition"
-                >
-                  <option value="" disabled>
-                    Choose Condition
-                  </option>
-                  <option>Like New</option>
-                  <option>Used (normal wear)</option>
-                  <option>Other (see description)</option>
-                </select>
-              </div>
-              <div>
                 Description:{' '}
-                <input
+                <textarea
                   name="description"
                   value={description}
                   type="text"
@@ -130,7 +112,7 @@ const CreateListing = () => {
             </div>
           </div>
           <div className="right-side">
-            title:{' '}
+            Product:{' '}
             <input
               name="name"
               value={name}
@@ -138,7 +120,7 @@ const CreateListing = () => {
               onChange={e => setName(e.target.value)}
               className="long-input"
             />
-            price:{' '}
+            Price:{' '}
             <input
               name="price"
               value={price}
@@ -148,7 +130,7 @@ const CreateListing = () => {
             />
             <div className="middle-row">
               <div>
-                city:{' '}
+                City:{' '}
                 <input
                   name="city"
                   value={city}
@@ -158,14 +140,14 @@ const CreateListing = () => {
                 />
               </div>
               <div>
-                state:
+                State:
                 {/* put this into its own component */}
                 <StateDropDown
                   handleChange={e => setLocation(e.target.value)}
                 />
               </div>
               <div>
-                zipcode:{' '}
+                Zipcode:{' '}
                 <input
                   name="zipcode"
                   value={zipcode}
@@ -200,6 +182,23 @@ const CreateListing = () => {
               category={category}
               handleChange={e => setSubCat(e.target.value)}
             />
+            <div>
+              Condition: <br />
+              <select
+                name="condition"
+                value={condition}
+                type="text"
+                onChange={e => setCondition(e.target.value)}
+                className="long-input"
+              >
+                <option value="" disabled>
+                  Choose Condition
+                </option>
+                <option>Like New</option>
+                <option>Used (normal wear)</option>
+                <option>Other (see description)</option>
+              </select>
+            </div>
           </div>
         </form>
         <div className="bottom-row">

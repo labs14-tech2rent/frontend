@@ -1,53 +1,35 @@
-import React from 'react';
-// import getData and logOut fns from actions so they can be called here
-import { connect } from 'react-redux';
-import { getData } from '../../actions';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../actions';
+
 import './homepage.scss';
-// connect to reaxt redux store
 
-class Main extends React.Component {
-  componentDidMount() {
-    // grab the list of users from getData -- this is in the SUBMIT fns in the actions file
-    this.props.getData();
-  }
+const Main = props => {
+  const userId = { auth0_user_id: localStorage.getItem('user_id') };
+  const user = useSelector(store => store.getUser.user);
+  const dispatch = useDispatch();
 
-  logout = e => {
+  const logout = e => {
+    e.preventDefault();
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
-    this.props.history.push('/login');
+    props.history.push('/login');
   };
 
-  render() {
-    console.log(this.props);
-    return (
-      <div>
-        <h1>Welcome to a Protected Page!</h1>
-        {this.props.users
-          ? this.props.users.map(user => (
-              // map over the state of users
-              <h3>{user.username}</h3>
-            ))
-          : null}
-        <button onClick={this.logout}>Log Out</button>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    dispatch(actions.getUserId(userId));
+  }, []);
 
-// set the new state of these keys to equal what it was set in the reducers file
-const mapStateToProps = state => ({
-  credentials: state.credentials,
-  users: state.users,
-  user: state.user,
-  error: state.error,
-  auth: state.auth,
-});
+  console.log(user);
+  return (
+    <div>
+      <h1>Welcome to a Protected Page!</h1>
+      <button onClick={logout}>Log Out</button>
+    </div>
+  );
+};
 
-// / map over the state and set them to prop, also grab the getData fn
-// and logOut fn so they can be referenced and called
-export default connect(
-  mapStateToProps,
-  { getData }
-)(Main);
+export default Main;

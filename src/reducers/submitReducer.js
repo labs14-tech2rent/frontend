@@ -1,4 +1,4 @@
-import { SUBMIT_START, SUBMIT_FAIL } from '../actions';
+import { SUBMIT_START, SUBMIT_FAIL, SUBMIT_SUCCESS } from '../actions';
 import Auth from '../Auth';
 
 const auth = new Auth();
@@ -19,6 +19,14 @@ export const submitReducer = (state = initialState, action) => {
         isLoading: true,
         submitFail: false,
         auth,
+      };
+
+    case SUBMIT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: false,
+        users: action.payload,
       };
     case SUBMIT_FAIL:
       return {

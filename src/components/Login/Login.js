@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 //import {connect} from 'react-redux';
 //import {login, signUp, reset} from '../../actions';
 import {useSelector, useDispatch} from 'react-redux'
-import './login.scss'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faTwitter, faGoogle, faInstagram } from '@fortawesome/free-brands-svg-icons';

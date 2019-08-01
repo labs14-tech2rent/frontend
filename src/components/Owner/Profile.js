@@ -1,8 +1,13 @@
 import React from 'react'
 import axios from 'axios'
-import './profile.scss'
+
 import Rating from './Rating'
 //import Random from  '../../RandomUserApi'
+//import logo from '../../images/t2rlogo.png'
+import camera from  '../../images/Bitmap-2.png'
+import vr from  '../../images/Bitmap-3.png'
+import cameratwo from  '../../images/Bitmap-5.png'
+
 class Profile extends React.Component {
     state = {
         user: {
@@ -45,9 +50,10 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="products">
-                    <h3>Prod 1</h3>
-                    <h3>Prod 2</h3>
-                    <h3>Prod 3</h3>
+            
+                    <img src={camera} />
+                    <img src={vr} />
+                    <img src={cameratwo} />
                 </div>
             </div>
         )

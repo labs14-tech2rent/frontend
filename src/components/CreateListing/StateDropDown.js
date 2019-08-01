@@ -1,7 +1,7 @@
 import React from 'react';
 // function to choose a state from dropdown menu from CreateListing.js
 const StateDropDown = props => (
-  <select name="state" onChange={props.handleChange}>
+  <select name="state" onChange={props.handleChange} className="small-input">
     <option />
     <option value="AL">Alabama</option>
     <option value="AK">Alaska</option>

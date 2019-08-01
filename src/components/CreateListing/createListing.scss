@@ -1,29 +1,129 @@
 .create-listing {
+  color: #2a2a2a;
+  font-family: Roboto;
+  font-size: 15px;
+  letter-spacing: -0.01px;
+  line-height: 18px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 1029px;
   .banner {
-    display: flex;
-    justify-content: center;
     img {
       width: 1029px;
     }
   }
+}
+
+.form-body {
+  margin: 0 auto;
+  width: 962px;
+  padding: 3% 0%;
+
   form {
     display: flex;
-    flex-direction: column;
 
+    input {
+      margin-bottom: 3%;
+      border: none;
+    }
+    select {
+      margin-bottom: 3%;
+      border: none;
+    }
+  }
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  .image-holder {
+    height: 220.99px;
+    width: 350px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    font-family: Futura;
+    font-size: 170.5px;
+    font-weight: 500;
+    letter-spacing: -0.02px;
+    line-height: 226px;
+    text-align: center;
+    color: #d4d2d2;
+  }
+  .image-preview {
+    width: 350px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+  }
+  .description {
+    height: 148px;
+    width: 383px;
+    background-color: #f5f4f4;
+  }
+  .condition {
+    height: 70px;
+    width: 365px;
+    background-color: #f5f4f4;
+  }
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  .middle-row {
+    display: flex;
+  }
+  .long-input {
+    height: 70px;
+    width: 541px;
+    background-color: #f5f4f4;
+  }
+  .medium-input {
+    height: 70px;
+    width: 217px;
+    background-color: #f5f4f4;
+  }
+  .small-input {
+    height: 70px;
+    width: 128px;
+    background-color: #f5f4f4;
+  }
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  width: 962px;
+  align-items: center;
+  font-size: 15px;
+  letter-spacing: -0.01px;
+  line-height: 18px;
+  .payment {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
     .payment-options {
       display: flex;
-      flex-direction: column;
-      align-self: center;
-
       .option {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        width: 70px;
+        margin-right: 3%;
       }
+    }
+  }
+
+  .lower-buttons {
+    display: flex;
+    .cancel {
+      height: 34px;
+      width: 113px;
+      border: 1px solid #000000;
+      background-color: #fff;
+      color: #000000;
+      margin-right: 3%;
+    }
+    .list {
+      height: 34px;
+      width: 113px;
+      background-color: #000000;
     }
   }
 }

@@ -20,13 +20,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavBarUnAuth />
-        <Footer />
         <Route exact path="/login" {...this.props} component={Login} />
         <Route exact path="/callback" component={Callback} />
         <PrivateRoute exact path="/home" component={HomePage} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/register" component={Register} />
         <Route path="/create-listing" component={CreateListing} />
+        <Footer />
       </div>
     );
   }

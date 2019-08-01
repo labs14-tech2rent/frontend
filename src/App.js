@@ -6,24 +6,15 @@ import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
 import PrivateRoute from './PrivateRoute';
-import Profile from './components/Profile';
+import Profile from './components/Owner/Profile';
 import Register from './components/Register/Register';
 import auth0Client from './Auth';
-//import CreateListing from './components/CreateListing/CreateListing';
-import createAuth0Client from '@auth0/auth0-spa-js';
+
 import NavBar from "./components/Nav/NavBar";
 import Footer from "./components/Footer/Footer"
 // import auth from './Auth'
 class App extends React.Component {
-  async componentDidMount() {
-    if (this.props.location.pathname === '/callback') return;
-    try {
-      await auth0Client.silentAuth();
-      this.forceUpdate();
-    } catch (err) {
-      if (err.error !== 'login_required') console.log(err.error);
-    }
-  }
+
   render() {
     return (
     <div className="App">

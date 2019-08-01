@@ -5,10 +5,10 @@
   letter-spacing: -0.01px;
   line-height: 18px;
   margin: 0 auto;
-  width: 1029px;
   .banner {
     img {
-      width: 1029px;
+      height: 200px;
+      width: 100vw;
     }
   }
 }
@@ -36,13 +36,20 @@
   display: flex;
   flex-direction: column;
   width: 500px;
+  .image-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 450px;
+  }
   .image-holder {
-    height: 220.99px;
-    width: 350px;
+    border-radius: 3px;
+    height: 400px;
+    width: 380px;
     border-radius: 4px;
     background-color: #f0f0f0;
     font-family: Futura;
-    font-size: 170.5px;
+    font-size: 30px;
     font-weight: 500;
     letter-spacing: -0.02px;
     line-height: 226px;
@@ -50,7 +57,7 @@
     color: #d4d2d2;
   }
   .image-preview {
-    width: 350px;
+    width: 360px;
     border-radius: 4px;
     background-color: #f0f0f0;
   }
@@ -58,15 +65,17 @@
     height: 148px;
     width: 383px;
     background-color: #f5f4f4;
-  }
-  .condition {
-    height: 70px;
-    width: 365px;
-    background-color: #f5f4f4;
+    padding-top: -0px;
   }
 }
 
 .right-side {
+  input {
+    font-size: 30px;
+  }
+  select {
+    font-size: 30px;
+  }
   display: flex;
   flex-direction: column;
   .middle-row {
@@ -126,4 +135,43 @@
       background-color: #000000;
     }
   }
+}
+
+.uploadcare--widget__button {
+  color: #fff;
+  font-size: 40px;
+  background-color: #000000;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: 18px 15px;
+  margin-left: -2%;
+  &:hover {
+    font-size: 40px;
+    background-color: #fff;
+    color: #000000;
+    border: 1px solid #000000;
+  }
+}
+
+.uploadcare--widget__file-size {
+  display: none;
+}
+
+.uploadcare--widget__file-name {
+  color: #fff;
+  font-size: 40px;
+  background-color: #000000;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: 0 30px;
+  &:hover {
+    background-color: #fff;
+    color: #000000;
+    border: 1px solid #000000;
+  }
+}
+
+.uploader {
+  margin-left: 10%;
+  margin-bottom: 1%;
 }

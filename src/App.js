@@ -11,7 +11,8 @@ import Register from './components/Register/Register';
 import auth0Client from './Auth';
 //import CreateListing from './components/CreateListing/CreateListing';
 import createAuth0Client from '@auth0/auth0-spa-js';
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Nav/NavBar";
+import Footer from "./components/Footer/Footer"
 // import auth from './Auth'
 class App extends React.Component {
   async componentDidMount() {
@@ -28,7 +29,7 @@ class App extends React.Component {
     <div className="App">
     <BrowserRouter>
       <header>
-        
+        <NavBar />
         
       </header>
       <Switch>
@@ -39,6 +40,9 @@ class App extends React.Component {
           <PrivateRoute exact path="/profile" component={Profile} />
           <Route exact path="/register" component={Register} />
        </Switch>
+       <footer>
+        <Footer />
+       </footer>
         </BrowserRouter>
         
       </div>

@@ -2,18 +2,24 @@ import React, {useState} from 'react';
 //import {connect} from 'react-redux';
 //import {login, signUp, reset} from '../../actions';
 import {useSelector, useDispatch} from 'react-redux'
-import checkUser from '../../checkUser'
-import * as actions from '../../actions';
+import './login.scss'
 const Login = (props) => {
 
   const auth = useSelector(store => store.submit.auth)
   let content = ( //  conditionally renders content based on login form or sign up form state. 
 	
   <div className="App"> 
-    {console.log(!checkUser())}
-    {console.log(auth)}
-		<h1>Tech2Rent</h1>
-	  <button onClick={auth.login} >Login/Register</button>
+    <div className="section-1">
+      <h2>Welcome back to the community.</h2>
+      <input type="text" placeholder='Try "Nikon"' />
+    </div>
+  
+    <div className="section-2">
+
+      <button onClick={auth.login} className="login-button">Login</button>
+      <p>By signing up, I agree to KitSplits <a>Terms of Service</a> and <a>Privacy Policy</a></p>
+    </div>
+	
       
 	  
     </div>

@@ -29,7 +29,7 @@ class App extends React.Component {
     <div className="App">
     <BrowserRouter>
       <header>
-        <NavBar />
+        <NavBar {...this.props}/>
         
       </header>
       <Switch>

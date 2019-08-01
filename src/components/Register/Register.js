@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addUser } from '../../actions';
+import { Link } from 'react-router-dom';
 
 const Register = props => {
   const [credentials, setCredentials] = useState({
@@ -40,7 +41,7 @@ const Register = props => {
           </div>
           <form onSubmit={signup} className="register-form">
               <label className="register-label" htmlFor="email">Email</label>
-              <input
+              <input className="register-input"
                 id="email"
                 type="email"
                 name="email"
@@ -48,8 +49,8 @@ const Register = props => {
                 onChange={handleChange}
                 required
               />
-              <label htmlFor="name">Name</label>
-              <input
+              <label className="register-label" htmlFor="name">Name</label>
+              <input className="register-input"
                 id="name"
                 type="text"
                 name="name"
@@ -57,8 +58,9 @@ const Register = props => {
                 onChange={handleChange}
                 required
               />
-              <button>Submit</button>
+              <button className="register-submit">Complete your account</button>
           </form>
+          <p className="register-agreement">By signing up, I agree to Tech 2 Rent <Link className="register-link">Terms of Service</Link> and <Link className="register-link">Privacy Policy.</Link></p>
       </div>
         <button className="back" onClick={() => props.history.push('/login')}>
           Go Back

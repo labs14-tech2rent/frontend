@@ -3,13 +3,14 @@
     background: url('https://images.unsplash.com/photo-1504610926078-a1611febcad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80') no-repeat center center fixed; 
     background-size: cover;
     padding-top: 63px;
+    padding-bottom: 108px;
 
     &-container {
         max-width: 519px;
         width: 70%;
         border-radius: 8px;
         background-color: #FFFFFF;
-        margin: 0 auto;
+        margin: 0 auto 32px auto;
     }
 
     &-heading {
@@ -28,6 +29,49 @@
         max-width: 320px;
         width: 70%;
         margin: 0 auto;
+    }
+
+    &-input {
+        background-color: #F2F2F2;
+        border: none;
+        color: $medium-gray;
+        border-radius: 2.5px;
+        padding: 6px 10px;
+        font-size: 2rem;
+
+        &::placeholder {
+            color: $medium-gray;
+        }
+    }
+
+    &-submit {
+        margin: 56px auto;
+        background-color: #292F36;
+        font-size: 2.2rem;
+        border: none;
+        color: #FFFFFF;
+        padding: 16px;
+        border-radius: 4px;
+    }
+
+    &-agreement {
+        margin-bottom: 30px;
+        font-size: 1.5rem;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        color: $light-gray;
+    }
+
+    &-link {
+        color: $purple;
+        font-weight: 700;
+
+        &:hover {
+            color: $purple-light;
+            text-decoration: none;
+        }
     }
 }
 // .register-form {

@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './createListing.scss';
+import './_createListing.scss';
 
 // import of other components I have made.
 import SubCategory from './SubCategory';

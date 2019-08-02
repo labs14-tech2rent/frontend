@@ -61,24 +61,37 @@ const Footer = () => (
         </div>
       </div>
 
-            <div className="footer-content__right">
-                <p className="footer-cta">Don't Loose Out</p>
-                <p className="footer-link">Join Tech 2 Rent's Mailing List</p>
-                <div className="footer-input-wrapper">
-                    <FontAwesomeIcon className="footer-icon" icon={faEnvelope} />
-                    <input className="footer-input" type="email" placeholder="Enter email here"/>
-                </div>
-                <div className="footer-content__three">
-                    <button className="button__dark button__sm margin-r-30">Subscribe</button>
-                    <FontAwesomeIcon className="footer-brand margin-r-34" icon={faFacebook} />
-                    <FontAwesomeIcon className="footer-brand margin-r-34" icon={faTwitter} />
-                    <FontAwesomeIcon className="footer-brand margin-r-34" icon={faGoogle} />
-                    <FontAwesomeIcon className="footer-brand" icon={faInstagram} />
-                    
-                </div>
-            </div>
+      <div className="footer-content__right">
+        <p className="footer-cta">Don't Lose Out</p>
+        <p className="footer-link">Join Tech 2 Rent's Mailing List</p>
+        <div className="footer-input-wrapper">
+          <FontAwesomeIcon className="footer-icon" icon={faEnvelope} />
+          <input
+            className="footer-input"
+            type="email"
+            placeholder="Enter email here"
+          />
         </div>
-
+        <div className="footer-content__three">
+          <button className="button__dark button__sm margin-r-30">
+            Subscribe
+          </button>
+          <FontAwesomeIcon
+            className="footer-brand margin-r-34"
+            icon={faFacebook}
+          />
+          <FontAwesomeIcon
+            className="footer-brand margin-r-34"
+            icon={faTwitter}
+          />
+          <FontAwesomeIcon
+            className="footer-brand margin-r-34"
+            icon={faGoogle}
+          />
+          <FontAwesomeIcon className="footer-brand" icon={faInstagram} />
+        </div>
+      </div>
+    </div>
   </footer>
 );
 

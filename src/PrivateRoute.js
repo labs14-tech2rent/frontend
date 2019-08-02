@@ -15,10 +15,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         ) {
           return <Component {...props} />;
           // console.log("testing")
-
-        } else { /// if not then redirect to login
-          return <Redirect to="/" />;
         }
+        // / if not then redirect to login
+        return <Redirect to="/" />;
+
         // / if not then redirect to login
         return <Redirect to="/login" />;
       }}

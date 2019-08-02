@@ -9,8 +9,7 @@ const rootReducer = combineReducers({
   submit: submitReducer,
   createListing: createListReducer,
   getUser: getUserIdReducer,
-  auth
+  auth,
 });
 
 export default rootReducer;
-

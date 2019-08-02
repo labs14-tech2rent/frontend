@@ -20,8 +20,7 @@ export default class Auth {
     })
 
     
-      
-   
+    
       // binds the login
     constructor() {
         this.login = this.login.bind(this);

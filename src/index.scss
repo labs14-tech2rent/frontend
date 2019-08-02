@@ -38,14 +38,16 @@ img {
 }
 
 // COLORS
-$tundora: #4a4a4a;
-$malibu: rgb(141, 135, 255);
-$malibu-light: rgba(141, 135, 255, 0.59);
-$silver_halice: #aaa8a8;
+$tundora: #4A4A4A;
+$malibu: rgb(141,135,255);
+$malibu-light: rgba(141,135,255,0.59);
+$silver_halice: #AAA8A8;
+$god-gray: #1B1B1B;
 
 //VARIABLES
 $light-gray: $silver_halice;
 $medium-gray: $tundora;
+$dark-gray: $god-gray;
 $purple: $malibu;
 $purple-light: $malibu-light;
 
@@ -53,10 +55,12 @@ $purple-light: $malibu-light;
 @import "./App.scss";
 
 //SASS FILES OF COMPONENTS
-@import "./components/Footer/footer";
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+@import './components/NavBar/navbar';
+@import './components/Footer/footer';
+@import './components/Register/register';

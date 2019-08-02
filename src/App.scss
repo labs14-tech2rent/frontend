@@ -23,6 +23,8 @@
   font-weight: 700;
   color: rgba(255,255,255,0.82);
   background-color: #262525;
+  border: none;
+  cursor: pointer;
 
   &:hover {
     color: #262525;
@@ -32,6 +34,5 @@
 
 .button__sm {
   font-size: 1.5rem;
-  padding-bottom: 5px;
-  padding-top: 3px;
+  padding: 8px 10px;
 }

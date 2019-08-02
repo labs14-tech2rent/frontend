@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addUser } from '../../actions';
-import './register.scss';
+import { Link } from 'react-router-dom';
 
 const Register = props => {
   const [credentials, setCredentials] = useState({
@@ -33,34 +33,36 @@ const Register = props => {
     // Line 62, 63, 72, 73, 75 -- conditionally renders content based on login form
     // or sign up form state. 63 calls a separate fn based on form state
     <div className="register">
-      <h1>Register</h1>
-      <p>
-        Please complete your registration by confirming your name and email.
-      </p>
-      <form onSubmit={signup} className="register-form">
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          value={credentials.email}
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          value={credentials.name}
-          onChange={handleChange}
-          required
-        />
-        <button>Submit</button>
-        <button className="back" onClick={() => props.history.push('/login')}>
-          Go Back
-        </button>
-      </form>
+      
+      <div className="register-container">
+          <div className="register-heading">
+              <p>Give yourself the oppotunity</p>
+              <p>Join the community.</p>.
+          </div>
+          <form onSubmit={signup} className="register-form">
+              <label className="register-label" htmlFor="email">Email</label>
+              <input className="register-input"
+                id="email"
+                type="email"
+                name="email"
+                value={credentials.email}
+                onChange={handleChange}
+                required
+              />
+              <label className="register-label" htmlFor="name">Name</label>
+              <input className="register-input"
+                id="name"
+                type="text"
+                name="name"
+                value={credentials.name}
+                onChange={handleChange}
+                required
+              />
+              <button className="register-submit">Complete your account</button>
+          </form>
+          <p className="register-agreement">By signing up, I agree to Tech 2 Rent <Link className="register-link">Terms of Service</Link> and <Link className="register-link">Privacy Policy.</Link></p>
+      </div>
+        <p className="register-footer">Already have an account? <Link className="register-link" to="/login">Log in here.</Link></p>
     </div>
   );
 };

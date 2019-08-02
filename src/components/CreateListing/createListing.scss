@@ -145,11 +145,22 @@
       background-color: #fff;
       color: #000000;
       margin-right: 3%;
+      &:hover {
+        background-color: #000000;
+        color: #fff;
+        border: 1px solid #000000;
+      }
     }
     .list {
       height: 34px;
       width: 113px;
       background-color: #000000;
+      color: #fff;
+      &:hover {
+        background-color: #fff;
+        color: #000000;
+        border: 1px solid #000000;
+      }
     }
   }
 }

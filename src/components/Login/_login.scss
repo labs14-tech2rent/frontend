@@ -16,9 +16,11 @@
   background-image: url('./images/login-photo.png');
   background-size: cover;
   border-image-repeat: no-repeat;
+  width: 900px;
   max-width: 100%;
   height: 500px;
   align-items: center;
+  margin: 0 auto;
 
   & input {
     margin: 0 auto;

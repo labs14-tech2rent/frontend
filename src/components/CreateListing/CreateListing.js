@@ -15,7 +15,7 @@ import StateDropDown from './StateDropDown';
 import Uploader from '../Uploader/Uploader';
 import { createListing, getUserId } from '../../actions';
 import ImagePreview from './ImagePreview';
-import cameraBanner from '../../Images/banner.png';
+import cameraBanner from '../../images/banner.png';
 
 const CreateListing = () => {
   const dispatch = useDispatch();

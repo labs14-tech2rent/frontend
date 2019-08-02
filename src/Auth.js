@@ -3,7 +3,7 @@ import {addUser} from './actions';
 import createAuth0Client from '@auth0/auth0-spa-js'
 import auth0 from 'auth0-js'
 import axios from 'axios'
-const LOGIN_EXISTS_PAGE = "/home"
+const LOGIN_EXISTS_PAGE =  localStorage.getItem('targetUrl') !== null ? localStorage.getItem('targetUrl') : '/home';
 const LOGIN_FAILURE_PAGE = "/login"
 const LOGIN_REGISTER_PAGE = "/register"
 
@@ -78,6 +78,12 @@ export default class Auth {
             if (users.includes(authResults.idTokenPayload.sub)) {
               console.log('exists');
               // if they exists in our db, then reroute them to the home page
+
+              //if local storage has a pathname of a route they tried to visit before logging in, route them there
+
+             
+
+
               location.pathname = LOGIN_EXISTS_PAGE;
             } else {
               console.log('does not exist');

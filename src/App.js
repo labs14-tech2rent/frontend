@@ -25,7 +25,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" {...this.props} component={Login} />
             <Route exact path="/callback" component={Callback} />
-            <PrivateRoute path="/home" component={HomePage} />
+            <PrivateRoute auth={this.props.submit} path="/home" component={HomePage} />
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute path="/create-listing" component={CreateListing} />
             <Route exact path="/register" component={Register} />
@@ -39,8 +39,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => ({
-  auth,
+const mapStateToProps = ({ submit }) => ({
+  submit,
 });
 // grabbing login and signup from actions file... mapping the state to the props
 export default connect(

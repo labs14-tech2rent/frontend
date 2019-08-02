@@ -62,7 +62,7 @@ const Footer = () => (
       </div>
 
       <div className="footer-content__right">
-        <p className="footer-cta">Don't Loose Out</p>
+        <p className="footer-cta">Don't Lose Out</p>
         <p className="footer-link">Join Tech 2 Rent's Mailing List</p>
         <div className="footer-input-wrapper">
           <FontAwesomeIcon className="footer-icon" icon={faEnvelope} />

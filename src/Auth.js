@@ -1,50 +1,66 @@
 /* eslint no-restricted-globals: 0 */
-import auth0 from 'auth0-js';
-import axios from 'axios';
-import { addUser } from './actions';
-
-const LOGIN_EXISTS_PAGE = '/home';
-const LOGIN_FAILURE_PAGE = '/login';
-const LOGIN_REGISTER_PAGE = '/register';
+import {addUser} from './actions';
+import createAuth0Client from '@auth0/auth0-spa-js'
+import auth0 from 'auth0-js'
+import axios from 'axios'
+const LOGIN_EXISTS_PAGE = "/home"
+const LOGIN_FAILURE_PAGE = "/login"
+const LOGIN_REGISTER_PAGE = "/register"
 
 export default class Auth {
-  // Running a new auth0 call and pulling in the required domain and client id and other values needed for access
-  auth0 = new auth0.WebAuth({
-    domain: 'dev-gco3gwsp.auth0.com',
-    clientID: 'kFpGm0tbpc2lUax1Il5S0vS54opwh3iv',
-    redirectUri: 'https://sharp-wozniak-279070.netlify.com/callback',
-    responseType: 'token id_token',
-    audience: 'https://dev-gco3gwsp.auth0.com/userinfo',
-    scope: 'openid',
-  });
+    //Running a new auth0 call and pulling in the required domain and client id and other values needed for access
+    auth0 = new auth0.WebAuth({
+        domain: "dev-gco3gwsp.auth0.com",
+        clientID: "kFpGm0tbpc2lUax1Il5S0vS54opwh3iv",
+        //redirectUri: "https://sharp-wozniak-279070.netlify.com/callback",
+        redirectUri: "http://localhost:3000/callback",
+        responseType: "token id_token",
+        audience: "https://dev-gco3gwsp.auth0.com/userinfo",
+        scope: "openid"
+    })
 
-  // binds the login
-  constructor() {
-    this.login = this.login.bind(this);
-  }
+    
+      
+   
+      // binds the login
+    constructor() {
+        this.login = this.login.bind(this);
+    }
 
-  // Calls this fn when a user clicks login -- reroutes to a separate login page
-  login = () => {
-    this.auth0.authorize();
-  };
+    // Calls this fn when a user clicks login -- reroutes to a separate login page
+    login() {
+        console.log('hello from liogin')
+        this.auth0.authorize()
+    }
 
-  // calls when user has logged in with auth0
-  handleAuthentication() {
-    // parses the data to be read
-    this.auth0.parseHash((err, authResults) => {
-      console.log(authResults);
-      // if results are returned with an access token and an id token
-      if (authResults && authResults.accessToken && authResults.idToken) {
-        // sets the expiration
-        const expiresAt = JSON.stringify(
-          authResults.expiresIn * 1000 + new Date().getTime()
-        );
-        // saving all required values to local storage to be referenced later for access to private route
-        localStorage.setItem('access_token', authResults.accessToken);
-        localStorage.setItem('id_token', authResults.idToken);
-        localStorage.setItem('expires_at', expiresAt);
-        localStorage.setItem('user_id', authResults.idTokenPayload.sub);
-        location.hash = '';
+    silentAuth() {
+        return new Promise((resolve, reject) => {
+          this.auth0.checkSession({}, (err, authResult) => {
+            if (err) return reject(err);
+            this.setSession(authResult);
+            resolve();
+          });
+        })};
+
+    
+
+    
+   //calls when user has logged in with auth0
+    handleAuthentication( ) {
+        console.log('hellloooooooooo')
+        //parses the data to be read
+        this.auth0.parseHash((err, authResults) => {
+            console.log(authResults)
+            //if results are returned with an access token and an id token
+            if (authResults && authResults.accessToken && authResults.idToken) {
+                //sets the expiration
+                let expiresAt = JSON.stringify((authResults.expiresIn) * 1000 + new Date().getTime())
+                //saving all required values to local storage to be referenced later for access to private route
+                localStorage.setItem("access_token", authResults.accessToken)
+                localStorage.setItem("id_token", authResults.idToken)
+                localStorage.setItem("expires_at", expiresAt)
+                localStorage.setItem('user_id', authResults.idTokenPayload.sub)
+                location.hash = ""
 
         // create an empty array to check if user exists in OUR db (not auth0's)
         const users = [];

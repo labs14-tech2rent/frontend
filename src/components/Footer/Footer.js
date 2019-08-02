@@ -39,12 +39,13 @@ const Footer = () => {
                     <FontAwesomeIcon className="footer-icon" icon={faEnvelope} />
                     <input className="footer-input" type="email" placeholder="Enter email here"/>
                 </div>
-                <div>
+                <div className="footer-content__three">
                     <button className="button__dark button__sm margin-r-30">Subscribe</button>
                     <FontAwesomeIcon className="footer-brand margin-r-34" icon={faFacebook} />
                     <FontAwesomeIcon className="footer-brand margin-r-34" icon={faTwitter} />
                     <FontAwesomeIcon className="footer-brand margin-r-34" icon={faGoogle} />
                     <FontAwesomeIcon className="footer-brand" icon={faInstagram} />
+                    
                 </div>
             </div>
         </div>

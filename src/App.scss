@@ -1,4 +1,8 @@
-//PADDINGS
+.App {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
 .padding-l-40 {
   padding-left: 40px;
@@ -32,7 +36,3 @@
   }
 }
 
-.button__sm {
-  font-size: 1.5rem;
-  padding: 8px 10px;
-}

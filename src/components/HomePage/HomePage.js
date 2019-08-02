@@ -16,7 +16,7 @@ const Main = props => {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
-    props.history.push('/login');
+    props.history.push('/');
   };
 
   useEffect(() => {

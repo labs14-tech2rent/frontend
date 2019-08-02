@@ -23,6 +23,7 @@
     &-label {
         font-size: 1.9rem;
         color: #363636;
+        padding: 1rem;
     }
 
     &-form {
@@ -38,6 +39,7 @@
         border-radius: 2.5px;
         padding: 6px 10px;
         font-size: 2rem;
+        margin: 1rem 0px;
 
         &::placeholder {
             color: $medium-gray;

@@ -1,18 +1,24 @@
 
   header {
     height: 7rem;
-    display: flex;
+    display: flex !important;
     justify-content: center;
     flex-direction: column;
 
   }
   .nav {
     width: 100%;
+    max-width: 900px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin: 0 auto;
     align-items: center;
+
+   & a {
+      text-decoration: none;
+      color: #000 ;
+    }
     
   }
 
@@ -33,12 +39,9 @@
     list-style-type: none;
   }
 
-  a {
-    text-decoration: none;
-    color: #000;
-  }
+  
   .howitworks {
-    color: rgba(141, 135, 255, 0.59);
+    color: rgba(141, 135, 255, 0.59) !important;
     font-weight: 700;
   }
 

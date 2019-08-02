@@ -10,6 +10,7 @@ const Register = props => {
       auth0_user_id: '',
     
   });
+  const auth = useSelector(store => store.submit.auth);
   const dispatch = useDispatch();
 
   const handleChange = e => {
@@ -76,7 +77,7 @@ const Register = props => {
       </div>
       <p className="register-footer">
         Already have an account?{' '}
-        <Link className="register-link" to="/login">
+        <Link className="register-link" onClick={auth.login}>
           Log in here.
         </Link>
       </p>

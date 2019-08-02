@@ -18,7 +18,6 @@ const NavBar = props => {
     props.history.push('/');
   };
 
-  
   return (
     <div className="nav">
       <div className="nav-logo ">

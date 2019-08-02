@@ -9,7 +9,16 @@ import logo from '../../images/t2rlogo.png';
 const NavBar = props => {
   const auth = useSelector(store => store.submit.auth);
   // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const logout = e => {
+    e.preventDefault();
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('user_id');
+    props.history.push('/');
+  };
 
+  
   return (
     <div className="nav">
       <div className="nav-logo ">
@@ -21,7 +30,12 @@ const NavBar = props => {
       <NavLink to="/register" className="howitworks">
         How it Works
       </NavLink>
-      <NavLink onClick={auth.login}>Log In</NavLink>
+      {
+        localStorage.getItem('access_token') !== null &&
+        localStorage.getItem('id_token')!== null &&
+        localStorage.getItem('expires_at')!== null &&
+         localStorage.getItem('user_id')!== null ?
+         <NavLink onClick={logout}>Log Out</NavLink> : <NavLink onClick={auth.login}>Log In</NavLink>}
       <NavLink onClick={auth.login}>Sign Up</NavLink>
       <NavLink to="/">Help</NavLink>
     </div>

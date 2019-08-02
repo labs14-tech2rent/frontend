@@ -5,8 +5,10 @@ import { addUser } from '../../actions';
 
 const Register = props => {
   const [credentials, setCredentials] = useState({
-    username: '',
-    auth0_user_id: '',
+      name: '',
+      email: '',
+      auth0_user_id: '',
+    
   });
   const dispatch = useDispatch();
 
@@ -15,18 +17,19 @@ const Register = props => {
 
     // ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
     setCredentials({
-      credentials: {
+        ...credentials,
         [e.target.name]: e.target.value,
         auth0_user_id: localStorage.getItem('user_id'),
-      },
+    
     });
   };
 
   const signup = e => {
     e.preventDefault();
 
-    console.log(credentials.credentials);
-    dispatch(addUser(credentials.credentials));
+    console.log( credentials);
+    dispatch(addUser(credentials));
+    props.history.push('/home')
   };
 
   return (

@@ -15,7 +15,7 @@ import StateDropDown from './StateDropDown';
 import Uploader from '../Uploader/Uploader';
 import { createListing, getUserId } from '../../actions';
 import ImagePreview from './ImagePreview';
-import cameraBanner from '../../Images/List tech Screen.png';
+import cameraBanner from '../../Images/banner.png';
 
 const CreateListing = () => {
   const dispatch = useDispatch();
@@ -129,7 +129,7 @@ const CreateListing = () => {
               className="long-input"
             />
             <div className="middle-row">
-              <div>
+              <div className="city-input-field">
                 City:{' '}
                 <input
                   name="city"
@@ -139,14 +139,14 @@ const CreateListing = () => {
                   className="medium-input"
                 />
               </div>
-              <div>
+              <div className="middle-row-field">
                 State:
                 {/* put this into its own component */}
                 <StateDropDown
                   handleChange={e => setLocation(e.target.value)}
                 />
               </div>
-              <div>
+              <div className="middle-row-field">
                 Zipcode:{' '}
                 <input
                   name="zipcode"

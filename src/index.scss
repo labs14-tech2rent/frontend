@@ -1,11 +1,13 @@
-//BASIC RESET 
+//BASIC RESET
 
 html {
   box-sizing: border-box;
   font-size: 62.5%;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
   
 }
@@ -16,10 +18,11 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul, li {
   margin: 0;
   padding: 0;
   font-weight: normal;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -45,9 +48,16 @@ $purple: $malibu;
 $purple-light: $malibu-light;
 
 //GLOBAL CLASSES
-@import './App.scss';
+@import "./App.scss";
 
 //SASS FILES OF COMPONENTS
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+@import './components/NavBar/navbar';
 @import './components/Footer/footer';
 
 @import './components/Nav/nav';

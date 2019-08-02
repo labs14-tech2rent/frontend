@@ -11,12 +11,26 @@
       UPLOADCARE_EFFECTS = "crop,rotate,mirror,flip";
       UPLOADCARE_IMAGES_ONLY = true;
       UPLOADCARE_PREVIEW_STEP = true;
-      UPLOADCARE_CLEARABLE = true;
+      // UPLOADCARE_CLEARABLE = true;
+      UPLOADCARE_LOCALE_TRANSLATIONS = {
+        file: {
+          one: "Your Photos",
+          other: "Your Photos"
+        },
+        button: {
+          images: {
+            one: "Choose Image",
+            other: "Choose Images"
+          }
+        }
+      };
     </script>
 
     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
     <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.js"></script>
-
+    <script>
+      uploadcare.openPanel("#uploader-placeholder");
+    </script>
     <script>
       uploadcare.registerTab("preview", uploadcareTabEffects);
     </script>
@@ -34,7 +48,10 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap"
+      rel="stylesheet"
+    />
     <title>React App</title>
   </head>
   <body>

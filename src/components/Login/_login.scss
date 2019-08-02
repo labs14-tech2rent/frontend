@@ -1,65 +1,66 @@
 
 .login-button {
-    background-color: #000;
-    margin: 2rem auto;
- 
-    border-radius: 5px;
-    font-weight: 700;
-
+  background-color: #000;
+  margin: 3rem auto;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  cursor: pointer;
 }
 
 .section-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url('./images/login-photo.png');
+  background-size: cover;
+  border-image-repeat: no-repeat;
+  max-width: 100%;
+  height: 500px;
+  align-items: center;
+
+  & input {
+    margin: 0 auto;
+    width: 50%;
+    border: none;
+    height: 3rem;
+    border-radius: 5px;
+    box-shadow: -2px 2px 2px grey;
+    font-size: 2rem;
+    padding-left: 1rem;
+  }
+  ::placeholder {
+    padding-left: 1rem;
+  }
+
+
+  h2, input {
+    transform: translateY(35px);
+  }
+}
+
+.section-2 {
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url('./images/login-photo.png');
-    background-size: cover;
-    border-image-repeat: no-repeat;
-    max-width: 100%;
-    height: 500px;
-    align-items: center;
+}
 
-    & input {
-      margin: 0 auto;
-      width: 50%;
-      border: none;
-      height: 3rem;
-      border-radius: 5px;
-      box-shadow: -2px 2px 2px grey;
-      font-size: 2rem;
-      padding-left: 1rem;
-    }
-    ::placeholder {
-      padding-left: 1rem;
-    }
-
-
-    h2, input {
-      transform: translateY(35px);
-    }
+  h2 {
+      color: #fff;
+      margin-bottom: 2rem;
+      font-size: 3rem;
+  }
+  h3 { 
+      color: #000;
   }
 
-  .section-2 {
-      height: 250px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+  .privtermslink {
+      color: darken(#8d87ff, 45%);
+      font-weight: 700;
   }
 
-    h2 {
-        color: #fff;
-        margin-bottom: 2rem;
-        font-size: 3rem;
-    }
-    h3 { 
-        color: #000;
-    }
-
-    .privtermslink {
-        color: darken(#8d87ff, 45%);
-        font-weight: 700;
-    }
-
-    p {
-        color: gray;
-    }
+  p {
+      color: gray;
+  }

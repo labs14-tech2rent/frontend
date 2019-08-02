@@ -37,14 +37,4 @@ const Login = (props) => {
   }
 
 
-// const mapStateToProps = ({isLoggingIn, error, newUser, pending, loggedIn, auth}) => ({
-//   isLoggingIn,
-//   error,
-//   newUser,
-//   pending,
-//   loggedIn,
-//   auth
-
-
-// grabbing login and signup from actions file... mapping the state to the props
 export default Login

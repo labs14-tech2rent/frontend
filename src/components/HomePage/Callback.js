@@ -1,19 +1,20 @@
-import React from 'react'
-import Auth from '../../Auth'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
+import Auth from '../../Auth';
+
 class Callback extends React.Component {
-    componentDidMount() {
-        const auth = new Auth()
-        auth.handleAuthentication()
-       
-    }
-    render(){
-        return(
-            <div>
-             <h1>Loading...</h1>
-            </div>
-        )
-    }
+  componentDidMount() {
+    const auth = new Auth();
+    auth.handleAuthentication();
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 }
 
-export default Callback
+export default Callback;

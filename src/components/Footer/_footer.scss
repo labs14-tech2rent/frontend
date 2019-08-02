@@ -1,4 +1,3 @@
-
 .footer {
     background: $medium-gray;
     
@@ -31,6 +30,7 @@
         & button {
             background-color: lighten(#000, 15%);
             border-radius: 5px;
+            padding: 10px 20px;
             font-weight: 700;
         }
 
@@ -116,4 +116,3 @@
     }
 
 }
-

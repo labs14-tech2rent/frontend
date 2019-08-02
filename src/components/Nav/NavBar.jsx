@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import logo from '../../images/t2rlogo.png'
 const NavBar = (props) => {
   const auth = useSelector(store => store.submit.auth)
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  //const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   
   
   return (

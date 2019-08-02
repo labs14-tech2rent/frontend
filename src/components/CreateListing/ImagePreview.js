@@ -16,7 +16,7 @@ const ImagePreview = props => {
             src={`https://ucarecdn.com/${props.image}/nth/${number}/`}
             alt="preview"
           />
-          <p className="legend">Picture {`${number + 1}`}</p>
+          {/* <p className="legend">Picture {`${number + 1}`}</p> */}
         </div>
       ))}
     </Carousel>

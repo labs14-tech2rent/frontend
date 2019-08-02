@@ -1,4 +1,7 @@
-//PADDINGS
+.App {
+  text-align: center;
+  margin: 0 auto;
+}
 
 .padding-l-40 {
   padding-left: 40px;
@@ -14,25 +17,18 @@
   margin-right: 34px;
 }
 
-
-
 //BUTTONS
 
 .button__dark {
   border-radius: 4px;
   font-weight: 700;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   background-color: #262525;
   border: none;
   cursor: pointer;
 
   &:hover {
     color: #262525;
-    background: rgba(255,255,255,0.82);
+    background: rgba(255, 255, 255, 0.82);
   }
-}
-
-.button__sm {
-  font-size: 1.5rem;
-  padding: 8px 10px;
 }

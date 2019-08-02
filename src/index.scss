@@ -1,22 +1,35 @@
-//BASIC RESET 
+//BASIC RESET
 
 html {
   box-sizing: border-box;
   font-size: 62.5%;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+li {
   margin: 0;
   padding: 0;
   font-weight: normal;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -24,27 +37,38 @@ img {
   max-width: 100%;
   height: auto;
 }
-
-
+a {
+  cursor: pointer;
+}
 
 // COLORS
-$tundora: #4A4A4A;
-$malibu: rgb(141,135,255);
-$malibu-light: rgba(141,135,255,0.59);
-$silver_halice: #AAA8A8;
-$god-gray: #1B1B1B;
+$tundora: #4a4a4a;
+$malibu: rgb(141, 135, 255);
+$malibu-light: rgba(141, 135, 255, 0.59);
+$silver_halice: #aaa8a8;
 
 //VARIABLES
 $light-gray: $silver_halice;
 $medium-gray: $tundora;
-$dark-gray: $god-gray;
 $purple: $malibu;
 $purple-light: $malibu-light;
 
 //GLOBAL CLASSES
-@import './App.scss';
+@import "./App.scss";
 
 //SASS FILES OF COMPONENTS
-@import './components/NavBar/navbar';
-@import './components/Footer/footer';
-@import './components/Register/register';
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@import "./components/Footer/footer";
+
+@import "./components/Nav/nav";
+
+@import "./components/Login/login";
+
+@import "./components/Owner/profile";
+@import "./components/Register/register";

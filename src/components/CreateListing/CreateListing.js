@@ -1,12 +1,13 @@
+/* eslint-disable jsx-a11y/aria-role */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable camelcase */
 /* eslint-disable react/no-unused-state */
 
-import React, { Component, useState, useEffect } from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './createListing.scss';
+import './_createListing.scss';
 
 // import of other components I have made.
 import SubCategory from './SubCategory';
@@ -14,6 +15,7 @@ import StateDropDown from './StateDropDown';
 import Uploader from '../Uploader/Uploader';
 import { createListing, getUserId } from '../../actions';
 import ImagePreview from './ImagePreview';
+import cameraBanner from '../../images/banner.png';
 
 const CreateListing = () => {
   const dispatch = useDispatch();
@@ -63,139 +65,192 @@ const CreateListing = () => {
   };
 
   return (
-    <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          dispatch(createListing(userId, listing));
-        }}
-      >
-        {/* conditional render for image preview, will change this later on.  */}
-        {picture ? <ImagePreview image={picture} count={count} /> : null}
-        title:{' '}
-        <input
-          name="name"
-          value={name}
-          type="text"
-          onChange={e => setName(e.target.value)}
-        />
-        price:{' '}
-        <input
-          name="price"
-          value={price}
-          type="number"
-          onChange={e => setPrice(e.target.value)}
-        />
-        <br />
-        {/* The uploadcare uploader */}
-        <Uploader
-          id="picture"
-          onUploadComplete={info => {
-            console.log(info);
-            setCount(info.count);
-            setPicture(info.uuid);
-          }}
-        />
-        <br />
-        <div>
-          city:{' '}
-          <input
-            name="city"
-            value={city}
-            type="text"
-            onChange={e => setCity(e.target.value)}
-          />
-          state:
-          {/* put this into its own component */}
-          <StateDropDown handleChange={e => setLocation(e.target.value)} />
-          zipcode:{' '}
-          <input
-            name="zipcode"
-            value={zipcode}
-            type="number"
-            onChange={e => setZipcode(e.target.value)}
-          />
-        </div>
-        Category:{' '}
-        <select
-          name="category"
-          value={category}
-          type="text"
-          onChange={e => setCategory(e.target.value)}
-        >
-          <option value="" disabled>
-            Choose Category
-          </option>
-          <option>Mounts</option>
-          <option>Cameras</option>
-          <option>Lenses</option>
-          <option>Lighting</option>
-          <option>Support Equipment</option>
-          <option>Accessories</option>
-        </select>
-        {/* very long file so I refactored it as its own component in ./SubCategory.js */}
-        <SubCategory
-          category={category}
-          handleChange={e => setSubCat(e.target.value)}
-        />
-        Description:{' '}
-        <input
-          name="description"
-          value={description}
-          type="text"
-          onChange={e => setDescription(e.target.value)}
-        />
-        Condition:
-        <div>
-          <select
-            name="condition"
-            value={condition}
-            type="text"
-            onChange={e => setCondition(e.target.value)}
-          >
-            <option value="" disabled>
-              Choose Condition
-            </option>
-            <option>Like New</option>
-            <option>Used (normal wear)</option>
-            <option>Other (see description)</option>
-          </select>
-        </div>
-        Payment Preference:
-        <div className="payment-options">
-          <div className="option">
-            <input
-              name="paymentType"
-              value="cash"
-              type="radio"
-              onChange={e => setPayment(e.target.value)}
-              checked={paymentType === 'cash'}
-            />{' '}
-            Cash
+    <div className="create-listing">
+      <div className="banner">
+        <img src={cameraBanner} alt="" />
+      </div>
+      <div className="form-body">
+        <form>
+          {/* conditional render for image preview, will change this later on.  */}
+          <br />
+          <div className="left-side">
+            <div className="image-items">
+              {picture ? (
+                <div className="image-preview">
+                  <ImagePreview image={picture} count={count} />
+                </div>
+              ) : (
+                <div className="image-holder">
+                  <p>Click Below to Add Images</p>
+                </div>
+              )}
+              <br />
+              {/* The uploadcare uploader */}
+
+              <div className="uploader">
+                <Uploader
+                  className="upload"
+                  id="picture"
+                  onUploadComplete={info => {
+                    setCount(info.count);
+                    setPicture(info.uuid);
+                  }}
+                />
+              </div>
+            </div>
+            <div>
+              <div>
+                Description:{' '}
+                <textarea
+                  name="description"
+                  value={description}
+                  type="text"
+                  onChange={e => setDescription(e.target.value)}
+                  className="description"
+                />
+              </div>
+            </div>
           </div>
-          <div className="option">
+          <div className="right-side">
+            Product:{' '}
             <input
-              name="paymentType"
-              value="card"
-              type="radio"
-              onChange={e => setPayment(e.target.value)}
-              checked={paymentType === 'card'}
-            />{' '}
-            Card
+              name="name"
+              value={name}
+              type="text"
+              onChange={e => setName(e.target.value)}
+              className="long-input"
+            />
+            Price:{' '}
+            <input
+              name="price"
+              value={price}
+              type="number"
+              onChange={e => setPrice(e.target.value)}
+              className="long-input"
+            />
+            <div className="middle-row">
+              <div className="city-input-field">
+                City:{' '}
+                <input
+                  name="city"
+                  value={city}
+                  type="text"
+                  onChange={e => setCity(e.target.value)}
+                  className="medium-input"
+                />
+              </div>
+              <div className="middle-row-field">
+                State:
+                {/* put this into its own component */}
+                <StateDropDown
+                  handleChange={e => setLocation(e.target.value)}
+                />
+              </div>
+              <div className="middle-row-field">
+                Zipcode:{' '}
+                <input
+                  name="zipcode"
+                  value={zipcode}
+                  type="number"
+                  onChange={e => setZipcode(e.target.value)}
+                  className="small-input"
+                />
+              </div>
+            </div>
+            <div>
+              Category:{' '}
+              <select
+                name="category"
+                value={category}
+                type="text"
+                onChange={e => setCategory(e.target.value)}
+                className="long-input"
+              >
+                <option value="" disabled>
+                  Choose Category
+                </option>
+                <option>Mounts</option>
+                <option>Cameras</option>
+                <option>Lenses</option>
+                <option>Lighting</option>
+                <option>Support Equipment</option>
+                <option>Accessories</option>
+              </select>
+            </div>
+            {/* very long file so I refactored it as its own component in ./SubCategory.js */}
+            <SubCategory
+              category={category}
+              handleChange={e => setSubCat(e.target.value)}
+            />
+            <div>
+              Condition: <br />
+              <select
+                name="condition"
+                value={condition}
+                type="text"
+                onChange={e => setCondition(e.target.value)}
+                className="long-input"
+              >
+                <option value="" disabled>
+                  Choose Condition
+                </option>
+                <option>Like New</option>
+                <option>Used (normal wear)</option>
+                <option>Other (see description)</option>
+              </select>
+            </div>
           </div>
-          <div className="option">
-            <input
-              name="paymentType"
-              value="both"
-              type="radio"
-              onChange={e => setPayment(e.target.value)}
-              checked={paymentType === 'both'}
-            />{' '}
-            Both
+        </form>
+        <div className="bottom-row">
+          <div className="payment">
+            Payment Preference:
+            <div className="payment-options">
+              <div className="option">
+                <input
+                  name="paymentType"
+                  value="cash"
+                  type="radio"
+                  onChange={e => setPayment(e.target.value)}
+                  checked={paymentType === 'cash'}
+                />{' '}
+                Cash
+              </div>
+              <div className="option">
+                <input
+                  name="paymentType"
+                  value="card"
+                  type="radio"
+                  onChange={e => setPayment(e.target.value)}
+                  checked={paymentType === 'card'}
+                />{' '}
+                Card
+              </div>
+              <div className="option">
+                <input
+                  name="paymentType"
+                  value="both"
+                  type="radio"
+                  onChange={e => setPayment(e.target.value)}
+                  checked={paymentType === 'both'}
+                />{' '}
+                Both
+              </div>
+            </div>
+          </div>
+          <div className="lower-buttons">
+            <button className="cancel">Cancel</button>
+            <button
+              onClick={e => {
+                e.preventDefault();
+                dispatch(createListing(userId, listing));
+              }}
+              className="list"
+            >
+              List Item
+            </button>
           </div>
         </div>
-        <button>List Item</button>
-      </form>
+      </div>
     </div>
   );
 };

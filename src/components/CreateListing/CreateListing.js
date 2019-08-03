@@ -81,34 +81,33 @@ const CreateListing = () => {
                 </div>
               ) : (
                 <div className="image-holder">
-                  <p>Click Below to Add Images</p>
+                  <p>
+                    Click Below <br />
+                    to <br />
+                    Add Images
+                  </p>
                 </div>
               )}
               <br />
               {/* The uploadcare uploader */}
-
-              <div className="uploader">
-                <Uploader
-                  className="upload"
-                  id="picture"
-                  onUploadComplete={info => {
-                    setCount(info.count);
-                    setPicture(info.uuid);
-                  }}
-                />
-              </div>
+              <Uploader
+                className="upload"
+                id="picture"
+                onUploadComplete={info => {
+                  setCount(info.count);
+                  setPicture(info.uuid);
+                }}
+              />
             </div>
             <div>
-              <div>
-                Description:{' '}
-                <textarea
-                  name="description"
-                  value={description}
-                  type="text"
-                  onChange={e => setDescription(e.target.value)}
-                  className="description"
-                />
-              </div>
+              Description:{' '}
+              <textarea
+                name="description"
+                value={description}
+                type="text"
+                onChange={e => setDescription(e.target.value)}
+                className="description"
+              />
             </div>
           </div>
           <div className="right-side">

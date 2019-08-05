@@ -4,9 +4,9 @@ import axios from 'axios';
 import Rating from './Rating';
 // import Random from  '../../RandomUserApi'
 // import logo from '../../images/t2rlogo.png'
-import camera from '../../images/Bitmap-2.png';
-import vr from '../../images/Bitmap-3.png';
-import cameratwo from '../../images/Bitmap-5.png';
+import camera from '../../Images/Bitmap-2.png';
+import vr from '../../Images/Bitmap-3.png';
+import cameratwo from '../../Images/Bitmap-5.png';
 
 class Profile extends React.Component {
   state = {

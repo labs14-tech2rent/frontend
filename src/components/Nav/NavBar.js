@@ -4,7 +4,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import logo from '../../images/t2rlogo.png';
+import logo from '../../Images/t2rlogo.png';
 
 const NavBar = props => {
   const auth = useSelector(store => store.submit.auth);

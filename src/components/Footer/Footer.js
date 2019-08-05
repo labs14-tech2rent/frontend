@@ -13,7 +13,7 @@ const Footer = () => (
   <footer className="footer">
     <div className="footer-content">
       <div className="footer-content__left">
-        <div>
+        <div className="left-column">
           <h3 className="footer-heading">About Tech 2 Rent</h3>
           <a href="#" className="footer-link">
             What is Tech 2 Rent?
@@ -38,7 +38,7 @@ const Footer = () => (
           </a>
         </div>
 
-        <div className="padding-l-40">
+        <div className="right-column padding-l-40">
           <h3 className="footer-heading">Hottest Tech</h3>
           <a href="#" className="footer-link">
             Camera Listing
@@ -63,7 +63,7 @@ const Footer = () => (
 
       <div className="footer-content__right">
         <p className="footer-cta">Don't Lose Out</p>
-        <p className="footer-link">Join Tech 2 Rent's Mailing List</p>
+        <p className="footer-link footer-link__no-hover">Join Tech 2 Rent's Mailing List</p>
         <div className="footer-input-wrapper">
           <FontAwesomeIcon className="footer-icon" icon={faEnvelope} />
           <input
@@ -73,22 +73,24 @@ const Footer = () => (
           />
         </div>
         <div className="footer-content__three">
-          <button className="button__dark button__sm margin-r-30">
+          <button className="footer-button__dark">
             Subscribe
           </button>
-          <FontAwesomeIcon
-            className="footer-brand margin-r-34"
-            icon={faFacebook}
-          />
-          <FontAwesomeIcon
-            className="footer-brand margin-r-34"
-            icon={faTwitter}
-          />
-          <FontAwesomeIcon
-            className="footer-brand margin-r-34"
-            icon={faGoogle}
-          />
-          <FontAwesomeIcon className="footer-brand" icon={faInstagram} />
+          <div className="footer-brands-wrapper">
+            <FontAwesomeIcon
+                className="footer-brand"
+                icon={faFacebook}
+            />
+            <FontAwesomeIcon
+                className="footer-brand"
+                icon={faTwitter}
+            />
+            <FontAwesomeIcon
+                className="footer-brand"
+                icon={faGoogle}
+            />
+            <FontAwesomeIcon className="footer-brand" icon={faInstagram} />
+          </div>
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
-/* eslint-disable jsx-a11y/aria-role */
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/aria-role */
 /* eslint-disable camelcase */
 /* eslint-disable react/no-unused-state */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -64,6 +64,9 @@ const CreateListing = () => {
     zipcode,
   };
 
+  const listingArr = Object.values(listing);
+  const listingArrFilter = listingArr.filter(item => item !== '');
+
   return (
     <div className="create-listing">
       <div className="banner">
@@ -107,6 +110,7 @@ const CreateListing = () => {
                 type="text"
                 onChange={e => setDescription(e.target.value)}
                 className="description"
+                required
               />
             </div>
           </div>
@@ -243,7 +247,10 @@ const CreateListing = () => {
                 e.preventDefault();
                 dispatch(createListing(userId, listing));
               }}
-              className="list"
+              className={`${
+                listingArrFilter.length === 14 ? 'list' : 'list disabled'
+              }`}
+              disabled={listingArrFilter.length < 14}
             >
               List Item
             </button>

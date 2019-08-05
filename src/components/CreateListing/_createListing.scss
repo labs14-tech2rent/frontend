@@ -160,10 +160,19 @@
       width: 113px;
       background-color: #000000;
       color: #fff;
+
       &:hover {
         background-color: #fff;
         color: #000000;
         border: 1px solid #000000;
+      }
+    }
+
+    .disabled {
+      opacity: 0.1;
+      &:hover {
+        background-color: #000000;
+        color: #fff;
       }
     }
   }

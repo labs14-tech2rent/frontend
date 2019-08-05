@@ -8,7 +8,7 @@ const SubCategory = props => {
   if (props.category === 'Mounts') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select
           name="subcategory"
           onChange={props.handleChange}
@@ -31,7 +31,7 @@ const SubCategory = props => {
   if (props.category === 'Cameras') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select
           name="subcategory"
           onChange={props.handleChange}
@@ -54,7 +54,7 @@ const SubCategory = props => {
   if (props.category === 'Lenses') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select
           name="subcategory"
           onChange={props.handleChange}
@@ -82,7 +82,7 @@ const SubCategory = props => {
   if (props.category === 'Lighting') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select name="subcategory" onChange={props.handleChange}>
           <option defaultValue="">Pick Subcategory</option>
           <option>Continuous</option>
@@ -99,7 +99,7 @@ const SubCategory = props => {
   if (props.category === 'Support Equipment') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select name="subcategory" onChange={props.handleChange}>
           <option defaultValue="">Pick Subcategory</option>
           <option>Tripods</option>
@@ -116,7 +116,7 @@ const SubCategory = props => {
   if (props.category === 'Accessories') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select
           name="subcategory"
           onChange={props.handleChange}
@@ -138,7 +138,7 @@ const SubCategory = props => {
   }
   return (
     <div>
-      SubCategory:
+      SubCategory
       <select className="long-input">
         <option value="" disabled>
           Choose Main Category First

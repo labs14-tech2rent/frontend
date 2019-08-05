@@ -69,16 +69,19 @@
     border-radius: 4px;
     background-color: #f0f0f0;
   }
-  .description {
-    height: 215px;
-    width: 383px;
-    background-color: #f5f4f4;
-    border: none;
-    margin-left: -9%;
+  .description-div {
+    text-align: left;
+    .description {
+      height: 184px;
+      width: 383px;
+      background-color: #f5f4f4;
+      border: none;
+    }
   }
 }
 
 .right-side {
+  text-align: left;
   input {
     font-size: 30px;
   }
@@ -127,6 +130,7 @@
   .payment {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 400px;
     .payment-options {
       display: flex;

@@ -38,8 +38,8 @@ const CreateListing = () => {
   const [description, setDescription] = useState('');
   const [paymentType, setPayment] = useState('');
   const [count, setCount] = useState(0);
-  const [available, setAvailable] = useState(true);
-  const [average_rating, setRating] = useState(0);
+  const [available] = useState(true);
+  const [average_rating] = useState(0);
   const [condition, setCondition] = useState('');
 
   // this is called to get the user id.
@@ -102,8 +102,8 @@ const CreateListing = () => {
                 }}
               />
             </div>
-            <div>
-              Description:{' '}
+            <div className="description-div">
+              Description{' '}
               <textarea
                 name="description"
                 value={description}
@@ -115,7 +115,7 @@ const CreateListing = () => {
             </div>
           </div>
           <div className="right-side">
-            Product:{' '}
+            Product{' '}
             <input
               name="name"
               value={name}
@@ -123,7 +123,7 @@ const CreateListing = () => {
               onChange={e => setName(e.target.value)}
               className="long-input"
             />
-            Price:{' '}
+            Price{' '}
             <input
               name="price"
               value={price}
@@ -133,7 +133,7 @@ const CreateListing = () => {
             />
             <div className="middle-row">
               <div className="city-input-field">
-                City:{' '}
+                City{' '}
                 <input
                   name="city"
                   value={city}
@@ -143,14 +143,14 @@ const CreateListing = () => {
                 />
               </div>
               <div className="middle-row-field">
-                State:
+                State
                 {/* put this into its own component */}
                 <StateDropDown
                   handleChange={e => setLocation(e.target.value)}
                 />
               </div>
               <div className="middle-row-field">
-                Zipcode:{' '}
+                Zipcode{' '}
                 <input
                   name="zipcode"
                   value={zipcode}
@@ -161,7 +161,7 @@ const CreateListing = () => {
               </div>
             </div>
             <div>
-              Category:{' '}
+              Category{' '}
               <select
                 name="category"
                 value={category}
@@ -186,7 +186,7 @@ const CreateListing = () => {
               handleChange={e => setSubCat(e.target.value)}
             />
             <div>
-              Condition: <br />
+              Condition <br />
               <select
                 name="condition"
                 value={condition}
@@ -206,7 +206,7 @@ const CreateListing = () => {
         </form>
         <div className="bottom-row">
           <div className="payment">
-            Payment Preference:
+            Payment Preference
             <div className="payment-options">
               <div className="option">
                 <input

@@ -157,20 +157,21 @@
        width: 60%;
    }
 
-   .right-column {
-       padding-left: 10px;
-   }
 }
 
 @media (max-width: 905px) {
     .footer-content {
         flex-direction: column;
         align-items: center;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
     .footer-content__left {
         width: 70%
+
     }
+
 
     .footer-cta {
         text-align: right;
@@ -196,4 +197,32 @@
     .footer-brands-wrapper {
         width: 70%;
     }
+ }
+
+ @media (max-width: 555px) {
+
+    .footer-content__left {
+        width: 90%
+    }
+
+    .footer-content__right {
+        width: 90%;
+    }
+ }
+
+ @media (max-width: 390px) {
+     .footer-content__left {
+        flex-direction: column;
+        align-items: center;
+     }
+
+     .left-column {
+         width: 80%;
+         margin-bottom: 20px;
+     }
+
+     .right-column {
+         width: 80%;
+     }
+
  }

@@ -38,7 +38,7 @@ const Footer = () => (
           </a>
         </div>
 
-        <div className="right-column padding-l-40">
+        <div className="right-column">
           <h3 className="footer-heading">Hottest Tech</h3>
           <a href="#" className="footer-link">
             Camera Listing

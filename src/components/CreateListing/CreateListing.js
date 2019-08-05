@@ -25,6 +25,11 @@ const CreateListing = () => {
       return store.getUser.user[0].id;
     }
   });
+  const isSubmitting = useSelector(
+    store => store.createListing.creatingListing
+  );
+
+  console.log(isSubmitting);
 
   // react state
   const [name, setName] = useState('');
@@ -250,7 +255,7 @@ const CreateListing = () => {
               className={`${
                 listingArrFilter.length === 14 ? 'list' : 'list disabled'
               }`}
-              disabled={listingArrFilter.length < 14}
+              disabled={listingArrFilter.length < 14 || isSubmitting}
             >
               List Item
             </button>

@@ -10,11 +10,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './_createListing.scss';
 
 // import of other components I have made.
-import SubCategory from './SubCategory';
-import StateDropDown from './StateDropDown';
-import Uploader from '../Uploader/Uploader';
 import { createListing, getUserId } from '../../actions';
-import ImagePreview from './ImagePreview';
+
 import cameraBanner from '../../Images/banner.png';
 import Form from './Form';
 
@@ -55,23 +52,6 @@ const CreateListing = () => {
     dispatch(createListing(id, list));
   };
 
-  const item = {
-    users_ownerId: userId,
-    name,
-    picture,
-    price,
-    city,
-    state,
-    zipcode,
-    category,
-    sub_category: subcategory,
-    description,
-    payment_type: paymentType,
-    available,
-    average_rating,
-    condition,
-  };
-
   const listing = {
     userId,
     name,
@@ -94,19 +74,13 @@ const CreateListing = () => {
     isSubmitting,
   };
 
-  // const listingArr = Object.values(listing);
-  // const listingArrFilter = listingArr.filter(item => item !== '');
-
-  // console.log(listingArrFilter);
-  // console.log(listing);
-
   return (
     <div className="create-listing">
       <div className="banner">
         <img src={cameraBanner} alt="" />
       </div>
       <div className="form-body">
-        <Form listing={listing} item={item} />
+        <Form listing={listing} />
       </div>
     </div>
   );

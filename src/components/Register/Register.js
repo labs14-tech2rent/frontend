@@ -5,9 +5,12 @@ import { addUser } from '../../actions';
 
 const Register = props => {
   const [credentials, setCredentials] = useState({
-    username: '',
-    auth0_user_id: '',
+      name: '',
+      email: '',
+      auth0_user_id: '',
+    
   });
+  const auth = useSelector(store => store.submit.auth);
   const dispatch = useDispatch();
 
   const handleChange = e => {
@@ -15,18 +18,19 @@ const Register = props => {
 
     // ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
     setCredentials({
-      credentials: {
+        ...credentials,
         [e.target.name]: e.target.value,
         auth0_user_id: localStorage.getItem('user_id'),
-      },
+    
     });
   };
 
   const signup = e => {
     e.preventDefault();
 
-    console.log(credentials.credentials);
-    dispatch(addUser(credentials.credentials));
+    console.log( credentials);
+    dispatch(addUser(credentials));
+    props.history.push('/home')
   };
 
   return (
@@ -38,6 +42,7 @@ const Register = props => {
           <p>Give yourself the oppotunity</p>
           <p>Join the community.</p>.
         </div>
+        <p>Please confirm your name and email to complete your registration.</p>
         <form onSubmit={signup} className="register-form">
           <label className="register-label" htmlFor="email">
             Email
@@ -71,12 +76,7 @@ const Register = props => {
           <Link className="register-link">Privacy Policy.</Link>
         </p>
       </div>
-      <p className="register-footer">
-        Already have an account?{' '}
-        <Link className="register-link" to="/login">
-          Log in here.
-        </Link>
-      </p>
+   
     </div>
   );
 };

@@ -9,7 +9,9 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  font-family: "Roboto", sans-serif;
 }
+
 
 body,
 h1,
@@ -67,9 +69,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @import "./components/Footer/footer";
-@import './components/NavBar/navbar';
+@import './components/Nav/nav';
 
-@import "./components/NavBar/navbar";
+
 
 @import "./components/Login/login";
 

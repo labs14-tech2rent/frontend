@@ -29,8 +29,6 @@ const CreateListing = () => {
     store => store.createListing.creatingListing
   );
 
-  console.log(isSubmitting);
-
   // react state
   const [name, setName] = useState('');
   const [picture, setPicture] = useState('');

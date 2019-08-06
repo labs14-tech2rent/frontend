@@ -3,19 +3,16 @@
         width: 80%;
         margin: 0 auto;
         display: flex;
-        justify-content: space-between;
         align-items: center;
         padding-top: 10px;
         padding-bottom: 10px;
     }
 
-    &-left {
-        width: 45%;
-    }
 
     &-right {
         display: flex;
-        width: 45%;
+        width: 40%;
+        margin-left: 50px;
         justify-content: space-between;
     }
 
@@ -27,7 +24,7 @@
     &-input-wrapper {
         position: relative;
         display: inline-block;
-        width: 80%;
+        width: 60%;
         font-size: 1.8rem;
     }
 
@@ -68,5 +65,62 @@
         &__active {
             color: $purple;
         }
+    }
+
+    &-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .navbar-right {
+        width: 60%;
+    }
+
+}
+
+@media (max-width: 801px) {
+    .navbar-link {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (max-width: 580px) {
+    .navbar-right {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 550px) {
+    .navbar-content {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-right {
+        display: none;
+    }
+
+    .navbar-mobile {
+        display: block;
+        font-size: 2.5rem;
+        color: $dark-gray;
+    }
+
+    .navlinks-mobile {
+        background: $medium-gray;
+        color: $purple-light;
+
+    }
+
+    .navlinks-mobile .navlink-mobile {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        padding: 8px 0px;
+        color: $light-gray;
+        font-size: 1.5rem;
     }
 }

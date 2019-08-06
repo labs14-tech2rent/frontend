@@ -12,7 +12,7 @@ import {
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch} from '@fortawesome/free-solid-svg-icons';
 
 library.add(faSearch);
 
@@ -23,7 +23,14 @@ const Login = props => {
       <div className="section-1">
         <h2>Welcome back to the community.</h2>
         <FontAwesomeIcon className="footer-icon" icon="fa-search" />
-        <input type="text" placeholder='Try "Nikon"' />
+        <div className="navbar-input-wrapper">
+          <FontAwesomeIcon className="navbar-icon" icon={faSearch} />
+          <input
+            className="navbar-input"
+            type="text"
+            placeholder='Try "Nikon"'
+          />
+        </div>
       </div>
 
       <div className="section-2">

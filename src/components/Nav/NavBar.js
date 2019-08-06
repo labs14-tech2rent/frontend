@@ -13,6 +13,15 @@ const NavBar = props => {
 
   const auth = useSelector(store => store.submit.auth);
   // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const logout = e => {
+    e.preventDefault();
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('user_id');
+    window.location.pathname = '/';
+    console.log('hello');
+  };
 
   return (
     <div>
@@ -22,28 +31,32 @@ const NavBar = props => {
             <NavLink to="/">
               <img src={logo} alt="tech2rent logo" />
             </NavLink>
+            <NavLink to="/">
+              <h3>Tech2Rent</h3>
+            </NavLink>
           </div>
           <div className="navbar-right">
-            <NavLink
-              exact
-              to="/"
-              className="navbar-link"
-              activeClassName="navbar-link__active"
-            >
+            <NavLink exact to="/" className="navbar-link">
               How it Works?
             </NavLink>
-            <NavLink
-              onClick={auth.login}
-              className="navbar-link"
-              activeClassName="navbar-link__active"
-            >
-              Login
-            </NavLink>
-            <NavLink
-              onClick={auth.login}
-              className="navbar-link"
-              activeClassName="navbar-link__active"
-            >
+            {localStorage.getItem('access_token') !== null &&
+            localStorage.getItem('id_token') !== null &&
+            localStorage.getItem('expires_at') !== null &&
+            localStorage.getItem('user_id') !== null ? (
+              <NavLink className="navbar-link" onClick={logout}>
+                Log Out
+              </NavLink>
+            ) : (
+              <NavLink
+                exact
+                to="/"
+                className="navbar-link"
+                onClick={auth.login}
+              >
+                Log In
+              </NavLink>
+            )}
+            <NavLink onClick={auth.login} className="navbar-link">
               Sign Up
             </NavLink>
             <NavLink

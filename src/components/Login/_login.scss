@@ -5,26 +5,36 @@
   color: #fff;
   border-radius: 5px;
   font-weight: 700;
-  padding: 1rem 3rem;
+  padding: 1rem 5rem;
   cursor: pointer;
+  
 }
 
 .section-1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url('./Images/login-photo.png');
+  background-image: url('./Images/login-photo2.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 70vh;
   width: 100%;
+  max-width: 900px;
   align-items: center;
   margin: 0 auto;
-
+ & ::placeholder {
+   padding-left: 2rem;
+ }
   h2 {
+    font-weight: 500;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+  h2, input, .navbar-icon{
     transform: translateY(35px);
   }
+  
 }
 
 .section-2 {
@@ -32,6 +42,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    & p {
+      text-align: center;
+    }
 }
 
   h2 {
@@ -51,3 +64,5 @@
   p {
       color: gray;
   }
+
+ 

@@ -1,12 +1,31 @@
 /* eslint-disable no-shadow */
 /* eslint no-restricted-globals: 0 */
+import {addUser} from './actions';
+import createAuth0Client from '@auth0/auth0-spa-js'
+import auth0 from 'auth0-js'
+import axios from 'axios'
+const LOGIN_EXISTS_PAGE =  localStorage.getItem('targetUrl') !== null ? localStorage.getItem('targetUrl') : '/home';
+const LOGIN_FAILURE_PAGE = "/login"
+const LOGIN_REGISTER_PAGE = "/register"
 
-import auth0 from 'auth0-js';
-import axios from 'axios';
+export default class Auth {
+    //Running a new auth0 call and pulling in the required domain and client id and other values needed for access
+    auth0 = new auth0.WebAuth({
+        domain: "dev-gco3gwsp.auth0.com",
+        clientID: "kFpGm0tbpc2lUax1Il5S0vS54opwh3iv",
+        //redirectUri: "https://sharp-wozniak-279070.netlify.com/callback",
+        redirectUri: "https://sharp-wozniak-279070.netlify.com/callback",
+        responseType: "token id_token",
+        audience: "https://dev-gco3gwsp.auth0.com/userinfo",
+        scope: "openid"
+    })
 
-const LOGIN_EXISTS_PAGE = '/home';
-const LOGIN_FAILURE_PAGE = '/login';
-const LOGIN_REGISTER_PAGE = '/register';
+    
+    
+      // binds the login
+    constructor() {
+        this.login = this.login.bind(this);
+    }
 
 export default class Auth {
   // Running a new auth0 call and pulling in the required domain and client id and other values needed for access
@@ -76,6 +95,12 @@ export default class Auth {
             if (users.includes(authResults.idTokenPayload.sub)) {
               console.log('exists');
               // if they exists in our db, then reroute them to the home page
+
+              //if local storage has a pathname of a route they tried to visit before logging in, route them there
+
+             
+
+
               location.pathname = LOGIN_EXISTS_PAGE;
             } else {
               console.log('does not exist');

@@ -12,9 +12,17 @@ const SubCategory = props => {
         <select
           name="subcategory"
           onChange={props.handleChange}
-          className="long-input"
+          className={`long-input ${
+            props.errors.subcategory && props.touched.subcategory
+              ? 'input-error'
+              : ''
+          } ${
+            props.touched.subcategory && !props.errors.subcategory
+              ? 'input-correct'
+              : ''
+          }`}
         >
-          <option defaultValue>Pick Subcategory</option>
+          <option defaultValue> </option>
           <option>Canon</option>
           <option>Four Thirds</option>
           <option>Fuji</option>
@@ -35,7 +43,15 @@ const SubCategory = props => {
         <select
           name="subcategory"
           onChange={props.handleChange}
-          className="long-input"
+          className={`long-input ${
+            props.errors.subcategory && props.touched.subcategory
+              ? 'input-error'
+              : ''
+          } ${
+            props.touched.subcategory && !props.errors.subcategory
+              ? 'input-correct'
+              : ''
+          }`}
         >
           <option defaultValue>Pick Subcategory</option>
           <option>DSLR</option>
@@ -58,7 +74,15 @@ const SubCategory = props => {
         <select
           name="subcategory"
           onChange={props.handleChange}
-          className="long-input"
+          className={`long-input ${
+            props.errors.subcategory && props.touched.subcategory
+              ? 'input-error'
+              : ''
+          } ${
+            props.touched.subcategory && !props.errors.subcategory
+              ? 'input-correct'
+              : ''
+          }`}
         >
           <option defaultValue="">Pick Subcategory</option>
           Ultrawide
@@ -120,7 +144,15 @@ const SubCategory = props => {
         <select
           name="subcategory"
           onChange={props.handleChange}
-          className="long-input"
+          className={`long-input ${
+            props.errors.subcategory && props.touched.subcategory
+              ? 'input-error'
+              : ''
+          } ${
+            props.touched.subcategory && !props.errors.subcategory
+              ? 'input-correct'
+              : ''
+          }`}
         >
           <option defaultValue="" />
           <option> Bags & Covers</option>
@@ -139,7 +171,17 @@ const SubCategory = props => {
   return (
     <div>
       SubCategory
-      <select className="long-input">
+      <select
+        className={`long-input ${
+          props.errors.subcategory && props.touched.subcategory
+            ? 'input-error'
+            : ''
+        } ${
+          props.touched.subcategory && !props.errors.subcategory
+            ? 'input-correct'
+            : ''
+        }`}
+      >
         <option value="" disabled>
           Choose Main Category First
         </option>

@@ -5,6 +5,7 @@
   letter-spacing: -0.01px;
   line-height: 30px;
   margin: 0 auto;
+
   .banner {
     img {
       height: 200px;
@@ -36,6 +37,7 @@
   display: flex;
   flex-direction: column;
   width: 500px;
+
   .image-items {
     display: flex;
     flex-direction: column;
@@ -71,17 +73,50 @@
   }
   .description-div {
     text-align: left;
+
     .description {
       height: 184px;
       width: 383px;
       background-color: #f5f4f4;
       border: none;
     }
+
+    .input-error {
+      border: 1px solid #d8000c;
+      border-radius: 3px;
+    }
+    .input-correct {
+      border: 1px solid #4bb543;
+      border-radius: 3px;
+    }
+
+    .isa_error {
+      font-size: 1.3rem;
+      text-align: center;
+      color: #d8000c;
+      background-color: #ffd2d2;
+    }
   }
 }
 
 .right-side {
   text-align: left;
+
+  .input-error {
+    border: 1px solid #d8000c;
+    border-radius: 3px;
+  }
+  .input-correct {
+    border: 1px solid #4bb543;
+    border-radius: 3px;
+  }
+
+  .isa_error {
+    font-size: 1.3rem;
+    text-align: center;
+    color: #d8000c;
+    background-color: #ffd2d2;
+  }
   input {
     font-size: 30px;
   }

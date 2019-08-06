@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react';
 // import {connect} from 'react-redux';
 // import {login, signUp, reset} from '../../actions';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import {
-  faFacebook,
-  faTwitter,
-  faGoogle,
-  faInstagram,
-} from '@fortawesome/free-brands-svg-icons';
+// import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+// import {
+//   faFacebook,
+//   faTwitter,
+//   faGoogle,
+//   faInstagram,
+// } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch} from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faSearch);
 
@@ -39,11 +40,11 @@ const Login = props => {
         </button>
         <p>
           By signing up, I agree to Tech2Rent{' '}
-          <a className="privtermslink" href="">
+          <a className="privtermslink" href="#">
             Terms of Service
           </a>{' '}
           and{' '}
-          <a className="privtermslink" href="">
+          <a className="privtermslink" href="#">
             Privacy Policy
           </a>
         </p>

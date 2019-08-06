@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Auth from '../../Auth';
 
 class Callback extends React.Component {

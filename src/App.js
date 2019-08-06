@@ -8,21 +8,17 @@ import Login from './components/Login/Login';
 import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
 import Register from './components/Register/Register';
-import auth0Client from './Auth';
 
-import NavBar from './components/Nav/NavBar';
+// import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
-import Example from './components/CreateListing/demo';
 // import auth from './Auth'
 class App extends React.Component {
   render() {
     return (
       <div className="App">
         <BrowserRouter>
-          <header>
-            <NavBar {...this.props} />
-          </header>
+          <header>{/* <NavBar {...this.props} /> */}</header>
           <Switch>
             <Route exact path="/" {...this.props} component={Login} />
             <Route exact path="/callback" component={Callback} />

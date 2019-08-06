@@ -20,7 +20,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         return <Redirect to="/" />;
 
         // / if not then redirect to login
-        return <Redirect to="/login" />;
+        // return <Redirect to="/login" />;
       }}
     />
   </div>

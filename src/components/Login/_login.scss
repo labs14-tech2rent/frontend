@@ -13,31 +13,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url('./images/login-photo.png');
+  background-image: url('./Images/login-photo.png');
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
-  border-image-repeat: no-repeat;
-  width: 900px;
-  max-width: 100%;
-  height: 500px;
+  height: 70vh;
+  width: 100%;
   align-items: center;
   margin: 0 auto;
 
-  & input {
-    margin: 0 auto;
-    width: 50%;
-    border: none;
-    height: 3rem;
-    border-radius: 5px;
-    box-shadow: -2px 2px 2px grey;
-    font-size: 2rem;
-    padding-left: 1rem;
-  }
-  ::placeholder {
-    padding-left: 1rem;
-  }
-
-
-  h2, input {
+  h2 {
     transform: translateY(35px);
   }
 }

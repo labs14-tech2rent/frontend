@@ -92,3 +92,44 @@
         text-align: center;
     }
 }
+
+//RESPONSIVE
+
+@media (max-width: 700px) {
+    .register {
+        padding-bottom: 50px;
+    }
+
+    .register-container {
+        width: 80%;
+    }
+
+    .register-heading {
+        padding-top: 40px;
+        font-size: 2.5rem;
+
+    }
+
+    .register-heading p {
+        font-size: inherit;
+    }
+
+    .register-label {
+        font-size: 1.6rem;
+    }
+
+    .register-submit {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 1.8rem;
+        padding: 13px;
+    }
+
+    .register-agreement {
+        font-size: 1.4rem;
+    }
+
+    .register-footer {
+        font-size: 1.9rem;
+    }
+}

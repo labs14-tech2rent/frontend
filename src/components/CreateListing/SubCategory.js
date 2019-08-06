@@ -8,13 +8,21 @@ const SubCategory = props => {
   if (props.category === 'Mounts') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select
           name="subcategory"
           onChange={props.handleChange}
-          className="long-input"
+          className={`long-input ${
+            props.errors.subcategory && props.touched.subcategory
+              ? 'input-error'
+              : ''
+          } ${
+            props.touched.subcategory && !props.errors.subcategory
+              ? 'input-correct'
+              : ''
+          }`}
         >
-          <option defaultValue>Pick Subcategory</option>
+          <option defaultValue> </option>
           <option>Canon</option>
           <option>Four Thirds</option>
           <option>Fuji</option>
@@ -31,11 +39,19 @@ const SubCategory = props => {
   if (props.category === 'Cameras') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select
           name="subcategory"
           onChange={props.handleChange}
-          className="long-input"
+          className={`long-input ${
+            props.errors.subcategory && props.touched.subcategory
+              ? 'input-error'
+              : ''
+          } ${
+            props.touched.subcategory && !props.errors.subcategory
+              ? 'input-correct'
+              : ''
+          }`}
         >
           <option defaultValue>Pick Subcategory</option>
           <option>DSLR</option>
@@ -54,11 +70,19 @@ const SubCategory = props => {
   if (props.category === 'Lenses') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select
           name="subcategory"
           onChange={props.handleChange}
-          className="long-input"
+          className={`long-input ${
+            props.errors.subcategory && props.touched.subcategory
+              ? 'input-error'
+              : ''
+          } ${
+            props.touched.subcategory && !props.errors.subcategory
+              ? 'input-correct'
+              : ''
+          }`}
         >
           <option defaultValue="">Pick Subcategory</option>
           Ultrawide
@@ -82,7 +106,7 @@ const SubCategory = props => {
   if (props.category === 'Lighting') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select name="subcategory" onChange={props.handleChange}>
           <option defaultValue="">Pick Subcategory</option>
           <option>Continuous</option>
@@ -99,7 +123,7 @@ const SubCategory = props => {
   if (props.category === 'Support Equipment') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select name="subcategory" onChange={props.handleChange}>
           <option defaultValue="">Pick Subcategory</option>
           <option>Tripods</option>
@@ -116,11 +140,19 @@ const SubCategory = props => {
   if (props.category === 'Accessories') {
     return (
       <div>
-        SubCategory:
+        SubCategory
         <select
           name="subcategory"
           onChange={props.handleChange}
-          className="long-input"
+          className={`long-input ${
+            props.errors.subcategory && props.touched.subcategory
+              ? 'input-error'
+              : ''
+          } ${
+            props.touched.subcategory && !props.errors.subcategory
+              ? 'input-correct'
+              : ''
+          }`}
         >
           <option defaultValue="" />
           <option> Bags & Covers</option>
@@ -138,8 +170,18 @@ const SubCategory = props => {
   }
   return (
     <div>
-      SubCategory:
-      <select className="long-input">
+      SubCategory
+      <select
+        className={`long-input ${
+          props.errors.subcategory && props.touched.subcategory
+            ? 'input-error'
+            : ''
+        } ${
+          props.touched.subcategory && !props.errors.subcategory
+            ? 'input-correct'
+            : ''
+        }`}
+      >
         <option value="" disabled>
           Choose Main Category First
         </option>

@@ -62,9 +62,9 @@ class Profile extends React.Component {
         </div>
 
         <div className="products">
-          <img src={camera} />
-          <img src={vr} />
-          <img src={cameratwo} />
+          <img src={camera} alt="camera" />
+          <img src={vr} alt="vr" />
+          <img src={cameratwo} alt="camera" />
         </div>
       </div>
     );

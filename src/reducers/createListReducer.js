@@ -21,12 +21,14 @@ export const createListReducer = (state = initalState, action) => {
       return {
         ...state,
         res: action.payload,
+        creatingListing: false,
       };
 
     case CREATE_LISTING_FAILED:
       return {
         ...state,
         error: action.payload,
+        creatingListing: false,
       };
 
     default:

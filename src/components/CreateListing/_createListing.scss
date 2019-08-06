@@ -6,6 +6,22 @@
   line-height: 30px;
   margin: 0 auto;
 
+  .input-error {
+    border: 1px solid #d8000c;
+    border-radius: 3px;
+  }
+  .input-correct {
+    border: 1px solid #4bb543;
+    border-radius: 3px;
+  }
+
+  .isa_error {
+    font-size: 1.3rem;
+    text-align: center;
+    color: #d8000c;
+    background-color: #ffd2d2;
+  }
+
   .banner {
     img {
       height: 200px;
@@ -73,6 +89,7 @@
   }
   .description-div {
     text-align: left;
+    width: 384px;
 
     .description {
       height: 184px;
@@ -80,43 +97,11 @@
       background-color: #f5f4f4;
       border: none;
     }
-
-    .input-error {
-      border: 1px solid #d8000c;
-      border-radius: 3px;
-    }
-    .input-correct {
-      border: 1px solid #4bb543;
-      border-radius: 3px;
-    }
-
-    .isa_error {
-      font-size: 1.3rem;
-      text-align: center;
-      color: #d8000c;
-      background-color: #ffd2d2;
-    }
   }
 }
 
 .right-side {
   text-align: left;
-
-  .input-error {
-    border: 1px solid #d8000c;
-    border-radius: 3px;
-  }
-  .input-correct {
-    border: 1px solid #4bb543;
-    border-radius: 3px;
-  }
-
-  .isa_error {
-    font-size: 1.3rem;
-    text-align: center;
-    color: #d8000c;
-    background-color: #ffd2d2;
-  }
   input {
     font-size: 30px;
   }
@@ -154,6 +139,7 @@
 }
 
 .bottom-row {
+  margin-top: 2%;
   display: flex;
   justify-content: space-between;
   width: 962px;

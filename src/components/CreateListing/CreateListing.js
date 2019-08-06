@@ -3,7 +3,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/no-unused-state */
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';

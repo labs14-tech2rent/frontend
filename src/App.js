@@ -13,6 +13,7 @@ import auth0Client from './Auth';
 import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
+import Example from './components/CreateListing/demo';
 // import auth from './Auth'
 class App extends React.Component {
   render() {

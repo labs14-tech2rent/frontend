@@ -8,7 +8,7 @@ import { addUser } from './actions';
 const LOGIN_EXISTS_PAGE =
   localStorage.getItem('targetUrl') !== null
     ? localStorage.getItem('targetUrl')
-    : '/home';
+    : '/profile';
 const LOGIN_FAILURE_PAGE = '/login';
 const LOGIN_REGISTER_PAGE = '/register';
 

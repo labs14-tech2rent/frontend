@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addUser } from '../../actions';
 
 const Register = props => {
   const [credentials, setCredentials] = useState({
-      name: '',
-      email: '',
-      auth0_user_id: '',
-    
+    name: '',
+    email: '',
+    auth0_user_id: '',
   });
   const auth = useSelector(store => store.submit.auth);
   const dispatch = useDispatch();
@@ -18,19 +17,18 @@ const Register = props => {
 
     // ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
     setCredentials({
-        ...credentials,
-        [e.target.name]: e.target.value,
-        auth0_user_id: localStorage.getItem('user_id'),
-    
+      ...credentials,
+      [e.target.name]: e.target.value,
+      auth0_user_id: localStorage.getItem('user_id'),
     });
   };
 
   const signup = e => {
     e.preventDefault();
 
-    console.log( credentials);
+    console.log(credentials);
     dispatch(addUser(credentials));
-    props.history.push('/home')
+    props.history.push('/home');
   };
 
   return (
@@ -76,7 +74,6 @@ const Register = props => {
           <Link className="register-link">Privacy Policy.</Link>
         </p>
       </div>
-   
     </div>
   );
 };

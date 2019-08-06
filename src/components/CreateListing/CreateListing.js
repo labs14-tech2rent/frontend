@@ -99,7 +99,6 @@ const CreateListing = () => {
 
   // console.log(listingArrFilter);
   // console.log(listing);
-  console.log(item);
 
   return (
     <div className="create-listing">

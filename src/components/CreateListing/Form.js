@@ -63,9 +63,27 @@ const Form = props => {
         condition: props.listing.condition,
       }}
       validationSchema={validationSchema}
-      onSubmit={() => {
-        console.log(props.listing.item);
-        props.listing.handleSubmit(props.listing.userId, props.listing.item);
+      onSubmit={values => {
+        console.log(props);
+        console.log(values);
+        const list = {
+          users_ownerId: props.item.users_ownerId,
+          name: values.name,
+          picture: 'defdfsfdsfsdfs',
+          price: values.price,
+          city: values.city,
+          state: values.state,
+          zipcode: values.zipcode,
+          category: values.category,
+          sub_category: values.subcategory,
+          description: values.picture,
+          payment_type: values.paymentType,
+          available: props.item.available,
+          average_rating: props.item.picture,
+          condition: values.condition,
+        };
+        console.log(list);
+        props.listing.handleSubmit(props.item.users_ownerId, list);
       }}
     >
       {({
@@ -77,7 +95,6 @@ const Form = props => {
         handleSubmit,
       }) => (
         <div>
-          {console.log(errors, touched)}
           <form>
             {/* {console.log(values)} */}
             {/* conditional render for image preview, will change this later on.  */}
@@ -348,8 +365,7 @@ const Form = props => {
                 className={`${
                   props.listing.isSubmitting ? 'list disabled' : 'list'
                 }`}
-                // disabled={listingArrFilter.length < 14 || isSubmitting}
-                disabled={!errors}
+                disabled={props.listing.isSubmitting}
               >
                 List Item
               </button>

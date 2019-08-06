@@ -18,7 +18,6 @@ class Profile extends React.Component {
     },
   };
 
-
   componentDidMount() {
     axios
       .get(
@@ -31,7 +30,6 @@ class Profile extends React.Component {
     return (
       <div className="profile-content">
         <div className="user-info">
-          {console.log(this.state.user.location.city)}
           <img src={this.state.user.picture.large} alt="" />
           {this.state.user.name && (
             <p style={{ fontWeight: 'bold' }}>
@@ -57,7 +55,7 @@ class Profile extends React.Component {
           <p>Freelance Photographer</p>
           <br />
           <p> + Add Product</p>
-          
+
           <Rating />
         </div>
 

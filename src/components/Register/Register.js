@@ -13,8 +13,6 @@ const Register = props => {
   const dispatch = useDispatch();
 
   const handleChange = e => {
-    console.log(e.target.value);
-
     // ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
     setCredentials({
       ...credentials,
@@ -26,7 +24,6 @@ const Register = props => {
   const signup = e => {
     e.preventDefault();
 
-    console.log(credentials);
     dispatch(addUser(credentials));
     props.history.push('/home');
   };

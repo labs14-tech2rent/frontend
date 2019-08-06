@@ -20,7 +20,6 @@ const NavBar = props => {
     localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
     window.location.pathname = '/';
-    console.log('hello');
   };
 
   return (

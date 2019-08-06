@@ -12,12 +12,10 @@ export const getData = () => dispatch => {
   return axiosWithAuth()
     .get('https://labstech2rent.herokuapp.com/api/users/userIDs')
     .then(res => {
-      console.log(res);
       // if successful then set the data to the payload
       dispatch({ type: SUBMIT_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: SUBMIT_FAIL, payload: err });
     });
 };

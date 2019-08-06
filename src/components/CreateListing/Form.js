@@ -40,14 +40,12 @@ const Form = props => (
         average_rating: props.item.picture,
         condition: values.condition,
       };
-      console.log(list);
       props.listing.handleSubmit(props.item.users_ownerId, list);
     }}
   >
     {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
       <div>
         <form>
-          {/* {console.log(values)} */}
           {/* conditional render for image preview, will change this later on.  */}
           <br />
           <div className="left-side">
@@ -79,7 +77,6 @@ const Form = props => (
                 className="upload"
                 id="picture"
                 onUploadComplete={info => {
-                  console.log(info);
                   props.listing.setCount(info.count);
                   props.listing.setPicture(info.uuid);
                 }}

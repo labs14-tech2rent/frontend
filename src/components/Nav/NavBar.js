@@ -20,7 +20,10 @@ const NavBar = props => {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
-    props.history.push('/');
+    window.location.pathname = "/"
+    console.log('hello')
+    
+    
   };
 
   return (
@@ -51,8 +54,6 @@ const NavBar = props => {
               localStorage.getItem('expires_at')!== null &&
                localStorage.getItem('user_id')!== null ?
             <NavLink 
-               exact
-               to="/"
                className="navbar-link" 
                onClick={logout}
                >

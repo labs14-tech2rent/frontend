@@ -76,12 +76,7 @@ const Register = props => {
           <Link className="register-link">Privacy Policy.</Link>
         </p>
       </div>
-      <p className="register-footer">
-        Already have an account?{' '}
-        <Link className="register-link" onClick={auth.login}>
-          Log in here.
-        </Link>
-      </p>
+   
     </div>
   );
 };

@@ -56,6 +56,7 @@ class Profile extends React.Component {
           <p>Freelance Photographer</p>
           <br />
           <p> + Add Product</p>
+          
           <Rating />
         </div>
 

@@ -5,6 +5,23 @@
   letter-spacing: -0.01px;
   line-height: 30px;
   margin: 0 auto;
+
+  .input-error {
+    border: 1px solid #d8000c;
+    border-radius: 3px;
+  }
+  .input-correct {
+    border: 1px solid #4bb543;
+    border-radius: 3px;
+  }
+
+  .isa_error {
+    font-size: 1.3rem;
+    text-align: center;
+    color: #d8000c;
+    background-color: #ffd2d2;
+  }
+
   .banner {
     img {
       height: 200px;
@@ -36,6 +53,7 @@
   display: flex;
   flex-direction: column;
   width: 500px;
+
   .image-items {
     display: flex;
     flex-direction: column;
@@ -69,16 +87,21 @@
     border-radius: 4px;
     background-color: #f0f0f0;
   }
-  .description {
-    height: 215px;
-    width: 383px;
-    background-color: #f5f4f4;
-    border: none;
-    margin-left: -9%;
+  .description-div {
+    text-align: left;
+    width: 384px;
+
+    .description {
+      height: 184px;
+      width: 383px;
+      background-color: #f5f4f4;
+      border: none;
+    }
   }
 }
 
 .right-side {
+  text-align: left;
   input {
     font-size: 30px;
   }
@@ -116,6 +139,7 @@
 }
 
 .bottom-row {
+  margin-top: 2%;
   display: flex;
   justify-content: space-between;
   width: 962px;
@@ -127,6 +151,7 @@
   .payment {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 400px;
     .payment-options {
       display: flex;
@@ -160,10 +185,19 @@
       width: 113px;
       background-color: #000000;
       color: #fff;
+
       &:hover {
         background-color: #fff;
         color: #000000;
         border: 1px solid #000000;
+      }
+    }
+
+    .disabled {
+      opacity: 0.1;
+      &:hover {
+        background-color: #000000;
+        color: #fff;
       }
     }
   }
@@ -176,7 +210,7 @@
   border-radius: 3px;
   text-decoration: none;
   padding: 18px 15px;
-  margin-left: -16%;
+  margin-left: 6.5%;
   &:hover {
     font-size: 40px;
     background-color: #fff;
@@ -191,8 +225,8 @@
 
 .uploadcare--widget__file-name {
   color: #fff;
-  margin-left: -30%;
   font-size: 40px;
+  margin-left: 18%;
   background-color: #000000;
   border-radius: 3px;
   text-decoration: none;

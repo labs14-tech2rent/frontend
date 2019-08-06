@@ -8,12 +8,11 @@ import Login from './components/Login/Login';
 import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
 import Register from './components/Register/Register';
-import auth0Client from './Auth';
 
 import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
-// import auth from './Auth'
+
 class App extends React.Component {
   render() {
     return (
@@ -25,7 +24,11 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" {...this.props} component={Login} />
             <Route exact path="/callback" component={Callback} />
-            <PrivateRoute auth={this.props.submit} path="/home" component={HomePage} />
+            <PrivateRoute
+              auth={this.props.submit}
+              path="/home"
+              component={HomePage}
+            />
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute path="/create-listing" component={CreateListing} />
             <Route exact path="/register" component={Register} />

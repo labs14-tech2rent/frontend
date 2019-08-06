@@ -18,6 +18,7 @@ class Profile extends React.Component {
     },
   };
 
+  
   componentDidMount() {
     axios
       .get(

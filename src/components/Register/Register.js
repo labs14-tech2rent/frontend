@@ -42,6 +42,7 @@ const Register = props => {
           <p>Give yourself the oppotunity</p>
           <p>Join the community.</p>.
         </div>
+        <p>Please confirm your name and email to complete your registration.</p>
         <form onSubmit={signup} className="register-form">
           <label className="register-label" htmlFor="email">
             Email

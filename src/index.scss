@@ -9,7 +9,9 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  font-family: "Roboto", sans-serif;
 }
+
 
 body,
 h1,
@@ -45,11 +47,13 @@ a {
 $tundora: #4a4a4a;
 $malibu: rgb(141, 135, 255);
 $malibu-light: rgba(141, 135, 255, 0.59);
-$silver_halice: #aaa8a8;
+$silver_halice: #AAA8A8;
+$god-gray: #1B1B1B;
 
 //VARIABLES
 $light-gray: $silver_halice;
 $medium-gray: $tundora;
+$dark-gray: $god-gray;
 $purple: $malibu;
 $purple-light: $malibu-light;
 
@@ -65,8 +69,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @import "./components/Footer/footer";
+@import './components/Nav/nav';
 
-@import "./components/Nav/nav";
+
 
 @import "./components/Login/login";
 

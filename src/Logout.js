@@ -7,7 +7,8 @@ export default () => {
       });
       
       webAuth.logout({
-        returnTo: 'https://sharp-wozniak-279070.netlify.com/v2/logout',
+        returnTo: 'https://tech2rent.co/v2/logout',
+        //returnTo: 'https://sharp-wozniak-279070.netlify.com/v2/logout',
         client_id: 'kFpGm0tbpc2lUax1Il5S0vS54opwh3iv'
       });
 }

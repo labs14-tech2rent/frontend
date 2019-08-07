@@ -155,10 +155,10 @@
     width: 400px;
     .payment-options {
       display: flex;
+
       .option {
-        input {
-          margin: 5px;
-        }
+        display: flex;
+        align-items: center;
         width: 80px;
         margin-right: 3%;
       }
@@ -167,19 +167,27 @@
 
   .lower-buttons {
     display: flex;
+    width: 28%;
+    justify-content: space-between;
     .cancel {
-      height: 34px;
-      width: 113px;
-      border: 1px solid #000000;
-      background-color: #fff;
-      color: #000000;
-      margin-right: 3%;
+      border-radius: 4px;
+      font-weight: 700;
+      color: #262525;
+      background-color: rgba(255, 255, 255, 0.82);
+      border: none;
+      cursor: pointer;
+      padding: 12px 29px;
+      border: 2px solid #262525;
+      outline: none;
+
       &:hover {
-        background-color: #000000;
-        color: #fff;
-        border: 1px solid #000000;
+        background-color: #262525;
+        color: rgba(255, 255, 255, 0.82);
+        border: 2px solid #262525;
       }
     }
+
+
     .list {
       height: 34px;
       width: 113px;
@@ -204,18 +212,20 @@
 }
 
 .uploadcare--widget__button {
-  color: #fff;
-  font-size: 40px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 2.5rem;
   background-color: #000000;
-  border-radius: 3px;
+  border-radius: 4px;
   text-decoration: none;
-  padding: 18px 15px;
+  padding: 18px 63px;
   margin-left: 6.5%;
+  border: 2px solid #262525;
+  outline: none;
   &:hover {
-    font-size: 40px;
-    background-color: #fff;
-    color: #000000;
-    border: 1px solid #000000;
+    font-size: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.82);;
+    color: #262525;
+    border: 2px solid #262525;
   }
 }
 
@@ -224,21 +234,55 @@
 }
 
 .uploadcare--widget__file-name {
-  color: #fff;
-  font-size: 40px;
+  color: rgba(255, 255, 255, 0.82);;
+  font-size: 2.5rem;
   margin-left: 18%;
-  background-color: #000000;
-  border-radius: 3px;
+  background-color: #262525;
+  border-radius: 4px;
   text-decoration: none;
-  padding: 9px 15px;
+  padding: 9px 63px;
+  border: 2px solid #262525;
+  outline: none;
   &:hover {
     background-color: #fff;
     color: #000000;
-    border: 1px solid #000000;
+    border: 2px solid #262525;
   }
 }
 
 .uploader {
   margin-left: 10%;
   margin-bottom: 1%;
+}
+
+.border-dark__hover {
+  border: 2px solid #262525; 
+}
+
+.border-dark__hover:hover {
+  border: 2px solid #262525; 
+  background: rgba(255, 255, 255, 0.82);
+}
+
+
+.option input[type='radio'] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: white;
+  outline: none;
+  border: 3px solid white;
+  box-shadow:0 0 0 2px #262525;
+  border-radius: 2px;
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+
+
+.option input[type='radio']:checked {
+  background: #262525;
 }

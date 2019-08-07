@@ -292,7 +292,7 @@ const Form = props => (
                   onChange={handleChange}
                   checked={values.paymentType === 'card'}
                 />{' '}
-                Card
+                <span>Card</span>
               </div>
               <div className="option">
                 <input
@@ -313,7 +313,7 @@ const Form = props => (
               type="submit"
               onClick={handleSubmit}
               className={`${
-                props.listing.isSubmitting ? 'list disabled' : 'list'
+                props.listing.isSubmitting ? 'footer-button__dark border-dark__hover disabled' : 'footer-button__dark border-dark__hover'
               }`}
               disabled={props.listing.isSubmitting}
             >

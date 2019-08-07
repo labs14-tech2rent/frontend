@@ -6,6 +6,7 @@ import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
 import Uploader from '../Uploader/Uploader';
 import { validationSchema } from './yupSchema';
+import Basic from './NewImagePreview';
 
 const Form = props => (
   <Formik
@@ -49,39 +50,7 @@ const Form = props => (
           {/* conditional render for image preview, will change this later on.  */}
           <br />
           <div className="left-side">
-            <div className="image-items">
-              {props.listing.picture ? (
-                <div className="image-preview">
-                  <ImagePreview
-                    image={props.listing.picture}
-                    count={props.listing.count}
-                  />
-                </div>
-              ) : (
-                <div
-                  className={`image-holder ${
-                    errors.picture && touched.picture ? 'input-error' : ''
-                  }`}
-                >
-                  <p>
-                    Click Below <br />
-                    to <br />
-                    Add Images
-                  </p>
-                </div>
-              )}
-              <br />
-              {/* The uploadcare uploader */}
-              <Uploader
-                value={values.picture}
-                className="upload"
-                id="picture"
-                onUploadComplete={info => {
-                  props.listing.setCount(info.count);
-                  props.listing.setPicture(info.uuid);
-                }}
-              />
-            </div>
+            <Basic />
             <div className="description-div">
               Description{' '}
               <textarea
@@ -327,3 +296,37 @@ const Form = props => (
 );
 
 export default Form;
+
+/* <div className="image-items">
+{props.listing.picture ? (
+  <div className="image-preview">
+    <ImagePreview
+      image={props.listing.picture}
+      count={props.listing.count}
+    />
+  </div>
+) : (
+  <div
+    className={`image-holder ${
+      errors.picture && touched.picture ? 'input-error' : ''
+    }`}
+  >
+    <p>
+      Click Below <br />
+      to <br />
+      Add Images
+    </p>
+  </div>
+)}
+<br />
+{/* The uploadcare uploader /*}
+<Uploader
+  value={values.picture}
+  className="upload"
+  id="picture"
+  onUploadComplete={info => {
+    props.listing.setCount(info.count);
+    props.listing.setPicture(info.uuid);
+  }}
+/>
+</div> */

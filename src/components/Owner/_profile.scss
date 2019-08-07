@@ -24,6 +24,7 @@
 .user-info {
     img {
         border-radius: 50%;
+        margin-bottom: 1rem;
     }
 
     p {
@@ -31,6 +32,8 @@
         font-size: 12px;
         width: 145px;
         color: black;
+        text-align: center;
+        text-transform: capitalize;
     }
 }
 
@@ -57,11 +60,14 @@
     direction: rtl;
     cursor: pointer;
     font-size: 1.8rem;
+    width: fit-content;
+    margin: 0 auto;
   }
   .rating > span {
     display: inline-block;
     position: relative;
     width: 1.1em;
+  
   }
   .rating > span:hover:before,
   .rating > span:hover ~ span:before {
@@ -69,3 +75,5 @@
      position: absolute;
      color: #ccb3ff; 
   }
+
+  

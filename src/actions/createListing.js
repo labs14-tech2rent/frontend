@@ -12,7 +12,6 @@ export const createListing = (id, listing) => dispatch => {
       listing
     )
     .then(res => {
-      console.log(`create listing payload: ${res.data}`);
       dispatch({ type: CREATE_LISTING_SUCCESS, payload: res.data });
     })
     .catch(err => {

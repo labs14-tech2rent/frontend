@@ -12,45 +12,47 @@ const LOGIN_EXISTS_PAGE =
 const LOGIN_FAILURE_PAGE = '/login';
 const LOGIN_REGISTER_PAGE = '/register';
 
+
+
+
+// Running a new auth0 call and pulling in the required domain and client id and other values needed for access
+
+
 export default class Auth {
+  
   // Running a new auth0 call and pulling in the required domain and client id and other values needed for access
   auth0 = new auth0.WebAuth({
     domain: 'dev-gco3gwsp.auth0.com',
     clientID: 'kFpGm0tbpc2lUax1Il5S0vS54opwh3iv',
-    // redirectUri: "https://sharp-wozniak-279070.netlify.com/callback",
-    redirectUri: 'https://sharp-wozniak-279070.netlify.com/callback',
+    redirectUri: "http://localhost:3000/callback",
+    //redirectUri: 'https://sharp-wozniak-279070.netlify.com/callback',
     responseType: 'token id_token',
     audience: 'https://dev-gco3gwsp.auth0.com/userinfo',
     scope: 'openid',
+    
   });
+
+
 
   // binds the login
   constructor() {
     this.login = this.login.bind(this);
+    
   }
+
+  
 
   // Calls this fn when a user clicks login -- reroutes to a separate login page
   login() {
-    console.log('hello from liogin');
     this.auth0.authorize();
   }
 
-  silentAuth() {
-    return new Promise((resolve, reject) => {
-      this.auth0.checkSession({}, (err, authResult) => {
-        if (err) return reject(err);
-        this.setSession(authResult);
-        resolve();
-      });
-    });
-  }
+  
 
   // calls when user has logged in with auth0
   handleAuthentication() {
-    console.log('hellloooooooooo');
     // parses the data to be read
     this.auth0.parseHash((err, authResults) => {
-      console.log(authResults);
       // if results are returned with an access token and an id token
       if (authResults && authResults.accessToken && authResults.idToken) {
         // sets the expiration
@@ -78,30 +80,26 @@ export default class Auth {
 
             // check against our db to see if it includes the userId that was just logged in
             if (users.includes(authResults.idTokenPayload.sub)) {
-              console.log('exists');
               // if they exists in our db, then reroute them to the home page
 
               // if local storage has a pathname of a route they tried to visit before logging in, route them there
 
               location.pathname = LOGIN_EXISTS_PAGE;
             } else {
-              console.log('does not exist');
               // if they do not exist reroute them to finish registration
               location.pathname = LOGIN_REGISTER_PAGE;
             }
           })
-          .catch(err => console.log(err));
+          .catch(err => err);
       } else if (err) {
         // if failure, reroute to the login page to try again
         location.pathname = LOGIN_FAILURE_PAGE;
-        console.log(err);
       }
     });
   }
 
   // eslint-disable-next-line class-methods-use-this
   isAuthenticated() {
-    console.log('checking auth');
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     // if the new date is less that the expiration date, then return
     return new Date().getTime < expiresAt;

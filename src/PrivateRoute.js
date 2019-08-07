@@ -16,11 +16,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
             localStorage.getItem('access_token')
           ) {
             return <Component {...props} />;
-            // console.log("testing")
           }
           // / if not then redirect to login
           localStorage.setItem('targetUrl', window.location.pathname);
-          // console.log(props.auth)
+
           return auth.login();
         }}
       />

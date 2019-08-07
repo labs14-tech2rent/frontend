@@ -13,9 +13,7 @@ async function checkUser() {
         users.push(res.auth0_user_id);
       });
     })
-    .catch(err => console.log(err));
-
-  console.log(users);
+    .catch(err => err);
 
   return users.includes(localStorage.getItem('user_id'));
 }

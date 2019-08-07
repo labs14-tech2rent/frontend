@@ -13,12 +13,9 @@ export const random = dispatch => {
       'https://randomuser.me/api/?results=4&inc=name,picture,email,registered'
     )
     .then(res => {
-      console.log(res);
-
       dispatch({ type: RANDOM_SUCCESS, payload: res.data.payload });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: RANDOM_FAIL, payload: '' });
     });
 };

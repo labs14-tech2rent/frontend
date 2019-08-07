@@ -22,8 +22,6 @@ const Main = props => {
   useEffect(() => {
     dispatch(actions.getUserId(userId));
   }, []);
-
-  console.log(user);
   return (
     <div>
       <h1>Welcome to a Protected Page!</h1>

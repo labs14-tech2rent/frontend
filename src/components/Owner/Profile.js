@@ -55,7 +55,7 @@ class Profile extends React.Component {
           )}
           <p>Freelance Photographer</p>
           <br />
-          <p> + Add Product</p>
+          <p className="addProduct" onClick={() => this.props.history.push('/create-listing')}> + Add Product</p>
 
           <Rating />
 

@@ -22,14 +22,15 @@ class App extends React.Component {
             <NavBar {...this.props} />
           </header>
           <Switch>
-            <Route exact path="/" {...this.props} component={Login} />
+           <Route exact path="/" {...this.props} component={Login} />
+            <Route exact path="/v2/logout" {...this.props} component={Login} />
             <Route exact path="/callback" component={Callback} />
             <PrivateRoute
               auth={this.props.submit}
               path="/home"
               component={HomePage}
             />
-            <PrivateRoute exact path="/profile" component={Profile} />
+            <PrivateRoute  {...this.props} exact path="/profile" component={Profile} />
             <PrivateRoute path="/create-listing" component={CreateListing} />
             <Route exact path="/register" component={Register} />
           </Switch>

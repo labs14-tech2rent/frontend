@@ -44,10 +44,10 @@ const Form = props => (
     }}
   >
     {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-      <div>
+      <div className="form-wrapper">
         <form>
           {/* conditional render for image preview, will change this later on.  */}
-          <br />
+       
           <div className="left-side">
             <div className="image-items">
               {props.listing.picture ? (

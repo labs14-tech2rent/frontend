@@ -30,7 +30,7 @@ class App extends React.Component {
               component={HomePage}
             />
             <PrivateRoute exact path="/profile" component={Profile} />
-            <PrivateRoute path="/create-listing" component={CreateListing} />
+            <Route path="/create-listing" component={CreateListing} />
             <Route exact path="/register" component={Register} />
           </Switch>
           <footer>

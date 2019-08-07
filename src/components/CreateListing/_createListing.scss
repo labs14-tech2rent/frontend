@@ -365,9 +365,61 @@
 
 @media (max-width: 760px) {
 
-
-  .bottom-row .lower-buttons {
-    width: 42%;
+  .bottom-row {
+    flex-direction: column;
   }
 
+
+  .bottom-row .lower-buttons {
+    width: 45%;
+    flex-direction: column;
+  }
+
+  .cancel {
+    margin-bottom: 10px;
+    margin-top: 15px;
+  }
+
+  .bottom-row .payment {
+    width: 75%;
+  }
+
+}
+
+@media (max-width: 546px) {
+
+
+  .bottom-row .payment {
+    flex-direction: column;
+  }
+
+  .bottom-row .payment .payment-options {
+    margin-top: 10px;
+    margin-left: 31px;
+  }
+
+  .right-side .middle-row {
+    flex-direction: column;
+  }
+
+  .right-side .middle-row .middle-row-field {
+    width: 100%;
+  }
+
+  .right-side .middle-row .city-input-field {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 450px) {
+
+  .left-side .image-holder {
+    height: 272px;
+    font-size: 2rem;
+  }
+
+  .right-side .long-input {
+    font-size: 1.7rem;
+  }
 }

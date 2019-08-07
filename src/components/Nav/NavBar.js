@@ -76,7 +76,7 @@ const NavBar = props => {
         </div>
       </nav>
       {menuOpened ? (
-        <div className="navlinks-mobile">
+        <div className="navlinks-mobile ">
           <NavLink className="navlink-mobile" to="#">
             How it Works?
           </NavLink>
@@ -91,7 +91,7 @@ const NavBar = props => {
           </NavLink>
         </div>
       ) : (
-        ''
+        ""
       )}
     </div>
   );

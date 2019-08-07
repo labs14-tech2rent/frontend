@@ -96,7 +96,11 @@
   }
 
   &-mobile {
-      display: none;
+    display: none;
+  }
+
+  .navlinks-mobile {
+      height: 0;
   }
 }
 
@@ -138,10 +142,12 @@
   }
 
   .navlinks-mobile {
+      animation: slide ease .4s forwards;
       background: $medium-gray;
       color: $purple-light;
 
   }
+
 
   .navlinks-mobile .navlink-mobile {
       display: block;
@@ -151,4 +157,16 @@
       color: $light-gray;
       font-size: 1.5rem;
   }
+
+
+}
+
+@keyframes slide {
+    from {height: 0;}
+    to {height: 150px;}
+}
+
+@keyframes slideback {
+    from {height: 150;}
+    to {height: 0;}
 }

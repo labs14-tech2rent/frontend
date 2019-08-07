@@ -7,7 +7,7 @@ export default () => {
       });
       
       webAuth.logout({
-        returnTo: 'http://localhost:3000/v2/logout',
+        returnTo: 'https://sharp-wozniak-279070.netlify.com/logout',
         client_id: 'kFpGm0tbpc2lUax1Il5S0vS54opwh3iv'
       });
 }

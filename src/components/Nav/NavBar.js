@@ -30,8 +30,8 @@ const NavBar = props => {
             <NavLink to="/">
               <img src={logo} alt="tech2rent logo" />
             </NavLink>
-            <NavLink to="/">
-              <h3>Tech2Rent</h3>
+            <NavLink to="/" className="navbar-logo__text">
+              Tech2Rent
             </NavLink>
           </div>
           <div className="navbar-right">

@@ -3,7 +3,7 @@
     
     &-content {
         width: 80%;
-        max-width: 900px;
+        max-width: 1024px;
         margin: 0 auto;
         color: white;
         display: flex;
@@ -15,7 +15,7 @@
 
         &__left {
 
-            width: 40%;
+            width: 30%;
             display: flex;
             color: $malibu-light;
             font-size: 1.5rem;
@@ -50,6 +50,7 @@
         border: none;
         cursor: pointer;
         padding: 12px 20px;
+        outline: none;
       
         &:hover {
           color: #262525;
@@ -92,7 +93,7 @@
 
     &-icon {
         position: absolute;
-        top: 9px;
+        top: 7px;
         left: 5px; 
         color: rgba(113,113,113,0.82);
         font-size: 1.5rem;

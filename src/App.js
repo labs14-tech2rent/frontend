@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
+
 import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
@@ -13,46 +14,31 @@ import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="mainContent">
-        <BrowserRouter>
-          <header>
-            <NavBar {...this.props} />
-          </header>
-          <Switch>
-            <Route exact path="/" {...this.props} component={Login} />
-            <Route exact path="/v2/logout" {...this.props} component={Login} />
-            <Route exact path="/callback" component={Callback} />
-            <PrivateRoute
-              auth={this.props.submit}
-              path="/home"
-              component={HomePage}
-            />
-            <PrivateRoute
-              {...this.props}
-              exact
-              path="/profile"
-              component={Profile}
-            />
-            <PrivateRoute path="/create-listing" component={CreateListing} />
-            <Route exact path="/register" component={Register} />
-          </Switch>
-          <footer>
-            <Footer />
-          </footer>
-        </BrowserRouter>
-      </div>
-    );
-  }
-}
+const App = props => {
+  const submit = useSelector(store => store.submit);
 
-const mapStateToProps = ({ submit }) => ({
-  submit,
-});
+  return (
+    <div>
+      <BrowserRouter>
+        <header>
+          <NavBar {...props} />
+        </header>
+        <Switch>
+          <Route exact path="/" {...props} component={Login} />
+          <Route exact path="/v2/logout" {...props} component={Login} />
+          <Route exact path="/callback" component={Callback} />
+          <PrivateRoute auth={submit} path="/home" component={HomePage} />
+          <Route {...props} exact path="/profile" component={Profile} />
+          <Route path="/create-listing" component={CreateListing} />
+          <Route exact path="/register" component={Register} />
+        </Switch>
+        <footer>
+          <Footer />
+        </footer>
+      </BrowserRouter>
+    </div>
+  );
+};
+
 // grabbing login and signup from actions file... mapping the state to the props
-export default connect(
-  mapStateToProps,
-  {}
-)(App);
+export default App;

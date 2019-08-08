@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 // import {connect} from 'react-redux';
 // import {login, signUp, reset} from '../../actions';
 import { useSelector } from 'react-redux';
@@ -11,21 +12,40 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 library.add(faSearch);
 
 const Login = props => {
+
+  const [filter, setFilter] = useState('')
+  const [items, setItems] = useState([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://labstech2rentstaging.herokuapp.com/api/items',
+      );
+      const filtered = result.data.filter(item => item.name.toLowerCase().includes(filter));
+      console.log(filtered);
+    };
+
+    fetchData();
+  }, [filter]);
+
+  //console.log('test', filter);
+
   const auth = useSelector(store => store.submit.auth);
   const content = ( //  conditionally renders content based on login form or sign up form state.
-    <div className="App">
+    <div className="App mainContent">
       <div className="section-1">
       <h2>Welcome back to the community.</h2>
-        <div className="navbar-input-wrapper">  
-          <FontAwesomeIcon className="navbar-icon" icon={faSearch} />
+        <div className="login-input-wrapper">  
+          <FontAwesomeIcon className="login-icon" icon={faSearch} />
           <input
-            className="navbar-input"
+            className="login-input"
             type="text"
             placeholder='Try "Nikon"'
+            onChange={e => setFilter(e.target.value)}
           />
         </div>
       </div>
-
       <div className="section-2">
         <button onClick={auth.login} className="login-button">
           Log in

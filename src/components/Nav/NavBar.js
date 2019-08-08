@@ -37,7 +37,6 @@ const NavBar = props => {
     
   };
 
-  
   return (
     <div>
       <nav className="navbar">

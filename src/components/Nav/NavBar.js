@@ -8,6 +8,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import logout2 from '../../Logout';
 import logo from '../../Images/t2rlogo.png';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const NavBar = props => {
   
 
@@ -43,10 +45,16 @@ const NavBar = props => {
           <div className="navbar-left">
             <NavLink to="/">
               <img src={logo} alt="tech2rent logo" />
-            </NavLink>
-            <NavLink to="/">
-              <h3>Tech2Rent</h3>
-            </NavLink>
+            </NavLink>       
+          </div>
+
+          <div className="navbar-input-wrapper">  
+              <FontAwesomeIcon className="navbar-icon" icon={faSearch} />
+              <input
+                className="navbar-input"
+                type="text"
+                placeholder='Try "Nikon"'
+              />
           </div>
           <div className="navbar-right">
             <NavLink exact to="/" className="navbar-link">

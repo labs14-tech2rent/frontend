@@ -17,7 +17,7 @@
 
   &-left {
       display: flex;
-      width: 20%;
+      width: fit-content;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -30,7 +30,6 @@
   &-right {
       display: flex;
       width: 60%;
-      margin-left: 50px;
       justify-content: space-between;
   }
 
@@ -42,7 +41,6 @@
   &-input-wrapper {
       position: relative;
       display: inline-block;
-      width: 60%;
       font-size: 1.8rem;
   }
 
@@ -58,7 +56,6 @@
   &-input {
       color: #C2C0C0;
       display: inline-block;
-      width: 100%;
       border-radius: 3px;
       box-shadow: 0 4px 13px 0 rgba(181,181,181,0.43);
       border: none;

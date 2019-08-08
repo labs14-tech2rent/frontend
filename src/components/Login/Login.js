@@ -16,10 +16,10 @@ const Login = props => {
     <div className="App mainContent">
       <div className="section-1">
       <h2>Welcome back to the community.</h2>
-        <div className="navbar-input-wrapper">  
-          <FontAwesomeIcon className="navbar-icon" icon={faSearch} />
+        <div className="login-input-wrapper">  
+          <FontAwesomeIcon className="login-icon" icon={faSearch} />
           <input
-            className="navbar-input"
+            className="login-input"
             type="text"
             placeholder='Try "Nikon"'
           />

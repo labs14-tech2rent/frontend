@@ -4,7 +4,6 @@ import { Formik, Field } from 'formik';
 import ImagePreview from './ImagePreview';
 import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
-import Uploader from '../Uploader/Uploader';
 import { validationSchema } from './yupSchema';
 import Basic from './NewImagePreview';
 
@@ -48,7 +47,6 @@ const Form = props => (
       <div className="form-wrapper">
         <form>
           {/* conditional render for image preview, will change this later on.  */}
-       
           <div className="left-side">
             <Basic />
             <div className="condition">
@@ -282,7 +280,9 @@ const Form = props => (
               type="submit"
               onClick={handleSubmit}
               className={`${
-                props.listing.isSubmitting ? 'footer-button__dark border-dark__hover disabled' : 'footer-button__dark border-dark__hover'
+                props.listing.isSubmitting
+                  ? 'footer-button__dark border-dark__hover disabled'
+                  : 'footer-button__dark border-dark__hover'
               }`}
               disabled={props.listing.isSubmitting}
             >

@@ -1,4 +1,6 @@
 .navbar {
+    z-index: 1;
+    background-color: #fff;
   &-content {
       width: 70%;
       max-width: 1024px;
@@ -9,6 +11,7 @@
       padding-top: 10px;
       padding-bottom: 10px;
       flex-direction: row;
+      background-color: #fff;
   }
 
 
@@ -73,11 +76,14 @@
       border: none;
       padding-top: 8px;
       padding-bottom: 8px;
-      padding-left: 30px;
+      padding-left: 5rem;
 
       &::placeholder {
           color: #C2C0C0;
+         
+          text-align: left;
       }
+      
   }
 
   &-link {
@@ -145,9 +151,20 @@
       animation: slide ease .4s forwards;
       background: $medium-gray;
       color: $purple-light;
+     
 
   }
 
+
+  .closed {
+    transform: translateY(-200%);
+    transition: all .5s;
+  }
+
+  .open {
+    transform: translateY(0px); 
+    transition: all .5s;
+  }
 
   .navlinks-mobile .navlink-mobile {
       display: block;
@@ -156,17 +173,29 @@
       padding: 8px 0px;
       color: $light-gray;
       font-size: 1.5rem;
+     
   }
-
-
 }
 
-@keyframes slide {
-    from {height: 0;}
-    to {height: 150px;}
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 3px;
+    background-color: #000;
+    opacity: .7;
+    margin: 6px 0;
+    transition: 0.4s;
 }
 
-@keyframes slideback {
-    from {height: 150;}
-    to {height: 0;}
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-6px, 3px);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
 }

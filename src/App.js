@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.scss';
+import React,{useState} from 'react';
+
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import HomePage from './components/HomePage/HomePage';
@@ -14,9 +14,10 @@ import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
 
 class App extends React.Component {
+  
   render() {
     return (
-      <div className="App">
+      <div className="mainContent" >
         <BrowserRouter>
           <header>
             <NavBar {...this.props} />

@@ -35,7 +35,6 @@ const NavBar = props => {
     
   };
 
-  
   return (
     <div>
       <nav className="navbar">
@@ -82,22 +81,10 @@ const NavBar = props => {
           </div>
 
           <div className="navbar-mobile">
-            <div id="nav-icon"
-          
-            onClick={() => {
-              const app = document.querySelector('.App')
-              app.classList.toggle('slideDown')
-
-              const navIcon = document.querySelector('#nav-icon')
-              navIcon.classList.toggle('change')
-              setMenuOpened(!menuOpened)
-            }}
-            >
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-            </div>
-           
+            <FontAwesomeIcon
+              icon={faBars}
+              onClick={() => setMenuOpened(!menuOpened)}
+            />
           </div>
         </div>
       </nav>

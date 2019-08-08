@@ -2,37 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/t2rlogo.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145327105-1"
+    ></script>
     <script>
-      UPLOADCARE_PUBLIC_KEY = "c18e4aa08d05ce1b6f53";
-      UPLOADCARE_TABS = "file url facebook gdrive gphotos";
-      UPLOADCARE_EFFECTS = "crop,rotate,mirror,flip";
-      UPLOADCARE_IMAGES_ONLY = true;
-      UPLOADCARE_PREVIEW_STEP = true;
-      // UPLOADCARE_CLEARABLE = true;
-      UPLOADCARE_LOCALE_TRANSLATIONS = {
-        file: {
-          one: "Your Photos",
-          other: "Your Photos"
-        },
-        button: {
-          images: {
-            one: "Choose Image",
-            other: "Choose Images"
-          }
-        }
-      };
-    </script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
-    <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.js"></script>
-    <script>
-      uploadcare.openPanel("#uploader-placeholder");
-    </script>
-    <script>
-      uploadcare.registerTab("preview", uploadcareTabEffects);
+      gtag("config", "UA-145327105-1");
     </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -52,7 +37,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap"
       rel="stylesheet"
     />
-    <title>React App</title>
+    <title>Tech2Rent - Professional Gear at an Amateur Price</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

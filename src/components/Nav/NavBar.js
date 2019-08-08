@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import logout2 from '../../Logout';
 import logo from '../../Images/t2rlogo.png';
-
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const NavBar = props => {
   
@@ -33,9 +31,11 @@ const NavBar = props => {
     localStorage.removeItem('user_id');
     localStorage.removeItem('targetUrl');
     
- 
+    //window.location.pathname = ' https://localhost:3000/v2/logout';
+    
   };
 
+  
   return (
     <div>
       <nav className="navbar">
@@ -43,16 +43,15 @@ const NavBar = props => {
           <div className="navbar-left">
             <NavLink to="/">
               <img src={logo} alt="tech2rent logo" />
-            </NavLink>       
+            </NavLink>
           </div>
-
           <div className="navbar-input-wrapper">  
               <FontAwesomeIcon className="navbar-icon" icon={faSearch} />
               <input
-                className="navbar-input"
-                type="text"
-                placeholder='Try "Nikon"'
-              />
+              className="navbar-input"
+              type="text"
+              placeholder='Try "Nikon"'
+            />
           </div>
           <div className="navbar-right">
             <NavLink exact to="/" className="navbar-link">

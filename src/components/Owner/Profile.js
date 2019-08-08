@@ -26,6 +26,8 @@ class Profile extends React.Component {
       .then(res => this.setState({ user: res.data.results[0] }));
   }
 
+
+
   render() {
     return (
       <div className="profile-content">
@@ -45,18 +47,18 @@ class Profile extends React.Component {
             <p>
               Owner of Tech: Located in{' '}
               {`${this.state.user.location.city.charAt(0).toUpperCase() +
-                this.state.user.location.city.slice(
-                  1
-                )}, ${this.state.user.location.state
+                this.state.user.location.city.slice(1)}, 
+                ${this.state.user.location.state
                 .charAt(0)
                 .toUpperCase()}${this.state.user.location.state.slice(1)} `}
             </p>
           )}
           <p>Freelance Photographer</p>
           <br />
-          <p> + Add Product</p>
+          <p className="addProduct" onClick={() => this.props.history.push('/create-listing')}> + Add Product</p>
 
           <Rating />
+
         </div>
 
         <div className="products">

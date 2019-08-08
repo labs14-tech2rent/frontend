@@ -13,7 +13,7 @@ library.add(faSearch);
 const Login = props => {
   const auth = useSelector(store => store.submit.auth);
   const content = ( //  conditionally renders content based on login form or sign up form state.
-    <div className="App">
+    <div className="App mainContent">
       <div className="section-1">
       <h2>Welcome back to the community.</h2>
         <div className="navbar-input-wrapper">  

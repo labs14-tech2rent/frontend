@@ -39,7 +39,7 @@ const Profile = props => {
       
       //console.log(credentials.user)
       
-      <div className="profile-content">
+      <div className="profile-content mainContent">
         <div className="user-info">
           <img src={user.picture.large} alt="" />
           {user.name && (

@@ -18,7 +18,7 @@ const App = props => {
   const submit = useSelector(store => store.submit);
   
       return (
-      <div className="mainContent" >
+      <div>
         <BrowserRouter>
           <header>
             <NavBar {...props} />
@@ -33,7 +33,7 @@ const App = props => {
               component={HomePage}
             />
             <Route  {...props} exact path="/profile" component={Profile} />
-            <PrivateRoute path="/create-listing" component={CreateListing} />
+            <Route path="/create-listing" component={CreateListing} />
             <Route exact path="/register" component={Register} />
           </Switch>
           <footer>

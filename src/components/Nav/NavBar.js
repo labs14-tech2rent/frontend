@@ -33,8 +33,7 @@ const NavBar = props => {
     localStorage.removeItem('user_id');
     localStorage.removeItem('targetUrl');
     
-    //window.location.pathname = ' https://localhost:3000/v2/logout';
-    
+ 
   };
 
   return (

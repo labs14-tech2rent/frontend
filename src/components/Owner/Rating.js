@@ -1,10 +1,9 @@
 import React from 'react';
 
 function Rating(props) {
-  
   return (
     <div>
-    <div className="rating">
+    <div class="rating">
     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
     </div>
     </div>

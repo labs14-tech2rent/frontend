@@ -5,34 +5,21 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import logout2 from '../../Logout';
+
 import logo from '../../Images/t2rlogo.png';
 
 const NavBar = props => {
-  
-
   const [menuOpened, setMenuOpened] = useState(false);
 
   const auth = useSelector(store => store.submit.auth);
   // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const logout = e => {
     e.preventDefault();
-    // localStorage.removeItem('access_token');
-    // localStorage.removeItem('id_token');
-    // localStorage.removeItem('expires_at');
-    // localStorage.removeItem('user_id');
-    //window.location.pathname = ' https://localhost:3000/v2/logout';
-   // window.location.pathname = '/';
-    logout2()
-  
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
-    localStorage.removeItem('targetUrl');
-    
-    //window.location.pathname = ' https://localhost:3000/v2/logout';
-    
+    window.location.pathname = '/';
   };
 
   return (

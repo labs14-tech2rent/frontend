@@ -24,7 +24,6 @@
 .user-info {
     img {
         border-radius: 50%;
-        margin-bottom: 1rem;
     }
 
     p {
@@ -32,15 +31,24 @@
         font-size: 12px;
         width: 145px;
         color: black;
-        text-align: center;
-        text-transform: capitalize;
     }
 }
 
-.addProduct {
-    font-weight: 700;
+
+.checked {
+    color: #ccb3ff;
+    &:hover {
+        color: black !important;
+    }
+  }
+
+.fa {
+    font-size: 16px !important;
     cursor: pointer;
-    padding: .5rem;
+    &:hover {
+        color: #ccb3ff; 
+    }
+    
 }
 
 
@@ -49,14 +57,11 @@
     direction: rtl;
     cursor: pointer;
     font-size: 1.8rem;
-    width: fit-content;
-    margin: 0 auto;
   }
   .rating > span {
     display: inline-block;
     position: relative;
     width: 1.1em;
-  
   }
   .rating > span:hover:before,
   .rating > span:hover ~ span:before {
@@ -64,5 +69,3 @@
      position: absolute;
      color: #ccb3ff; 
   }
-
-  

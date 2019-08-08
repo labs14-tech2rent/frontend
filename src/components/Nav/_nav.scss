@@ -19,7 +19,6 @@
       display: flex;
       width: fit-content;
       flex-direction: row;
-      justify-content: space-between;
       align-items: center;
       & h3 {
         font-weight: 700;
@@ -37,6 +36,19 @@
   &-logo {
       display: inline-block;
       margin-right: 42px;
+  }
+
+  &-logo__text {
+      text-decoration: none;
+      color: #000000;
+      font-weight: 700;
+      font-size: 1.7rem;
+      margin-left: 20px;
+      
+      &:hover {
+          text-decoration: inherit;
+          color: $malibu; 
+      }
   }
 
   &-input-wrapper {
@@ -75,7 +87,7 @@
   }
 
   &-link {
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       color: $dark-gray;
       text-decoration: none;
 
@@ -90,7 +102,11 @@
   }
 
   &-mobile {
-      display: none;
+    display: none;
+  }
+
+  .navlinks-mobile {
+      height: 0;
   }
 }
 
@@ -137,6 +153,7 @@
   }
 
   .navlinks-mobile {
+      animation: slide ease .4s forwards;
       background: $medium-gray;
       color: $purple-light;
       display: block;

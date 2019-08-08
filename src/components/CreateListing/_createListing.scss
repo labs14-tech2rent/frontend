@@ -25,18 +25,26 @@
   .banner {
     img {
       height: 200px;
-      width: 100vw;
+      width: 100%;
     }
   }
 }
 
+.form-wrapper {
+  margin: 0 auto;
+}
+
 .form-body {
   margin: 0 auto;
-  width: 962px;
+  max-width: 1024px;
+  width: 80%;
   padding: 2% 0%;
+  display: flex;
 
   form {
     display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
 
     input {
       margin-bottom: 5%;
@@ -52,7 +60,7 @@
 .left-side {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 40%;
 
   .image-items {
     display: flex;
@@ -64,7 +72,7 @@
   .image-holder {
     border-radius: 3px;
     height: 386px;
-    width: 360px;
+    width: 100%;
     border-radius: 4px;
     background-color: #f0f0f0;
     font-family: Futura;
@@ -89,11 +97,11 @@
   }
   .description-div {
     text-align: left;
-    width: 384px;
+    width: 100%;
 
     .description {
       height: 184px;
-      width: 383px;
+      width: 100%;
       background-color: #f5f4f4;
       border: none;
     }
@@ -101,6 +109,7 @@
 }
 
 .right-side {
+  width: 50%;
   text-align: left;
   input {
     font-size: 30px;
@@ -115,26 +124,30 @@
     justify-content: space-between;
     align-items: center;
     .city-input-field {
-      width: 220px;
+      width: 30%;
     }
     .middle-row-field {
-      width: 130px;
+      width: 30%;
     }
   }
   .long-input {
     height: 70px;
-    width: 541px;
+    width: 100%;
     background-color: #f5f4f4;
+    font-size: 2.5rem;
   }
   .medium-input {
     height: 70px;
-    width: 217px;
+    width: 100%;
     background-color: #f5f4f4;
+    font-size: 2.5rem;
+
   }
   .small-input {
     height: 70px;
-    width: 128px;
+    width: 100%;
     background-color: #f5f4f4;
+    font-size: 2.5rem;
   }
 }
 
@@ -142,7 +155,8 @@
   margin-top: 2%;
   display: flex;
   justify-content: space-between;
-  width: 962px;
+  width: 100%;
+  margin: 0 auto;
   align-items: center;
   font-size: 15px;
   letter-spacing: -0.01px;
@@ -152,13 +166,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
+    width: 38%;
     .payment-options {
       display: flex;
+
       .option {
-        input {
-          margin: 5px;
-        }
+        display: flex;
+        align-items: center;
         width: 80px;
         margin-right: 3%;
       }
@@ -167,19 +181,27 @@
 
   .lower-buttons {
     display: flex;
+    width: 25%;
+    justify-content: space-between;
     .cancel {
-      height: 34px;
-      width: 113px;
-      border: 1px solid #000000;
-      background-color: #fff;
-      color: #000000;
-      margin-right: 3%;
+      border-radius: 4px;
+      font-weight: 700;
+      color: #262525;
+      background-color: rgba(255, 255, 255, 0.82);
+      border: none;
+      cursor: pointer;
+      padding: 12px 29px;
+      border: 2px solid #262525;
+      outline: none;
+
       &:hover {
-        background-color: #000000;
-        color: #fff;
-        border: 1px solid #000000;
+        background-color: #262525;
+        color: rgba(255, 255, 255, 0.82);
+        border: 2px solid #262525;
       }
     }
+
+
     .list {
       height: 34px;
       width: 113px;
@@ -203,19 +225,24 @@
   }
 }
 
+.uploadcare--widget {
+  margin: 0 auto;
+}
+
 .uploadcare--widget__button {
-  color: #fff;
-  font-size: 40px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 2.5rem;
   background-color: #000000;
-  border-radius: 3px;
+  border-radius: 4px;
   text-decoration: none;
-  padding: 18px 15px;
-  margin-left: 6.5%;
+  padding: 18px 63px;
+  border: 2px solid #262525;
+  outline: none;
   &:hover {
-    font-size: 40px;
-    background-color: #fff;
-    color: #000000;
-    border: 1px solid #000000;
+    font-size: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.82);;
+    color: #262525;
+    border: 2px solid #262525;
   }
 }
 
@@ -224,21 +251,175 @@
 }
 
 .uploadcare--widget__file-name {
-  color: #fff;
-  font-size: 40px;
+  color: rgba(255, 255, 255, 0.82);;
+  font-size: 2.5rem;
   margin-left: 18%;
-  background-color: #000000;
-  border-radius: 3px;
+  background-color: #262525;
+  border-radius: 4px;
   text-decoration: none;
-  padding: 9px 15px;
+  padding: 9px 63px;
+  border: 2px solid #262525;
+  outline: none;
   &:hover {
     background-color: #fff;
     color: #000000;
-    border: 1px solid #000000;
+    border: 2px solid #262525;
   }
 }
 
 .uploader {
   margin-left: 10%;
   margin-bottom: 1%;
+}
+
+.border-dark__hover {
+  border: 2px solid #262525; 
+}
+
+.border-dark__hover:hover {
+  border: 2px solid #262525; 
+  background: rgba(255, 255, 255, 0.82);
+}
+
+
+.option input[type='radio'] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: white;
+  outline: none;
+  border: 3px solid white;
+  box-shadow:0 0 0 2px #262525;
+  border-radius: 2px;
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+
+
+.option input[type='radio']:checked {
+  background: #262525;
+}
+
+@media (max-width: 1080px) {
+  .bottom-row .payment {
+    width: 50%;
+  }
+
+  .bottom-row .lower-buttons {
+    width: 31%;
+  }
+}
+
+@media (max-width: 970px) {
+  .uploadcare--widget__button {
+    font-size: 2rem;
+    padding: 15px 40px;
+  }
+
+  .right-side .long-input {
+    font-size: 2rem;
+  }
+
+  .left-side .image-holder {
+    height: 348px;
+    font-size: 2.5rem;
+  }
+
+  .left-side .image-items {
+    height: 444px;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 860px) {
+  .form-body form {
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .left-side {
+    width: 80%;
+  }
+
+  .left-side .image-items {
+    margin-bottom: 0;
+  }
+
+  .bottom-row .lower-buttons {
+    width: 37%;
+  }
+
+  .right-side {
+    width: 80%;
+  }
+
+  .bottom-row .payment {
+    width: 55%;
+  }
+}
+
+@media (max-width: 760px) {
+
+  .bottom-row {
+    flex-direction: column;
+  }
+
+
+  .bottom-row .lower-buttons {
+    width: 45%;
+    flex-direction: column;
+  }
+
+  .cancel {
+    margin-bottom: 10px;
+    margin-top: 15px;
+  }
+
+  .bottom-row .payment {
+    width: 75%;
+  }
+
+}
+
+@media (max-width: 546px) {
+
+
+  .bottom-row .payment {
+    flex-direction: column;
+  }
+
+  .bottom-row .payment .payment-options {
+    margin-top: 10px;
+    margin-left: 31px;
+  }
+
+  .right-side .middle-row {
+    flex-direction: column;
+  }
+
+  .right-side .middle-row .middle-row-field {
+    width: 100%;
+  }
+
+  .right-side .middle-row .city-input-field {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 450px) {
+
+  .left-side .image-holder {
+    height: 272px;
+    font-size: 2rem;
+  }
+
+  .right-side .long-input {
+    font-size: 1.7rem;
+  }
 }

@@ -44,6 +44,7 @@
     }
     select {
       margin-bottom: 5%;
+      font-size: 30px;
       border: none;
     }
   }
@@ -92,10 +93,19 @@
     width: 384px;
 
     .description {
-      height: 184px;
+      height: 176px;
       width: 383px;
       background-color: #f5f4f4;
       border: none;
+    }
+  }
+
+  .condition {
+    width: 91%;
+    select {
+      height: 70px;
+      width: 100%;
+      background-color: #f5f4f4;
     }
   }
 }
@@ -241,4 +251,28 @@
 .uploader {
   margin-left: 10%;
   margin-bottom: 1%;
+}
+
+.container {
+  height: 270px;
+  width: 77%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: 0;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 7%;
+  background-color: #f5f4f4;
+
+  .dropzone {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+
+    button {
+      margin-top: 1%;
+      margin-left: -3%;
+    }
+  }
 }

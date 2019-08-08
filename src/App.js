@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -14,16 +14,15 @@ import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
 
 class App extends React.Component {
-  
   render() {
     return (
-      <div className="mainContent" >
+      <div className="mainContent">
         <BrowserRouter>
           <header>
             <NavBar {...this.props} />
           </header>
           <Switch>
-           <Route exact path="/" {...this.props} component={Login} />
+            <Route exact path="/" {...this.props} component={Login} />
             <Route exact path="/v2/logout" {...this.props} component={Login} />
             <Route exact path="/callback" component={Callback} />
             <PrivateRoute
@@ -31,7 +30,12 @@ class App extends React.Component {
               path="/home"
               component={HomePage}
             />
-            <PrivateRoute  {...this.props} exact path="/profile" component={Profile} />
+            <PrivateRoute
+              {...this.props}
+              exact
+              path="/profile"
+              component={Profile}
+            />
             <PrivateRoute path="/create-listing" component={CreateListing} />
             <Route exact path="/register" component={Register} />
           </Switch>

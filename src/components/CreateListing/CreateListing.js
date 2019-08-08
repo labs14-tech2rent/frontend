@@ -75,7 +75,7 @@ const CreateListing = () => {
   };
 
   return (
-    <div className="create-listing">
+    <div className="create-listing mainContent">
       <div className="banner">
         <img src={cameraBanner} alt="" />
       </div>

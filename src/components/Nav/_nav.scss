@@ -94,6 +94,11 @@
   }
 }
 
+.navlinks-mobile {
+    display: none;
+   
+
+}
 @media (max-width: 1000px) {
   .navbar-right {
       width: 60%;
@@ -134,6 +139,7 @@
   .navlinks-mobile {
       background: $medium-gray;
       color: $purple-light;
+      display: block;
      
 
   }

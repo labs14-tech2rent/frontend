@@ -25,7 +25,6 @@ const Login = props => {
           />
         </div>
       </div>
-
       <div className="section-2">
         <button onClick={auth.login} className="login-button">
           Log in

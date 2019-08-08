@@ -32,7 +32,7 @@ const App = props => {
               path="/home"
               component={HomePage}
             />
-            <PrivateRoute  {...props} exact path="/profile" component={Profile} />
+            <Route  {...props} exact path="/profile" component={Profile} />
             <PrivateRoute path="/create-listing" component={CreateListing} />
             <Route exact path="/register" component={Register} />
           </Switch>

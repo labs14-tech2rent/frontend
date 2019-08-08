@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 import Rating from './Rating';
@@ -8,54 +8,63 @@ import camera from '../../Images/Bitmap-1.png';
 import vr from '../../Images/Bitmap-8.png';
 import cameratwo from '../../Images/Bitmap-10.png';
 
-class Profile extends React.Component {
-  state = {
-    user: {
+const Profile = props => {
+ 
+
+  const [user, setUser] = useState({
+    
       name: '',
       email: '',
       picture: '',
       location: '',
-    },
-  };
+    
+  });
 
-  componentDidMount() {
+ 
+
+  useEffect(() => {
     axios
-      .get(
-        'https://randomuser.me/api/?nat=us&?results=1&inc=name,picture,email,registered,location'
-      )
-      .then(res => this.setState({ user: res.data.results[0] }));
-  }
+    .get(
+      'https://randomuser.me/api/?nat=us&?results=1&inc=name,picture,email,registered,location'
+    )
+    .then(res => {console.log(res)
+      setUser( res.data.results[0]  )})
+  
+  }, []);
 
 
 
-  render() {
+  
     return (
+      
+      //console.log(credentials.user)
+      
       <div className="profile-content">
         <div className="user-info">
-          <img src={this.state.user.picture.large} alt="" />
-          {this.state.user.name && (
+          <img src={user.picture.large} alt="" />
+          {user.name && (
             <p style={{ fontWeight: 'bold' }}>
-              {`${this.state.user.name.first.charAt(0).toUpperCase() +
-                this.state.user.name.first.slice(
+              {`${user.name.first.charAt(0).toUpperCase() +
+                user.name.first.slice(
                   1
-                )} ${this.state.user.name.last
+                )} ${user.name.last
                 .charAt(0)
-                .toUpperCase()}${this.state.user.name.last.slice(1)} `}
+                .toUpperCase()}${user.name.last.slice(1)} `}
             </p>
           )}
-          {this.state.user.location && (
+          {user.location && (
             <p>
               Owner of Tech: Located in{' '}
-              {`${this.state.user.location.city.charAt(0).toUpperCase() +
-                this.state.user.location.city.slice(1)}, 
-                ${this.state.user.location.state
+              {`${user.location.city.charAt(0).toUpperCase() +
+                user.location.city.slice(1)}, 
+                ${user.location.state
                 .charAt(0)
-                .toUpperCase()}${this.state.user.location.state.slice(1)} `}
+                .toUpperCase()}${user.location.state.slice(1)} `}
             </p>
           )}
           <p>Freelance Photographer</p>
           <br />
-          <p className="addProduct" onClick={() => this.props.history.push('/create-listing')}> + Add Product</p>
+          <p className="addProduct" onClick={() => props.history.push('/create-listing')}> + Add Product</p>
 
           <Rating />
 
@@ -68,7 +77,7 @@ class Profile extends React.Component {
         </div>
       </div>
     );
-  }
+  
 }
 
 export default Profile;

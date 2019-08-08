@@ -62,8 +62,6 @@
     }
 
     .login-box {
-  
-     
       padding: 15px;
       background-color: #fff;
       box-shadow: 0px 5px 5px #ccc;
@@ -105,6 +103,22 @@
     /*
     col-xs-12 col-sm-4 col-sm-offset-4
     */
+
+    @media (max-width: 500px) {
+    .login-box {
+    width: 20em
+    }
+    
+    }
+    .sign-up-text {
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    margin: .25em auto;
+     font-family: Roboto;
+    font-size: 1.3em;
+    }
+
   </style>
 <body>
   <div class="login-container">
@@ -115,7 +129,10 @@
         <h3>Join the Community</h3>
       </div>
       <div id="error-message" class="alert alert-danger"></div>
-       <hr>
+      <hr>
+      <div class="sign-up-text">
+	<p> Sign up with social media</p>
+	</div>
       <form onsubmit="return false;" method="post">
        
 	<div class="socialBox">
@@ -139,7 +156,9 @@
         </button>
 	</div>
         <hr>
-      
+	<div class="sign-up-text">
+	  <p> Sign up with Email</p>
+	  </div>
         <div class="form-group">
          <label for="name">Email</label>
           <input

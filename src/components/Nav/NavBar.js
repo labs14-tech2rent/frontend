@@ -101,9 +101,8 @@ const NavBar = props => {
           </div>
         </div>
       </nav>
-      
-        
-        <div className={menuOpened ? "navlinks-mobile open" : "navlinks-mobile closed"}>
+      {menuOpened ? (
+        <div className="navlinks-mobile ">
           <NavLink className="navlink-mobile" to="#">
             How it Works?
           </NavLink>
@@ -117,8 +116,9 @@ const NavBar = props => {
             Help
           </NavLink>
         </div>
-      
-      
+      ) : (
+        ""
+      )}
     </div>
   );
 };

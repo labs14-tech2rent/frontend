@@ -35,7 +35,6 @@ const NavBar = props => {
     
   };
 
-  
   return (
     <div>
       <nav className="navbar">
@@ -82,28 +81,15 @@ const NavBar = props => {
           </div>
 
           <div className="navbar-mobile">
-            <div id="nav-icon"
-          
-            onClick={() => {
-              const app = document.querySelector('.App')
-              app.classList.toggle('slideDown')
-
-              const navIcon = document.querySelector('#nav-icon')
-              navIcon.classList.toggle('change')
-              setMenuOpened(!menuOpened)
-            }}
-            >
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-            </div>
-           
+            <FontAwesomeIcon
+              icon={faBars}
+              onClick={() => setMenuOpened(!menuOpened)}
+            />
           </div>
         </div>
       </nav>
-      
-        
-        <div className={menuOpened ? "navlinks-mobile open" : "navlinks-mobile closed"}>
+      {menuOpened ? (
+        <div className="navlinks-mobile">
           <NavLink className="navlink-mobile" to="#">
             How it Works?
           </NavLink>
@@ -117,8 +103,9 @@ const NavBar = props => {
             Help
           </NavLink>
         </div>
-      
-      
+      ) : (
+        ''
+      )}
     </div>
   );
 };

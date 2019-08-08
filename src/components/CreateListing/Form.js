@@ -51,6 +51,33 @@ const Form = props => (
           <br />
           <div className="left-side">
             <Basic />
+            <div className="condition">
+              Condition <br />
+              <select
+                name="condition"
+                value={values.condition}
+                type="text"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                className={`long-input ${
+                  errors.condition && touched.condition ? 'input-error' : ''
+                } ${
+                  touched.condition && !errors.condition ? 'input-correct' : ''
+                }`}
+              >
+                <option value="" disabled>
+                  Choose Condition
+                </option>
+                <option>Like New</option>
+                <option>Used (normal wear)</option>
+                <option>Other (see description)</option>
+              </select>
+              <div className="isa_error">
+                {errors.condition && touched.condition
+                  ? errors.condition
+                  : null}
+              </div>
+            </div>
             <div className="description-div">
               Description{' '}
               <textarea
@@ -194,33 +221,6 @@ const Form = props => (
               {errors.subcategory && touched.subcategory
                 ? errors.subcategory
                 : null}
-            </div>
-            <div>
-              Condition <br />
-              <select
-                name="condition"
-                value={values.condition}
-                type="text"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                className={`long-input ${
-                  errors.condition && touched.condition ? 'input-error' : ''
-                } ${
-                  touched.condition && !errors.condition ? 'input-correct' : ''
-                }`}
-              >
-                <option value="" disabled>
-                  Choose Condition
-                </option>
-                <option>Like New</option>
-                <option>Used (normal wear)</option>
-                <option>Other (see description)</option>
-              </select>
-              <div className="isa_error">
-                {errors.condition && touched.condition
-                  ? errors.condition
-                  : null}
-              </div>
             </div>
           </div>
         </form>

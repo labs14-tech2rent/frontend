@@ -5,7 +5,8 @@ const thumbsContainer = {
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
-  marginTop: 16,
+  // justifyContent: 'space-evenly',
+  marginTop: 8,
 };
 
 const thumb = {
@@ -17,6 +18,7 @@ const thumb = {
   width: 100,
   height: 100,
   padding: 4,
+  backgroundColor: 'white',
 };
 
 const thumbInner = {
@@ -68,11 +70,11 @@ const Previews = props => {
 
   return (
     <section className="container">
+      <aside style={thumbsContainer}>{thumbs}</aside>
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
         <button onClick={e => e.preventDefault()}>Add Images</button>
       </div>
-      <aside style={thumbsContainer}>{thumbs}</aside>
     </section>
   );
 };

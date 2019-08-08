@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import logout2 from '../../Logout';
@@ -69,7 +69,7 @@ const NavBar = props => {
                 Log In
               </NavLink>
             )}
-            <NavLink onClick={auth.login} className="navbar-link">
+            <NavLink to="#" onClick={auth.login} className="navbar-link">
               Sign Up
             </NavLink>
             <NavLink
@@ -107,10 +107,10 @@ const NavBar = props => {
           <NavLink className="navlink-mobile" to="#">
             How it Works?
           </NavLink>
-          <NavLink className="navlink-mobile" onClick={auth.login}>
+          <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
             Login
           </NavLink>
-          <NavLink className="navlink-mobile" onClick={auth.login}>
+          <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
             Sign Up
           </NavLink>
           <NavLink className="navlink-mobile" onClick={auth.login} to="#">

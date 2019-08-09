@@ -1,13 +1,16 @@
 // src/components/NavBar.js
-
+import { library } from '@fortawesome/fontawesome-svg-core'
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import logout2 from '../../Logout';
 import logo from '../../Images/t2rlogo.png';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle as farFaUserCircle} from '@fortawesome/free-regular-svg-icons';
+
 const NavBar = props => {
   
 
@@ -38,6 +41,7 @@ const NavBar = props => {
   
   return (
     <div>
+    
       <nav className="navbar">
         <div className="navbar-content">
           <div className="navbar-left">
@@ -46,7 +50,8 @@ const NavBar = props => {
             </NavLink>
           </div>
           <div className="navbar-input-wrapper">  
-              <FontAwesomeIcon className="navbar-icon" icon={faSearch} />
+          
+           <FontAwesomeIcon className="navbar-icon" icon={faSearch} />
               <input
               className="navbar-input"
               type="text"
@@ -85,7 +90,19 @@ const NavBar = props => {
               Help
             </NavLink>
           </div>
-
+          
+          { localStorage.getItem('access_token') !== null &&
+          localStorage.getItem('id_token') !== null &&
+          localStorage.getItem('expires_at') !== null &&
+          localStorage.getItem('user_id') !== null ?
+            <FontAwesomeIcon className="navbar-icon__user" icon={farFaUserCircle} 
+              onClick={ () => {
+                const dropdown = document.querySelector('.profile-dropdown')
+                dropdown.classList.toggle('dropdown-open')
+              }}
+            /> : null }
+           
+            
           <div className="navbar-mobile">
             <div id="nav-icon"
           
@@ -97,6 +114,7 @@ const NavBar = props => {
               navIcon.classList.toggle('change')
               setMenuOpened(!menuOpened)
             }}
+            
             >
               <div className="bar1"></div>
               <div className="bar2"></div>
@@ -122,8 +140,14 @@ const NavBar = props => {
             Help
           </NavLink>
         </div>
-      
-      
+
+        <div className="profile-dropdown">
+            <div className="dropdown" >
+              <NavLink to="/account-settings">Account Settings</NavLink>
+              <NavLink to="edit-profile">Edit Profile</NavLink>
+            </div>
+              
+        </div>
     </div>
   );
 };

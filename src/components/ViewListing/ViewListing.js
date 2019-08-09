@@ -5,11 +5,14 @@ const ViewListing = (props) => {
 
   const [items, setItems] = useState([props.location.state.items])
 
-  console.log(items);
+  console.log('items', items);
 
   return (
     <div className="view-listing mainContent">
-        View Listing
+        {items[0].map(item => {
+            console.log('item', item);
+            return <div>{item.name}</div>}
+        )}
     </div>
   );
 };

@@ -24,12 +24,22 @@ const Login = props => {
       );
       const filtered = result.data.filter(item => item.name.toLowerCase().includes(filter));
       console.log(filtered);
+      setItems(filtered);
+
     };
 
     fetchData();
   }, [filter]);
 
-  //console.log('test', filter);
+  function handleKeyPress(e) {
+    if(e.key === 'Enter'){
+      
+      props.history.push({
+        pathname: '/view-listing',
+        state: { items: items }
+      })
+    }
+  }
 
   const auth = useSelector(store => store.submit.auth);
   const content = ( //  conditionally renders content based on login form or sign up form state.
@@ -43,6 +53,7 @@ const Login = props => {
             type="text"
             placeholder='Try "Nikon"'
             onChange={e => setFilter(e.target.value)}
+            onKeyPress={(e) => handleKeyPress(e)}
           />
         </div>
       </div>

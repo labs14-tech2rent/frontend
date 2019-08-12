@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { connect } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
+
 import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
@@ -17,6 +17,7 @@ import ViewListing from './components/ViewListing/ViewListing';
 
 const App = props => {
   const submit = useSelector(store => store.submit);
+
   
       return (
       <div>
@@ -54,8 +55,8 @@ const App = props => {
         </BrowserRouter>
       </div>
    
-      )}
-
+      )
+};
 
 // grabbing login and signup from actions file... mapping the state to the props
-export default App
+export default App;

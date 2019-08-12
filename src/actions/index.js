@@ -40,3 +40,10 @@ export {
   getItems,
 } from './getItems';
 
+export {
+  GET_PHOTOS_START,
+  GET_PHOTOS_SUCCESS,
+  GET_PHOTOS_FAIL,
+  getPhotos,
+} from './flickrAPI';
+

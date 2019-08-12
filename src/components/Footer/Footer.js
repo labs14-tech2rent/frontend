@@ -63,7 +63,7 @@ const Footer = () => (
 
       <div className="footer-content__right">
         <p className="footer-cta">Don't Lose Out</p>
-        <p className="footer-link footer-link__no-hover">Join Tech 2 Rent's Mailing List</p>
+        <a  href="#" className="footer-link footer-link__no-hover">Join Tech 2 Rent's Mailing List</a>
         <div className="footer-input-wrapper">
           <FontAwesomeIcon className="footer-icon" icon={faEnvelope} />
           <input

@@ -1,26 +1,43 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
-import { getItems } from '../../actions';
+import { getItems,getPhotos,  } from '../../actions';
+
 
 const ViewListing = props => {
-    const [items, setItems] = useState({
-        items: []
+    const [item, setItem] = useState({
+        item: ''
     });
 
-    const itemStore = useSelector(store => store.getItems.items)
+    const itemStore = useSelector(store => store.getPhotos.photos)
+    const itemStores = useSelector(store => store.getItems.items)
     const dispatch = useDispatch()
+   
+   
     useEffect(() => {
-        dispatch(getItems())
+        dispatch(getPhotos())
             
       }, []);
+
+      const handleChange = e => {
+        setItem({
+          [e.target.name]: e.target.value
+        });
+      };
+
+      const findItem = e => {
+        e.preventDefault();
+        //console.log(item.item)
+        dispatch(getPhotos(item.item));
+        
+      };
     return (
     <div className="view-listing mainContent">
         <div className="listing-form-container">
             {console.log(itemStore)}
             <h2>Find Tech</h2>
-            <form className="listing-form">
-                <label>Item Name</label>
-                <input type="text" placeholder="Name, Brand, or Tech type" />
+            <form className="listing-form" onSubmit={findItem}>
+                <label htmlFor="name">Item Name</label>
+                <input id="name" name="item" value={item.item} onChange={handleChange} type="text" placeholder="Name, Brand, or Tech type" />
                 <p className="addition">+ Add Additional Gear</p>
 
                 <label>Location</label>
@@ -34,11 +51,27 @@ const ViewListing = props => {
         </div>
 
         <div className="listings">
-            {itemStore ?
+       
+             { 
+                itemStores === [] ?
                 itemStore.map(item =>
                     <div>
                         <h3>{item.category}</h3>
                         <img src={item.picture} alt="item picture" title="item photo" />
+                    </div>
+                     ) : null
+            } 
+
+            {itemStore ?
+                itemStore.map(photo =>
+                    <div>
+                        <h3>{photo.title}</h3>
+                        <img
+                        src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_q.jpg`} 
+                        key={photo.id} 
+                        
+                        
+                        />
                     </div>
                      ) : null
             }

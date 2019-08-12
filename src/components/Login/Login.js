@@ -47,21 +47,11 @@ const Login = props => {
     <div className="App mainContent">
       <div className="section-1">
       <h2>Welcome back to the community.</h2>
-        <div className="login-input-wrapper">  
-          <FontAwesomeIcon className="login-icon" icon={faSearch} />
-          <input
-            className="login-input"
-            type="text"
-            placeholder='Try "Nikon"'
-            onChange={e => setFilter(e.target.value)}
-            onKeyPress={(e) => handleKeyPress(e)}
-          />
-        </div>
-      </div>
-      <div className="section-2">
         <button onClick={auth.login} className="login-button">
           Log in
         </button>
+      </div>
+      <div className="section-2">
         <p>
           By signing up, I agree to Tech2Rent{' '}
           <a className="privtermslink" href="#">

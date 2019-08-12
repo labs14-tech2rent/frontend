@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Dropzone, { useDropzone } from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
 
 const thumbsContainer = {
   display: 'flex',

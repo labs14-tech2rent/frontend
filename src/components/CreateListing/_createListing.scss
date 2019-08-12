@@ -26,6 +26,12 @@
     img {
       height: 200px;
       width: 100%;
+      @media (max-width: 768px) {
+        height: 160px;
+      }
+      @media (max-width: 700px) {
+        display: none;
+      }
     }
   }
 }
@@ -35,15 +41,15 @@
 }
 
 .form-body {
-  // margin: 0 auto;
+  margin: 0 auto;
   max-width: 1024px;
-  width: 100%;
+  width: 95%;
   padding: 2% 0%;
   display: flex;
 
   form {
     display: flex;
-    margin: 0 auto;
+    margin: 0 auto 3%;
     justify-content: space-between;
 
     input {
@@ -63,6 +69,36 @@
   flex-direction: column;
   width: 40%;
 
+  .container {
+    padding-right: 65px;
+    padding-left: 0px;
+    @media (max-width: 768px) {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 0px;
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
+  }
+
+  .dropzone {
+    display: flex;
+    justify-content: center;
+    button {
+      margin-left: -8.7%;
+    }
+
+    @media (max-width: 1024px) {
+      button {
+        margin-left: -2.9%;
+      }
+    }
+  }
+
   .image-items {
     display: flex;
     flex-direction: column;
@@ -70,32 +106,7 @@
     margin-bottom: 5%;
     height: 485px;
   }
-  .image-holder {
-    border-radius: 3px;
-    height: 386px;
-    width: 100%;
-    border-radius: 4px;
-    background-color: #f0f0f0;
-    font-family: Futura;
-    font-size: 30px;
-    font-weight: 500;
-    letter-spacing: -0.02px;
-    line-height: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    color: #d4d2d2;
 
-    p {
-      background-color: #f0f0f0;
-    }
-  }
-  .image-preview {
-    width: 360px;
-    border-radius: 4px;
-    background-color: #f0f0f0;
-  }
   .description-div {
     text-align: left;
     width: 100%;
@@ -171,11 +182,16 @@
   letter-spacing: -0.01px;
   line-height: 18px;
 
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+
   .payment {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 38%;
+
     .payment-options {
       display: flex;
 
@@ -274,11 +290,6 @@
 }
 
 @media (max-width: 970px) {
-  .uploadcare--widget__button {
-    font-size: 2rem;
-    padding: 15px 40px;
-  }
-
   .right-side .long-input {
     font-size: 2rem;
   }
@@ -302,7 +313,10 @@
   }
 
   .left-side {
-    width: 80%;
+    width: 84%;
+    @media (max-width: 411px) {
+      width: 93%;
+    }
   }
 
   .left-side .image-items {
@@ -314,27 +328,36 @@
   }
 
   .right-side {
-    width: 80%;
+    width: 84%;
+    @media (max-width: 411px) {
+      width: 93%;
+    }
   }
 
   .bottom-row .payment {
-    width: 55%;
+    width: 60%;
   }
 }
 
 @media (max-width: 760px) {
   .bottom-row {
+    margin-top: 6%;
     flex-direction: column;
   }
 
   .bottom-row .lower-buttons {
-    width: 45%;
-    flex-direction: column;
+    width: 72%;
+    flex-direction: row;
   }
 
   .cancel {
-    margin-bottom: 10px;
     margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .footer-button__dark {
+    margin-top: 15px;
+    margin-bottom: 10px;
   }
 
   .bottom-row .payment {
@@ -370,6 +393,13 @@
     width: 100%;
   }
   .left-side {
+    .container {
+      padding-right: 0px;
+      padding-left: 4px;
+      aside {
+        justify-content: center;
+      }
+    }
     .condition {
       width: 100%;
     }

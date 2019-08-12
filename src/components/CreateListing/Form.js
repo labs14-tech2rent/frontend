@@ -1,7 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 
-import ImagePreview from './ImagePreview';
 import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
 import { validationSchema } from './yupSchema';
@@ -77,7 +76,7 @@ const Form = props => (
               </div>
             </div>
             <div className="description-div">
-              Description{' '}
+              <span>Description{' '}</span>
               <textarea
                 name="description"
                 value={values.description}
@@ -296,37 +295,3 @@ const Form = props => (
 );
 
 export default Form;
-
-/* <div className="image-items">
-{props.listing.picture ? (
-  <div className="image-preview">
-    <ImagePreview
-      image={props.listing.picture}
-      count={props.listing.count}
-    />
-  </div>
-) : (
-  <div
-    className={`image-holder ${
-      errors.picture && touched.picture ? 'input-error' : ''
-    }`}
-  >
-    <p>
-      Click Below <br />
-      to <br />
-      Add Images
-    </p>
-  </div>
-)}
-<br />
-{/* The uploadcare uploader /*}
-<Uploader
-  value={values.picture}
-  className="upload"
-  id="picture"
-  onUploadComplete={info => {
-    props.listing.setCount(info.count);
-    props.listing.setPicture(info.uuid);
-  }}
-/>
-</div> */

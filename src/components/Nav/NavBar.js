@@ -1,6 +1,7 @@
 // src/components/NavBar.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,10 +9,15 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import logout2 from '../../Logout';
 import logo from '../../Images/t2rlogo.png';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+
 const NavBar = props => {
   
 
   const [menuOpened, setMenuOpened] = useState(false);
+  const [filter, setFilter] = useState('')
+  const [items, setItems] = useState([]);
+  const [displayed, setDisplayed] = useState([]);
 
   const auth = useSelector(store => store.submit.auth);
   // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -35,6 +41,44 @@ const NavBar = props => {
     
   };
 
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://labstech2rentstaging.herokuapp.com/api/items',
+      );
+      const filtered = result.data.filter(item => item.name.toLowerCase().includes(filter));
+      console.log(filtered);
+      setItems(filtered);
+
+    };
+
+    fetchData();
+  }, [filter]);
+
+  function handleKeyPress(e) {
+    if(e.key === 'Enter'){
+      
+      // props.history.push({
+      //   pathname: '/view-listing',
+      //   state: { items: items }
+      // })
+      if (items.length >= 3) {
+        setDisplayed([items[0], items[1], items[2]])
+      } else if (items.length === 2) {
+        setDisplayed([items[0], items[1]])
+      } else if(items.length === 1) {
+        setDisplayed([items[0]])
+      } else if(items.length === 0) {
+        setDisplayed([{name: 'No match found'}]);
+      }
+      
+    }
+  }
+
+  console.log(items);
+
   
   return (
     <div>
@@ -51,7 +95,28 @@ const NavBar = props => {
               className="navbar-input"
               type="text"
               placeholder='Try "Nikon"'
+              onChange={e => setFilter(e.target.value)}
+              onKeyPress={(e) => handleKeyPress(e)}
             />
+            <div className="navbar-searched">
+              {displayed.length > 0 && displayed[0].name !== 'No match found' && displayed.map(item => { 
+                  return (
+                  <div className="navbar-searched__content" key={item.id}>
+                    <img className="navbar-searched__img" src={item.picture.startsWith('http') ? item.picture : 'https://www.leisuretec.co.uk/resources/images/no-image.png'}/>
+                    <div>
+                      <p className="navbar-searched__name">{item.name}</p>
+                      <p className="navbar-searched__location">{item.city.charAt(0).toUpperCase() + item.city.slice(1)}, {item.state}</p>
+                    </div>
+                  </div>
+                  )
+              })}
+
+              {displayed.length > 0 && displayed[0].name !== 'No match found' && <h4 className="navbar-searched__more" onClick={auth.login}>View More Listings</h4>}
+
+              {
+                displayed.length > 0 && displayed[0].name === 'No match found' ? <div className="navbar-searched__notfound">{displayed[0].name}</div> : ''
+              }
+            </div>
           </div>
           <div className="navbar-right">
             <NavLink exact to="/" className="navbar-link">

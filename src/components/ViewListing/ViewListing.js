@@ -11,7 +11,7 @@ const ViewListing = (props) => {
     <div className="view-listing mainContent">
         {items[0].map(item => {
             console.log('item', item);
-            return <div>{item.name}</div>}
+            return <div key={item.id}>{item.name}</div>}
         )}
     </div>
   );

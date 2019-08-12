@@ -34,10 +34,11 @@ const Login = props => {
   function handleKeyPress(e) {
     if(e.key === 'Enter'){
       
-      props.history.push({
-        pathname: '/view-listing',
-        state: { items: items }
-      })
+      // props.history.push({
+      //   pathname: '/view-listing',
+      //   state: { items: items }
+      // })
+      
     }
   }
 

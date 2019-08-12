@@ -1,11 +1,10 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 
-import ImagePreview from './ImagePreview';
 import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
-import Uploader from '../Uploader/Uploader';
 import { validationSchema } from './yupSchema';
+import Basic from './NewImagePreview';
 
 const Form = props => (
   <Formik
@@ -44,46 +43,41 @@ const Form = props => (
     }}
   >
     {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-      <div>
+      <div className="form-wrapper">
         <form>
           {/* conditional render for image preview, will change this later on.  */}
-          <br />
           <div className="left-side">
-            <div className="image-items">
-              {props.listing.picture ? (
-                <div className="image-preview">
-                  <ImagePreview
-                    image={props.listing.picture}
-                    count={props.listing.count}
-                  />
-                </div>
-              ) : (
-                <div
-                  className={`image-holder ${
-                    errors.picture && touched.picture ? 'input-error' : ''
-                  }`}
-                >
-                  <p>
-                    Click Below <br />
-                    to <br />
-                    Add Images
-                  </p>
-                </div>
-              )}
-              <br />
-              {/* The uploadcare uploader */}
-              <Uploader
-                value={values.picture}
-                className="upload"
-                id="picture"
-                onUploadComplete={info => {
-                  props.listing.setCount(info.count);
-                  props.listing.setPicture(info.uuid);
-                }}
-              />
+            <Basic />
+            <div className="condition">
+              Condition <br />
+              <select
+                name="condition"
+                value={values.condition}
+                type="text"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                
+                className={`long-input ${
+                  errors.condition && touched.condition ? 'input-error' : ''
+                } ${
+                  touched.condition && !errors.condition ? 'input-correct' : ''
+                }`}
+              >
+                <option value="" disabled>
+                  Choose Condition
+                </option>
+                <option>Like New</option>
+                <option>Used (normal wear)</option>
+                <option>Other (see description)</option>
+              </select>
+              <div className="isa_error">
+                {errors.condition && touched.condition
+                  ? errors.condition
+                  : null}
+              </div>
             </div>
             <div className="description-div">
-              Description{' '}
+              <span>Description{' '}</span>
               <textarea
                 name="description"
                 value={values.description}
@@ -226,33 +220,6 @@ const Form = props => (
                 ? errors.subcategory
                 : null}
             </div>
-            <div>
-              Condition <br />
-              <select
-                name="condition"
-                value={values.condition}
-                type="text"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                className={`long-input ${
-                  errors.condition && touched.condition ? 'input-error' : ''
-                } ${
-                  touched.condition && !errors.condition ? 'input-correct' : ''
-                }`}
-              >
-                <option value="" disabled>
-                  Choose Condition
-                </option>
-                <option>Like New</option>
-                <option>Used (normal wear)</option>
-                <option>Other (see description)</option>
-              </select>
-              <div className="isa_error">
-                {errors.condition && touched.condition
-                  ? errors.condition
-                  : null}
-              </div>
-            </div>
           </div>
         </form>
         <div className="bottom-row">
@@ -292,7 +259,7 @@ const Form = props => (
                   onChange={handleChange}
                   checked={values.paymentType === 'card'}
                 />{' '}
-                Card
+                <span>Card</span>
               </div>
               <div className="option">
                 <input
@@ -313,7 +280,9 @@ const Form = props => (
               type="submit"
               onClick={handleSubmit}
               className={`${
-                props.listing.isSubmitting ? 'list disabled' : 'list'
+                props.listing.isSubmitting
+                  ? 'footer-button__dark border-dark__hover disabled'
+                  : 'footer-button__dark border-dark__hover'
               }`}
               disabled={props.listing.isSubmitting}
             >

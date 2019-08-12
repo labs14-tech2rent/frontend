@@ -26,6 +26,12 @@
     img {
       height: 200px;
       width: 100%;
+      @media (max-width: 768px) {
+        height: 160px;
+      }
+      @media (max-width: 700px) {
+        display: none;
+      }
     }
   }
 }
@@ -37,13 +43,13 @@
 .form-body {
   margin: 0 auto;
   max-width: 1024px;
-  width: 80%;
+  width: 95%;
   padding: 2% 0%;
   display: flex;
 
   form {
     display: flex;
-    margin: 0 auto;
+    margin: 0 auto 3%;
     justify-content: space-between;
 
     input {
@@ -52,6 +58,7 @@
     }
     select {
       margin-bottom: 5%;
+      font-size: 30px;
       border: none;
     }
   }
@@ -62,6 +69,36 @@
   flex-direction: column;
   width: 40%;
 
+  .container {
+    padding-right: 65px;
+    padding-left: 0px;
+    @media (max-width: 768px) {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 0px;
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
+  }
+
+  .dropzone {
+    display: flex;
+    justify-content: center;
+    button {
+      margin-left: -8.7%;
+    }
+
+    @media (max-width: 1024px) {
+      button {
+        margin-left: -2.9%;
+      }
+    }
+  }
+
   .image-items {
     display: flex;
     flex-direction: column;
@@ -69,32 +106,7 @@
     margin-bottom: 5%;
     height: 485px;
   }
-  .image-holder {
-    border-radius: 3px;
-    height: 386px;
-    width: 100%;
-    border-radius: 4px;
-    background-color: #f0f0f0;
-    font-family: Futura;
-    font-size: 30px;
-    font-weight: 500;
-    letter-spacing: -0.02px;
-    line-height: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    color: #d4d2d2;
 
-    p {
-      background-color: #f0f0f0;
-    }
-  }
-  .image-preview {
-    width: 360px;
-    border-radius: 4px;
-    background-color: #f0f0f0;
-  }
   .description-div {
     text-align: left;
     width: 100%;
@@ -104,6 +116,15 @@
       width: 100%;
       background-color: #f5f4f4;
       border: none;
+    }
+  }
+
+  .condition {
+    width: 91%;
+    select {
+      height: 70px;
+      width: 100%;
+      background-color: #f5f4f4;
     }
   }
 }
@@ -141,7 +162,6 @@
     width: 100%;
     background-color: #f5f4f4;
     font-size: 2.5rem;
-
   }
   .small-input {
     height: 70px;
@@ -162,11 +182,16 @@
   letter-spacing: -0.01px;
   line-height: 18px;
 
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+
   .payment {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 38%;
+
     .payment-options {
       display: flex;
 
@@ -201,7 +226,6 @@
       }
     }
 
-
     .list {
       height: 34px;
       width: 113px;
@@ -225,64 +249,16 @@
   }
 }
 
-.uploadcare--widget {
-  margin: 0 auto;
-}
-
-.uploadcare--widget__button {
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 2.5rem;
-  background-color: #000000;
-  border-radius: 4px;
-  text-decoration: none;
-  padding: 18px 63px;
-  border: 2px solid #262525;
-  outline: none;
-  &:hover {
-    font-size: 2.5rem;
-    background-color: rgba(255, 255, 255, 0.82);;
-    color: #262525;
-    border: 2px solid #262525;
-  }
-}
-
-.uploadcare--widget__file-size {
-  display: none;
-}
-
-.uploadcare--widget__file-name {
-  color: rgba(255, 255, 255, 0.82);;
-  font-size: 2.5rem;
-  margin-left: 18%;
-  background-color: #262525;
-  border-radius: 4px;
-  text-decoration: none;
-  padding: 9px 63px;
-  border: 2px solid #262525;
-  outline: none;
-  &:hover {
-    background-color: #fff;
-    color: #000000;
-    border: 2px solid #262525;
-  }
-}
-
-.uploader {
-  margin-left: 10%;
-  margin-bottom: 1%;
-}
-
 .border-dark__hover {
-  border: 2px solid #262525; 
+  border: 2px solid #262525;
 }
 
 .border-dark__hover:hover {
-  border: 2px solid #262525; 
+  border: 2px solid #262525;
   background: rgba(255, 255, 255, 0.82);
 }
 
-
-.option input[type='radio'] {
+.option input[type="radio"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -292,134 +268,188 @@
   background: white;
   outline: none;
   border: 3px solid white;
-  box-shadow:0 0 0 2px #262525;
+  box-shadow: 0 0 0 2px #262525;
   border-radius: 2px;
   width: 20px;
   height: 20px;
   margin-right: 6px;
 }
 
-
-.option input[type='radio']:checked {
-  background: #262525;
+.option {
+  input[type="radio"]:checked {
+    background: #262525;
+  }
 }
 
 @media (max-width: 1080px) {
-  .bottom-row .payment {
-    width: 50%;
-  }
-
-  .bottom-row .lower-buttons {
-    width: 31%;
+  .bottom-row {
+    .payment {
+      width: 50%;
+    }
+    .lower-buttons {
+      width: 31%;
+    }
   }
 }
 
 @media (max-width: 970px) {
-  .uploadcare--widget__button {
-    font-size: 2rem;
-    padding: 15px 40px;
+  .right-side {
+    .long-input {
+      font-size: 2rem;
+    }
   }
 
-  .right-side .long-input {
-    font-size: 2rem;
-  }
-
-  .left-side .image-holder {
-    height: 348px;
-    font-size: 2.5rem;
-  }
-
-  .left-side .image-items {
-    height: 444px;
-    justify-content: flex-start;
+  .left-side {
+    .image-holder {
+      height: 348px;
+      font-size: 2.5rem;
+    }
+    .image-items {
+      height: 444px;
+      justify-content: flex-start;
+    }
   }
 }
 
 @media (max-width: 860px) {
-  .form-body form {
-    flex-direction: column;
-    margin: 0 auto;
-    align-items: center;
+  .form-body {
+    form {
+      flex-direction: column;
+      margin: 0 auto;
+      align-items: center;
+    }
   }
 
   .left-side {
-    width: 80%;
+    width: 84%;
+    @media (max-width: 411px) {
+      width: 93%;
+    }
+    .image-items {
+      margin-bottom: 0;
+    }
   }
-
-  .left-side .image-items {
-    margin-bottom: 0;
-  }
-
-  .bottom-row .lower-buttons {
-    width: 37%;
-  }
-
   .right-side {
-    width: 80%;
+    width: 84%;
+    @media (max-width: 411px) {
+      width: 93%;
+    }
   }
 
-  .bottom-row .payment {
-    width: 55%;
+  .bottom-row {
+    margin-top: 3%;
+    .payment {
+      width: 60%;
+    }
+    .lower-buttons {
+      width: 37%;
+    }
   }
 }
 
 @media (max-width: 760px) {
-
   .bottom-row {
+    margin-top: 6%;
     flex-direction: column;
-  }
-
-
-  .bottom-row .lower-buttons {
-    width: 45%;
-    flex-direction: column;
+    .lower-buttons {
+      width: 72%;
+      flex-direction: row;
+    }
+    .payment {
+      width: 75%;
+    }
   }
 
   .cancel {
-    margin-bottom: 10px;
     margin-top: 15px;
+    margin-bottom: 10px;
   }
 
-  .bottom-row .payment {
-    width: 75%;
+  .footer-button__dark {
+    margin-top: 15px;
+    margin-bottom: 10px;
   }
-
 }
 
 @media (max-width: 546px) {
-
-
-  .bottom-row .payment {
-    flex-direction: column;
+  .bottom-row {
+    .payment {
+      flex-direction: column;
+      .payment-options {
+        margin-top: 10px;
+        margin-left: 31px;
+      }
+    }
   }
 
-  .bottom-row .payment .payment-options {
-    margin-top: 10px;
-    margin-left: 31px;
+  .right-side {
+    .middle-row {
+      flex-direction: column;
+      .middle-row-field {
+        width: 100%;
+      }
+      .city-input-field {
+        width: 100%;
+      }
+    }
   }
-
-  .right-side .middle-row {
-    flex-direction: column;
-  }
-
-  .right-side .middle-row .middle-row-field {
-    width: 100%;
-  }
-
-  .right-side .middle-row .city-input-field {
-    width: 100%;
-  }
-
 }
 
 @media (max-width: 450px) {
+  .form-wrapper {
+    width: 100%;
+  }
+  .left-side {
+    .container {
+      padding-right: 0px;
+      padding-left: 4px;
+      aside {
+        justify-content: center;
+      }
+    }
+    .condition {
+      width: 100%;
+    }
 
-  .left-side .image-holder {
-    height: 272px;
-    font-size: 2rem;
+    .image-holder {
+      height: 272px;
+      font-size: 2rem;
+    }
   }
 
-  .right-side .long-input {
-    font-size: 1.7rem;
+  .right-side {
+    .long-input {
+      font-size: 1.7rem;
+    }
+  }
+  .bottom-row {
+    .payment {
+      width: 100%;
+      .payment-options {
+        margin-left: 0;
+      }
+    }
+    .lower-buttons {
+      width: 84%;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .bottom-row {
+    .payment {
+      width: 100%;
+
+      .payment-options {
+        margin-left: 0;
+      }
+    }
+    .lower-buttons {
+      width: 84%;
+      button {
+        margin-top: 25px;
+        margin-bottom: 15px;
+      }
+    }
   }
 }

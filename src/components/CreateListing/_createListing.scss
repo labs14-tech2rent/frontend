@@ -334,8 +334,11 @@
     }
   }
 
-  .bottom-row .payment {
-    width: 60%;
+  .bottom-row {
+    margin-top: 3%;
+    .payment {
+      width: 60%;
+    }
   }
 }
 
@@ -413,6 +416,36 @@
   .right-side {
     .long-input {
       font-size: 1.7rem;
+    }
+  }
+  .bottom-row {
+    .payment {
+      width: 100%;
+      .payment-options {
+        margin-left: 0;
+      }
+    }
+    .lower-buttons {
+      width: 84%;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .bottom-row {
+    .payment {
+      width: 100%;
+
+      .payment-options {
+        margin-left: 0;
+      }
+    }
+    .lower-buttons {
+      width: 84%;
+      button {
+        margin-top: 25px;
+        margin-bottom: 15px;
+      }
     }
   }
 }

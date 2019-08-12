@@ -275,41 +275,49 @@
   margin-right: 6px;
 }
 
-.option input[type="radio"]:checked {
-  background: #262525;
+.option {
+  input[type="radio"]:checked {
+    background: #262525;
+  }
 }
 
 @media (max-width: 1080px) {
-  .bottom-row .payment {
-    width: 50%;
-  }
-
-  .bottom-row .lower-buttons {
-    width: 31%;
+  .bottom-row {
+    .payment {
+      width: 50%;
+    }
+    .lower-buttons {
+      width: 31%;
+    }
   }
 }
 
 @media (max-width: 970px) {
-  .right-side .long-input {
-    font-size: 2rem;
+  .right-side {
+    .long-input {
+      font-size: 2rem;
+    }
   }
 
-  .left-side .image-holder {
-    height: 348px;
-    font-size: 2.5rem;
-  }
-
-  .left-side .image-items {
-    height: 444px;
-    justify-content: flex-start;
+  .left-side {
+    .image-holder {
+      height: 348px;
+      font-size: 2.5rem;
+    }
+    .image-items {
+      height: 444px;
+      justify-content: flex-start;
+    }
   }
 }
 
 @media (max-width: 860px) {
-  .form-body form {
-    flex-direction: column;
-    margin: 0 auto;
-    align-items: center;
+  .form-body {
+    form {
+      flex-direction: column;
+      margin: 0 auto;
+      align-items: center;
+    }
   }
 
   .left-side {
@@ -317,16 +325,10 @@
     @media (max-width: 411px) {
       width: 93%;
     }
+    .image-items {
+      margin-bottom: 0;
+    }
   }
-
-  .left-side .image-items {
-    margin-bottom: 0;
-  }
-
-  .bottom-row .lower-buttons {
-    width: 37%;
-  }
-
   .right-side {
     width: 84%;
     @media (max-width: 411px) {
@@ -339,6 +341,9 @@
     .payment {
       width: 60%;
     }
+    .lower-buttons {
+      width: 37%;
+    }
   }
 }
 
@@ -346,11 +351,13 @@
   .bottom-row {
     margin-top: 6%;
     flex-direction: column;
-  }
-
-  .bottom-row .lower-buttons {
-    width: 72%;
-    flex-direction: row;
+    .lower-buttons {
+      width: 72%;
+      flex-direction: row;
+    }
+    .payment {
+      width: 75%;
+    }
   }
 
   .cancel {
@@ -362,32 +369,29 @@
     margin-top: 15px;
     margin-bottom: 10px;
   }
-
-  .bottom-row .payment {
-    width: 75%;
-  }
 }
 
 @media (max-width: 546px) {
-  .bottom-row .payment {
-    flex-direction: column;
+  .bottom-row {
+    .payment {
+      flex-direction: column;
+      .payment-options {
+        margin-top: 10px;
+        margin-left: 31px;
+      }
+    }
   }
 
-  .bottom-row .payment .payment-options {
-    margin-top: 10px;
-    margin-left: 31px;
-  }
-
-  .right-side .middle-row {
-    flex-direction: column;
-  }
-
-  .right-side .middle-row .middle-row-field {
-    width: 100%;
-  }
-
-  .right-side .middle-row .city-input-field {
-    width: 100%;
+  .right-side {
+    .middle-row {
+      flex-direction: column;
+      .middle-row-field {
+        width: 100%;
+      }
+      .city-input-field {
+        width: 100%;
+      }
+    }
   }
 }
 

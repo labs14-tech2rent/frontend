@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
+// this is the supplied documentation code I just pasted in
+
 const thumbsContainer = {
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
-  // justifyContent: 'space-evenly',
   marginTop: 8,
 };
 

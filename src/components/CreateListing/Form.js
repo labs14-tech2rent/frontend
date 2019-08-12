@@ -56,6 +56,7 @@ const Form = props => (
                 type="text"
                 onBlur={handleBlur}
                 onChange={handleChange}
+                
                 className={`long-input ${
                   errors.condition && touched.condition ? 'input-error' : ''
                 } ${

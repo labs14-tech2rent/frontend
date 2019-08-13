@@ -1,17 +1,17 @@
 
+
 @media (max-width: 700px) {
     .mainContent {
         transform: translateY(-152px);
         transition: all .5s;
-
+        
     }
-
+    
     .slideDown {
         transform: translateY(0px);
     }
-
-    .footer {
-        margin-top: -152px;
-
+    
+    .app-wrapper {
+        height: 100vh;
     }
 }

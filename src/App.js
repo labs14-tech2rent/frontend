@@ -20,7 +20,7 @@ const App = props => {
 
   
       return (
-      <div>
+      <div className="app-wrapper">
         <BrowserRouter>
           <header>
             <NavBar {...props} />
@@ -49,9 +49,7 @@ const App = props => {
               render={(props) => <ViewListing {...props} />}
             />
           </Switch>
-          <footer>
             <Footer />
-          </footer>
         </BrowserRouter>
       </div>
    

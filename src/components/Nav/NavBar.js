@@ -157,8 +157,10 @@ const NavBar = props => {
             <div id="nav-icon"
           
             onClick={() => {
-              const mainContent = document.querySelector('.mainContent')
-              mainContent.classList.toggle('slideDown')
+              const mainContent = document.querySelectorAll('.mainContent')
+              for (let i=0; i < mainContent.length; i++) {
+                mainContent[i].classList.toggle('slideDown')
+              }
 
               const navIcon = document.querySelector('#nav-icon')
               navIcon.classList.toggle('change')

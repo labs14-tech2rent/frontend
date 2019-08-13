@@ -64,14 +64,16 @@ const NavBar = props => {
       //   pathname: '/view-listing',
       //   state: { items: items }
       // })
-      if (items.length >= 3) {
+      if (items.length >= 3 && filter) {
         setDisplayed([items[0], items[1], items[2]])
-      } else if (items.length === 2) {
+      } else if (items.length === 2 && filter) {
         setDisplayed([items[0], items[1]])
-      } else if(items.length === 1) {
+      } else if(items.length === 1 && filter) {
         setDisplayed([items[0]])
-      } else if(items.length === 0) {
+      } else if(items.length === 0 && filter) {
         setDisplayed([{name: 'No match found'}]);
+      } else if(!filter) {
+        setDisplayed([])
       }
       
     }
@@ -103,7 +105,7 @@ const NavBar = props => {
                   return (
                   <div className="navbar-searched__content" key={item.id}>
                     <img className="navbar-searched__img" src={item.picture.startsWith('http') ? item.picture : 'https://www.leisuretec.co.uk/resources/images/no-image.png'}/>
-                    <div>
+                    <div className="navbar-searched__text">
                       <p className="navbar-searched__name">{item.name}</p>
                       <p className="navbar-searched__location">{item.city.charAt(0).toUpperCase() + item.city.slice(1)}, {item.state}</p>
                     </div>

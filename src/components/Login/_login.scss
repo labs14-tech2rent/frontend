@@ -29,7 +29,6 @@
   background-size: cover;
   height: 63rem;
   width: 100%;
-  max-width: 1024px;
   align-items: center;
   margin: 0 auto;
  & ::placeholder {
@@ -47,13 +46,12 @@
 }
 
 .section-2 {
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    & p {
-      text-align: center;
-    }
+
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 1.6rem;
+
 }
 
   h2 {

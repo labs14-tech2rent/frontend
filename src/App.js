@@ -17,35 +17,36 @@ import ViewListing from './components/ViewListing/ViewListing'
 import EditProfile from './components/EditProfile/EditProfile'
 const App = props => {
   const submit = useSelector(store => store.submit);
-  
-      return (
-      <div>
-      
-          <header>
-            <NavBar {...props} />
-          </header>
-          <Switch>
-           <Route exact path="/" {...props} component={Login} />
-            <Route exact path="/v2/logout" {...props} component={Login} />
-            <Route exact path="/callback" component={Callback} />
-            <PrivateRoute
-              auth={submit}
-              path="/home"
-              component={HomePage}
-            />
-            <Route  {...props} exact path="/profile" component={Profile} />
-            <Route path="/create-listing" component={CreateListing} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/view-listing" component={ViewListing} />
-            <Route exact path="/edit-profile" component={EditProfile} />
-          </Switch>
-          <footer>
-            <Footer />
-          </footer>
-        
-      </div>
-   
-      )}
+
+  return (
+    <div>
+
+      <header>
+        <NavBar {...props} />
+      </header>
+      <Switch>
+        <Route exact path="/" {...props} component={Login} />
+        <Route exact path="/v2/logout" {...props} component={Login} />
+        <Route exact path="/callback" component={Callback} />
+        <PrivateRoute
+          auth={submit}
+          path="/home"
+          component={HomePage}
+        />
+        <Route  {...props} exact path="/profile" component={Profile} />
+        <Route path="/create-listing" component={CreateListing} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/view-listing" component={ViewListing} />
+        <Route exact path="/edit-profile" component={EditProfile} />
+      </Switch>
+      <footer>
+        <Footer />
+      </footer>
+
+    </div>
+
+  )
+}
 
 
 

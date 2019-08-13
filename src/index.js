@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-
+import createHistory from 'history/createBrowserHistory';
 import { BrowserRouter as Router, withRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -10,6 +10,7 @@ import logger from 'redux-logger';
 import App from './App';
 import rootReducer from './reducers';
 
+const history = createHistory();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
@@ -20,7 +21,7 @@ const store = createStore(
 const AppWithRouter = withRouter(App);
 ReactDOM.render(
   <Provider store={store}>
-    <Router forceRefresh={true}>
+    <Router history={history}>
       <AppWithRouter />
     </Router>
   </Provider>,

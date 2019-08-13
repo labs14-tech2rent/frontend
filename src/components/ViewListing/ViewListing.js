@@ -26,7 +26,7 @@ const ViewListing = props => {
 
       const findItem = e => {
         e.preventDefault();
-        //console.log(item.item)
+        console.log(item.item)
         dispatch(getPhotos(item.item));
         
       };

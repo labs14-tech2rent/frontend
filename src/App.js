@@ -39,7 +39,7 @@ const App = props => {
         <Route exact path="/view-listing" component={ViewListing} />
         <Route exact path="/edit-profile" component={EditProfile} />
       </Switch>
-      <footer>
+      <footer className="footer mainContent">
         <Footer />
       </footer>
 

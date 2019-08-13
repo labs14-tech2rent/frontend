@@ -27,7 +27,7 @@ const ViewListing = props => {
     dispatch(getPhotos(item.item));
   };
   return (
-    <div className="view-listing mainContent container">
+    <div className="view-listing mainContent view-listing-container">
       <div className="listing-form-container">
         {console.log(itemStore)}
         <h2>Find Tech</h2>

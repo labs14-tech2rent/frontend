@@ -22,6 +22,10 @@
     & h3 {
       font-weight: 700;
     }
+
+    & a img {
+      margin-right: 37px;
+    }
   }
 
   &-right {
@@ -180,6 +184,15 @@
   .navbar-right {
     width: 60%;
   }
+
+  .navbar-searched__img {
+    margin-right: 13px;
+  }
+
+  .navbar-searched__name {
+    width: 63%;
+  }
+
 }
 
 @media (max-width: 801px) {

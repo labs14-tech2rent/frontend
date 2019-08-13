@@ -13,6 +13,7 @@ import Register from './components/Register/Register';
 import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
+import Listing from './components/Listing/Listing';
 
 const App = props => {
   const submit = useSelector(store => store.submit);
@@ -31,6 +32,7 @@ const App = props => {
           <Route {...props} exact path="/profile" component={Profile} />
           <Route path="/create-listing" component={CreateListing} />
           <Route exact path="/register" component={Register} />
+          <Route path="/listing/:id" component={Listing} />
         </Switch>
         <footer>
           <Footer />

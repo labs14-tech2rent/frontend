@@ -14,12 +14,13 @@ import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
 import ViewListing from './components/ViewListing/ViewListing'
+import EditProfile from './components/EditProfile/EditProfile'
 const App = props => {
   const submit = useSelector(store => store.submit);
   
       return (
       <div>
-        <BrowserRouter>
+      
           <header>
             <NavBar {...props} />
           </header>
@@ -36,11 +37,12 @@ const App = props => {
             <Route path="/create-listing" component={CreateListing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/view-listing" component={ViewListing} />
+            <Route exact path="/edit-profile" component={EditProfile} />
           </Switch>
           <footer>
             <Footer />
           </footer>
-        </BrowserRouter>
+        
       </div>
    
       )}

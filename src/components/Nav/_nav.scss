@@ -126,13 +126,15 @@
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
-    .dropdown {
+    .dropdown-container {
         display: flex;
         flex-direction: column;
         border: 2px solid black;
         width: fit-content;
+        height: fit-content;
         padding: 1rem;
         float: right;
+        user-select: none;
  }
  
 }
@@ -154,6 +156,10 @@
 @media (max-width: 801px) {
   .navbar-link {
     font-size: 1.5rem;
+    &__dropdown {
+      font-size: 1rem;
+      border: none;
+    }
   }
 }
 

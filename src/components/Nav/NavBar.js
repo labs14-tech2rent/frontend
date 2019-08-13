@@ -1,31 +1,31 @@
 // src/components/NavBar.js
 import { library } from '@fortawesome/fontawesome-svg-core'
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
-
+//mport {useDispatch, useSelector} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import logout2 from '../../Logout';
 import logo from '../../Images/t2rlogo.png';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle as farFaUserCircle} from '@fortawesome/free-regular-svg-icons';
-
+import { getPhotos,  } from '../../actions';
 const NavBar = props => {
+ 
+  const [item, setItem] = useState({
+    item: ''
+  });
+
   
 
   const [menuOpened, setMenuOpened] = useState(false);
-
+  const dispatch = useDispatch()
   const auth = useSelector(store => store.submit.auth);
   // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const logout = e => {
     e.preventDefault();
-    // localStorage.removeItem('access_token');
-    // localStorage.removeItem('id_token');
-    // localStorage.removeItem('expires_at');
-    // localStorage.removeItem('user_id');
-    //window.location.pathname = ' https://localhost:3000/v2/logout';
-   // window.location.pathname = '/';
+ 
     logout2()
   
     localStorage.removeItem('access_token');
@@ -36,6 +36,22 @@ const NavBar = props => {
     
     //window.location.pathname = ' https://localhost:3000/v2/logout';
     
+  };
+
+  const handleChange = e => {
+    setItem({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const findItem = e => {
+    e.preventDefault();
+    //console.log('submit')
+    //console.log(item.item)
+    //dispatch(getPhotos(item.item));
+    localStorage.setItem('itemQuery', item.item)
+    props.history.push('/view-listing')
+    //console.log(item.item)
   };
 
   
@@ -52,11 +68,15 @@ const NavBar = props => {
           <div className="navbar-input-wrapper">  
           
            <FontAwesomeIcon className="navbar-icon" icon={faSearch} />
-              <input
+             <form onSubmit={findItem}> <input
               className="navbar-input"
               type="text"
+              name="item"
               placeholder='Try "Nikon"'
-            />
+              value={item.item}
+              onChange={handleChange}
+              
+            /></form>
           </div>
           <div className="navbar-right">
             <NavLink exact to="/" className="navbar-link">
@@ -142,9 +162,10 @@ const NavBar = props => {
         </div>
 
         <div className="profile-dropdown">
-            <div className="dropdown" >
-              <NavLink to="/account-settings">Account Settings</NavLink>
-              <NavLink to="edit-profile">Edit Profile</NavLink>
+            <div className="dropdown-container" >
+              <NavLink className="navbar-link dropdown" to="/account-settings">Account Settings</NavLink>
+              <NavLink className="navbar-link dropdown" to="/edit-profile">Edit Profile</NavLink>
+              <NavLink className="navbar-link dropdown" to="/profile">Go To Profile</NavLink>
             </div>
               
         </div>

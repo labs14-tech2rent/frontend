@@ -5,6 +5,7 @@ export const GET_PHOTOS_START = 'GET_PHOTOS_START';
 export const GET_PHOTOS_SUCCESS = 'GET_PHOTOS_SUCCESS';
 export const GET_PHOTOS_FAIL = 'GET_PHOTOS_FAIL';
 
+
 export const getPhotos = item => dispatch => {
     //console.log('hello')
   

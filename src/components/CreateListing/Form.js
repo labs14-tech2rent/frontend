@@ -56,7 +56,6 @@ const Form = props => (
                 type="text"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                
                 className={`long-input ${
                   errors.condition && touched.condition ? 'input-error' : ''
                 } ${
@@ -77,7 +76,7 @@ const Form = props => (
               </div>
             </div>
             <div className="description-div">
-              <span>Description{' '}</span>
+              <span>Description </span>
               <textarea
                 name="description"
                 value={values.description}

@@ -203,6 +203,9 @@ const NavBar = props => {
           <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
             Sign Up
           </NavLink>
+          <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
+            Account
+          </NavLink>
           <NavLink className="navlink-mobile" onClick={auth.login} to="#">
             Help
           </NavLink>

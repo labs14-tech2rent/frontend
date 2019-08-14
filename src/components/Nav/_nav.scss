@@ -134,6 +134,9 @@
     &__user {
       font-size: 2rem;
       cursor: pointer;
+      @media (max-width: 700px) {
+        display: none;
+      }
     }
   }
 
@@ -296,7 +299,7 @@
   }
 
   .closed {
-    transform: translateY(-152px);
+    transform: translateY(-190px);
     transition: all 0.5s;
   }
 

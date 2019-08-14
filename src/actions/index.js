@@ -23,8 +23,8 @@ export {
   CREATE_LISTING_FAILED,
   CREATE_LISTING_START,
   CREATE_LISTING_SUCCESS,
-  createListing,
-} from './Items/createItem';
+  createItem,
+} from './Items/CRUD/createItem';
 
 export {
   GET_USER_START,

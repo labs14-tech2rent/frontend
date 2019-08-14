@@ -2,7 +2,7 @@ import {
   CREATE_LISTING_SUCCESS,
   CREATE_LISTING_START,
   CREATE_LISTING_FAILED,
-} from '../../actions/Items/createItem';
+} from '../../actions/Items/CRUD/createItem';
 
 const initalState = {
   creatingListing: false,

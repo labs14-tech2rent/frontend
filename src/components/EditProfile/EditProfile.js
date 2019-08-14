@@ -7,7 +7,7 @@ import Rating from '../Owner/Rating';
 import camera from '../../Images/Bitmap-1.png';
 import vr from '../../Images/Bitmap-8.png';
 import cameratwo from '../../Images/Bitmap-10.png';
-import blankpic from '../../Images/blankpic.jpg';
+import blankpic from '../../Images/blankprofile.jpg';
 
 const EditProfile = props => {
   // console.log(credentials.user)
@@ -31,12 +31,17 @@ const EditProfile = props => {
   return (
     <div className="profile-content mainContent">
       <div className="user-info">
-        <img
-          className="profile-pic"
-          onClick={() => setEditPic(!editPic)}
-          src={blankpic}
-          alt=""
-        />
+        <div className="image-container">
+          <div className="image-overlay">
+            <p>Change Profile Picture</p>
+          </div>
+          <img
+            className="profile-pic"
+            onClick={() => setEditPic(!editPic)}
+            src={blankpic}
+            alt=""
+          />
+        </div>
         {editName ? (
           <form>
             <input

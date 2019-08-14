@@ -55,7 +55,9 @@ const ViewListing = props => {
 
       <div className="listings list1">
         {itemStores === []
-          ? itemStore.map(item => (
+          ? // if items exists in item database, map over them and display... else show nothing
+            // this conditional is needed as items are not mounted when page first loads
+            itemStore.map(item => (
               <div>
                 <h3>{item.category}</h3>
                 <img src={item.picture} alt="item picture" title="item photo" />
@@ -63,7 +65,10 @@ const ViewListing = props => {
             ))
           : null}
         {itemStore
-          ? itemStore.map(photo => (
+          ? // if items exists in item database, map over them and display... else show nothing
+            // this conditional is needed as items are not mounted when page first loads
+            // //***same as  above... connected to flickrAPI for test data/
+            itemStore.map(photo => (
               <div>
                 <h3>{photo.title}</h3>
                 <img

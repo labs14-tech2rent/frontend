@@ -153,8 +153,10 @@ const NavBar = props => {
               Help
             </NavLink>
           </div>
-              
+            
+          
           {localStorage.getItem('access_token') !== null &&
+          //if user is logged in and has all tokens, show the profile user icon, else show nothing
             localStorage.getItem('id_token') !== null &&
             localStorage.getItem('expires_at') !== null &&
             localStorage.getItem('user_id') !== null ?
@@ -169,6 +171,8 @@ const NavBar = props => {
             <div id="nav-icon"
           
             onClick={() => {
+              //selects all classes with mainContent and toggles the slidedown class when hamburger menu is clicked
+              //this is for animations on mobile view
               const mainContent = document.querySelectorAll('.mainContent')
               for (let i=0; i < mainContent.length; i++) {
                 mainContent[i].classList.toggle('slideDown')

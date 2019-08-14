@@ -15,7 +15,7 @@ export const getPhotos = item => dispatch => {
         localStorage.getItem('itemQuery') !== null
           ? localStorage.getItem('itemQuery')
           : item
-      }&per_page=20&format=json&nojsoncallback=1`
+      }&per_page=60&format=json&nojsoncallback=1`
     )
     .then(res => {
       dispatch({ type: GET_PHOTOS_SUCCESS, payload: res.data.photos.photo });

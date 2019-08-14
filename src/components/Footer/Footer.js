@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => (
-  
+  <footer className="footer mainContent">
     <div className="footer-content">
       <div className="footer-content__left">
         <div className="left-column">
@@ -63,7 +63,9 @@ const Footer = () => (
 
       <div className="footer-content__right">
         <p className="footer-cta">Don't Lose Out</p>
-        <a  href="#" className="footer-link footer-link__no-hover">Join Tech 2 Rent's Mailing List</a>
+        <a href="#" className="footer-link footer-link__no-hover">
+          Join Tech 2 Rent's Mailing List
+        </a>
         <div className="footer-input-wrapper">
           <FontAwesomeIcon className="footer-icon" icon={faEnvelope} />
           <input
@@ -73,28 +75,17 @@ const Footer = () => (
           />
         </div>
         <div className="footer-content__three">
-          <button className="footer-button__dark">
-            Subscribe
-          </button>
+          <button className="footer-button__dark">Subscribe</button>
           <div className="footer-brands-wrapper">
-            <FontAwesomeIcon
-                className="footer-brand"
-                icon={faFacebook}
-            />
-            <FontAwesomeIcon
-                className="footer-brand"
-                icon={faTwitter}
-            />
-            <FontAwesomeIcon
-                className="footer-brand"
-                icon={faGoogle}
-            />
+            <FontAwesomeIcon className="footer-brand" icon={faFacebook} />
+            <FontAwesomeIcon className="footer-brand" icon={faTwitter} />
+            <FontAwesomeIcon className="footer-brand" icon={faGoogle} />
             <FontAwesomeIcon className="footer-brand" icon={faInstagram} />
           </div>
         </div>
       </div>
     </div>
- 
+  </footer>
 );
 
 export default Footer;

@@ -24,32 +24,34 @@ const Login = props => {
       );
       const filtered = result.data.filter(item => item.name.toLowerCase().includes(filter));
       console.log(filtered);
+      setItems(filtered);
+
     };
 
     fetchData();
   }, [filter]);
 
-  //console.log('test', filter);
+  function handleKeyPress(e) {
+    if(e.key === 'Enter'){
+      
+      // props.history.push({
+      //   pathname: '/view-listing',
+      //   state: { items: items }
+      // })
+      
+    }
+  }
 
   const auth = useSelector(store => store.submit.auth);
   const content = ( //  conditionally renders content based on login form or sign up form state.
     <div className="App mainContent">
       <div className="section-1">
       <h2>Welcome back to the community.</h2>
-        <div className="login-input-wrapper">  
-          <FontAwesomeIcon className="login-icon" icon={faSearch} />
-          <input
-            className="login-input"
-            type="text"
-            placeholder='Try "Nikon"'
-            onChange={e => setFilter(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="section-2">
         <button onClick={auth.login} className="login-button">
           Log in
         </button>
+      </div>
+      <div className="section-2">
         <p>
           By signing up, I agree to Tech2Rent{' '}
           <a className="privtermslink" href="#">

@@ -22,12 +22,16 @@
     & h3 {
       font-weight: 700;
     }
+
+    & a img {
+      margin-right: 37px;
+    }
   }
 
   &-right {
     display: flex;
     width: 60%;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   &-logo {
@@ -53,6 +57,71 @@
     display: inline-block;
     width: 20%;
     font-size: 1.8rem;
+  }
+
+  &-searched {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    max-width: 500px;
+
+    &__content {
+      width: 100%;
+      display: flex;
+      padding-bottom: 10px;
+      padding-top: 10px;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #b2b2b2;
+      }
+    }
+
+    &__img {
+      width: 75px;
+      height: 70px;
+      border-radius: 3px;
+      margin-left: 8px;
+    }
+
+    &__text {
+      width: 100%;
+    }
+
+    &__name {
+      font-size: 1.6rem;
+      color: #3f3f3f;
+      max-height: 50px;
+      width: 70%;
+      max-width: 500px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+
+    &__location {
+      color: #b2b2b2;
+      margin-left: 8px;
+      margin-right: 8px;
+      font-size: 1.5rem;
+    }
+
+    &__notfound {
+      margin: 10px;
+      font-size: 1.6rem;
+      color: #3f3f3f;
+    }
+
+    &__more {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
   }
 
   &-icon {
@@ -183,6 +252,14 @@
   .navbar-right {
     width: 60%;
   }
+
+  .navbar-searched__img {
+    margin-right: 13px;
+  }
+
+  .navbar-searched__name {
+    width: 63%;
+  }
 }
 
 @media (max-width: 801px) {
@@ -195,13 +272,7 @@
   }
 }
 
-@media (max-width: 580px) {
-  .navbar-right {
-    width: 90%;
-  }
-}
-
-@media (max-width: 550px) {
+@media (max-width: 700px) {
   .navbar-content {
     justify-content: space-between;
     align-items: center;
@@ -241,6 +312,22 @@
     padding: 8px 0px;
     color: $light-gray;
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .navbar-right {
+    width: 90%;
+  }
+}
+
+@media (max-width: 525px) {
+  .navbar-input-wrapper {
+    width: 75%;
+  }
+
+  .navbar-searched__text {
+    width: 72%;
   }
 }
 

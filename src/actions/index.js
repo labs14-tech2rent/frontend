@@ -24,7 +24,7 @@ export {
   CREATE_LISTING_START,
   CREATE_LISTING_SUCCESS,
   createListing,
-} from './Listings/createListing';
+} from './Items/createItem';
 
 export {
   GET_USER_START,

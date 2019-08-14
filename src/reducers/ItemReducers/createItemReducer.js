@@ -2,7 +2,7 @@ import {
   CREATE_LISTING_SUCCESS,
   CREATE_LISTING_START,
   CREATE_LISTING_FAILED,
-} from '../../actions/Listings/createListing';
+} from '../../actions/Items/createItem';
 
 const initalState = {
   creatingListing: false,
@@ -10,7 +10,7 @@ const initalState = {
   error: '',
 };
 
-export const createListReducer = (state = initalState, action) => {
+export const createItemReducer = (state = initalState, action) => {
   switch (action.type) {
     case CREATE_LISTING_START:
       return {

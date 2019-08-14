@@ -23,9 +23,7 @@ const CreateListing = () => {
       return store.getUser.user[0].id;
     }
   });
-  const isSubmitting = useSelector(
-    store => store.createListing.creatingListing
-  );
+  const isSubmitting = useSelector(store => store.createItem.creatingItem);
 
   // react state
   const [name] = useState('');

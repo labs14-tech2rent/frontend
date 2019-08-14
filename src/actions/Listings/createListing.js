@@ -7,10 +7,7 @@ export const CREATE_LISTING_FAILED = 'CREATE_LISTING_FAILED';
 export const createListing = (id, listing) => dispatch => {
   dispatch({ type: CREATE_LISTING_START });
   return axios
-    .post(
-      `https://labstech2rentstaging.herokuapp.com/api/users/${id}/items`,
-      listing
-    )
+    .post(`https://labstech2rent.herokuapp.com/api/users/${id}/items`, listing)
     .then(res => {
       dispatch({ type: CREATE_LISTING_SUCCESS, payload: res.data });
     })

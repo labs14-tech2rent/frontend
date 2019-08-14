@@ -14,46 +14,37 @@ import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
 import ViewListing from './components/ViewListing/ViewListing';
+import TestingActions from './components/TestingActions';
 
 const App = props => {
   const submit = useSelector(store => store.submit);
 
-  
-      return (
-      <div className="app-wrapper">
-        <BrowserRouter>
-          <header>
-            <NavBar {...props} />
-          </header>
-          <Switch>
-      
-            <Route
-              exact
-              path='/'
-              render={(props) => <Login {...props} />}
-            />
+  return (
+    <div className="app-wrapper">
+      <BrowserRouter>
+        <header>
+          <NavBar {...props} />
+        </header>
+        <Switch>
+          <Route exact path="/" render={props => <Login {...props} />} />
 
-            <Route exact path="/v2/logout" {...props} component={Login} />
-            <Route exact path="/callback" component={Callback} />
-            <PrivateRoute
-              auth={submit}
-              path="/home"
-              component={HomePage}
-            />
-            <Route  {...props} exact path="/profile" component={Profile} />
-            <Route path="/create-listing" component={CreateListing} />
-            <Route exact path="/register" component={Register} />
-            <Route
-              exact
-              path='/view-listing'
-              render={(props) => <ViewListing {...props} />}
-            />
-          </Switch>
-            <Footer />
-        </BrowserRouter>
-      </div>
-   
-      )
+          <Route exact path="/v2/logout" {...props} component={Login} />
+          <Route exact path="/callback" component={Callback} />
+          <PrivateRoute auth={submit} path="/home" component={HomePage} />
+          <Route {...props} exact path="/profile" component={Profile} />
+          <Route path="/create-listing" component={CreateListing} />
+          <Route exact path="/register" component={Register} />
+          <Route
+            exact
+            path="/view-listing"
+            render={props => <ViewListing {...props} />}
+          />
+          <Route path="/testing" component={TestingActions} />
+        </Switch>
+        <Footer />
+      </BrowserRouter>
+    </div>
+  );
 };
 
 // grabbing login and signup from actions file... mapping the state to the props

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { submitReducer } from './submitReducer';
-import { createListReducer } from './createListReducer';
-import { getUserIdReducer } from './getUserIdReducer';
+import { submitReducer } from './UsersReducers/submitReducer';
+import { createListReducer } from './ListingReducers/createListReducer';
+import { getUserIdReducer } from './UsersReducers/getUserIdReducer';
 import Auth from '../Auth';
 
 const auth = new Auth();

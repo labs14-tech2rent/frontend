@@ -112,6 +112,7 @@
 .list1 {
   overflow-y: scroll;
   height: 100vh;
+  -webkit-overflow-scrolling: touch;
 }
 .list1::-webkit-scrollbar-track {
   border-radius: 10px;

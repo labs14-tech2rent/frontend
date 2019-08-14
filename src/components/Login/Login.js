@@ -8,8 +8,11 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import home_phone from '../../Images/home_phone.png';
+import home_googleplay from '../../Images/home_googleplay.png';
 
 library.add(faSearch);
+
 
 const Login = props => {
 
@@ -51,6 +54,30 @@ const Login = props => {
           Log in
         </button>
       </div>
+
+      <div className="section-3">
+        <div className="section-3__content">
+          <div className="section-3__content__left">
+              <h2 className="section-3__heading">
+                <span>
+                  <h4 className="section-3__heading__first">TWO</h4>
+                  <h4 className="section-3__heading__second">TO A COIN.</h4>
+                </span>
+                <span>
+                  <h4 className="section-3__heading__third">SIDES</h4>
+                  <h4 className="section-3__heading__fourth">SIDES</h4>
+                </span>
+              </h2>
+              <p className="section-3__heading__fifth">Renters get high end tech shipped to them so their opportunities are endless.</p>
+              <p className="section-3__heading__fifth">Owners equipment can be assured that vetted users are in possesion of their belongings and can make money from the tech rent.</p>
+          </div>
+          <div className="section-3__content__right">
+              <img src={home_phone} alt="Picture of mobile phone" className="section-3__content__right__img1"/>
+              <img src={home_googleplay} alt="Googleplay logo"/>
+          </div>
+        </div>
+      </div>
+
       <div className="section-2">
         <p>
           By signing up, I agree to Tech2Rent{' '}

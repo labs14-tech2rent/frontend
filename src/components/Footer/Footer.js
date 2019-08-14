@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => (
-  <footer className="footer">
+  <footer className="footer mainContent">
     <div className="footer-content">
       <div className="footer-content__left">
         <div className="left-column">

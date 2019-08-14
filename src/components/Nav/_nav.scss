@@ -184,7 +184,8 @@
 }
 
 .profile-dropdown {
-  display: none;
+  display: flex;
+  transform: translateY(-119px);
   flex-direction: row;
   background-color: border;
   color: black;
@@ -197,6 +198,7 @@
   margin: 0 auto;
   position: absolute;
   right: 0px;
+  transition: all 0.3s;
   .dropdown-container {
     display: flex;
     flex-direction: column;
@@ -217,7 +219,7 @@
 }
 
 .dropdown-open {
-  display: flex;
+  transform: translateY(0px);
 }
 
 .navlinks-mobile {

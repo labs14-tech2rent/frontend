@@ -1,12 +1,21 @@
 
 .login-button {
-  background-color: #000;
-  margin: 3rem auto;
-  color: #fff;
-  border-radius: 5px;
+  border-radius: 4px;
   font-weight: 700;
-  padding: 2rem 8rem;
+  color: rgba(255, 255, 255, 0.82);
+  background-color: #262525;
+  border: none;
   cursor: pointer;
+  padding: 13px 75px;
+  outline: none;
+  font-size: 2rem;
+  margin-top: 75px;
+  outline: none;
+
+  &:hover {
+    color: #262525;
+    background: rgba(255, 255, 255, 0.82);
+  }
   
 }
 
@@ -20,7 +29,6 @@
   background-size: cover;
   height: 63rem;
   width: 100%;
-  max-width: 1024px;
   align-items: center;
   margin: 0 auto;
  & ::placeholder {
@@ -38,13 +46,12 @@
 }
 
 .section-2 {
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    & p {
-      text-align: center;
-    }
+
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 1.6rem;
+
 }
 
   h2 {

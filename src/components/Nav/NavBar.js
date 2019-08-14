@@ -113,7 +113,12 @@ const NavBar = props => {
                   )
               })}
 
-              {displayed.length > 0 && displayed[0].name !== 'No match found' && <h4 className="navbar-searched__more" onClick={auth.login}>View More Listings</h4>}
+              {displayed.length > 0 && displayed[0].name !== 'No match found' && 
+              <h4 className="navbar-searched__more">
+                <span onClick={auth.login}>View More Listings</span>
+                <span className="navbar-searched__more__close" onClick={() => setDisplayed([])}>Close</span>
+              </h4>}
+
 
               {
                 displayed.length > 0 && displayed[0].name === 'No match found' ? <div className="navbar-searched__notfound">{displayed[0].name}</div> : ''

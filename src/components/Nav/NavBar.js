@@ -211,7 +211,14 @@ const NavBar = props => {
           </NavLink>
         </div>
       
-      
+      <div className="profile-dropdown">
+        <div className="dropdown-container" >
+          <NavLink className="navbar-link dropdown" to="/account-settings">Account Settings</NavLink>
+          <NavLink className="navbar-link dropdown" to="/edit-profile">Edit Profile</NavLink>
+          <NavLink className="navbar-link dropdown" to="/profile">Go To Profile</NavLink>
+        </div>
+
+      </div>
     </div>
   );
 };

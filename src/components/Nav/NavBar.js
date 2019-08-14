@@ -19,17 +19,13 @@ const NavBar = props => {
   const [filter, setFilter] = useState('')
   const [items, setItems] = useState([]);
   const [displayed, setDisplayed] = useState([]);
+ 
 
   const auth = useSelector(store => store.submit.auth);
   // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const logout = e => {
     e.preventDefault();
-    // localStorage.removeItem('access_token');
-    // localStorage.removeItem('id_token');
-    // localStorage.removeItem('expires_at');
-    // localStorage.removeItem('user_id');
-    //window.location.pathname = ' https://localhost:3000/v2/logout';
-   // window.location.pathname = '/';
+   
     logout2()
   
     localStorage.removeItem('access_token');
@@ -38,7 +34,7 @@ const NavBar = props => {
     localStorage.removeItem('user_id');
     localStorage.removeItem('targetUrl');
     
-    //window.location.pathname = ' https://localhost:3000/v2/logout';
+    window.location.pathname = ' https://localhost:3000/v2/logout';
     
   };
 
@@ -98,7 +94,12 @@ const NavBar = props => {
               className="navbar-input"
               type="text"
               placeholder='Try "Nikon"'
-              onChange={e => setFilter(e.target.value)}
+              name="item"
+              //value={item.item}
+              onChange={ (e) => {
+                setFilter(e.target.value)
+                
+                }}
               onKeyPress={(e) => handleKeyPress(e)}
             />
             <div className="navbar-searched">
@@ -114,7 +115,7 @@ const NavBar = props => {
                   )
               })}
 
-              {displayed.length > 0 && displayed[0].name !== 'No match found' && <h4 className="navbar-searched__more" onClick={auth.login}>View More Listings</h4>}
+              {displayed.length > 0 && displayed[0].name !== 'No match found' && <h4 className="navbar-searched__more" onClick={()=> props.history.push('/view-listing')}>View More Listings</h4>}
 
               {
                 displayed.length > 0 && displayed[0].name === 'No match found' ? <div className="navbar-searched__notfound">{displayed[0].name}</div> : ''

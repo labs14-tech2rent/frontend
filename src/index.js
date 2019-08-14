@@ -21,7 +21,7 @@ const store = createStore(
 const AppWithRouter = withRouter(App);
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <Router history={history} forceRefresh={true}>
       <AppWithRouter />
     </Router>
   </Provider>,

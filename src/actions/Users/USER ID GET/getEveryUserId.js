@@ -1,4 +1,4 @@
-import axiosWithAuth from '../../axiosWithAuth';
+import axiosWithAuth from '../../../axiosWithAuth';
 
 export const SUBMIT_START = 'SUBMIT_START';
 export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';

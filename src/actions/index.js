@@ -4,14 +4,14 @@ export {
   ADD_USER_FAIL,
   ADD_USER_SUCCESS,
   registerUser,
-} from './Users/registerUser';
+} from './Users/CRUD/registerUser';
 
 export {
   SUBMIT_START,
   SUBMIT_FAIL,
   SUBMIT_SUCCESS,
   getEveryUserId,
-} from './Users/getEveryUserId.js';
+} from './Users/USER ID GET/getEveryUserId.js';
 
 export {
   RANDOM_USER,
@@ -25,7 +25,7 @@ export {
   GET_USER_SUCCESS,
   GET_USER_FAIL,
   getUserId,
-} from './Users/getUserId';
+} from './Users/USER ID GET/getIdOfUser';
 
 // Item CRUD Methods
 export {

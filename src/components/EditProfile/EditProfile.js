@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  CountryDropdown,
-  RegionDropdown,
-  CountryRegionData,
-} from 'react-country-region-selector';
+
 import StateSelect from './StateSelect';
 import Rating from '../Owner/Rating';
 

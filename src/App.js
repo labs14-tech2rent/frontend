@@ -1,7 +1,9 @@
+/* eslint-disable no-shadow */
+
 import React from 'react';
 
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import { useSelector, connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';

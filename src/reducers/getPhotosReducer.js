@@ -1,4 +1,8 @@
-import { GET_PHOTOS_START, GET_PHOTOS_SUCCESS, GET_PHOTOS_FAIL } from '../actions';
+import {
+  GET_PHOTOS_START,
+  GET_PHOTOS_SUCCESS,
+  GET_PHOTOS_FAIL,
+} from '../actions';
 
 const initialState = {
   photos: [],

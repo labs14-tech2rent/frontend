@@ -4,11 +4,13 @@ export const GET_USER_ITEMS_START = 'GET_USER_ITEMS_START';
 export const GET_USER_ITEMS_SUCCESS = 'GET_USER_ITEMS_SUCCESS';
 export const GET_USER_ITEMS_FAIL = 'GET_USER_ITEMS_FAIL';
 
-export const getUserItems = id => dispatch => {
+// THIS IS ALSO USED TO GET USER BY ID
+
+export const getUserItems = userId => dispatch => {
   dispatch({ type: GET_USER_ITEMS_START });
 
   axios
-    .get(`https://labstech2rentstaging.herokuapp.com/api/users/${id}`)
+    .get(`https://labstech2rentstaging.herokuapp.com/api/users/${userId}`)
     .then(res => {
       dispatch({ type: GET_USER_ITEMS_SUCCESS, payload: res });
     })

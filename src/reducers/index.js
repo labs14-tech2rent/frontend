@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { submitReducer } from './UsersReducers/submitReducer';
+import { submitReducer } from './UsersReducers/getEveryUserIdReducer';
 import { createItemReducer } from './ItemReducers/createItemReducer';
 import { getUserIdReducer } from './UsersReducers/getUserIdReducer';
 import Auth from '../Auth';

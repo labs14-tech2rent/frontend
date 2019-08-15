@@ -1,7 +1,9 @@
+/* eslint-disable no-shadow */
+
 import React from 'react';
 
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import { useSelector, connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
@@ -14,7 +16,6 @@ import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
 import ViewListing from './components/ViewListing/ViewListing';
-import TestingActions from './components/TestingActions';
 
 const App = props => {
   const submit = useSelector(store => store.submit);
@@ -39,7 +40,6 @@ const App = props => {
             path="/view-listing"
             render={props => <ViewListing {...props} />}
           />
-          <Route path="/testing" component={TestingActions} />
         </Switch>
         <Footer />
       </BrowserRouter>

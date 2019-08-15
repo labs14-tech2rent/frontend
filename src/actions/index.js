@@ -1,4 +1,28 @@
 // User Actions
+
+// GET METHODS
+export {
+  GET_ALL_USER_ID_START,
+  GET_ALL_USER_ID_SUCCESS,
+  GET_ALL_USER_ID_FAIL,
+  getAllUserId,
+} from './Users/USER ID GET/getAllUsers';
+
+export {
+  GET_USER_START,
+  GET_USER_SUCCESS,
+  GET_USER_FAIL,
+  getUserId,
+} from './Users/USER ID GET/getIdOfUser';
+
+export {
+  SUBMIT_START,
+  SUBMIT_FAIL,
+  SUBMIT_SUCCESS,
+  getEveryUserId,
+} from './Users/USER ID GET/getEveryUserId.js';
+
+// CRUD METHOD
 export {
   ADD_USER_START,
   ADD_USER_FAIL,
@@ -13,26 +37,13 @@ export {
   editUser,
 } from './Users/CRUD/editUser';
 
-export {
-  SUBMIT_START,
-  SUBMIT_FAIL,
-  SUBMIT_SUCCESS,
-  getEveryUserId,
-} from './Users/USER ID GET/getEveryUserId.js';
-
+// OTHER
 export {
   RANDOM_USER,
   RANDOM_FAIL,
   RANDOM_SUCCESS,
   random,
 } from './Users/randomUsers';
-
-export {
-  GET_USER_START,
-  GET_USER_SUCCESS,
-  GET_USER_FAIL,
-  getUserId,
-} from './Users/USER ID GET/getIdOfUser';
 
 // Item CRUD Methods
 export {

@@ -1,6 +1,11 @@
+.nav-container {
+  height: 11rem;
+}
+
 .navbar {
   z-index: 1;
   background-color: #fff;
+  padding: 1rem !important;
   &-content {
     width: 100%;
     max-width: 1024px;
@@ -193,24 +198,25 @@
   padding: 0px 29px;
   justify-content: flex-end;
   height: 7rem;
-  width: fit-content;
+
   max-width: 1024px;
   margin: 0 auto;
-  position: absolute;
-  right: 0px;
+  @media (max-width: 700px) {
+    display: none;
+  }
   transition: all 0.3s;
   .dropdown-container {
     display: flex;
     flex-direction: column;
     border: 2px solid black;
-    width: fit-content;
     height: fit-content;
-    padding: 2rem;
+    padding: 1rem;
     float: right;
     user-select: none;
     background-color: #4a4a4a;
     & a {
       color: #fff;
+      font-size: 1.2rem;
       &:hover {
         color: #8d87ff;
       }

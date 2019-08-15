@@ -80,7 +80,7 @@ const NavBar = props => {
 
   
   return (
-    <div>
+    <div className="nav-container">
       <nav className="navbar">
         <div className="navbar-content">
           <div className="navbar-left">

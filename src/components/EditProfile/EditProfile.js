@@ -16,8 +16,11 @@ const EditProfile = props => {
   const [editLocation, setEditLocation] = useState(false);
   const [userInfo, setUserInfo] = useState({
     name: 'Peter Stone',
-    pic: '',
-    location: 'Seattle, WA',
+    profile_picture: '',
+    email: '',
+    city: '',
+    state: '',
+    zip: '',
   });
 
   const handleChange = e => {
@@ -76,7 +79,19 @@ const EditProfile = props => {
             <input
               type="text"
               onChange={handleChange}
-              name="location"
+              name="city"
+              value={userInfo.location}
+            />
+            <input
+              type="text"
+              onChange={handleChange}
+              name="state"
+              value={userInfo.location}
+            />
+            <input
+              type="text"
+              onChange={handleChange}
+              name="zip"
               value={userInfo.location}
             />
             <button

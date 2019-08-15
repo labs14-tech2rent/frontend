@@ -22,6 +22,13 @@ export {
   getEveryUserId,
 } from './Users/USER ID GET/getEveryUserId.js';
 
+export {
+  GET_USER_REVIEWS_START,
+  GET_USER_REVIEWS_SUCCESS,
+  GET_USER_REVIEWS_FAIL,
+  getUserReviews,
+} from './Users/USER ID GET/getUserReviews';
+
 // CRUD METHOD
 export {
   ADD_USER_START,

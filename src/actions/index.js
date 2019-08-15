@@ -10,8 +10,8 @@ export {
   SUBMIT_START,
   SUBMIT_FAIL,
   SUBMIT_SUCCESS,
-  getEveryId,
-} from './Users/getEveryId.js';
+  getEveryUserId,
+} from './Users/getEveryUserId.js';
 
 export {
   RANDOM_USER,

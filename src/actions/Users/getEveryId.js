@@ -4,7 +4,7 @@ export const SUBMIT_START = 'SUBMIT_START';
 export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
 export const SUBMIT_FAIL = 'SUBMIT_FAIL';
 
-export const getData = () => dispatch => {
+export const getEveryId = () => dispatch => {
   dispatch({ type: SUBMIT_START });
 
   // token that is on payload is used and placed in the header of 'axiosWithAuth'

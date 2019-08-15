@@ -3,15 +3,15 @@ export {
   ADD_USER_START,
   ADD_USER_FAIL,
   ADD_USER_SUCCESS,
-  addUser,
-} from './Users/addUser';
+  registerUser,
+} from './Users/registerUser';
 
 export {
   SUBMIT_START,
   SUBMIT_FAIL,
   SUBMIT_SUCCESS,
-  getData,
-} from './Users/submit.js';
+  getEveryId,
+} from './Users/getEveryId.js';
 
 export {
   RANDOM_USER,

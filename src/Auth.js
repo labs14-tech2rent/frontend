@@ -41,7 +41,6 @@ export default class Auth {
   handleAuthentication() {
     // parses the data to be read
     this.auth0.parseHash((err, authResults) => {
-      console.log(authResults);
       // if results are returned with an access token and an id token
       if (authResults && authResults.accessToken && authResults.idToken) {
         // sets the expiration
@@ -59,7 +58,9 @@ export default class Auth {
         const users = [];
         // make a call to our db to retrieve users
         axios
-          .get('https://labstech2rentstaging.herokuapp.com/api/users/userIDS')
+          .get(
+            'https://labstech2rentstaging.herokuapp.com/api/users/fix/userIDS'
+          )
           .then(res => {
             // filter through data and pull out all the auth0_user_id values from their objects
             res.data.filter(res =>
@@ -79,9 +80,10 @@ export default class Auth {
               location.pathname = LOGIN_REGISTER_PAGE;
             }
           })
-          .catch(err => err);
+          .catch(err => console.log(err));
       } else if (err) {
         // if failure, reroute to the login page to try again
+        console.log('broken function');
         location.pathname = LOGIN_FAILURE_PAGE;
       }
     });

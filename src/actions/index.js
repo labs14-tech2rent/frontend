@@ -7,6 +7,13 @@ export {
 } from './Users/CRUD/registerUser';
 
 export {
+  EDIT_USER_START,
+  EDIT_USER_SUCCESS,
+  EDIT_USER_FAIL,
+  editUser,
+} from './Users/CRUD/editUser';
+
+export {
   SUBMIT_START,
   SUBMIT_FAIL,
   SUBMIT_SUCCESS,

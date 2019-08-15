@@ -232,42 +232,6 @@
   display: none;
 }
 
-// //scrollbar stylings
-// //scrollbar stylings
-// .list1::-webkit-scrollbar-thumb {
-//   height: 50px;
-// }
-// .container {
-//   display: flex;
-//   flex-direction: row;
-// }
-// .list1 {
-//   overflow-y: scroll;
-//   height: 100px;
-//   width: 100px;
-//   margin: 50px;
-// }
-// .list1::-webkit-scrollbar-track {
-//   border-radius: 10px;
-//   border: 1px solid blue;
-//   width: 50px;
-// }
-// .list1::-webkit-scrollbar {
-//   width: 50px;
-//   background-color: blue;
-//   border-radius: 10px;
-// }
-// .list1::-webkit-scrollbar-thumb {
-//   border-radius: 100px;
-//   background-color: red;
-//   border: 5px solid blue;
-//   height: 50px;
-// }
-
-// //end scrollbar styings
-
-//end scrollbar styings
-
 @media (max-width: 1000px) {
   .navbar-right {
     width: 60%;

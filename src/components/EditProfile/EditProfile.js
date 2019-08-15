@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-
+import {
+  CountryDropdown,
+  RegionDropdown,
+  CountryRegionData,
+} from 'react-country-region-selector';
+import StateSelect from './StateSelect';
 import Rating from '../Owner/Rating';
 
 // import Random from  '../../RandomUserApi'
@@ -18,9 +23,9 @@ const EditProfile = props => {
     name: 'Peter Stone',
     profile_picture: '',
     email: '',
-    city: '',
-    state: '',
-    zip: '',
+    city: 'Centralia',
+    state: 'WA',
+    zip: '98531',
   });
 
   const handleChange = e => {
@@ -29,6 +34,15 @@ const EditProfile = props => {
       ...userInfo,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleState = e => {
+    // ifg the login form state is true, then set the state of the inputs when typed to equal that of credentials
+    setUserInfo({
+      ...userInfo,
+      state: e,
+    });
+    // console.log('hello');
   };
 
   return (
@@ -80,19 +94,18 @@ const EditProfile = props => {
               type="text"
               onChange={handleChange}
               name="city"
+              placeholder={userInfo.city}
               value={userInfo.location}
             />
-            <input
-              type="text"
-              onChange={handleChange}
-              name="state"
-              value={userInfo.location}
-            />
+
+            <StateSelect state={userInfo.state} handleState={handleState} />
+
             <input
               type="text"
               onChange={handleChange}
               name="zip"
-              value={userInfo.location}
+              placeholder={userInfo.zip}
+              value={userInfo.zip}
             />
             <button
               onClick={e => {
@@ -105,7 +118,7 @@ const EditProfile = props => {
           </form>
         ) : (
           <div className="edit-content-container">
-            <p className="profile-edit-text">{userInfo.location}</p>
+            <p className="profile-edit-text">{`${userInfo.city} ${userInfo.state}, ${userInfo.zip}`}</p>
             <button onClick={() => setEditLocation(!editLocation)}>
               Edit Location
             </button>

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import axios from 'axios';
 // import {connect} from 'react-redux';
 // import {login, signUp, reset} from '../../actions';
@@ -10,40 +10,22 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import home_phone from '../../Images/home_phone.png';
 import home_googleplay from '../../Images/home_googleplay.png';
+import home_laptop from '../../Images/home_laptop.png';
+import home_legs from '../../Images/home_legs.png';
 
 library.add(faSearch);
 
 
 const Login = props => {
 
-  const [filter, setFilter] = useState('')
-  const [items, setItems] = useState([]);
+  const section4Style = {
+    backgroundImage: 'url(' + home_laptop + ')',
+  };
 
+  const section5Style = {
+    backgroundImage: 'url(' + home_legs + ')',
+  };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(
-        'https://labstech2rentstaging.herokuapp.com/api/items',
-      );
-      const filtered = result.data.filter(item => item.name.toLowerCase().includes(filter));
-      console.log(filtered);
-      setItems(filtered);
-
-    };
-
-    fetchData();
-  }, [filter]);
-
-  function handleKeyPress(e) {
-    if(e.key === 'Enter'){
-      
-      // props.history.push({
-      //   pathname: '/view-listing',
-      //   state: { items: items }
-      // })
-      
-    }
-  }
 
   const auth = useSelector(store => store.submit.auth);
   const content = ( //  conditionally renders content based on login form or sign up form state.
@@ -53,6 +35,48 @@ const Login = props => {
         <button onClick={auth.login} className="login-button">
           Log in
         </button>
+      </div>
+
+      <div className="section-5">
+
+            <div className="section-5__left">
+              Left Side
+            </div>
+
+                     
+            <div className="section-5__right" style={section5Style}>
+              <h2>Welcome</h2>
+              <h2>To</h2>
+              <h2>The</h2>
+              <h2>Community</h2>
+            </div>
+      </div>
+
+      <div className="section-4" style={section4Style}>
+          <div className="section-3__content section-4__content">
+            <div className="section-4__left">
+              <div>
+                <h2>Search</h2>
+                <p>Large directory of High end technology.</p>
+              </div>
+
+              <div>
+                <h2>Book</h2>
+                <p>Large directory of High end technology.</p>  
+              </div>
+
+              <div>
+                <h2>Ship</h2>
+                <p>Large directory of High end technology.</p>  
+              </div>
+            </div>
+
+            <div className="section-4__right">
+              <h2>It's Simple.</h2>
+              <h2>We'll Prove it.</h2>
+              <p>We are the platform that helps everyone capitalize on opportunity. An apportunity to create, an opportunity to share, and opportunity to grow. </p>
+            </div> 
+          </div> 
       </div>
 
       <div className="section-3">

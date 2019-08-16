@@ -49,7 +49,8 @@ const Form = props => (
         <form>
           {/* conditional render for image preview, will change this later on.  */}
           <div className="left-side">
-            <FileUpload name={values.name}></FileUpload>
+            <FileUpload setPicture={props.listing.setPicture}></FileUpload>
+            {console.log(props.listing.picture)}
             <div className="condition">
               Condition <br />
               <select

@@ -10,7 +10,7 @@ import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
 import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
-import EditProfilePage from './components/EditProfile/EditProfilePage';
+import EditProfile from './components/EditProfile/EditProfile';
 import Register from './components/Register/Register';
 
 import NavBar from './components/Nav/NavBar';
@@ -38,7 +38,7 @@ const App = props => {
             {...props}
             exact
             path="/edit-profile"
-            component={EditProfilePage}
+            component={EditProfile}
           />
           <Route path="/create-listing" component={CreateListing} />
           <Route exact path="/register" component={Register} />

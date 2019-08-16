@@ -4,7 +4,8 @@ import { Formik, Field } from 'formik';
 import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
 import { validationSchema } from './yupSchema';
-import Basic from './NewImagePreview';
+
+import FileUpload from './FileUploader';
 
 const Form = props => (
   <Formik
@@ -44,10 +45,11 @@ const Form = props => (
   >
     {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
       <div className="form-wrapper">
+        {console.log(values.name)}
         <form>
           {/* conditional render for image preview, will change this later on.  */}
           <div className="left-side">
-            <Basic />
+            <FileUpload name={values.name}></FileUpload>
             <div className="condition">
               Condition <br />
               <select
@@ -56,7 +58,6 @@ const Form = props => (
                 type="text"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                
                 className={`long-input ${
                   errors.condition && touched.condition ? 'input-error' : ''
                 } ${
@@ -77,7 +78,7 @@ const Form = props => (
               </div>
             </div>
             <div className="description-div">
-              <span>Description{' '}</span>
+              <span>Description </span>
               <textarea
                 name="description"
                 value={values.description}

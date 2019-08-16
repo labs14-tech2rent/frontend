@@ -41,10 +41,10 @@ const CreateListing = () => {
   const [average_rating] = useState(0);
   const [condition] = useState('');
 
-  // this is called to get the user id.
-  useEffect(() => {
-    dispatch(getUserId(userToken));
-  }, []);
+  // // this is called to get the user id.
+  // useEffect(() => {
+  //   dispatch(getUserId(userToken));
+  // }, []);
 
   const handleSubmit = (id, list) => {
     dispatch(createItem(id, list));

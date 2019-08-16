@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './_createListing.scss';
 
 // import of other components I have made.
-import { createListing, getUserId } from '../../actions';
+import { createItem, getUserId } from '../../actions';
 
 import cameraBanner from '../../Images/banner.png';
 import Form from './Form';
@@ -23,9 +23,7 @@ const CreateListing = () => {
       return store.getUser.user[0].id;
     }
   });
-  const isSubmitting = useSelector(
-    store => store.createListing.creatingListing
-  );
+  const isSubmitting = useSelector(store => store.createItem.creatingItem);
 
   // react state
   const [name] = useState('');
@@ -49,7 +47,7 @@ const CreateListing = () => {
   }, []);
 
   const handleSubmit = (id, list) => {
-    dispatch(createListing(id, list));
+    dispatch(createItem(id, list));
   };
 
   const listing = {

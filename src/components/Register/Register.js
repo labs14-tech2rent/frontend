@@ -25,7 +25,10 @@ const Register = props => {
     e.preventDefault();
 
     dispatch(registerUser(credentials));
-    props.history.push('/home');
+    console.log(props);
+    props.handleName(credentials.name);
+    props.handleEmail(credentials.email);
+    props.history.push('/edit-profile');
   };
 
   return (

@@ -52,6 +52,7 @@ export default class Auth {
         localStorage.setItem('id_token', authResults.idToken);
         localStorage.setItem('expires_at', expiresAt);
         localStorage.setItem('user_id', authResults.idTokenPayload.sub);
+        // localStorage.setITem('');
         location.hash = '';
 
         // create an empty array to check if user exists in OUR db (not auth0's)
@@ -73,7 +74,7 @@ export default class Auth {
               // if they exists in our db, then reroute them to the home page
 
               // if local storage has a pathname of a route they tried to visit before logging in, route them there
-
+              // console.log(authResults);
               location.pathname = LOGIN_EXISTS_PAGE;
             } else {
               // if they do not exist reroute them to finish registration

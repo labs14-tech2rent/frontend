@@ -69,7 +69,7 @@ const EditProfile = props => {
   const handleZip = e => {
     console.log(e.target.value);
     props.handleZip(e.target.value);
-    // console.log(userInfo);
+    // / console.log(userInfo);
   };
 
   const handleState = e => {

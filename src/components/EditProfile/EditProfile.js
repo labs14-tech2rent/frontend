@@ -95,7 +95,6 @@ const EditProfile = props => {
             />
 
             <StateSelect state={userInfo.state} handleState={handleState} />
-
             <input
               type="text"
               onChange={handleChange}

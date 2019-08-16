@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dropzone from 'react-dropzone-uploader';
 
 import 'react-dropzone-uploader/dist/styles.css';
 
 const FileUpload = props => {
-  console.log(props);
-  const getUploadParams = ({ file, meta, fileWithMeta, Location }) => {
+  const [picture, setPicture] = useState([]);
+
+  const getUploadParams = ({ file, meta }) => {
     const body = new FormData();
     body.append('name', file);
     const url =
       'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture';
-    console.log(fileWithMeta);
     return {
-      Location,
-      fileWithMeta,
       body,
       url,
       meta: {
@@ -24,15 +22,14 @@ const FileUpload = props => {
     };
   };
 
-  // https://labstech2rentstaging.herokuapp.com/api/users/uploadProfilePicture
-
   const handleChangeStatus = ({ meta }, status) => {
+    // meta.name = `${Math.floor(Math.random() * 100000000000 + 1)}-${Math.floor(
+    //   Math.random() * 10000 + 1
+    // )}`;
     console.log(status, meta);
-    if (status === 'done') {
-      props.setPicture(meta.fileUrl);
-    }
   };
 
+  console.log(picture);
   return (
     <Dropzone
       onChangeStatus={handleChangeStatus}

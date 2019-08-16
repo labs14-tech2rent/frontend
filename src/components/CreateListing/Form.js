@@ -11,7 +11,7 @@ const Form = props => (
   <Formik
     initialValues={{
       name: props.listing.name,
-      picture: props.listing.picture,
+      // picture: props.listing.picture,
       price: props.listing.price,
       city: props.listing.city,
       state: props.listing.state,
@@ -45,12 +45,13 @@ const Form = props => (
   >
     {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
       <div className="form-wrapper">
-        {console.log(values.name)}
         <form>
           {/* conditional render for image preview, will change this later on.  */}
           <div className="left-side">
-            <FileUpload setPicture={props.listing.setPicture}></FileUpload>
-            {console.log(props.listing.picture)}
+            <FileUpload
+              picture={props.listing.picture}
+              setPicture={props.listing.setPicture}
+            ></FileUpload>
             <div className="condition">
               Condition <br />
               <select

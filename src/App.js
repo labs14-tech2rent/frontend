@@ -1,10 +1,10 @@
 /* eslint-disable no-shadow */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
+import { useDispatch, useSelector } from 'react-redux';
 import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
@@ -12,7 +12,7 @@ import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
 import EditProfile from './components/EditProfile/EditProfile';
 import Register from './components/Register/Register';
-
+import { getUserId } from './actions/Users/USERID/getIdOfUser';
 import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
 import CreateListing from './components/CreateListing/CreateListing';
@@ -20,8 +20,18 @@ import ViewListing from './components/ViewListing/ViewListing';
 
 const App = props => {
   const submit = useSelector(store => store.submit);
+  const user = useSelector(store => store.getUser);
+  const [userId, setUserId] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [zip, setZip] = useState('');
+  const [state, setState] = useState('');
+  const [id, setId] = useState({
+    auth0_user_id: localStorage.getItem('user_id'),
+  });
+  const dispatch = useDispatch();
 
   const handleName = e => {
     setName(e);
@@ -30,6 +40,43 @@ const App = props => {
   const handleEmail = e => {
     setEmail(e);
   };
+
+  const handleStreet = e => {
+    setStreet(e);
+  };
+
+  const handleCity = e => {
+    setCity(e);
+  };
+
+  const handleZip = e => {
+    setZip(e);
+  };
+
+  const handleState = e => {
+    setState(e);
+  };
+
+  useEffect(() => {
+    dispatch(getUserId(id));
+    setName(user.user.name);
+    setEmail(user.user.email);
+    setUserId(user.user.id);
+    setStreet(user.user.street);
+    setCity(user.user.city);
+    setState(user.user.state);
+    setZip(user.user.zip_code);
+  }, [
+    dispatch,
+    id,
+    user.user.city,
+    user.user.email,
+    user.user.id,
+    user.user.name,
+    user.user.state,
+    user.user.street,
+    user.user.zip_code,
+  ]);
 
   return (
     <div className="app-wrapper">
@@ -60,6 +107,16 @@ const App = props => {
                 {...props}
                 name={name}
                 email={email}
+                id={userId}
+                city={city}
+                state={state}
+                street={street}
+                zip={zip}
+                handleName={handleName}
+                handleCity={handleCity}
+                handleZip={handleZip}
+                handleState={handleState}
+                handleStreet={handleStreet}
               />
             )}
           />

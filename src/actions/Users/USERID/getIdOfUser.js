@@ -9,7 +9,7 @@ export const getUserId = user => dispatch => {
   return axios
     .post('https://labstech2rent.herokuapp.com/api/users/findUser', user)
     .then(res => {
-      dispatch({ type: GET_USER_SUCCESS, payload: res.data });
+      dispatch({ type: GET_USER_SUCCESS, payload: res.data[0] });
     })
     .catch(err => {
       dispatch({ type: GET_USER_FAIL, payload: err });

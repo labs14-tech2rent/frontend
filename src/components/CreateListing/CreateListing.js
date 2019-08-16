@@ -11,7 +11,7 @@ import './_createListing.scss';
 
 // import of other components I have made.
 import { createItem } from '../../actions/Items/CRUD/createItem';
-import { getUserId } from '../../actions/Users/USER ID GET/getIdOfUser';
+import { getUserId } from '../../actions/Users/USERID/getIdOfUser';
 
 import cameraBanner from '../../Images/banner.png';
 import Form from './Form';

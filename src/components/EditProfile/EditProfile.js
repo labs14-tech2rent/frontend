@@ -24,7 +24,7 @@ const EditProfile = props => {
 
   const handleChange = e => {
     // if the login form state is true, then set the state of the
-    // inputs when typed to equal that of credentials
+    // / inputs when typed to equal that of credentials
     setUserInfo({
       ...userInfo,
       [e.target.name]: e.target.value,
@@ -102,6 +102,7 @@ const EditProfile = props => {
               placeholder={userInfo.zip}
               value={userInfo.zip}
             />
+
             <button
               onClick={e => {
                 e.preventDefault();

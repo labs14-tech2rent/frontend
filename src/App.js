@@ -98,10 +98,9 @@ const App = props => {
             component={Profile}
           />
           <Route
-            {...props}
+          
             exact
             path="/edit-profile"
-            {...props}
             render={props => (
               <EditProfile
                 {...props}

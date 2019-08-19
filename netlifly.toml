@@ -1,6 +1,6 @@
 [build]
 base = "dist/"
-publish = "frontend/build/"
+publish = "dist/frontend/build/"
 command = "npm build"
 
 [[redirects]]

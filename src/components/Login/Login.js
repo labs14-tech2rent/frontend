@@ -31,10 +31,48 @@ const Login = props => {
   const content = ( //  conditionally renders content based on login form or sign up form state.
     <div className="App mainContent">
       <div className="section-1">
+      <h1>Dream. Rent. Create</h1>
       <h2>Welcome back to the community.</h2>
         <button onClick={auth.login} className="login-button">
           Log in
         </button>
+      </div>
+
+
+      <div className="section-6">
+        <div className="section-6__content">
+
+            <div className="section-6__content_card card-1">
+                <img src="https://static.bhphoto.com/images/images2500x2500/1455749513_1225876.jpg" alt="DSLR Camera"/>
+                <h3>DSLR Cameras</h3>
+            </div>
+
+            <div className="section-6__content_card card-2">
+                <img src="https://assets.website-files.com/5aad54d37fb511b17b1f3230/5aba9603cd72e61d0659e5db_9-impact-qualite-300-focusing-flood-2-light-kit.jpg" alt="Lightning Equipment"/>
+                <h3>Lightning Equipment</h3>
+            </div>
+
+            <div className="section-6__content_card card-3">
+                <img src="https://lh3.googleusercontent.com/zffnXSH2Z8BlzLNOMlvP1-gCjOCS9I2Nct1F55uG63U1iQQH-e0R9xYwmOD6joP2IFRQzUdU1IOkIB3lJuwMHiI=w640-h480-p" alt="3D Printer"/>
+                <h3>3D Printers</h3>
+            </div>
+
+            <div className="section-6__content_card card-4">
+                <img src="https://pmcvariety.files.wordpress.com/2018/10/hmd-odyssey_1.png?w=700&h=563&crop=1" alt="VR Equipment"/>
+                <h3>VR Equipment</h3>
+            </div>
+
+            <div className="section-6__content_card card-5">
+                <img src="https://i03.hsncdn.com/is/image/HomeShoppingNetwork/prodfull/hp-14-amd-a4-dual-core-64gb-emmc-laptop-with-office-and-d-20190423135202573~670475_040.jpg" alt="Laptop"/>
+                <h3>Laptops</h3>
+            </div>
+
+            <div className="section-6__content_card card-6">
+                <img src="https://target.scene7.com/is/image/Target/GUEST_8b787c67-2221-46df-ac6e-a8d23762876a?wid=488&hei=488&fmt=pjpeg" alt="Drone"/>
+                <h3>Drones</h3>
+            </div>
+
+        </div>
       </div>
 
       <div className="section-5">

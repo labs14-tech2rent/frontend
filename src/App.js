@@ -59,13 +59,13 @@ const App = props => {
 
   useEffect(() => {
     dispatch(getUserId(id));
-    setName(user.user.name);
-    setEmail(user.user.email);
-    setUserId(user.user.id);
-    setStreet(user.user.street);
-    setCity(user.user.city);
-    setState(user.user.state);
-    setZip(user.user.zip_code);
+    user.user.name && setName(user.user.name);
+    user.user.email && setEmail(user.user.email);
+    user.user.id && setUserId(user.user.id);
+    user.user.street && setStreet(user.user.street);
+    user.user.city && setCity(user.user.city);
+    user.user.state && setState(user.user.state);
+    user.user.zip && setZip(user.user.zip_code);
   }, [
     dispatch,
     id,

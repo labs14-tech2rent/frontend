@@ -1,5 +1,5 @@
-import { SUBMIT_START, SUBMIT_FAIL, SUBMIT_SUCCESS } from '../actions';
-import Auth from '../Auth';
+import { SUBMIT_START, SUBMIT_FAIL, SUBMIT_SUCCESS } from '../../actions';
+import Auth from '../../Auth';
 
 const auth = new Auth();
 

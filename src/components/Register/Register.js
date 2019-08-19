@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addUser } from '../../actions';
+import { registerUser } from '../../actions';
 
 const Register = props => {
   const [credentials, setCredentials] = useState({
@@ -24,7 +24,7 @@ const Register = props => {
   const signup = e => {
     e.preventDefault();
 
-    dispatch(addUser(credentials));
+    dispatch(registerUser(credentials));
     props.history.push('/home');
   };
 

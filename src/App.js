@@ -10,7 +10,7 @@ import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
 import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
-import EditProfile from './components/EditProfile/EditProfile';
+// import EditProfile from './components/EditProfile/EditProfile';
 import Register from './components/Register/Register';
 import { getUserId } from './actions/Users/USERID/getIdOfUser';
 import NavBar from './components/Nav/NavBar';
@@ -97,28 +97,7 @@ const App = props => {
             name={name}
             component={Profile}
           />
-          <Route
-          
-            exact
-            path="/edit-profile"
-            render={props => (
-              <EditProfile
-                {...props}
-                name={name}
-                email={email}
-                id={userId}
-                city={city}
-                state={state}
-                street={street}
-                zip={zip}
-                handleName={handleName}
-                handleCity={handleCity}
-                handleZip={handleZip}
-                handleState={handleState}
-                handleStreet={handleStreet}
-              />
-            )}
-          />
+
           <Route path="/create-listing" component={CreateListing} />
           <Route
             exact

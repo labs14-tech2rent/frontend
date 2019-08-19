@@ -10,7 +10,7 @@ import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
 import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
-import EditProfile from './components/EditProfile/EditProfile';
+import EditProfile from './components/Edit/EditProfile';
 import Register from './components/Register/Register';
 import { getUserId } from './actions/Users/USERID/getIdOfUser';
 import NavBar from './components/Nav/NavBar';

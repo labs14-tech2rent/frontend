@@ -34,11 +34,21 @@ const NavBar = props => {
     localStorage.removeItem('user_id');
     localStorage.removeItem('targetUrl');
     
-   
-    
   };
 
-
+  const closeNav = document.querySelectorAll('.switch')
+  for (let i=0; i < closeNav.length ; i++) {
+    closeNav[i].addEventListener('click', () => {
+       const navIcon = document.querySelector('#nav-icon')
+       navIcon.className = ""
+       setMenuOpened(!menuOpened)
+       const mainContent = document.querySelectorAll('.mainContent')
+       for (let i=0; i < mainContent.length; i++) {
+         mainContent[i].className = 'profile-content mainContent'
+       }
+      
+    })
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,7 +94,7 @@ const NavBar = props => {
       <nav className="navbar">
         <div className="navbar-content">
           <div className="navbar-left">
-            <NavLink to="/">
+            <NavLink to="/" className="switch">
               <img src={logo} alt="tech2rent logo" />
             </NavLink>
           </div>
@@ -123,7 +133,7 @@ const NavBar = props => {
             </div>
           </div>
           <div className="navbar-right">
-            <NavLink exact to="/" className="navbar-link">
+            <NavLink exact to="/" className="navbar-link ">
               How it Works?
             </NavLink>
             {localStorage.getItem('access_token') !== null &&
@@ -148,7 +158,7 @@ const NavBar = props => {
             </NavLink>
             <NavLink
               to="#"
-              className="navbar-link"
+              className="navbar-link switch"
               activeClassName="navbar-link__active"
             >
               Help
@@ -195,18 +205,30 @@ const NavBar = props => {
       
         
         <div className={menuOpened ? "navlinks-mobile open" : "navlinks-mobile closed"}>
-          <NavLink className="navlink-mobile" to="#">
+          <NavLink className="navlink-mobile switch" to="#">
             How it Works?
           </NavLink>
-          <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
+          <NavLink to="#" className="navlink-mobile switch" onClick={auth.login}>
             Login
           </NavLink>
-          <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
+          <NavLink to="#" className="navlink-mobile switch" onClick={auth.login}>
             Sign Up
           </NavLink>
-          <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
-            Account
-          </NavLink>
+          <NavLink className="navlink-mobile profile-tab" onClick={ () => {
+            //const profile = document.querySelector('.profile-tab')
+            const dropdown = document.querySelector('.mobile-profile-dropdown')
+
+            dropdown.classList.toggle('profile-slide')
+            
+          }
+            
+          }>Profile</NavLink>
+          <div className="mobile-profile-dropdown">
+            <NavLink to="account-settings" className="navlink-mobile switch">Account</NavLink>
+            <NavLink to="/edit-profile" className="navlink-mobile switch">Edit Profile</NavLink>
+            <NavLink to="/profile" className="navlink-mobile switch">Profile</NavLink>
+          </div>
+          
           <NavLink className="navlink-mobile" onClick={auth.login} to="#">
             Help
           </NavLink>

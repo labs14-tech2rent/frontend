@@ -309,6 +309,18 @@
   }
 }
 
+.mobile-profile-dropdown {
+  width: 9rem;
+  position: absolute;
+  top: 25px;
+  right: -250px;
+  transition: all 0.5s;
+}
+
+.profile-slide {
+  right: 50px;
+}
+
 @media (max-width: 580px) {
   .navbar-right {
     width: 90%;

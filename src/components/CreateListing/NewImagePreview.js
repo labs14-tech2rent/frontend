@@ -74,7 +74,7 @@ const Previews = props => {
       <aside style={thumbsContainer}>{thumbs}</aside>
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        <button onClick={e => e.preventDefault()}>Add Images</button>
+        <button onClick={e => e.preventDefault()} className="footer-button__dark border-dark__hover pd-7" >Add Images</button>
       </div>
     </section>
   );

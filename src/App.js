@@ -58,8 +58,7 @@ const App = props => {
   };
 
   useEffect(() => {
-    console.log(user.user);
-    if (user.user.length > 0) {
+    if (id) {
       dispatch(getUserId(id));
       setName(user.user.name);
       setEmail(user.user.email);
@@ -68,22 +67,13 @@ const App = props => {
       setCity(user.user.city);
       setState(user.user.state);
       setZip(user.user.zip_code);
+      console.log(user.user.name);
     }
-  }, [
-    dispatch,
-    id,
-    user.user,
-    user.user.city,
-    user.user.email,
-    user.user.id,
-    user.user.name,
-    user.user.state,
-    user.user.street,
-    user.user.zip_code,
-  ]);
+  }, [user.user.name]);
 
   return (
     <div className="app-wrapper">
+      {console.log(name)}
       <BrowserRouter>
         <header>
           <NavBar {...props} />

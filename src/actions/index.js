@@ -87,3 +87,8 @@ export {
   GET_PHOTOS_FAIL,
   getPhotos,
 } from './flickrAPI';
+
+export {
+  REGISTERED,
+} from './registered';
+

@@ -3,7 +3,7 @@
 import createAuth0Client from '@auth0/auth0-spa-js';
 import auth0 from 'auth0-js';
 import axios from 'axios';
-import { addUser } from './actions';
+import RunRegister from './RunRegister';
 
 const LOGIN_EXISTS_PAGE =
   localStorage.getItem('targetUrl') !== null
@@ -20,8 +20,8 @@ export default class Auth {
     domain: 'dev-gco3gwsp.auth0.com',
     clientID: 'kFpGm0tbpc2lUax1Il5S0vS54opwh3iv',
     // redirectUri: 'https://tech2rent.co/callback',
-    // redirectUri: 'http://localhost:3000/callback',
-    redirectUri: 'https://sharp-wozniak-279070.netlify.com/callback',
+    redirectUri: 'http://localhost:3000/callback',
+    // redirectUri: 'https://sharp-wozniak-279070.netlify.com/callback',
     responseType: 'token id_token',
     audience: 'https://dev-gco3gwsp.auth0.com/userinfo',
     scope: 'openid',
@@ -76,8 +76,10 @@ export default class Auth {
               // if local storage has a pathname of a route they tried to visit before logging in, route them there
               // console.log(authResults);
               location.pathname = LOGIN_EXISTS_PAGE;
+              //RunRegister();
             } else {
               // if they do not exist reroute them to finish registration
+              // RunRegister();
               location.pathname = LOGIN_REGISTER_PAGE;
             }
           })

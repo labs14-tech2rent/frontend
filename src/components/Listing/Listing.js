@@ -12,7 +12,8 @@ const Listing = () => (
     ></img>
     <div>
       <h3>Find Tech</h3>
-      <Formik
+      <h3>TITLE</h3>
+      {/* <Formik
         initialValues={{
           name: '',
           zipcode: '',
@@ -28,21 +29,24 @@ const Listing = () => (
           handleSubmit,
         }) => (
           <form>
+            Item Name{' '}
             <Field
               component="input"
               name="name"
               placeholder="Name, Brand, or Tech type"
             ></Field>
+            Location{' '}
             <Field
               component="input"
               name="zipcode"
               placeholder="City or Zipcode"
             ></Field>
+            Booking Date{' '}
             <Field type="date" component="input" name="booking_date"></Field>
             <button>Find Your Tech</button>
           </form>
         )}
-      </Formik>
+      </Formik> */}
       <img src="https://picsum.photos/310" alt="tech photos"></img>
     </div>
   </div>

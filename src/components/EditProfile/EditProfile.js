@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import StateSelect from './StateSelect';
 import Rating from '../Owner/Rating';
@@ -44,8 +44,7 @@ const EditProfile = props => {
     props.name,
     props.state,
     props.street,
-    props.zip,
-    userInfo,
+    props.zip
   ]);
 
   const handleName = e => {
@@ -69,7 +68,7 @@ const EditProfile = props => {
   const handleZip = e => {
     console.log(e.target.value);
     props.handleZip(e.target.value);
-    // / console.log(userInfo);
+    // console.log(userInfo);
   };
 
   const handleState = e => {
@@ -122,7 +121,7 @@ const EditProfile = props => {
           </div>
         )}
         {editLocation ? (
-          <form onSubmit={editLocation}>
+          <form>
             <input
               type="text"
               onChange={handleStreet}

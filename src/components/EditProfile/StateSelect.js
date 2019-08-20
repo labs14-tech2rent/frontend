@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 
 const StateSelection = props => {
-  const [state, setState] = useState(props.state);
+  const [state, setStates] = useState(props.state);
 
   const handleChange = e => {
-    setState(e.target.value);
-    props.handleState(e.target.value);
     console.log(e.target.value);
+
+    // console.log(e.target.value);
+    setStates(e.target.value);
+    // console.log(state);
+    props.handleState(e.target.value);
+    // setStates(e.target.value);
   };
 
   return (

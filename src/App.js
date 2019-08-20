@@ -10,7 +10,7 @@ import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
 import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
-import EditProfile from './components/Edit/EditProfile';
+import EditProfile from './components/EditProfile/EditProfile';
 import Register from './components/Register/Register';
 import { getUserId } from './actions/Users/USERID/getIdOfUser';
 import NavBar from './components/Nav/NavBar';
@@ -54,18 +54,21 @@ const App = props => {
   };
 
   const handleState = e => {
+    console.log(e);
     setState(e);
   };
 
   useEffect(() => {
+    if (user.user !== undefined) {
     dispatch(getUserId(id));
-    user.user.name && setName(user.user.name);
-    user.user.email && setEmail(user.user.email);
-    user.user.id && setUserId(user.user.id);
-    user.user.street && setStreet(user.user.street);
-    user.user.city && setCity(user.user.city);
-    user.user.state && setState(user.user.state);
-    user.user.zip && setZip(user.user.zip_code);
+    setName(user.user.name);
+    setEmail(user.user.email);
+    setUserId(user.user.id);
+    setStreet(user.user.street);
+    setCity(user.user.city);
+    setState(user.user.state);
+    setZip(user.user.zip_code);
+    }
   }, [
     dispatch,
     id,
@@ -98,6 +101,7 @@ const App = props => {
             component={Profile}
           />
           <Route
+            {...props}
             exact
             path="/edit-profile"
             render={props => (

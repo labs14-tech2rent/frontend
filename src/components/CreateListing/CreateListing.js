@@ -27,7 +27,6 @@ const CreateListing = () => {
 
   // react state
   const [name] = useState('');
-  // const [picture, setPicture] = useState([]);
   const [price] = useState('');
   const [city] = useState('');
   const [state] = useState('');
@@ -54,7 +53,7 @@ const CreateListing = () => {
     userId,
     name,
     price,
-    // picture,
+    picture,
     category,
     description,
     available,
@@ -65,7 +64,7 @@ const CreateListing = () => {
     city,
     state,
     zipcode,
-    // setPicture,
+    setPicture,
     setCount,
     count,
     handleSubmit,

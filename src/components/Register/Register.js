@@ -30,7 +30,7 @@ const Register = props => {
     props.handleName(credentials.name);
     props.handleEmail(credentials.email);
     dispatch(registered());
-    props.history.push('/edit-profile');
+    window.location.pathname ='/edit-profile'
   };
 
   return (

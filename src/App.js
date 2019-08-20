@@ -59,6 +59,7 @@ const App = props => {
     setState(e);
   };
 
+ 
   useEffect(() => {
     console.log(user.user);
     if (id) {
@@ -77,7 +78,8 @@ const App = props => {
 
       console.log(user.user.name);
     }
-  }, [ user.user.name ]);
+  }, user.user !== undefined ? [user.user.name] : []);
+
 
   return (
     <div className="app-wrapper">
@@ -121,7 +123,7 @@ const App = props => {
             )}
           />
           <Route path="/create-listing" component={CreateListing} />
-          {user.user.name === undefined && (
+          
             <Route
               exact
               path="/register"
@@ -134,7 +136,7 @@ const App = props => {
                 />
               )}
             />
-          )}
+         
           <Route
             exact
             path="/view-listing"

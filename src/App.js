@@ -101,7 +101,7 @@ const App = props => {
             name={name}
             component={Profile}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/edit-profile"
             render={props => (
@@ -124,7 +124,7 @@ const App = props => {
           />
           <Route path="/create-listing" component={CreateListing} />
           
-            <Route
+            <PrivateRoute
               exact
               path="/register"
               {...props}

@@ -32,10 +32,10 @@ const EditProfile = props => {
       name: props.name,
       email: props.email,
       id: props.id,
-      street: props.street,
-      city: props.city,
-      zip_code: props.zip,
-      state: props.state,
+      street: props.street !== null ? props.street : '123 Nowhere',
+      city: props.city !== null ? props.city : "Noplace",
+      zip_code: props.zip !== null ? props.zip : "12345",
+      state: props.state !== null ? props.state : "NY",
     });
   }, [
     props.city,

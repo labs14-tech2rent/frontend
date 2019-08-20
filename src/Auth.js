@@ -20,14 +20,14 @@ export default class Auth {
     domain: 'dev-gco3gwsp.auth0.com',
     clientID: 'kFpGm0tbpc2lUax1Il5S0vS54opwh3iv',
     // redirectUri: 'https://tech2rent.co/callback',
-    //redirectUri: 'http://localhost:3000/callback',
+    // redirectUri: 'http://localhost:3000/callback',
     redirectUri: 'https://sharp-wozniak-279070.netlify.com/callback',
     responseType: 'token id_token',
     audience: 'https://dev-gco3gwsp.auth0.com/userinfo',
     scope: 'openid',
   });
 
-  /// binds the login
+  // / binds the login
   constructor() {
     this.login = this.login.bind(this);
   }
@@ -76,7 +76,7 @@ export default class Auth {
               // if local storage has a pathname of a route they tried to visit before logging in, route them there
               // console.log(authResults);
               location.pathname = LOGIN_EXISTS_PAGE;
-              //RunRegister();
+              // RunRegister();
             } else {
               // if they do not exist reroute them to finish registration
               // RunRegister();

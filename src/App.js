@@ -54,24 +54,25 @@ const App = props => {
   };
 
   const handleState = e => {
-    console.log(e);
     setState(e);
   };
 
   useEffect(() => {
-    if (user.user !== undefined) {
-    dispatch(getUserId(id));
-    setName(user.user.name);
-    setEmail(user.user.email);
-    setUserId(user.user.id);
-    setStreet(user.user.street);
-    setCity(user.user.city);
-    setState(user.user.state);
-    setZip(user.user.zip_code);
+    console.log(user.user);
+    if (user.user.length > 0) {
+      dispatch(getUserId(id));
+      setName(user.user.name);
+      setEmail(user.user.email);
+      setUserId(user.user.id);
+      setStreet(user.user.street);
+      setCity(user.user.city);
+      setState(user.user.state);
+      setZip(user.user.zip_code);
     }
   }, [
     dispatch,
     id,
+    user.user,
     user.user.city,
     user.user.email,
     user.user.id,
@@ -101,7 +102,6 @@ const App = props => {
             component={Profile}
           />
           <Route
-            {...props}
             exact
             path="/edit-profile"
             render={props => (

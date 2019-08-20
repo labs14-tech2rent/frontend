@@ -36,6 +36,7 @@ const App = props => {
           <Route {...props} exact path="/profile" component={Profile} />
           <Route path="/create-listing" component={CreateListing} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/listing" component={Listing} />
           <Route
             exact
             path="/view-listing"

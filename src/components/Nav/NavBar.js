@@ -232,8 +232,8 @@ const NavBar = props => {
                 Log In
               </NavLink>
             )}
-            <NavLink to="#" onClick={auth.login} className="navbar-link">
-              Sign Up
+            <NavLink to="/view-listings" onClick={auth.login} className="navbar-link">
+              Browse 
             </NavLink>
             <NavLink
               to="#"

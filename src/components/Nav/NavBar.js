@@ -241,8 +241,8 @@ const NavBar = props => {
             How it Works?
           </NavLink>
           
-          <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
-            Sign Up
+          <NavLink to="/view-listings" className="navlink-mobile" onClick={auth.login}>
+            Browse Listings
           </NavLink>
           <p className="profile-tab" onClick={ () => {
             //const profile = document.querySelector('.profile-tab')

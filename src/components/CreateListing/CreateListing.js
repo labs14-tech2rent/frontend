@@ -35,7 +35,6 @@ const CreateListing = () => {
   const [subcategory] = useState('');
   const [description] = useState('');
   const [paymentType] = useState('');
-  const [count, setCount] = useState(0);
   const [available] = useState(true);
   const [average_rating] = useState(0);
   const [condition] = useState('');
@@ -63,8 +62,6 @@ const CreateListing = () => {
     city,
     state,
     zipcode,
-    setCount,
-    count,
     handleSubmit,
     isSubmitting,
   };

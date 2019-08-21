@@ -49,6 +49,7 @@ const NavBar = props => {
       navigationLink[i].addEventListener('click', () => {
        navigation.className = "navlinks-mobile closed"
        navIcon.classList.remove('change')
+       mainContent.classList.remove('slideDown')
        setMenuOpened(false)
       })
     }

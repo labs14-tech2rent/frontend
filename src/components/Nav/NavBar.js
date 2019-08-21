@@ -241,7 +241,7 @@ const NavBar = props => {
             How it Works?
           </NavLink>
           
-          <NavLink to="/view-listing" className="navlink-mobile" onClick={auth.login}>
+          <NavLink to="/view-listing" className="navlink-mobile">
             Browse Listings
           </NavLink>
           <p className="profile-tab" onClick={ () => {

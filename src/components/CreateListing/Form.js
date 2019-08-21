@@ -25,7 +25,6 @@ const Form = props => {
           photo.body
         )
         .then(res => {
-          console.log(res);
           userPhotos.push({ url: res.data.Location });
           setPicture([...picture, userPhotos]);
         })
@@ -34,8 +33,6 @@ const Form = props => {
         })
     );
   };
-
-  console.log(picture);
 
   return (
     <Formik

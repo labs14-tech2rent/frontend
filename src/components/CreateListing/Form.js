@@ -10,23 +10,24 @@ import FileUpload from './FileUploader';
 
 const Form = props => {
   const [previewPics, setPreview] = useState([]);
-  const [picture, setPicture] = useState([]);
+  const [picture, setPicture] = useState({});
 
   const savePhotos = photo => {
     setPreview([...previewPics, photo]);
   };
 
   const uploadPhotos = file => {
-    const userPhotos = [];
-    file.map(photo =>
+    const userPhotos = {};
+    file.map((photo, i) =>
       axios
         .post(
           'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture',
           photo.body
         )
         .then(res => {
-          userPhotos.push({ url: res.data.Location });
-          setPicture([...picture, userPhotos]);
+          Object.assign(userPhotos, { url: res.data.Location });
+          // userPhotos.push({ url: res.data.Location });
+          setPicture(`${picture} ${userPhotos} `);
         })
         .catch(err => {
           console.log(err);
@@ -42,7 +43,18 @@ const Form = props => {
     setPreview(removeFilter);
   };
 
-  console.log(previewPics);
+  const uploadAndSubmit = (photos, id, listing) => {
+    uploadPhotos(photos);
+
+    const images = {
+      picture,
+    };
+    console.log(picture);
+    Object.assign(listing, images);
+    console.log(listing);
+    props.listing.handleSubmit(id, listing);
+  };
+
   console.log(picture);
 
   return (
@@ -54,34 +66,31 @@ const Form = props => {
         state: props.listing.state,
         zipcode: props.listing.zipcode,
         category: props.listing.category,
-        subcategory: props.listing.subcategory,
         description: props.listing.description,
         paymentType: props.listing.paymentType,
         condition: props.listing.condition,
       }}
       validationSchema={validationSchema}
-      onSubmit={async values => {
+      onSubmit={values => {
         const list = {
-          users_ownerId: 27,
-          // users_ownerId: props.item.users_ownerId,
+          users_ownerId: props.listing.userId,
           name: values.name,
-          picture,
           price: values.price,
           city: values.city,
           state: values.state,
           zipcode: values.zipcode,
           category: values.category,
-          sub_category: values.subcategory,
-          description: values.picture,
+          sub_category: 'Default',
+          description: values.description,
           payment_type: values.paymentType,
           available: props.listing.available,
           average_rating: props.listing.average_rating,
           condition: values.condition,
         };
 
-        await uploadPhotos(previewPics);
+        uploadAndSubmit(previewPics, list.users_ownerId, list);
 
-        await props.listing.handleSubmit(list.users_ownerId, list);
+        console.log(list);
       }}
     >
       {({
@@ -93,6 +102,7 @@ const Form = props => {
         handleSubmit,
       }) => (
         <div className="form-wrapper">
+          {console.log(values)}
           <button onClick={() => uploadPhotos(previewPics)}>test</button>
           <form>
             {/* conditional render for image preview, will change this later on.  */}

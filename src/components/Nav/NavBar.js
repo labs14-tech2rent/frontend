@@ -230,7 +230,7 @@ const NavBar = props => {
           <NavLink
             exact
             to="/"
-            className="navbar-link"
+            className="navlink-mobile"
             onClick={auth.login}
           >
             Log In

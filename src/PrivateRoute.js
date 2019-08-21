@@ -19,7 +19,7 @@ const PrivateRoute = ({
             localStorage.getItem('id_token') &&
             localStorage.getItem('access_token')
           ) {
-            return <RenderedComponent />;
+            return <RenderedComponent {...props} />;
           }
           // / if not then redirect to login
           localStorage.setItem('targetUrl', window.location.pathname);

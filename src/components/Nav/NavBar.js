@@ -21,18 +21,26 @@ const NavBar = props => {
   const [displayed, setDisplayed] = useState([]);
   const [domLoaded, setDomLoaded] = useState(false)
   
+  //event listener that sets state to loaded when ALL content has been loaded
+  ///used for adding to click events, not allowing user to click on animations until all content has been loaded
   window.addEventListener('load', (event) => {
     console.log('loaded')
     setDomLoaded(true)
   });
+  ///end event listener
 
+  //grabs the auth from the store, used for calling auth0
   const auth = useSelector(store => store.submit.auth);
-  // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  
+  
+  //logout function to remove user from cookies
   const logout = e => {
     e.preventDefault();
    
+    //calls imported logout axios function
     logout2()
   
+    //removes all items saved to local storage when they logged in
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
@@ -40,23 +48,70 @@ const NavBar = props => {
     localStorage.removeItem('targetUrl');
     
   };
-  const navigation = document.querySelector('.navlinks-mobile')
+
+  ///////////////////////////////////
+  ///// mobile animation control/////
+  ///////////////////////////////////
+
+  //grabbing variables used in animations mobile
+  const navMobile = document.querySelector('.navlinks-mobile')
   const navigationLink = document.querySelectorAll('.navlink-mobile')
   const navIcon = document.querySelector('#nav-icon')
   const mainContent = document.querySelector('.mainContent')
-  if (navigation && domLoaded === true) {
+  
+
+  //if the nav mobile view exists (if they are below 500px) AND all the content has been loaded
+  if (navMobile && domLoaded === true) {
     for (let i=0; i < navigationLink.length ; i ++) {
+      //add listener to all the mobile navigation links
       navigationLink[i].addEventListener('click', () => {
-       navigation.className = "navlinks-mobile closed"
+       // remove open class and reset the mobile navigation to closed
+       navMobile.className = "navlinks-mobile closed"
+       //remove the change class that resets the hamburger icon
        navIcon.classList.remove('change')
+       //remove the slidedown class on the main content of the page, making content slide back up
        mainContent.classList.remove('slideDown')
+       //set the menu opened state to false
        setMenuOpened(false)
       })
     }
     
   } 
+  ///////////////////////////////////
+  ///// END mobile animation control/////
+  ///////////////////////////////////
 
+
+  ///////////////////////////////////
+  ///// desktop animation control/////
+  ///////////////////////////////////
+
+  //grab variables used in animation
+  const navigation = document.querySelector('.navbar-content')
+  const desktopLink = document.querySelectorAll('.navbar-link')
+  const profileDropdown = document.querySelector('.profile-dropdown')
+
+  //if desktop navigation exists and all the content has been loaded
+  if (navigation && domLoaded) {
+    for (let i=0 ; i < desktopLink.length; i++) {
+      //when any desktop navlink is clicked...
+      desktopLink[i].addEventListener('click', () => {
+        //...it will close the profile dropdown menu if it is opened
+        profileDropdown.classList.remove('dropdown-open')
+      })
+    }
+  }
+
+  ///////////////////////////////////
+  ///// END desktop animation control/////
+  ///////////////////////////////////
+
+
+  ///////////////////////////////////////////
+  ///// USE EFFECT = Component Did Mount/////
+  ///////////////////////////////////////////
   useEffect(() => {
+    //grab data once component has been mounted
     const fetchData = async () => {
       const result = await axios(
         'https://labstech2rentstaging.herokuapp.com/api/items',
@@ -68,15 +123,19 @@ const NavBar = props => {
     };
 
     fetchData();
-  }, [filter]);
+  }, [filter]); // only call or run fn again if a new filter has been ran
 
+  ////////////////////////////
+  ///// END OF USE EFFECT/////
+  ////////////////////////////
+
+
+  //////////////////
+  ///// FILTER /////
+  //////////////////
   function handleKeyPress(e) {
+    //if item exists
     if(e.key === 'Enter'){
-      
-      // props.history.push({
-      //   pathname: '/view-listing',
-      //   state: { items: items }
-      // })
       if (items.length >= 3 && filter) {
         setDisplayed([items[0], items[1], items[2]])
       } else if (items.length === 2 && filter) {
@@ -92,7 +151,9 @@ const NavBar = props => {
     }
   }
 
-  console.log(items);
+   //////////////////
+  ///// END FILTER /////
+  //////////////////
 
   
   return (
@@ -101,11 +162,13 @@ const NavBar = props => {
         <div className="navbar-content">
           <div className="navbar-left">
             <NavLink to="/"  onClick={() => {
+              //when nav icon is clicked on the navbar, reset all animations as described above
               setMenuOpened(false)
-              console.log(navigation)
-              navigation.className = "navlinks-mobile closed"
+              console.log(navMobile)
+              navMobile.className = "navlinks-mobile closed"
               navIcon.classList.remove('change')
               mainContent.classList.remove('slideDown')
+              profileDropdown.classList.remove('dropdown-open')
             }} >
               <img src={logo} alt="tech2rent logo" />
             </NavLink>
@@ -119,7 +182,7 @@ const NavBar = props => {
               name="item"
               //value={item.item}
               onChange={ (e) => {
-                setFilter(e.target.value)
+                setFilter(e.target.value) //set filter of state to the value typed in
                 
                 }}
               onKeyPress={(e) => handleKeyPress(e)}
@@ -152,10 +215,14 @@ const NavBar = props => {
             localStorage.getItem('id_token') !== null &&
             localStorage.getItem('expires_at') !== null &&
             localStorage.getItem('user_id') !== null ? (
+              //if items are in local storage === user logged in//
+
+              //if logged in show log out
               <NavLink className="navbar-link" onClick={logout}>
                 Log Out
               </NavLink>
             ) : (
+              //if logged out show log in
               <NavLink
                 exact
                 to="/"
@@ -196,15 +263,18 @@ const NavBar = props => {
             onClick={() => {
               //selects all classes with mainContent and toggles the slidedown class when hamburger menu is clicked
               //this is for animations on mobile view
+
+              //if all content is loaded, allow user to click hamburger icon
               if (domLoaded === true) {
               const mainContent = document.querySelectorAll('.mainContent')
               for (let i=0; i < mainContent.length; i++) {
+                //add class of slidedown when hamburger icon is clicked
                 mainContent[i].classList.toggle('slideDown')
               }
 
               const navIcon = document.querySelector('#nav-icon')
-              navIcon.classList.toggle('change')
-              navIcon.className === 'change' ? setMenuOpened(true) : setMenuOpened(false)
+              navIcon.classList.toggle('change') //animate the hamburger icon when clicked
+              navIcon.className === 'change' ? setMenuOpened(true) : setMenuOpened(false) //toggle state of menu opened when clicked 
               
             }}
           }
@@ -224,10 +294,12 @@ const NavBar = props => {
         localStorage.getItem('id_token') !== null &&
         localStorage.getItem('expires_at') !== null &&
         localStorage.getItem('user_id') !== null ? (
+          //if logged in show log out
           <NavLink className="navlink-mobile" onClick={logout}>
             Log Out
           </NavLink>
         ) : (
+          //if logged out show log in
           <NavLink
             exact
             to="/"
@@ -247,7 +319,7 @@ const NavBar = props => {
           <p className="profile-tab" onClick={ () => {
             //const profile = document.querySelector('.profile-tab')
             const dropdown = document.querySelector('.mobile-profile-dropdown')
-
+            //animated the sub slide in menu for mobile
             dropdown.classList.toggle('profile-slide')
             
           }

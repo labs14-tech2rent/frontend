@@ -81,9 +81,8 @@ const App = props => {
   }, user.user !== undefined ? [user.user.name] : []);
 
 
-  return (
+  return ( 
     <div className="app-wrapper">
-      {console.log(name)}
       <BrowserRouter>
         <header>
           <NavBar {...props} />

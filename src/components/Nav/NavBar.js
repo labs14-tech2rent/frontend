@@ -19,7 +19,12 @@ const NavBar = props => {
   const [filter, setFilter] = useState('')
   const [items, setItems] = useState([]);
   const [displayed, setDisplayed] = useState([]);
- 
+  const [domLoaded, setDomLoaded] = useState(false)
+  
+  window.addEventListener('load', (event) => {
+    console.log('loaded')
+    setDomLoaded(true)
+  });
 
   const auth = useSelector(store => store.submit.auth);
   // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -39,7 +44,7 @@ const NavBar = props => {
   const navigationLink = document.querySelectorAll('.navlink-mobile')
   const navIcon = document.querySelector('#nav-icon')
   const mainContent = document.querySelector('.mainContent')
-  if (navigation) {
+  if (navigation && domLoaded === true) {
     for (let i=0; i < navigationLink.length ; i ++) {
       navigationLink[i].addEventListener('click', () => {
        navigation.className = "navlinks-mobile closed"
@@ -49,24 +54,6 @@ const NavBar = props => {
     }
     
   } 
-
-  
-
-  
- 
-  // const closeNav = document.querySelectorAll('')
-  // for (let i=0; i < closeNav.length ; i++) {
-  //   closeNav[i].addEventListener('click', () => {
-  //      const navIcon = document.querySelector('#nav-icon')
-  //      navIcon.className = ""
-  //      setMenuOpened(!menuOpened)
-  //      const mainContent = document.querySelectorAll('.mainContent')
-  //      for (let i=0; i < mainContent.length; i++) {
-  //        mainContent[i].className = 'profile-content mainContent'
-  //      }
-      
-  //   })
-  // }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -208,6 +195,7 @@ const NavBar = props => {
             onClick={() => {
               //selects all classes with mainContent and toggles the slidedown class when hamburger menu is clicked
               //this is for animations on mobile view
+              if (domLoaded === true) {
               const mainContent = document.querySelectorAll('.mainContent')
               for (let i=0; i < mainContent.length; i++) {
                 mainContent[i].classList.toggle('slideDown')
@@ -218,6 +206,7 @@ const NavBar = props => {
               navIcon.className === 'change' ? setMenuOpened(true) : setMenuOpened(false)
               
             }}
+          }
             >
               <div className="bar1"></div>
               <div className="bar2"></div>
@@ -230,12 +219,27 @@ const NavBar = props => {
       
         
         <nav className={menuOpened ? "navlinks-mobile open" : "navlinks-mobile closed"}>
+        {localStorage.getItem('access_token') !== null &&
+        localStorage.getItem('id_token') !== null &&
+        localStorage.getItem('expires_at') !== null &&
+        localStorage.getItem('user_id') !== null ? (
+          <NavLink className="navlink-mobile" onClick={logout}>
+            Log Out
+          </NavLink>
+        ) : (
+          <NavLink
+            exact
+            to="/"
+            className="navbar-link"
+            onClick={auth.login}
+          >
+            Log In
+          </NavLink>
+        )}
           <NavLink className="navlink-mobile" to="#">
             How it Works?
           </NavLink>
-          <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
-            Login
-          </NavLink>
+          
           <NavLink to="#" className="navlink-mobile" onClick={auth.login}>
             Sign Up
           </NavLink>

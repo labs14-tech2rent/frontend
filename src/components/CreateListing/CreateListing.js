@@ -32,7 +32,6 @@ const CreateListing = () => {
   const [state] = useState('');
   const [zipcode] = useState('');
   const [category] = useState('');
-  const [subcategory] = useState('');
   const [description] = useState('');
   const [paymentType] = useState('');
   const [available] = useState(true);
@@ -58,7 +57,6 @@ const CreateListing = () => {
     paymentType,
     average_rating,
     condition,
-    subcategory,
     city,
     state,
     zipcode,
@@ -66,7 +64,7 @@ const CreateListing = () => {
     isSubmitting,
   };
 
-  // console.log(picture);
+  console.log(listing);
 
   return (
     <div className="create-listing mainContent">

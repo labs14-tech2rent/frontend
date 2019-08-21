@@ -47,32 +47,21 @@ const EditProfile = props => {
     props.zip
   ]);
 
-  const handleName = e => {
-    props.handleName(e.target.value);
-    console.log(userInfo);
+  const handleInput = e => {
+    //setName(e.target.value)
+    setUserInfo({
+      ...userInfo,
+      [e.target.name]: e.target.value
+    })
   };
 
-  const handleStreet = e => {
-    console.log(e.target.value);
-    // console.log(props.handleStreet);
-    props.handleStreet(e.target.value);
-    // console.log(userInfo);
-  };
 
-  const handleCity = e => {
-    console.log(e.target.value);
-    props.handleCity(e.target.value);
-    // console.log(userInfo);
-  };
-
-  const handleZip = e => {
-    console.log(e.target.value);
-    props.handleZip(e.target.value);
-    // console.log(userInfo);
-  };
 
   const handleState = e => {
-    props.handleState(e);
+    setUserInfo({
+      ...userInfo,
+      state: e
+    })
   };
 
   return (
@@ -93,7 +82,7 @@ const EditProfile = props => {
           <form>
             <input
               type="text"
-              onChange={handleName}
+              onChange={handleInput}
               name="name"
               value={userInfo.name}
               placeholder={userInfo.name}
@@ -124,7 +113,7 @@ const EditProfile = props => {
           <form>
             <input
               type="text"
-              onChange={handleStreet}
+              onChange={handleInput}
               name="street"
               placeholder={
                 userInfo.street === '' ? userInfo.street : '123 Nowhere Lane'
@@ -133,7 +122,7 @@ const EditProfile = props => {
             />
             <input
               type="text"
-              onChange={handleCity}
+              onChange={handleInput}
               name="city"
               placeholder={userInfo.city}
               value={userInfo.city}
@@ -142,8 +131,8 @@ const EditProfile = props => {
             <StateSelect state={userInfo.state} handleState={handleState} />
             <input
               type="text"
-              onChange={handleZip}
-              name="zip"
+              onChange={handleInput}
+              name="zip_code"
               placeholder={userInfo.zip_code}
               value={userInfo.zip_code}
             />

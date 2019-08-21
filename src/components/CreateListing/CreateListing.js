@@ -40,9 +40,9 @@ const CreateListing = () => {
   const [condition] = useState('');
 
   // // this is called to get the user id.
-  // useEffect(() => {
-  //   dispatch(getUserId(userToken));
-  // }, []);
+  useEffect(() => {
+    dispatch(getUserId(userToken));
+  }, []);
 
   const handleSubmit = (id, list) => {
     dispatch(createItem(id, list));

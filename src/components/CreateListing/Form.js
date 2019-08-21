@@ -34,6 +34,10 @@ const Form = props => {
     );
   };
 
+
+  console.log(previewPics);
+  console.log(picture);
+
   return (
     <Formik
       initialValues={{
@@ -49,9 +53,10 @@ const Form = props => {
         condition: props.listing.condition,
       }}
       validationSchema={validationSchema}
-      onSubmit={values => {
+      onSubmit={async values => {
         const list = {
-          users_ownerId: props.item.users_ownerId,
+          users_ownerId: 27,
+          // users_ownerId: props.item.users_ownerId,
           name: values.name,
           picture,
           price: values.price,
@@ -62,11 +67,14 @@ const Form = props => {
           sub_category: values.subcategory,
           description: values.picture,
           payment_type: values.paymentType,
-          available: props.item.available,
-          average_rating: props.item.picture,
+          available: props.listing.available,
+          average_rating: props.listing.average_rating,
           condition: values.condition,
         };
-        props.listing.handleSubmit(props.item.users_ownerId, list);
+
+        await uploadPhotos(previewPics);
+
+        await props.listing.handleSubmit(list.users_ownerId, list);
       }}
     >
       {({
@@ -249,19 +257,14 @@ const Form = props => {
                   {errors.category && touched.category ? errors.category : null}
                 </div>
               </div>
-              {/* very long file so I refactored it as its own component in ./SubCategory.js */}
+              {/* very long file so I refactored it as its own component in ./SubCategory.js
               <SubCategory
                 category={values.category}
                 handleChange={handleChange}
                 onBlur={handleBlur}
                 errors={errors}
                 touched={touched}
-              />
-              <div className="isa_error">
-                {errors.subcategory && touched.subcategory
-                  ? errors.subcategory
-                  : null}
-              </div>
+              /> */}
             </div>
           </form>
           <div className="bottom-row">

@@ -17,22 +17,25 @@ const Form = props => {
   };
 
   const uploadPhotos = file => {
+    const userPhotos = [];
     file.map(photo =>
       axios
-        .post('https://httpbin.org/post', photo.body)
+        .post(
+          'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture',
+          photo.body
+        )
         .then(res => {
           console.log(res);
-          setPicture([...picture, { url: res.data.Location }]);
+          userPhotos.push({ url: res.data.Location });
+          setPicture([...picture, userPhotos]);
         })
         .catch(err => {
           console.log(err);
         })
     );
   };
-  console.log(previewPics);
-  console.log(picture);
 
-  // uploadPhotos(picture[0].body);
+  console.log(picture);
 
   return (
     <Formik

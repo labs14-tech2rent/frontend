@@ -12,3 +12,13 @@
     height: 100vh;
   }
 }
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.footer {
+  margin-top: auto;
+}

@@ -25,6 +25,7 @@ const FileUpload = props => {
 
     if (status === 'removed') {
       console.log(file);
+      props.removePhoto(file);
     }
   };
 

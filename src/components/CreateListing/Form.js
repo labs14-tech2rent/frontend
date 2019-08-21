@@ -34,6 +34,13 @@ const Form = props => {
     );
   };
 
+  const removePhoto = file => {
+    const removeFilter = previewPics.filter(
+      photo => photo.file.lastModified !== file.lastModified
+    );
+
+    setPreview(removeFilter);
+  };
 
   console.log(previewPics);
   console.log(picture);
@@ -94,6 +101,7 @@ const Form = props => {
                 previewPics={previewPics}
                 savePhotos={savePhotos}
                 uploadPhotos={uploadPhotos}
+                removePhoto={removePhoto}
               ></FileUpload>
               <div className="condition">
                 Condition <br />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Formik, Field } from 'formik';
 
 import SubCategory from './SubCategory';
@@ -8,19 +9,35 @@ import { validationSchema } from './yupSchema';
 import FileUpload from './FileUploader';
 
 const Form = props => {
+  const [previewPics, setPreview] = useState([]);
   const [picture, setPicture] = useState([]);
 
   const savePhotos = photo => {
-    setPicture([...picture, { photo }]);
+    setPreview([...previewPics, photo]);
   };
 
+  const uploadPhotos = file => {
+    file.map(photo =>
+      axios
+        .post('https://httpbin.org/post', photo.body)
+        .then(res => {
+          console.log(res);
+          setPicture([...picture, { url: res.data.Location }]);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    );
+  };
+  console.log(previewPics);
   console.log(picture);
-  
+
+  // uploadPhotos(picture[0].body);
+
   return (
     <Formik
       initialValues={{
         name: props.listing.name,
-        picture,
         price: props.listing.price,
         city: props.listing.city,
         state: props.listing.state,
@@ -36,7 +53,7 @@ const Form = props => {
         const list = {
           users_ownerId: props.item.users_ownerId,
           name: values.name,
-          picture: values.picture,
+          picture,
           price: values.price,
           city: values.city,
           state: values.state,
@@ -61,12 +78,14 @@ const Form = props => {
         handleSubmit,
       }) => (
         <div className="form-wrapper">
+          <button onClick={() => uploadPhotos(previewPics)}>test</button>
           <form>
             {/* conditional render for image preview, will change this later on.  */}
             <div className="left-side">
               <FileUpload
-                picture={picture}
+                previewPics={previewPics}
                 savePhotos={savePhotos}
+                uploadPhotos={uploadPhotos}
               ></FileUpload>
               <div className="condition">
                 Condition <br />

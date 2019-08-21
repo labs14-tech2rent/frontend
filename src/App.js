@@ -99,9 +99,9 @@ const App = props => {
             exact
             path="/profile"
             name={name}
-            component={Profile}
+            render={props => (<Profile {...props} name={name} />)}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/edit-profile"
             render={props => (

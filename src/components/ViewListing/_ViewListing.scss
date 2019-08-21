@@ -117,7 +117,7 @@
   height: 100vh;
   -webkit-overflow-scrolling: touch;
   @media (max-width: 900px) {
-    overflow: hidden;
+    overflow-y: scroll;
   }
 }
 

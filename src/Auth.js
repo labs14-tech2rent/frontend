@@ -32,7 +32,7 @@ export default class Auth {
     this.login = this.login.bind(this);
   }
 
-  // Calls this fn when a user clicks login -- reroutes to a separate login page
+  /// Calls this fn when a user clicks login -- reroutes to a separate login page
   login() {
     this.auth0.authorize();
   }

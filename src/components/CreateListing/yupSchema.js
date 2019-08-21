@@ -6,7 +6,6 @@ export const validationSchema = yup.object().shape({
     .required(
       'Put a descriptive title Ex: "Nikon COOLPIX P900 Digital Camera with 83x Optical Zoom"'
     ),
-  picture: yup.string().required('Upload Photos before posting'),
   price: yup
     .number('please only input numbers')
     .min(1)
@@ -22,10 +21,6 @@ export const validationSchema = yup.object().shape({
     .required('Required'),
   zipcode: yup.number().required('Required'),
   category: yup.string().required('Choose a Category'),
-  subcategory: yup
-    .string()
-    .trim()
-    .required('Choose a SubCategory'),
   description: yup
     .string()
     .trim()

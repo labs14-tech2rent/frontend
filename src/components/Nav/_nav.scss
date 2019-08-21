@@ -282,15 +282,25 @@
     color: $dark-gray;
   }
 
-  .navlinks-mobile {
+  .navlinks-mobile,
+  .profile-tab {
     animation: slide ease 0.4s forwards;
     background: $medium-gray;
     color: $purple-light;
     display: block;
   }
 
+  .navlink-mobile,
+  .profile-tab {
+    cursor: pointer;
+    width: 16rem;
+    padding: 0px 1rem;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+
   .closed {
-    transform: translateY(-190px);
+    transform: translateY(-206px);
     transition: all 0.5s;
   }
 
@@ -299,14 +309,18 @@
     transition: all 0.5s;
   }
 
-  .navlinks-mobile .navlink-mobile {
+  .navlinks-mobile,
+  .navlink-mobile,
+  .profile-tab {
     display: block;
-    width: 80%;
-    margin: 0 auto;
     padding: 8px 0px;
     color: $light-gray;
     font-size: 1.5rem;
   }
+}
+
+.profile-tab {
+  margin: 0px;
 }
 
 .mobile-profile-dropdown {

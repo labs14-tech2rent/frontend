@@ -101,7 +101,7 @@ const App = props => {
             name={name}
             component={Profile}
           />
-          <PrivateRoute
+          <Route
             exact
             path="/edit-profile"
             render={props => (

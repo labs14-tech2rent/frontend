@@ -18,7 +18,7 @@ const Form = props => {
     setPreview([...previewPics, photo]);
   };
 
-  const uploadPhotos = file => {
+  const uploadPhotos = async file => {
     const userPhotos = {};
     file.map((photo, i) =>
       axios
@@ -29,12 +29,14 @@ const Form = props => {
         .then(res => {
           Object.assign(userPhotos, { [i]: res.data.Location });
           console.log(userPhotos);
-          setPicture({ ...picture, images: userPhotos });
+          setPicture({ images: userPhotos });
+          console.log(picture);
         })
         .catch(err => {
           console.log(err);
         })
     );
+    console.log(picture);
   };
 
   const removePhoto = file => {
@@ -45,14 +47,17 @@ const Form = props => {
     setPreview(removeFilter);
   };
 
-  const uploadAndSubmit = async (photos, id, listing) => {
-    await uploadPhotos(photos);
+  const uploadAndSubmit = (photos, id, listing) => {
+    console.log(photos);
+
+    uploadPhotos(photos);
 
     console.log(picture);
-    await Object.assign(listing, picture);
+    Object.assign(listing, picture);
     console.log(listing);
+    console.log(picture);
 
-    await props.listing.handleSubmit(id, listing);
+    props.listing.handleSubmit(id, listing);
   };
 
   console.log(picture);
@@ -102,7 +107,6 @@ const Form = props => {
         handleSubmit,
       }) => (
         <div className="form-wrapper">
-          {console.log(values)}
           <button onClick={() => uploadPhotos(previewPics)}>test</button>
           <form>
             {/* conditional render for image preview, will change this later on.  */}

@@ -12,9 +12,10 @@
 .app-wrapper {
   display: -webkit-flex;
   flex-direction: column;
-  height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
 }
 
 .footer {
   margin-top: auto;
+  margin-bottom: -500rem;
 }

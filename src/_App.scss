@@ -16,7 +16,7 @@
 .app-wrapper {
   display: -webkit-flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 .footer {

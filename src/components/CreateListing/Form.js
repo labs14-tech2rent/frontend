@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Formik, Field } from 'formik';
 
+// .match(/(https:\/\/labs14-tech2rent-image-upload.s3.amazonaws.com\/[0-9][0-9][0-9][0-9][0-9][0-9])/)
+
 import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
 import { validationSchema } from './yupSchema';
@@ -25,9 +27,9 @@ const Form = props => {
           photo.body
         )
         .then(res => {
-          Object.assign(userPhotos, { url: res.data.Location });
-          // userPhotos.push({ url: res.data.Location });
-          setPicture(`${picture} ${userPhotos} `);
+          Object.assign(userPhotos, { [i]: res.data.Location });
+          console.log(userPhotos);
+          setPicture({ ...picture, images: userPhotos });
         })
         .catch(err => {
           console.log(err);
@@ -43,16 +45,14 @@ const Form = props => {
     setPreview(removeFilter);
   };
 
-  const uploadAndSubmit = (photos, id, listing) => {
-    uploadPhotos(photos);
+  const uploadAndSubmit = async (photos, id, listing) => {
+    await uploadPhotos(photos);
 
-    const images = {
-      picture,
-    };
     console.log(picture);
-    Object.assign(listing, images);
+    await Object.assign(listing, picture);
     console.log(listing);
-    props.listing.handleSubmit(id, listing);
+
+    await props.listing.handleSubmit(id, listing);
   };
 
   console.log(picture);

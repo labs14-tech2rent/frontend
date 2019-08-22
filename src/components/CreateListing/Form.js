@@ -4,7 +4,6 @@ import { Formik, Field } from 'formik';
 
 // .match(/(https:\/\/labs14-tech2rent-image-upload.s3.amazonaws.com\/[0-9][0-9][0-9][0-9][0-9][0-9])/)
 
-import SubCategory from './SubCategory';
 import StateDropDown from './StateDropDown';
 import { validationSchema } from './yupSchema';
 
@@ -12,13 +11,13 @@ import FileUpload from './FileUploader';
 
 const Form = props => {
   const [previewPics, setPreview] = useState([]);
-  const [picture, setPicture] = useState({});
+  const picture = {};
 
   const savePhotos = photo => {
     setPreview([...previewPics, photo]);
   };
 
-  const uploadPhotos = async file => {
+  const uploadPhotos = file => {
     const userPhotos = {};
     file.map((photo, i) =>
       axios
@@ -29,14 +28,13 @@ const Form = props => {
         .then(res => {
           Object.assign(userPhotos, { [i]: res.data.Location });
           console.log(userPhotos);
-          setPicture({ images: userPhotos });
-          console.log(picture);
+          return Object.assign(picture, { images: userPhotos });
         })
         .catch(err => {
           console.log(err);
         })
     );
-    console.log(picture);
+    return picture;
   };
 
   const removePhoto = file => {
@@ -53,6 +51,7 @@ const Form = props => {
     uploadPhotos(photos);
 
     console.log(picture);
+
     Object.assign(listing, picture);
     console.log(listing);
     console.log(picture);

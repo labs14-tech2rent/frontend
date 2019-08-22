@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import App from './App';
 import rootReducer from './reducers';
-
+import { ParallaxProvider } from 'react-scroll-parallax';
 const history = createHistory();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -22,7 +22,9 @@ const AppWithRouter = withRouter(App);
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history} forceRefresh={true}>
+    <ParallaxProvider>
       <AppWithRouter />
+     </ParallaxProvider>
     </Router>
   </Provider>,
   document.getElementById('root')

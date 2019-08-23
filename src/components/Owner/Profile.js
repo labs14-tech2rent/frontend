@@ -7,20 +7,16 @@ import Rating from './Rating';
 import camera from '../../Images/Bitmap-1.png';
 import vr from '../../Images/Bitmap-8.png';
 import cameratwo from '../../Images/Bitmap-10.png';
+import EditItem from './EditItemModal';
 
 const Profile = props => {
-
-
+  const [modalShow, setModalShow] = React.useState(false);
   const [user, setUser] = useState({
-
     name: '',
     email: '',
     picture: '',
     location: '',
-
   });
-
-
 
   useEffect(() => {
     axios
@@ -28,18 +24,13 @@ const Profile = props => {
         'https://randomuser.me/api/?nat=us&?results=1&inc=name,picture,email,registered,location'
       )
       .then(res => {
-        console.log(res)
-        setUser(res.data.results[0])
-      })
-
+        console.log(res);
+        setUser(res.data.results[0]);
+      });
   }, []);
 
-
-
-
   return (
-
-    //console.log(credentials.user)
+    // console.log(credentials.user)
 
     <div className="profile-content mainContent">
       <div className="user-info">
@@ -47,11 +38,9 @@ const Profile = props => {
         {user.name && (
           <p style={{ fontWeight: 'bold' }}>
             {`${user.name.first.charAt(0).toUpperCase() +
-              user.name.first.slice(
-                1
-              )} ${user.name.last
-                .charAt(0)
-                .toUpperCase()}${user.name.last.slice(1)} `}
+              user.name.first.slice(1)} ${user.name.last
+              .charAt(0)
+              .toUpperCase()}${user.name.last.slice(1)} `}
           </p>
         )}
         {user.location && (
@@ -60,26 +49,30 @@ const Profile = props => {
             {`${user.location.city.charAt(0).toUpperCase() +
               user.location.city.slice(1)}, 
                 ${user.location.state
-                .charAt(0)
-                .toUpperCase()}${user.location.state.slice(1)} `}
+                  .charAt(0)
+                  .toUpperCase()}${user.location.state.slice(1)} `}
           </p>
         )}
         <p>Freelance Photographer</p>
         <br />
-        <p className="addProduct" onClick={() => props.history.push('/create-listing')}> + Add Product</p>
+        <p
+          className="addProduct"
+          onClick={() => props.history.push('/create-listing')}
+        >
+          {' '}
+          + Add Product
+        </p>
 
         <Rating />
-
       </div>
-
+      <EditItem show={modalShow} onHide={() => setModalShow(false)} />
       <div className="products">
-        <img src={camera} alt="camera" />
+        <img src={camera} alt="camera" onClick={() => setModalShow(true)} />
         <img src={vr} alt="vr" />
         <img src={cameratwo} alt="camera" />
       </div>
     </div>
   );
-
-}
+};
 
 export default Profile;

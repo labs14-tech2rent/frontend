@@ -65,7 +65,7 @@ const Login = props => {
       <Parallax
         disabled={disabled}
         className="section-6"
-        x={[-20, 0]}
+        x={[-20, 10]}
         tagOuter="figure"
       >
         <div className="section-6__content">

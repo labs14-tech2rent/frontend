@@ -65,7 +65,7 @@ const Login = props => {
       <Parallax
         disabled={disabled}
         className="section-6"
-        x={[-20, 10]}
+        x={[-20, 0]}
         tagOuter="figure"
       >
         <div className="section-6__content">
@@ -126,7 +126,7 @@ const Login = props => {
           <Parallax
             className="section-5__right"
             disabled={disabled}
-            x={[40, -40]}
+            x={[40, 0]}
             tagOuter="figure"
           >
             <h2>Welcome</h2>
@@ -143,7 +143,7 @@ const Login = props => {
             disabled={disabled}
             className="section-4__left"
             tagOuter="figure"
-            x={[-40, 40]}
+            x={[-20, 20]}
           >
             <div>
               <h2>Search</h2>
@@ -165,7 +165,7 @@ const Login = props => {
             disabled={disabled}
             className="section-4__right"
             tagOuter="figure"
-            x={[20, -40]}
+            x={[20, 0]}
           >
             <h2>It's Simple.</h2>
             <h2>We'll Prove it.</h2>
@@ -184,7 +184,7 @@ const Login = props => {
             disabled={disabled}
             className="section-3__content__left"
             tagOuter="figure"
-            x={[-20, 30]}
+            x={[-30, 0]}
           >
             <h2 className="section-3__heading">
               <span>

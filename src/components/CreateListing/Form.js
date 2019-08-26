@@ -17,10 +17,13 @@ const Form = props => {
     setPreview([...previewPics, photo]);
   };
 
-  const uploadAndSubmit = (form, id, listing) => {
+  // function that uploads the photos and submits the form
+  const uploadAndSubmit = (photos, id, listing) => {
+    // empty array to store the links I recieve from the api.
     const photosAdded = [];
 
-    form.map((photo, i) => {
+    // looping through the data in photos.
+    photos.map((photo, i) => {
       const formData = new FormData();
 
       formData.append('name', photo.file);
@@ -30,17 +33,21 @@ const Form = props => {
           formData
         )
         .then(res => {
-          if (i === form.length - 1) {
+          // here I am check if it is the last photo so I can send the form if it is.
+          if (i === photos.length - 1) {
             photosAdded.push(res.data.Location);
 
+            // I turn the array into an object to append to the listing.
             const images = {
               picture: photosAdded,
             };
 
+            // assigning picture to listing
             Object.assign(listing, images);
+            // sending the form data to the api.
             props.listing.handleSubmit(id, listing);
           }
-
+          // if it is not the last photo it will just keep looping until it is.
           photosAdded.push(res.data.Location);
         })
         .catch(err => {
@@ -49,6 +56,7 @@ const Form = props => {
     });
   };
 
+  // this is to remove an unwanted photo from the list that gets submitted.
   const removePhoto = file => {
     const removeFilter = previewPics.filter(
       photo => photo.file.lastModified !== file.lastModified
@@ -72,6 +80,7 @@ const Form = props => {
       }}
       validationSchema={validationSchema}
       onSubmit={values => {
+        // values that get submitted to the api.
         const list = {
           users_ownerId: props.listing.userId,
           name: values.name,
@@ -88,6 +97,7 @@ const Form = props => {
           condition: values.condition,
         };
 
+        // calling the function
         uploadAndSubmit(previewPics, list.users_ownerId, list);
       }}
     >

@@ -64,8 +64,6 @@ const CreateListing = () => {
     isSubmitting,
   };
 
-  console.log(listing);
-
   return (
     <div className="create-listing mainContent">
       <div className="banner">

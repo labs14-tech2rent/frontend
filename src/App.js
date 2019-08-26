@@ -11,6 +11,7 @@ import Login from './components/Login/Login';
 import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
 import Register from './components/Register/Register';
+import ViewItem from './components/ViewItem/ViewItem';
 
 import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
@@ -39,6 +40,11 @@ const App = props => {
             exact
             path="/view-listing"
             render={props => <ViewListing {...props} />}
+          />
+          <Route 
+            exact
+            path="/view-item/:id"
+            render={props => <ViewItem {...props} />}
           />
         </Switch>
         <Footer />

@@ -22,7 +22,7 @@ const Form = props => {
     // }
   };
 
-  const uploadPhotos = form => {
+  const uploadPhotos = (form, id, listing) => {
     const photosAdded = [];
     console.log(form.length);
 
@@ -37,6 +37,20 @@ const Form = props => {
           formData
         )
         .then(res => {
+          if (i === form.length - 1) {
+            photosAdded.push(res.data.Location);
+            setPicture(photosAdded);
+
+            const images = {
+              picture: photosAdded,
+            };
+
+            Object.assign(listing, images);
+            console.log(listing);
+            console.log(picture);
+
+            props.listing.handleSubmit(id, listing);
+          }
           console.log(res);
           photosAdded.push(res.data.Location);
           setPicture(photosAdded);
@@ -124,7 +138,7 @@ const Form = props => {
           condition: values.condition,
         };
 
-        uploadAndSubmit(previewPics, list.users_ownerId, list);
+        uploadPhotos(previewPics, list.users_ownerId, list);
 
         console.log(list);
       }}

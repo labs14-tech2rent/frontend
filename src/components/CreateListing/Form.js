@@ -12,33 +12,59 @@ import FileUpload from './FileUploader';
 const Form = props => {
   const [previewPics, setPreview] = useState([]);
   const [picture, setPicture] = useState([]);
-  const formData = new FormData();
 
   const savePhotos = photo => {
     setPreview([...previewPics, photo]);
     console.log(photo);
-    formData.append('name', photo.file);
 
-    for (const value of formData.values()) {
-      console.log(value);
-    }
+    // for (const value of formData.values()) {
+    //   console.log(value);
+    // }
   };
 
   const uploadPhotos = form => {
-    axios({
-      method: 'post',
-      url:
-        'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture',
-      data: form,
-      config: { headers: { 'Content-Type': 'multipart/form-data' } },
-    })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(form);
-        console.log(err);
-      });
+    const photosAdded = [];
+    console.log(form.length);
+
+    form.map((photo, i) => {
+      const formData = new FormData();
+      console.log(photo.file);
+
+      formData.append('name', photo.file);
+      axios
+        .post(
+          'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture',
+          formData
+        )
+        .then(res => {
+          console.log(res);
+          photosAdded.push(res.data.Location);
+          setPicture(photosAdded);
+          console.log(picture);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    });
+
+    // axios({
+    //   method: 'post',
+    //   url:
+    //     'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture',
+    //   data: form,
+    //   config: { headers: { 'Content-Type': 'multipart/form-data' } },
+    // })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(form);
+    //     console.log(err);
+    //   });
+
+    // axios.post(
+    //   'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture'
+    // );
   };
 
   const removePhoto = file => {
@@ -66,7 +92,7 @@ const Form = props => {
   };
 
   // previewPics.map(obj => console.log(obj));
-  console.log(previewPics);
+  console.log(picture);
   return (
     <Formik
       initialValues={{
@@ -112,7 +138,7 @@ const Form = props => {
         handleSubmit,
       }) => (
         <div className="form-wrapper">
-          <button onClick={() => uploadPhotos(formData)}>test</button>
+          <button onClick={() => uploadPhotos(previewPics)}>test</button>
           <form>
             {/* conditional render for image preview, will change this later on.  */}
             <div className="left-side">

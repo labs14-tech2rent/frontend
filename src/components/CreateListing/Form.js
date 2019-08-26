@@ -11,30 +11,34 @@ import FileUpload from './FileUploader';
 
 const Form = props => {
   const [previewPics, setPreview] = useState([]);
-  const picture = {};
+  const [picture, setPicture] = useState([]);
+  const formData = new FormData();
 
   const savePhotos = photo => {
     setPreview([...previewPics, photo]);
+    console.log(photo);
+    formData.append('name', photo.file);
+
+    for (const value of formData.values()) {
+      console.log(value);
+    }
   };
 
-  const uploadPhotos = file => {
-    const userPhotos = {};
-    file.map((photo, i) =>
-      axios
-        .post(
-          'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture',
-          photo.body
-        )
-        .then(res => {
-          Object.assign(userPhotos, { [i]: res.data.Location });
-          console.log(userPhotos);
-          return Object.assign(picture, { images: userPhotos });
-        })
-        .catch(err => {
-          console.log(err);
-        })
-    );
-    return picture;
+  const uploadPhotos = form => {
+    axios({
+      method: 'post',
+      url:
+        'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture',
+      data: form,
+      config: { headers: { 'Content-Type': 'multipart/form-data' } },
+    })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(form);
+        console.log(err);
+      });
   };
 
   const removePhoto = file => {
@@ -50,17 +54,19 @@ const Form = props => {
 
     uploadPhotos(photos);
 
-    console.log(picture);
+    const images = {
+      picture,
+    };
 
-    Object.assign(listing, picture);
+    Object.assign(listing, images);
     console.log(listing);
     console.log(picture);
 
     props.listing.handleSubmit(id, listing);
   };
 
-  console.log(picture);
-
+  // previewPics.map(obj => console.log(obj));
+  console.log(previewPics);
   return (
     <Formik
       initialValues={{
@@ -106,7 +112,7 @@ const Form = props => {
         handleSubmit,
       }) => (
         <div className="form-wrapper">
-          <button onClick={() => uploadPhotos(previewPics)}>test</button>
+          <button onClick={() => uploadPhotos(formData)}>test</button>
           <form>
             {/* conditional render for image preview, will change this later on.  */}
             <div className="left-side">

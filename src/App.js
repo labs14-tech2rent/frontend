@@ -98,7 +98,7 @@ const App = props => {
             exact
             path="/profile"
             name={name}
-            render={props => (<Profile {...props} name={name} />)}
+            render={props => (<Profile {...props} name={name} user={user} />)}
           />
           <PrivateRoute
             exact

@@ -5,6 +5,7 @@ import { getUserIdReducer } from './UsersReducers/getUserIdReducer';
 import { getItemsReducer } from './getItemsReducer';
 import { getPhotosReducer } from './getPhotosReducer';
 import { registeredReducer } from './registeredReducer';
+import { itemsByIdReducer } from './ItemReducers/itemsByIdReducer';
 import Auth from '../Auth';
 
 const auth = new Auth();
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   getItems: getItemsReducer,
   getPhotos: getPhotosReducer,
   registered: registeredReducer,
+  item: itemsByIdReducer,
   auth,
 });
 

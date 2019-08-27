@@ -2,10 +2,7 @@ import React from 'react';
 import { Modal, Button, Form, Col } from 'react-bootstrap';
 import EditForm from './EditItemForm';
 
-
 function EditItemModal(props) {
-
-    
   return (
     <Modal
       {...props}
@@ -17,10 +14,17 @@ function EditItemModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">Edit Item</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <EditForm />
+        <EditForm
+          change={props.change}
+          setChange={props.setChange}
+          currentItem={props.currentItem}
+          onHide={props.onHide}
+        />
       </Modal.Body>
       <Modal.Footer>
-        <Button className="modal-button" onClick={props.onHide}>Close</Button>
+        <Button className="modal-button" onClick={props.onHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

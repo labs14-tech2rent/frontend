@@ -86,3 +86,22 @@
   background-color: #8d87ff !important;
   border-color: #8d87ff !important;
 }
+
+.uploading,
+.success,
+.error {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.uploading {
+  color: #000;
+}
+
+.success {
+  color: #00cc00;
+}
+
+.error {
+  color: #ff0000;
+}

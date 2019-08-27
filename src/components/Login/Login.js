@@ -78,14 +78,14 @@ const Login = props => {
 
         </div>
         <div className="section-7">
-          <button >view more equipment</button>
+          <button onClick={auth.login}>view more equipment</button>
         </div>
       </div>
 
       <div className="section-5">
 
             <div className="section-5__left">
-              Left Side
+              Tech 2 Rent looks to ensure a high quality platform for creatives of all sorts. We allow the invests you make into your equipment become a source of your icome as well. As creatives we all are dreamers, we all invision the world as our canvas, Tech 2 Rent allows everyone to paint together while sharing paint and paing brushes. 
             </div>
 
                      

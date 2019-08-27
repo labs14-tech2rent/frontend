@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url('./Images/login-photo2.png');
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./Images/home_main.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -49,6 +49,31 @@
   }
   h2, input, .navbar-icon{
     transform: translateY(35px);
+  }
+
+  &__arrows {
+    color: white;
+    font-size: 2.5rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    & a {
+      color: white;
+    }
+
+    & a:hover {
+      color: $purple;
+    }
+
+    &__icon {
+      display: block;
+      margin-bottom: -12px;
+      position: relative;
+      top: 60px;
+
+    }
   }
   
 }
@@ -255,6 +280,25 @@
         font-weight: bold;
         color: #4A4A4A;
       }
+    }
+  }
+}
+
+.section-7 {
+  text-align: center;
+  margin: 40px 0 20px 0;
+
+  & button {
+    cursor: pointer;
+    border: 2px solid #2A2A2A;
+    background-color: #2A2A2A;
+    font-size: 3rem;
+    color: white;
+    padding: 5px 12px;
+
+    &:hover {
+      color: #2A2A2A;
+      background: white;
     }
   }
 }

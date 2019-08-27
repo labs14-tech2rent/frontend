@@ -34,6 +34,28 @@ const ViewItem = (props) => {
                 </div>
                 <div className="view-item__content__right">
                     <h2>{item.name}</h2>
+                    <p>
+                        <span className={item.available ? "view-item__content__right__available" : "view-item__content__right__notavailable"}></span>
+                        <span>{item.available ? 'Available' : "Not Available"}</span></p>
+                    <h4>
+                        <span>Daily Rate</span>
+                        <span>${item.price} a day</span>
+                    </h4>
+
+                    <h4>
+                        <span>Condition</span>
+                        <span>{item.condition}</span>
+                    </h4>
+
+                    <p>
+                        {item.description}
+                    </p>
+
+                    <div>
+                        <button>
+                            Rent
+                        </button>
+                    </div>
                 </div>
             </div>
         }

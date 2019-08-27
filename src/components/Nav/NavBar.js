@@ -84,7 +84,7 @@ const NavBar = props => {
             <input
               className="navbar-input"
               type="text"
-              placeholder='Try "Nikon"'
+              placeholder='Search for the tech'
               onChange={e => setFilter(e.target.value)}
               onKeyPress={e => handleKeyPress(e)}
             />

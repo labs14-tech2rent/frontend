@@ -7,13 +7,13 @@ import { useSelector } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import home_phone from '../../Images/home_phone.png';
 import home_googleplay from '../../Images/home_googleplay.png';
 import home_laptop from '../../Images/home_laptop.png';
 import home_legs from '../../Images/home_legs.png';
 
-library.add(faSearch);
+library.add(faSearch, faAngleDown);
 
 
 const Login = props => {
@@ -31,18 +31,22 @@ const Login = props => {
   const content = ( //  conditionally renders content based on login form or sign up form state.
     <div className="App mainContent">
       <div className="section-1">
-      <h1>Dream. Rent. Create</h1>
+      <h1>Rent the tech you need</h1>
       <h2>Welcome back to the community.</h2>
         <button onClick={auth.login} className="login-button">
           Log in
         </button>
+        <div className="section-1__arrows">
+            <a href="#listings"><FontAwesomeIcon className="section-1__arrows__icon" icon={faAngleDown} /></a>
+            <a href="#listings"><FontAwesomeIcon className="section-1__arrows__icon" icon={faAngleDown} /></a>
+        </div>
       </div>
 
 
       <div className="section-6">
         <div className="section-6__content">
 
-            <div className="section-6__content_card card-1">
+            <div id="listings" className="section-6__content_card card-1">
                 <img src="https://static.bhphoto.com/images/images2500x2500/1455749513_1225876.jpg" alt="DSLR Camera"/>
                 <h3>DSLR Cameras</h3>
             </div>
@@ -72,6 +76,9 @@ const Login = props => {
                 <h3>Drones</h3>
             </div>
 
+        </div>
+        <div className="section-7">
+          <button >view more equipment</button>
         </div>
       </div>
 

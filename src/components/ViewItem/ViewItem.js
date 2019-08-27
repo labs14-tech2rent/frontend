@@ -30,7 +30,7 @@ const ViewItem = (props) => {
         {item && 
             <div className="view-item__content">
                 <div className="view-item__content__left">
-                    <img src={item.picture}/>
+                    <img src={item.picture.startsWith('http') ? item.picture : "http://www.stuartsteel.com/wp-content/themes/asenka/images/default-no-image.png"}/>
                 </div>
                 <div className="view-item__content__right">
                     <h2>{item.name}</h2>

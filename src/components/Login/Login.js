@@ -7,13 +7,14 @@ import { useSelector } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faAngleDown} from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
 import home_phone from '../../Images/home_phone.png';
 import home_googleplay from '../../Images/home_googleplay.png';
 import home_laptop from '../../Images/home_laptop.png';
 import home_legs from '../../Images/home_legs.png';
 
-library.add(faSearch, faAngleDown);
+library.add(faSearch, faAngleDown, faArrowAltCircleRight);
 
 
 const Login = props => {
@@ -102,17 +103,17 @@ const Login = props => {
             <div className="section-4__left">
               <div>
                 <h2>Search</h2>
-                <p>Large directory of High end technology.</p>
+                <p>Search through the most high end and advanced technology available on the market.</p>
               </div>
 
               <div>
                 <h2>Book</h2>
-                <p>Large directory of High end technology.</p>  
+                <p>Two steps reservations. Book the tech you need instantly.</p>  
               </div>
 
               <div>
-                <h2>Ship</h2>
-                <p>Large directory of High end technology.</p>  
+                <h2>Ship or Meet Up</h2>
+                <p>Two options, the owner decides. Either reserve and expect shipping or even meet up locally.</p>  
               </div>
             </div>
 
@@ -137,8 +138,13 @@ const Login = props => {
                   <h4 className="section-3__heading__fourth">SIDES</h4>
                 </span>
               </h2>
+              <div className="section-3__border"></div>
               <p className="section-3__heading__fifth">Renters get high end tech shipped to them so their opportunities are endless.</p>
               <p className="section-3__heading__fifth">Owners equipment can be assured that vetted users are in possesion of their belongings and can make money from the tech rent.</p>
+              <p className="section-3__cta" onClick={auth.login}>
+                <span>Learn more </span>
+                <span><FontAwesomeIcon  icon={faArrowAltCircleRight} /></span>
+              </p>
           </div>
           <div className="section-3__content__right">
               <img src={home_phone} alt="Picture of mobile phone" className="section-3__content__right__img1"/>

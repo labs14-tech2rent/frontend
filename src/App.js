@@ -60,12 +60,10 @@ const App = props => {
     setState(e);
   };
 
- 
   useEffect(() => {
     console.log(user.user);
     if (id) {
       dispatch(getUserId(id));
-     
     }
     if (user.user !== '') {
       // setGettingUser(user.gettingUser);
@@ -79,10 +77,9 @@ const App = props => {
 
       console.log(user.user.name);
     }
-  }, user.user !== undefined ? [user.user.name] : []);
+  }, [dispatch, id, user.user]);
 
-
-  return ( 
+  return (
     <div className="app-wrapper">
       <BrowserRouter>
         <header>
@@ -99,7 +96,7 @@ const App = props => {
             exact
             path="/profile"
             name={name}
-            render={props => (<Profile {...props} name={name} />)}
+            render={props => <Profile {...props} name={name} />}
           />
           <PrivateRoute
             exact
@@ -123,26 +120,26 @@ const App = props => {
             )}
           />
           <Route path="/create-listing" component={CreateListing} />
-          
-            <PrivateRoute
-              exact
-              path="/register"
-              {...props}
-              render={props => (
-                <Register
-                  {...props}
-                  handleName={handleName}
-                  handleEmail={handleEmail}
-                />
-              )}
-            />
-         
+
+          <PrivateRoute
+            exact
+            path="/register"
+            {...props}
+            render={props => (
+              <Register
+                {...props}
+                handleName={handleName}
+                handleEmail={handleEmail}
+              />
+            )}
+          />
+
           <Route
             exact
-            path="/view-listing"
+            path="/view-listings"
             render={props => <ViewListing {...props} />}
           />
-          <Route 
+          <Route
             exact
             path="/view-item/:id"
             render={props => <ViewItem {...props} />}

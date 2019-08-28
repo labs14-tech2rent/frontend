@@ -38,7 +38,7 @@ const Profile = props => {
     // axios
     //   .get(
     //     'https://randomuser.me/api/?nat=us&?results=1&inc=name,picture,email,registered,location'
-    //   )
+    // //   )
     //   .then(res => {
     //     console.log(res);
     //     setUser(res.data.results[0]);
@@ -50,7 +50,7 @@ const Profile = props => {
     setUserItems(items.items.usersItems);
     // setName(user.user.name);
     console.log(userItems);
-  }, []);
+  }, [dispatch, items, user.id, userItems]);
 
   return (
     // console.log(credentials.user)
@@ -90,26 +90,26 @@ const Profile = props => {
         currentItem={currentItem}
       />
       <div className="products">
-      {userItems &&
-        userItems.map((item, id) => (
-          <div
-            onClick={e => {
-              setModalShow(true);
-              axios
-                .get(
-                  `https://labstech2rentstaging.herokuapp.com/api/items/${item.id}`
-                )
-                .then(res => {
-                  // console.log(currentItem)
-                  setCurrentItem(res.data);
-                  console.log(currentItem);
-                });
-            }}
-          >
-            <h1>{item.name}</h1>
-            <img src={item.picture && item.picture} />
-          </div>
-        ))}
+        {userItems &&
+          userItems.map((item, id) => (
+            <div
+              onClick={e => {
+                setModalShow(true);
+                axios
+                  .get(
+                    `https://labstech2rentstaging.herokuapp.com/api/items/${item.id}`
+                  )
+                  .then(res => {
+                    // console.log(currentItem)
+                    setCurrentItem(res.data);
+                    console.log(currentItem);
+                  });
+              }}
+            >
+              <h1>{item.name}</h1>
+              <img src={item.picture && item.picture} />
+            </div>
+          ))}
       </div>
     </div>
   );

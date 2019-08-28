@@ -3,7 +3,11 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect, useSelector, useDispatch } from 'react-redux';
 
 // /make route private and spread in the rest of the props
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({
+  component: Component,
+  render: RenderedComponent,
+  ...rest
+}) => {
   const auth = useSelector(store => store.submit.auth);
   return (
     <div>
@@ -15,7 +19,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
             localStorage.getItem('id_token') &&
             localStorage.getItem('access_token')
           ) {
-            return <Component {...props} />;
+            return <RenderedComponent {...props} />;
           }
           // / if not then redirect to login
           localStorage.setItem('targetUrl', window.location.pathname);

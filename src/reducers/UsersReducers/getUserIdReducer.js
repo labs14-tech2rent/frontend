@@ -1,7 +1,7 @@
 import { GET_USER_START, GET_USER_SUCCESS, GET_USER_FAIL } from '../../actions';
 
 const initialState = {
-  user: [],
+  user: '',
   gettingUser: false,
   err: null,
 };
@@ -25,6 +25,7 @@ export const getUserIdReducer = (state = initialState, action) => {
         ...state,
         err: action.payload,
         gettingUser: false,
+        user: '',
       };
     default:
       return state;

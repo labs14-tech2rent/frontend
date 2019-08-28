@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { registerUser } from '../../actions';
+import { registerUser } from '../../actions/Users/CRUD/registerUser';
+import { registered } from '../../actions/registered';
 
 const Register = props => {
   const [credentials, setCredentials] = useState({
@@ -25,7 +26,11 @@ const Register = props => {
     e.preventDefault();
 
     dispatch(registerUser(credentials));
-    props.history.push('/home');
+    console.log(props);
+    props.handleName(credentials.name);
+    props.handleEmail(credentials.email);
+    dispatch(registered());
+    window.location.pathname ='/edit-profile'
   };
 
   return (

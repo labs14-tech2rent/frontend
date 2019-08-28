@@ -14,6 +14,7 @@ const FileUpload = props => {
   };
   return (
     <Dropzone
+      id="2"
       onChangeStatus={handleChangeStatus}
       maxFiles={1}
       inputContent="Change Profile Picture"

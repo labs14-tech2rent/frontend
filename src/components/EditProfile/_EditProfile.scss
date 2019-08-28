@@ -1,6 +1,6 @@
 .profile-pic {
   width: 145px;
-  height: auto;
+  height: 145px;
   max-width: 100%;
   cursor: pointer;
 }
@@ -33,6 +33,10 @@
     color: #fff;
   }
   &:hover {
+    
     opacity: 1;
   }
+
+ 
+  
 }

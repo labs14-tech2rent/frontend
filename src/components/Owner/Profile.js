@@ -25,7 +25,7 @@ const Profile = props => {
   const [user, setUser] = useState({
     name: props.user.user.name,
     email: props.user.user.email,
-    picture: props.user.user.picture,
+    picture: props.pic,
     city: props.user.user.city,
     state: props.user.user.state,
     id: props.user.user.id,
@@ -46,7 +46,7 @@ const Profile = props => {
       {console.log(items)}
      
       <div className="user-info">
-        <img src={user.picture} alt="" />
+        <img className="profile-pic" src={user.picture} alt="" />
         {user.name && (
           <p style={{ fontWeight: 'bold' }}>
             {`${user.name.charAt(0).toUpperCase() + user.name.slice(1)} `}
@@ -83,7 +83,7 @@ const Profile = props => {
       <div className="products">
         {userItems &&
           userItems.map((item, id) => (
-            <div
+            <div className="listed-item"
               onClick={e => {
                 setModalShow(true);
                 axios

@@ -83,6 +83,7 @@ function FormExample(props) {
             ...itemInfo,
             picture: res.data.Location,
           });
+          console.log(itemInfo)
           console.log(photosAdded);
           setFail(false);
           setSuccess(true);
@@ -146,17 +147,17 @@ function FormExample(props) {
 
   const handleSubmit = (e, msg) => {
     e.preventDefault();
-    setItemInfo({
-      ...itemInfo,
-    });
+    // setItemInfo({
+    //   ...itemInfo,
+    // });
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
     } else {
-      setItemInfo({
-        ...itemInfo,
-      });
+      // setItemInfo({
+      //   ...itemInfo,
+      // });
 
       axios
       .put(

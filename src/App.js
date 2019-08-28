@@ -43,21 +43,9 @@ const App = props => {
     setEmail(e);
   };
 
-  const handleStreet = e => {
-    setStreet(e);
-  };
 
-  const handleCity = e => {
-    setCity(e);
-  };
 
-  const handleZip = e => {
-    setZip(e);
-  };
-
-  const handleState = e => {
-    setState(e);
-  };
+  
 
  
   useEffect(() => {
@@ -98,7 +86,7 @@ const App = props => {
             exact
             path="/profile"
             name={name}
-            render={props => (<Profile {...props} name={name} />)}
+            render={props => (<Profile {...props} name={name} user={user} />)}
           />
           <PrivateRoute
             exact
@@ -113,11 +101,7 @@ const App = props => {
                 state={state}
                 street={street}
                 zip={zip}
-                handleName={handleName}
-                handleCity={handleCity}
-                handleZip={handleZip}
-                handleState={handleState}
-                handleStreet={handleStreet}
+                
               />
             )}
           />

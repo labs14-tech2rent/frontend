@@ -12,7 +12,8 @@ export const getUserItems = userId => dispatch => {
   axios
     .get(`https://labstech2rentstaging.herokuapp.com/api/users/${userId}`)
     .then(res => {
-      dispatch({ type: GET_USER_ITEMS_SUCCESS, payload: res });
+      console.log(res);
+      dispatch({ type: GET_USER_ITEMS_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: GET_USER_ITEMS_FAIL, payload: err });

@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import { Formik } from 'formik';
 import { Modal, Button, Form, Col, InputGroup } from 'react-bootstrap';
 import yup from 'yup';
+import { props } from 'bluebird';
+import FileUpload from './FileUpload';
+import { editItem } from '../../actions';
 
-function FormExample() {
-  const [validated, setValidated] = useState(false);
+function FormExample(props) {
+  const [success, setSuccess] = useState(false);
+  const [fail, setFail] = useState(false);
 
+  const [uploading, setUploading] = useState(false);
   const [itemInfo, setItemInfo] = useState({
     name: '',
     description: '',
@@ -16,7 +23,97 @@ function FormExample() {
     picture: '',
     sub_category: '',
     condition: '',
+    picture: '',
+    users_ownId: '',
+    id: '',
   });
+
+  useEffect(() => {
+    setItemInfo(props.currentItem);
+  }, [props.currentItem]);
+
+  const dispatch = useDispatch();
+  const [validated, setValidated] = useState(false);
+
+  const [previewPics, setPreview] = useState([]);
+  const [picture, setPicture] = useState([]);
+
+  const savePhotos = photo => {
+    setPreview([...previewPics, photo]);
+    console.log(photo);
+
+    // for (const value of formData.values()) {
+    //   console.log(value);
+    // }
+  };
+
+  const uploadPhotos = form => {
+    const photosAdded = [];
+    console.log(form.length);
+
+    form.map((photo, i) => {
+      const formData = new FormData();
+      console.log(photo.file);
+      setUploading(true);
+      formData.append('name', photo.file);
+      axios
+        .post(
+          'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture',
+          formData
+        )
+        .then(res => {
+          console.log(res);
+          photosAdded.push(res.data.Location);
+          setPicture(photosAdded);
+          console.log('photo is ADDED');
+          setItemInfo({
+            picture: res.data.Location,
+          });
+          console.log(photosAdded);
+          setFail(false);
+          setSuccess(true);
+          setUploading(false);
+        })
+        .catch(err => {
+          console.log(err);
+          setSuccess(false);
+          setFail(true);
+          setUploading(false);
+        });
+    });
+  };
+
+  const removePhoto = file => {
+    const removeFilter = previewPics.filter(
+      photo => photo.file.lastModified !== file.lastModified
+    );
+
+    setPreview(removeFilter);
+  };
+
+  const uploadAndSubmit = (photos, id, itemInfo) => {
+    console.log(photos);
+
+    uploadPhotos(photos);
+
+    const images = { picture };
+
+    Object.assign(itemInfo, images);
+
+    console.log(picture);
+
+    axios
+      .put(
+        `https://labstech2rentstaging.herokuapp.com/api/items/${id}`,
+        itemInfo
+      )
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   const handleChange = e => {
     //
@@ -26,16 +123,28 @@ function FormExample() {
     });
   };
 
-  const handleSubmit = e => {
+  const photoHandler = e => {
+    uploadAndSubmit(previewPics, itemInfo.users_ownerId, itemInfo);
+  };
+
+  const handleSubmit = (e, msg) => {
+    e.preventDefault();
+
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
+    } else {
+      setItemInfo({
+        ...itemInfo,
+      });
     }
 
     setValidated(true);
+    dispatch(editItem(props.currentItem.id, itemInfo));
     console.log(itemInfo);
   };
+
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Row>
@@ -88,7 +197,18 @@ function FormExample() {
       <Form.Row>
         <Form.Group as={Col} md="6" controlId="validationCustom03">
           <Form.Label>Category</Form.Label>
-          <Form.Control type="text" placeholder="Category" as="select" required>
+          <Form.Control
+            type="text"
+            name="category"
+            onChange={handleChange}
+            value={itemInfo.category}
+            placeholder="Category"
+            as="select"
+            required
+          >
+            <option selected disabled hidden>
+              Select Category:
+            </option>
             <option>Cameras</option>
             <option>Camera Accessories </option>
             <option>Lighting</option>
@@ -110,22 +230,34 @@ function FormExample() {
             as="select"
             required
           >
+            <option selected disabled hidden>
+              Condition:
+            </option>
             <option>New</option>
             <option>Like New </option>
             <option>Used</option>
           </Form.Control>
         </Form.Group>
         <Form.Group as={Col} md="3" controlId="validationCustom04">
-          <Form.Label># Available</Form.Label>
+          <Form.Label>Available:</Form.Label>
           <Form.Control
             type="text"
             placeholder="# of Items Available"
             name="available"
+            value={itemInfo.available}
             onChange={handleChange}
+            as="select"
             required
-          />
+          >
+            <option selected disabled hidden>
+              Is This Item Currently Rented Out?:
+            </option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </Form.Control>
+
           <Form.Control.Feedback type="invalid">
-            Please provide number of units available.
+            Please Select Item Availability Status
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="3" controlId="validationCustom05">
@@ -135,6 +267,8 @@ function FormExample() {
             placeholder="Payment Type"
             as="select"
             name="payment_type"
+            onChange={handleChange}
+            value={itemInfo.payment_type}
             required
           >
             <option>Online</option>
@@ -144,10 +278,33 @@ function FormExample() {
             Please provide a payment type.
           </Form.Control.Feedback>
         </Form.Group>
+        <Form.Group as={Col} md="6" controlId="validationCustom03">
+          <Form.Label>Image</Form.Label>
+
+          <FileUpload
+            previewPics={previewPics}
+            savePhotos={savePhotos}
+            uploadPhotos={uploadPhotos}
+            removePhoto={removePhoto}
+          />
+
+          <button onClick={photoHandler}>Upload Photo</button>
+          <p className="uploading">{uploading && 'Uploading...'}</p>
+          <p className="success">{success && 'Image uploaded successfully!'}</p>
+          <p className="error">
+            {fail && 'Image failed. Please try again, or select another image.'}
+          </p>
+        </Form.Group>
       </Form.Row>
       <Form.Group></Form.Group>
-      <Button className="submit-button" type="submit">
-        Submit form
+      <Button
+        className="submit-button"
+        type="submit"
+        onClick={() => {
+         
+        }}
+      >
+        Submit
       </Button>
     </Form>
   );

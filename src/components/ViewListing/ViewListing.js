@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 // import {Link} from 'react-router-dom';
@@ -40,6 +42,12 @@ const ViewListing = props => {
     e.preventDefault();
   };
 
+  const handleClick = (e, id) => {
+    e.preventDefault();
+    console.log(id);
+    props.history.push(`/view-item/${id}`);
+  };
+
   const imageChecker = image => {
     if (image !== null) {
       const checker = image.match(
@@ -67,8 +75,7 @@ const ViewListing = props => {
 
   const loadItems = arr =>
     arr.map(listings => (
-      <div>
-        {console.log(listings)}
+      <div onClick={e => handleClick(e, listings.id)} className="listing">
         <h3>{listings.name}</h3>
         <img
           src={

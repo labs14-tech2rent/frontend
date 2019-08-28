@@ -34,6 +34,7 @@ const ViewItem = props => {
                     ? item.picture
                     : 'http://www.stuartsteel.com/wp-content/themes/asenka/images/default-no-image.png'
                 }
+                alt="equipment"
               />
             </div>
             <div className="view-item__content__right">

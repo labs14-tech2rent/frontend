@@ -1,6 +1,3 @@
-# Frontend
-
-
 # Tech2Rent
 
 You can find the deployed project at [https://tech2rent.co](https://tech2rent.co/).
@@ -196,3 +193,5 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 ## Documentation
 
 See [Backend Documentation](https://github.com/labs14-tech2rent/backend/blob/master/README.md) for details on the backend of our project.
+
+See [Android Documentation](https://github.com/labs14-tech2rent/android) for details on the Android version of our project.

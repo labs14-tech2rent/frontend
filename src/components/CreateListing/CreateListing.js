@@ -28,21 +28,18 @@ const CreateListing = () => {
 
   // react state
   const [name] = useState('');
-  const [picture, setPicture] = useState('');
   const [price] = useState('');
   const [city] = useState('');
   const [state] = useState('');
   const [zipcode] = useState('');
   const [category] = useState('');
-  const [subcategory] = useState('');
   const [description] = useState('');
   const [paymentType] = useState('');
-  const [count, setCount] = useState(0);
   const [available] = useState(true);
   const [average_rating] = useState(0);
   const [condition] = useState('');
 
-  // this is called to get the user id.
+  // // this is called to get the user id.
   useEffect(() => {
     dispatch(getUserId(userToken));
   }, []);
@@ -55,20 +52,15 @@ const CreateListing = () => {
     userId,
     name,
     price,
-    picture,
     category,
     description,
     available,
     paymentType,
     average_rating,
     condition,
-    subcategory,
     city,
     state,
     zipcode,
-    setPicture,
-    setCount,
-    count,
     handleSubmit,
     isSubmitting,
   };

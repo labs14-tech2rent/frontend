@@ -12,6 +12,7 @@ import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
 import EditProfile from './components/EditProfile/EditProfile';
 import Register from './components/Register/Register';
+import ViewItem from './components/ViewItem/ViewItem';
 import { getUserId } from './actions/Users/USERID/getIdOfUser';
 import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
@@ -140,6 +141,11 @@ const App = props => {
             exact
             path="/view-listing"
             render={props => <ViewListing {...props} />}
+          />
+          <Route 
+            exact
+            path="/view-item/:id"
+            render={props => <ViewItem {...props} />}
           />
         </Switch>
         <Footer />

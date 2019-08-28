@@ -1,17 +1,21 @@
-
-
 @media (max-width: 700px) {
-    .mainContent {
-        transform: translateY(-152px);
-        transition: all .5s;
-        
-    }
-    
-    .slideDown {
-        transform: translateY(0px);
-    }
-    
-    .app-wrapper {
-        height: 100vh;
-    }
+  .mainContent {
+    transform: translateY(-34px);
+    transition: all 0.5s;
+  }
+
+  .slideDown {
+    transform: translateY(172px);
+  }
+}
+
+.app-wrapper {
+  display: -webkit-flex;
+  flex-direction: column;
+  min-height: -webkit-fill-available;
+}
+
+.footer {
+  margin-top: auto;
+  margin-bottom: -50rem;
 }

@@ -5,6 +5,7 @@ class Callback extends React.Component {
   componentDidMount() {
     const auth = new Auth();
     auth.handleAuthentication();
+    console.log('testing callback');
   }
 
   render() {

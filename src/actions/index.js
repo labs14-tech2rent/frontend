@@ -6,28 +6,28 @@ export {
   GET_ALL_USER_ID_SUCCESS,
   GET_ALL_USER_ID_FAIL,
   getAllUserId,
-} from './Users/USER ID GET/getAllUsers';
+} from './Users/USERID/getAllUsers';
 
 export {
   GET_USER_START,
   GET_USER_SUCCESS,
   GET_USER_FAIL,
   getUserId,
-} from './Users/USER ID GET/getIdOfUser';
+} from './Users/USERID/getIdOfUser';
 
 export {
   SUBMIT_START,
   SUBMIT_FAIL,
   SUBMIT_SUCCESS,
   getEveryUserId,
-} from './Users/USER ID GET/getEveryUserId.js';
+} from './Users/USERID/getEveryUserId';
 
 export {
   GET_USER_REVIEWS_START,
   GET_USER_REVIEWS_SUCCESS,
   GET_USER_REVIEWS_FAIL,
   getUserReviews,
-} from './Users/USER ID GET/getUserReviews';
+} from './Users/USERID/getUserReviews';
 
 // CRUD METHOD
 export {
@@ -82,44 +82,13 @@ export {
 } from './Items/CRUD/createItem';
 
 export {
-  EDIT_ITEM_START,
-  EDIT_ITEM_SUCCESS,
-  EDIT_ITEM_FAIL,
-  editItem,
-} from './Items/CRUD/editItem';
+  GET_PHOTOS_START,
+  GET_PHOTOS_SUCCESS,
+  GET_PHOTOS_FAIL,
+  getPhotos,
+} from './flickrAPI';
 
 export {
-  DELETE_ITEM_START,
-  DELETE_ITEM_SUCCESS,
-  DELETE_ITEM_FAIL,
-  deleteItem,
-} from './Items/CRUD/deleteItem';
+  REGISTERED,
+} from './registered';
 
-// Search Actions
-export {
-  SEARCH_CAT_START,
-  SEARCH_CAT_SUCCESS,
-  SEARCH_CAT_FAIL,
-  searchCategory,
-} from './Items/Search/searchCategory';
-
-export {
-  SEARCH_CITY_START,
-  SEARCH_CITY_SUCCESS,
-  SEARCH_CITY_FAIL,
-  searchCity,
-} from './Items/Search/searchCity';
-
-export {
-  SEARCH_CONDITION_START,
-  SEARCH_CONDITION_SUCCESS,
-  SEARCH_CONDITION_FAIL,
-  searchCondition,
-} from './Items/Search/searchCondition';
-
-export {
-  SEARCH_ZIPCODE_START,
-  SEARCH_ZIPCODE_SUCCESS,
-  SEARCH_ZIPCODE_FAIL,
-  searchZipcode,
-} from './Items/Search/searchZipcode';

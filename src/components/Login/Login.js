@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 // import {connect} from 'react-redux';
 // import {login, signUp, reset} from '../../actions';
@@ -79,7 +80,7 @@ const Login = props => {
 
         </div>
         <div className="section-7">
-          <button onClick={auth.login}>view more equipment</button>
+          <button ><Link to="/view-listings">view more equipment</Link></button>
         </div>
       </div>
 

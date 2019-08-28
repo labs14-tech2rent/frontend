@@ -323,6 +323,17 @@
       background: white;
     }
   }
+
+  & button a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: #2A2A2A;
+      text-decoration: none;
+    }
+
+  }
 }
 
 .card-4, .card-5, .card-6 {

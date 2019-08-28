@@ -77,7 +77,7 @@ const App = props => {
 
       console.log(user.user.name);
     }
-  }, [dispatch, id, user.user]);
+  }, []);
 
   return (
     <div className="app-wrapper">

@@ -10,17 +10,18 @@ import vr from '../../Images/Bitmap-8.png';
 import cameratwo from '../../Images/Bitmap-10.png';
 import EditItem from './EditItemModal';
 import { getItems } from '../../actions/Items/CRUD/getItems';
-import { getUserItems } from '../../actions';
+import { getUserItems, getItemById } from '../../actions';
 
 const Profile = props => {
   const [modalShow, setModalShow] = React.useState(false);
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
+
   const items = useSelector(store => store.items);
-  const itemId = useSelector(store => store.item);
+
   const [userItems, setUserItems] = useState('');
   const [currentItem, setCurrentItem] = useState('');
-  const [change, setChange] = useState('');
+  const [submit, setSubmit] = useState(false);
+
   const [user, setUser] = useState({
     name: props.user.user.name,
     email: props.user.user.email,
@@ -30,33 +31,20 @@ const Profile = props => {
     id: props.user.user.id,
   });
 
-  const handleName = e => {
-    setName(e);
-  };
 
   useEffect(() => {
-    // axios
-    //   .get(
-    //     'https://randomuser.me/api/?nat=us&?results=1&inc=name,picture,email,registered,location'
-    // //   )
-    //   .then(res => {
-    //     console.log(res);
-    //     setUser(res.data.results[0]);
-    //   });
-    //  userItems === userItems ? [] : [userItems]);
-    // dispatch(getItem)
+    //
+  
     dispatch(getUserItems(user.id));
-    console.log(items);
     setUserItems(items.items.usersItems);
-    // setName(user.user.name);
-    console.log(userItems);
-  }, [dispatch, items, user.id, userItems]);
+  }, [items.items.name])
 
   return (
     // console.log(credentials.user)
 
     <div className="profile-content mainContent">
-      {console.log(userItems && userItems)}
+      {console.log(items)}
+     
       <div className="user-info">
         <img src={user.picture} alt="" />
         {user.name && (
@@ -83,11 +71,14 @@ const Profile = props => {
 
         <Rating />
       </div>
-      {console.log(currentItem.name)}
+
       <EditItem
         show={modalShow}
         onHide={() => setModalShow(false)}
         currentItem={currentItem}
+        submit={submit}
+        name={props.name}
+        setSubmit={setSubmit}
       />
       <div className="products">
         {userItems &&

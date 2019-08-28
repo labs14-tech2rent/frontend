@@ -7,6 +7,7 @@ import yup from 'yup';
 import { props } from 'bluebird';
 import FileUpload from './FileUpload';
 import { editItem } from '../../actions';
+import { editUser } from '../../actions/Users/CRUD/editUser';
 
 function FormExample(props) {
   const [success, setSuccess] = useState(false);
@@ -27,10 +28,22 @@ function FormExample(props) {
     users_ownId: '',
     id: '',
   });
+  const [testInfo, setTestInfo] = useState({
+    name: props.name,
+    email: props.email,
+    auth0_user_id: localStorage.getItem('user_id'),
+    id: props.id
+  })
 
   useEffect(() => {
     setItemInfo(props.currentItem);
-  }, [props.currentItem]);
+    setTestInfo({
+    ...testInfo,
+    name: props.name,
+    email: props.email,
+    auth0_user_id: localStorage.getItem('user_id'),
+    })
+  }, [props.currentItem, props.name, props.email]);
 
   const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
@@ -67,6 +80,7 @@ function FormExample(props) {
           setPicture(photosAdded);
           console.log('photo is ADDED');
           setItemInfo({
+            ...itemInfo,
             picture: res.data.Location,
           });
           console.log(photosAdded);
@@ -92,6 +106,7 @@ function FormExample(props) {
   };
 
   const uploadAndSubmit = (photos, id, itemInfo) => {
+    
     console.log(photos);
 
     uploadPhotos(photos);
@@ -109,6 +124,7 @@ function FormExample(props) {
       )
       .then(res => {
         console.log(res);
+        
       })
       .catch(err => {
         console.log(err);
@@ -124,12 +140,15 @@ function FormExample(props) {
   };
 
   const photoHandler = e => {
+    e.preventDefault()
     uploadAndSubmit(previewPics, itemInfo.users_ownerId, itemInfo);
   };
 
   const handleSubmit = (e, msg) => {
     e.preventDefault();
-
+    setItemInfo({
+      ...itemInfo,
+    });
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.preventDefault();
@@ -138,10 +157,22 @@ function FormExample(props) {
       setItemInfo({
         ...itemInfo,
       });
-    }
 
+      axios
+      .put(
+        `https://labstech2rentstaging.herokuapp.com/api/items/${props.currentItem.id}`,
+        itemInfo
+      )
+      .then(res => {
+       window.location.reload()
+      })
+      .catch(err => {
+        setFail(true)
+      });
+      
+    }
+    //uploadAndSubmit()
     setValidated(true);
-    dispatch(editItem(props.currentItem.id, itemInfo));
     console.log(itemInfo);
   };
 
@@ -290,7 +321,7 @@ function FormExample(props) {
 
           <button onClick={photoHandler}>Upload Photo</button>
           <p className="uploading">{uploading && 'Uploading...'}</p>
-          <p className="success">{success && 'Image uploaded successfully!'}</p>
+          <p className="success">{success && "Image uploaded successfully!\nClick 'Submit' to Save Changes"}</p>
           <p className="error">
             {fail && 'Image failed. Please try again, or select another image.'}
           </p>
@@ -301,11 +332,12 @@ function FormExample(props) {
         className="submit-button"
         type="submit"
         onClick={() => {
-         
+          props.setSubmit(true);
         }}
       >
         Submit
       </Button>
+      <p className="error">{fail && "Error submitting changes. Please check that all form fields are filled in or try again later"}</p>
     </Form>
   );
 }

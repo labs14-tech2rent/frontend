@@ -18,6 +18,11 @@ function EditItemModal(props) {
           change={props.change}
           currentItem={props.currentItem}
           onHide={props.onHide}
+          submit={props.submit}
+          setSubmit={props.setSubmit}
+          name={props.name}
+          email={props.email}
+          id={props.id}
         />
       </Modal.Body>
       <Modal.Footer>

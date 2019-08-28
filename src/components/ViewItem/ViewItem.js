@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import cameraBanner from '../../Images/banner.png';
+import ImageViewer from './ImageViewer';
 
 const ViewItem = props => {
   const [id, setId] = useState(props.match.params.id);
   const [item, setItem] = useState();
+  const [images, setImages] = useState([
+    'http://www.stuartsteel.com/wp-content/themes/asenka/images/default-no-image.png',
+  ]);
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -13,11 +17,17 @@ const ViewItem = props => {
       );
       console.log('result', result.data);
       setItem(result.data);
+      setImages(
+        result.data.picture.match(
+          /(https:\/\/labs14-tech2rent-image-upload.s3.amazonaws.com\/[0-9][0-9][0-9][0-9][0-9][0-9])/
+        )
+      );
     };
     fetchItem();
   }, [id]);
 
   console.log('item', item);
+  console.log(images);
 
   return (
     <div className="create-listing view-item mainContent">
@@ -28,14 +38,7 @@ const ViewItem = props => {
         {item && (
           <div className="view-item__content">
             <div className="view-item__content__left">
-              <img
-                src={
-                  item.picture.startsWith('http')
-                    ? item.picture
-                    : 'http://www.stuartsteel.com/wp-content/themes/asenka/images/default-no-image.png'
-                }
-                alt="equipment"
-              />
+              <ImageViewer images={images}></ImageViewer>
             </div>
             <div className="view-item__content__right">
               <h2>{item.name}</h2>

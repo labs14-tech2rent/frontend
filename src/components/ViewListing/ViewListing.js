@@ -34,7 +34,7 @@ const ViewListing = props => {
   const findItem = e => {
     e.preventDefault();
     const results = items.filter(listing =>
-      listing.name.toLowerCase().startsWith(item.item.toLowerCase())
+      listing.name.toLowerCase().includes(item.item.toLowerCase())
     );
 
     setListings(results);

@@ -244,7 +244,7 @@ const NavBar = props => {
                 Log In
               </NavLink>
             )}
-            <NavLink to="/view-listing" className="navbar-link">
+            <NavLink to="/view-listings" className="navbar-link">
               Browse
             </NavLink>
             <NavLink

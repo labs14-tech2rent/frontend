@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getItems } from '../../actions';
+import StateDropDown from './StateDropDown';
 
 const ViewListing = props => {
   console.log(props);
@@ -40,10 +41,11 @@ const ViewListing = props => {
     e.preventDefault();
 
     const results = items.filter(listing => {
-      console.log(listing.zipcode, item.zipcode);
-      if (listing.zipcode && listing.name && listing.condition)
+      console.log(listing.state, item.state);
+      if (listing.zipcode && listing.name && listing.condition && listing.state)
         return (
           listing.condition.includes(item.condition) &&
+          listing.state.includes(item.state) &&
           listing.zipcode.includes(item.zipcode) &&
           listing.name
             .toLowerCase()
@@ -119,8 +121,10 @@ const ViewListing = props => {
             type="search"
             placeholder="Name, Brand, or Tech type"
           />
+          <label>State</label>
+          <StateDropDown handleChange={handleChange}></StateDropDown>
           <label>Zipcode</label>
-          <input name="zipcode" onChange={e => handleChange(e)} type="number" />
+          <input name="zipcode" onChange={handleChange} type="number" />
           <label>Condition</label>
           <select name="condition" onChange={e => handleChange(e)}>
             <option value="">Choose Condition</option>

@@ -16,7 +16,6 @@ const ViewItem = props => {
       const result = await axios(
         `https://labstech2rentstaging.herokuapp.com/api/items/${id}`
       );
-      console.log('result', result.data);
       setItem(result.data);
       setImages(
         result.data.picture.match(
@@ -26,9 +25,6 @@ const ViewItem = props => {
     };
     fetchItem();
   }, [id]);
-
-  console.log('item', item);
-  console.log(images);
 
   return (
     <div className="create-listing view-item mainContent">

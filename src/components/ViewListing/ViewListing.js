@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -11,7 +12,6 @@ import { getItems } from '../../actions';
 import StateDropDown from './StateDropDown';
 
 const ViewListing = props => {
-  console.log(props);
   const [item, setItem] = useState({
     name: '',
     state: '',
@@ -41,7 +41,6 @@ const ViewListing = props => {
     e.preventDefault();
 
     const results = items.filter(listing => {
-      console.log(listing.state, item.state);
       if (listing.zipcode && listing.name && listing.condition && listing.state)
         return (
           listing.condition.includes(item.condition) &&
@@ -106,9 +105,6 @@ const ViewListing = props => {
       </div>
     ));
 
-  console.log(item);
-  console.log(listings);
-
   return (
     <div className="view-listing mainContent view-listing-container">
       <div className="listing-form-container">
@@ -132,14 +128,6 @@ const ViewListing = props => {
             <option>Used (normal wear)</option>
             <option>Other (see description)</option>
           </select>
-          {/* <input
-            id="name"
-            name="payment_type"
-            value={item.payment_type}
-            onChange={e => handleChange(e)}
-            type="radio"
-            placeholder="Form of Payment"
-          /> */}
           <button type="submit">Find Your Tech</button>
         </form>
       </div>

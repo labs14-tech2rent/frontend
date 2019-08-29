@@ -22,14 +22,11 @@ const Profile = props => {
         'https://randomuser.me/api/?nat=us&?results=1&inc=name,picture,email,registered,location'
       )
       .then(res => {
-        console.log(res);
         setUser(res.data.results[0]);
       });
   }, []);
 
   return (
-    // console.log(credentials.user)
-
     <div className="profile-content mainContent">
       <div className="user-info">
         <img src={user.picture.large} alt="" />

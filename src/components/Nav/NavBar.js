@@ -1,3 +1,9 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 // src/components/NavBar.js
 
 import React, { useState, useEffect } from 'react';
@@ -20,7 +26,6 @@ const NavBar = props => {
   // event listener that sets state to loaded when ALL content has been loaded
   // /used for adding to click events, not allowing user to click on animations until all content has been loaded
   window.addEventListener('load', event => {
-    console.log('loaded');
     setDomLoaded(true);
   });
   // /end event listener
@@ -55,7 +60,7 @@ const NavBar = props => {
 
   // if the nav mobile view exists (if they are below 500px) AND all the content has been loaded
   if (navMobile && domLoaded === true) {
-    for (let i = 0; i < navigationLink.length; i++) {
+    for (let i = 0; i < navigationLink.length; i += 1) {
       // add listener to all the mobile navigation links
       navigationLink[i].addEventListener('click', () => {
         // remove open class and reset the mobile navigation to closed
@@ -84,7 +89,7 @@ const NavBar = props => {
 
   // if desktop navigation exists and all the content has been loaded
   if (navigation && domLoaded) {
-    for (let i = 0; i < desktopLink.length; i++) {
+    for (let i = 0; i < desktopLink.length; i += 1) {
       // when any desktop navlink is clicked...
       desktopLink[i].addEventListener('click', () => {
         // ...it will close the profile dropdown menu if it is opened
@@ -109,7 +114,6 @@ const NavBar = props => {
       const filtered = result.data.filter(item =>
         item.name.toLowerCase().includes(filter)
       );
-      // console.log(filtered);
       setItems(filtered);
     };
 
@@ -154,7 +158,6 @@ const NavBar = props => {
               onClick={() => {
                 // when nav icon is clicked on the navbar, reset all animations as described above
                 setMenuOpened(false);
-                console.log(navMobile);
                 navMobile.className = 'navlinks-mobile closed';
                 navIcon.classList.remove('change');
                 mainContent.classList.remove('slideDown');
@@ -230,9 +233,9 @@ const NavBar = props => {
               // if items are in local storage === user logged in//
 
               // if logged in show log out
-              <NavLink className="navbar-link" onClick={logout}>
+              <a className="navbar-link" onClick={logout}>
                 Log Out
-              </NavLink>
+              </a>
             ) : (
               // if logged out show log in
               <NavLink
@@ -281,7 +284,7 @@ const NavBar = props => {
                 // if all content is loaded, allow user to click hamburger icon
                 if (domLoaded === true) {
                   const mainContent = document.querySelectorAll('.mainContent');
-                  for (let i = 0; i < mainContent.length; i++) {
+                  for (let i = 0; i < mainContent.length; i += 1) {
                     // add class of slidedown when hamburger icon is clicked
                     mainContent[i].classList.toggle('slideDown');
                   }
@@ -312,9 +315,9 @@ const NavBar = props => {
         localStorage.getItem('expires_at') !== null &&
         localStorage.getItem('user_id') !== null ? (
           // if logged in show log out
-          <NavLink className="navlink-mobile" onClick={logout}>
+          <a className="navlink-mobile" onClick={logout}>
             Log Out
-          </NavLink>
+          </a>
         ) : (
           // if logged out show log in
           <NavLink exact to="/" className="navlink-mobile" onClick={auth.login}>

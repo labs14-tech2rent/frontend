@@ -7,12 +7,22 @@ import camera from '../../Images/Bitmap-1.png';
 import vr from '../../Images/Bitmap-8.png';
 import cameratwo from '../../Images/Bitmap-10.png';
 import blankpic from '../../Images/blankprofile.jpg';
-
+import FileUpload from '../Owner/FileUpload';
+import EditPicModal from './EditPicModal';
+import axios from 'axios'
 const EditProfile = props => {
+  /// console.log(credentials.user)
+  const [previewPics, setPreview] = useState([]);
+  const [profile_picture, setPicture] = useState([]);
   const [editName, setEditName] = useState(false);
   const [editPic, setEditPic] = useState(false);
   const [editLocation, setEditLocation] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [fail, setFail] = useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
+  const [uploading, setUploading] = useState(false);
   const dispatch = useDispatch();
+
   const [userInfo, setUserInfo] = useState({
     id: props.id,
     name: props.name,
@@ -25,6 +35,7 @@ const EditProfile = props => {
     zip_code: '12345',
   });
 
+  
   useEffect(() => {
     setUserInfo({
       ...userInfo,
@@ -32,9 +43,10 @@ const EditProfile = props => {
       email: props.email,
       id: props.id,
       street: props.street !== null ? props.street : '123 Nowhere',
-      city: props.city !== null ? props.city : 'Noplace',
-      zip_code: props.zip !== null ? props.zip : '12345',
-      state: props.state !== null ? props.state : 'NY',
+      city: props.city !== null ? props.city : "Noplace",
+      zip_code: props.zip !== null ? props.zip : "12345",
+      state: props.state !== null ? props.state : "NY",
+      profile_picture: props.pic !== '' ? props.pic : ''
     });
   }, [
     props.city,
@@ -43,38 +55,51 @@ const EditProfile = props => {
     props.name,
     props.state,
     props.street,
-    props.zip,
-    userInfo,
+    props.zip
   ]);
 
   const handleInput = e => {
-    // setName(e.target.value)
+    //setName(e.target.value)
     setUserInfo({
       ...userInfo,
-      [e.target.name]: e.target.value,
-    });
+      [e.target.name]: e.target.value
+    })
   };
+
+
 
   const handleState = e => {
     setUserInfo({
       ...userInfo,
-      state: e,
-    });
+      state: e
+    })
   };
 
   return (
     <div className="profile-content mainContent">
       <div className="user-info">
         <div className="image-container">
-          <div className="image-overlay">
-            <p>Change Profile Picture</p>
+          <div className="image-overlay" onClick={ e => {
+            setModalShow(true)}}>
+          
+          
+          <p>Change Profile Picture</p>
+          
           </div>
           <img
             className="profile-pic"
             onClick={() => setEditPic(!editPic)}
-            src={blankpic}
+            src={props.pic !== '' ? props.pic : blankpic}
             alt=""
           />
+          
+            <EditPicModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            id={props.id}
+            pic={props.pic}
+          />
+        
         </div>
         {editName ? (
           <form>

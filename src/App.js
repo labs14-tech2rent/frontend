@@ -26,6 +26,7 @@ const App = props => {
   const [userId, setUserId] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [pic, setPic] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [zip, setZip] = useState('');
@@ -43,21 +44,9 @@ const App = props => {
     setEmail(e);
   };
 
-  const handleStreet = e => {
-    setStreet(e);
-  };
 
-  const handleCity = e => {
-    setCity(e);
-  };
 
-  const handleZip = e => {
-    setZip(e);
-  };
-
-  const handleState = e => {
-    setState(e);
-  };
+  
 
   useEffect(() => {
     if (id) {
@@ -71,9 +60,12 @@ const App = props => {
       setStreet(user.user.street);
       setCity(user.user.city);
       setState(user.user.state);
+      setPic(user.user.profile_picture)
       setZip(user.user.zip_code);
     }
-  }, []);
+
+  }, user.user !== undefined ? [user.user.name] : []);
+
 
   return (
     <div className="app-wrapper">
@@ -92,7 +84,9 @@ const App = props => {
             exact
             path="/profile"
             name={name}
-            render={props => <Profile {...props} name={name} />}
+
+            render={props => (<Profile {...props} name={name} user={user} pic={pic} />)}
+
           />
           <PrivateRoute
             exact
@@ -107,11 +101,8 @@ const App = props => {
                 state={state}
                 street={street}
                 zip={zip}
-                handleName={handleName}
-                handleCity={handleCity}
-                handleZip={handleZip}
-                handleState={handleState}
-                handleStreet={handleStreet}
+                pic={pic}
+                
               />
             )}
           />

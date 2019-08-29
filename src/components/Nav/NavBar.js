@@ -203,7 +203,7 @@ const NavBar = props => {
               {displayed.length > 0 && displayed[0].name !== 'No match found' && (
                 <h4
                   className="navbar-searched__more"
-                  onClick={() => props.history.push('/view-listing')}
+                  onClick={() => props.history.push('/view-listings')}
                 >
                   View More Listings
                 </h4>
@@ -325,7 +325,7 @@ const NavBar = props => {
           How it Works?
         </NavLink>
 
-        <NavLink to="/view-listing" className="navlink-mobile">
+        <NavLink to="/view-listings" className="navlink-mobile">
           Browse
         </NavLink>
         <p

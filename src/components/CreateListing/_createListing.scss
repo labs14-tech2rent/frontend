@@ -64,6 +64,32 @@
   }
 }
 
+.price {
+  padding-left: 5rem;
+}
+
+.price-tag {
+  position: absolute;
+  top: -1px;
+  z-index: 100;
+  height: 70px;
+  font-size: 2rem;
+}
+.payment-input {
+  height: 70px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f5f4f4;
+  font-size: 2rem;
+}
+
+.payment-options {
+  width: 100%;
+  margin: 0 auto;
+  & label {
+    width: 100%;
+  }
+}
 .left-side {
   display: flex;
   flex-direction: column;
@@ -130,7 +156,6 @@
       width: 100%;
       background-color: #f5f4f4;
       font-size: 2rem;
-
     }
   }
 }
@@ -187,6 +212,7 @@
   font-size: 15px;
   letter-spacing: -0.01px;
   line-height: 18px;
+  flex-wrap: wrap;
 
   @media (max-width: 768px) {
     width: 95%;
@@ -348,7 +374,9 @@
       width: 60%;
     }
     .lower-buttons {
+      margin: 0 auto;
       width: 37%;
+      margin-top: 4rem;
     }
   }
 }
@@ -458,4 +486,11 @@
       }
     }
   }
+}
+
+.upload-btn {
+  background-color: #262525;
+  color: rgba(255, 255, 255, 0.82);
+  width: 100%;
+  margin: 0 auto;
 }

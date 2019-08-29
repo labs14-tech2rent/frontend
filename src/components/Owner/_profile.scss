@@ -20,6 +20,7 @@
   flex-direction: row;
   justify-content: space-around;
   width: 50%;
+  flex-wrap: wrap;
   & img {
     width: 25%;
   }
@@ -107,13 +108,14 @@
 }
 
 .profile-pic {
-  width:145px;
+  width: 145px;
   height: 145px;
   max-width: 100%;
 }
 
 .listed-item {
-  cursor:pointer;
+  cursor: pointer;
+  margin: 1rem;
   width: 150px;
   height: auto;
   & img {

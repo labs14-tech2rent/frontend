@@ -44,32 +44,29 @@ const App = props => {
     setEmail(e);
   };
 
-
-
-  
-
-  useEffect(() => {
-    if (id) {
-      dispatch(getUserId(id));
-    }
-    if (user.user !== '') {
-      // setGettingUser(user.gettingUser);
-      setName(user.user.name);
-      setEmail(user.user.email);
-      setUserId(user.user.id);
-      setStreet(user.user.street);
-      setCity(user.user.city);
-      setState(user.user.state);
-      setPic(user.user.profile_picture)
-      setZip(user.user.zip_code);
-    }
-
-  }, user.user !== undefined ? [user.user.name] : []);
-
+  useEffect(
+    () => {
+      if (id) {
+        dispatch(getUserId(id));
+      }
+      if (user.user !== '') {
+        // setGettingUser(user.gettingUser);
+        setName(user.user.name);
+        setEmail(user.user.email);
+        setUserId(user.user.id);
+        setStreet(user.user.street);
+        setCity(user.user.city);
+        setState(user.user.state);
+        setPic(user.user.profile_picture);
+        setZip(user.user.zip_code);
+      }
+    },
+    user.user !== undefined ? [user.user.name] : []
+  );
 
   return (
     <div className="app-wrapper">
-    {console.log(user.user.id)}
+      {console.log(user.user.id)}
       <BrowserRouter>
         <header>
           <NavBar {...props} />
@@ -85,9 +82,9 @@ const App = props => {
             exact
             path="/profile"
             name={name}
-
-            render={props => (<Profile {...props} name={name} user={user} pic={pic} />)}
-
+            render={props => (
+              <Profile {...props} name={name} user={user} pic={pic} />
+            )}
           />
           <PrivateRoute
             exact
@@ -103,11 +100,13 @@ const App = props => {
                 street={street}
                 zip={zip}
                 pic={pic}
-                
               />
             )}
           />
-          <Route path="/create-listing" render={props => <CreateListing {...props} id={userId} /> } />
+          <Route
+            path="/create-listing"
+            render={props => <CreateListing {...props} id={userId} />}
+          />
 
           <PrivateRoute
             exact

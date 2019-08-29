@@ -74,6 +74,21 @@
 
     &__content {
       width: 100%;
+      max-width: 500px;
+      -webkit-box-shadow: 0px 7px 18px 3px rgba(255,255,255,0.41);
+      -moz-box-shadow: 0px 7px 18px 3px rgba(255,255,255,0.41);
+      box-shadow: 0px 7px 18px 3px rgba(255,255,255,0.41);
+    
+      &__content {
+        width: 100%;
+        display: flex;
+        padding-bottom: 10px;
+        padding-top: 10px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #B2B2B2;
+        }
+      }
       display: flex;
       padding-bottom: 10px;
       padding-top: 10px;

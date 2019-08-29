@@ -3,6 +3,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -74,5 +75,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @import "./components/Owner/profile";
 @import "./components/Register/register";
+@import "./components/CreateListing/createListing";
+@import "./components/ViewItem/viewitem";
 @import "./components/ViewListing/ViewListing";
 @import "./components/EditProfile/EditProfile";

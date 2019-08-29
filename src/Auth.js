@@ -19,9 +19,9 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'dev-gco3gwsp.auth0.com',
     clientID: 'kFpGm0tbpc2lUax1Il5S0vS54opwh3iv',
-    // redirectUri: 'https://tech2rent.co/callback',
-    //redirectUri: 'http://localhost:3000/callback',
-    redirectUri: 'https://sharp-wozniak-279070.netlify.com/callback',
+    redirectUri: 'https://tech2rent.co/callback',
+    // redirectUri: 'http://localhost:3000/callback',
+    // redirectUri: 'https://sharp-wozniak-279070.netlify.com/callback',
     responseType: 'token id_token',
     audience: 'https://dev-gco3gwsp.auth0.com/userinfo',
     scope: 'openid',
@@ -32,7 +32,7 @@ export default class Auth {
     this.login = this.login.bind(this);
   }
 
-  /// Calls this fn when a user clicks login -- reroutes to a separate login page
+  // / Calls this fn when a user clicks login -- reroutes to a separate login page
   login() {
     this.auth0.authorize();
   }

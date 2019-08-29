@@ -12,6 +12,7 @@ import PrivateRoute from './PrivateRoute';
 import Profile from './components/Owner/Profile';
 import EditProfile from './components/EditProfile/EditProfile';
 import Register from './components/Register/Register';
+import ViewItem from './components/ViewItem/ViewItem';
 import { getUserId } from './actions/Users/USERID/getIdOfUser';
 import NavBar from './components/Nav/NavBar';
 import Footer from './components/Footer/Footer';
@@ -48,12 +49,10 @@ const App = props => {
 
   
 
- 
   useEffect(() => {
     console.log(user.user);
     if (id) {
       dispatch(getUserId(id));
-     
     }
     if (user.user !== '') {
       // setGettingUser(user.gettingUser);
@@ -70,8 +69,7 @@ const App = props => {
     }
   }, user.user !== undefined ? [user.user.name] : []);
 
-
-  return ( 
+  return (
     <div className="app-wrapper">
       <BrowserRouter>
         <header>
@@ -88,7 +86,9 @@ const App = props => {
             exact
             path="/profile"
             name={name}
+
             render={props => (<Profile {...props} name={name} user={user} pic={pic} />)}
+
           />
           <PrivateRoute
             exact
@@ -109,24 +109,29 @@ const App = props => {
             )}
           />
           <Route path="/create-listing" component={CreateListing} />
-          
-            <PrivateRoute
-              exact
-              path="/register"
-              {...props}
-              render={props => (
-                <Register
-                  {...props}
-                  handleName={handleName}
-                  handleEmail={handleEmail}
-                />
-              )}
-            />
-         
+
+          <PrivateRoute
+            exact
+            path="/register"
+            {...props}
+            render={props => (
+              <Register
+                {...props}
+                handleName={handleName}
+                handleEmail={handleEmail}
+              />
+            )}
+          />
+
           <Route
             exact
-            path="/view-listing"
+            path="/view-listings"
             render={props => <ViewListing {...props} />}
+          />
+          <Route
+            exact
+            path="/view-item/:id"
+            render={props => <ViewItem {...props} />}
           />
         </Switch>
         <Footer />

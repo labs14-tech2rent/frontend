@@ -141,7 +141,7 @@ const ListingForm = props => {
           itemInfo
         )
         .then(res => {
-          window.location.reload();
+          window.location.pathname = '/profile';
         })
         .catch(err => {
           setFail(true);

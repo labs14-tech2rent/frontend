@@ -152,7 +152,7 @@ function FormExample(props) {
   }
 
   const deleteItem = e => {
-   //// e.preventDefault()
+   ///// e.preventDefault()
    axios
    .delete(`https://labstech2rentstaging.herokuapp.com/api/items/${itemInfo.id}`)
    .then(res => {

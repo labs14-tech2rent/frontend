@@ -113,6 +113,13 @@
   max-width: 100%;
 }
 
+.delete-btn {
+  background-color: #ff0000 !important;
+  border: #ff0000 !important;
+  color: #fff;
+  margin-right: 1rem;
+}
+
 .listed-item {
   cursor: pointer;
   margin: 1rem;

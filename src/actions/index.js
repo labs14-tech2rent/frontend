@@ -95,4 +95,11 @@ export {
   editItem,
 } from './Items/CRUD/editItem';
 
+export {
+  DELETE_ITEM_START,
+  DELETE_ITEM_SUCCESS,
+  DELETE_ITEM_FAIL,
+  deleteItem,
+} from './Items/CRUD/deleteItem';
+
 export { REGISTERED } from './registered';

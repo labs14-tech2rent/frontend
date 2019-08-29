@@ -4,10 +4,10 @@ export const DELETE_ITEM_START = 'DELETE_ITEM_START';
 export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
 export const DELETE_ITEM_FAIL = 'DELETE_ITEM_FAIL';
 
-export const deleteItem = (id, item) => dispatch => {
+export const deleteItem = id => dispatch => {
   dispatch({ type: DELETE_ITEM_START });
   axios
-    .delete(`https://labstech2rentstaging.herokuapp.com/api/items/${id}`, item)
+    .delete(`https://labstech2rentstaging.herokuapp.com/api/items/${id}`)
     .then(res => {
       dispatch({ type: DELETE_ITEM_SUCCESS, payload: res });
     })

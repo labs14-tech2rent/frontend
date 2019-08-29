@@ -16,17 +16,14 @@ import { getUserId } from '../../actions/Users/USERID/getIdOfUser';
 import cameraBanner from '../../Images/banner.png';
 import Form from './Form';
 
-const CreateListing = () => {
+const CreateListing = (props) => {
   const dispatch = useDispatch();
   const userToken = { auth0_user_id: localStorage.getItem('user_id') };
-  const userId = useSelector(store => {
-    if (store.getUser.user.length > 0) {
-      return store.getUser.user[0].id;
-    }
-  });
+  
   const isSubmitting = useSelector(store => store.createItem.creatingItem);
 
   // react state
+  const [userId] = useState(props.id)
   const [name] = useState('');
   const [price] = useState('');
   const [city] = useState('');
@@ -42,14 +39,15 @@ const CreateListing = () => {
   // // this is called to get the user id.
   useEffect(() => {
     dispatch(getUserId(userToken));
+    
   }, []);
 
-  const handleSubmit = (id, list) => {
-    dispatch(createItem(id, list));
+  const handleSubmit = (userId, list) => {
+    dispatch(createItem(userId, list));
   };
 
   const listing = {
-    userId,
+  
     name,
     price,
     category,
@@ -67,11 +65,12 @@ const CreateListing = () => {
 
   return (
     <div className="create-listing mainContent">
+    
       <div className="banner">
         <img src={cameraBanner} alt="" />
       </div>
       <div className="form-body">
-        <Form listing={listing} />
+        <Form listing={listing} id={props.id}/>
       </div>
     </div>
   );

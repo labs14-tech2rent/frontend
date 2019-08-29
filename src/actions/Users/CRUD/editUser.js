@@ -5,7 +5,6 @@ export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_FAIL = 'EDIT_USER_FAIL;';
 
 export const editUser = (id, details) => dispatch => {
-  // console.log(details);
   dispatch({ type: EDIT_USER_START });
   return axios
     .put(`https://labstech2rent.herokuapp.com/api/users/${id}`, details)

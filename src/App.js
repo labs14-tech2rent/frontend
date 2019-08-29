@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-shadow */
 
 import React, { useState, useEffect } from 'react';
 
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Auth from './Auth';
 import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
@@ -22,7 +22,7 @@ import ViewListing from './components/ViewListing/ViewListing';
 const App = props => {
   const submit = useSelector(store => store.submit);
   const user = useSelector(store => store.getUser);
-  const registered = useSelector(store => store.registered);
+
   const [userId, setUserId] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -31,8 +31,7 @@ const App = props => {
   const [city, setCity] = useState('');
   const [zip, setZip] = useState('');
   const [state, setState] = useState('');
-  const [gettingUser, setGettingUser] = useState(false);
-  const [id, setId] = useState({
+  const [id] = useState({
     auth0_user_id: localStorage.getItem('user_id'),
   });
   const dispatch = useDispatch();
@@ -50,7 +49,6 @@ const App = props => {
   
 
   useEffect(() => {
-    console.log(user.user);
     if (id) {
       dispatch(getUserId(id));
     }
@@ -64,10 +62,10 @@ const App = props => {
       setState(user.user.state);
       setPic(user.user.profile_picture)
       setZip(user.user.zip_code);
-
-      console.log(user.user.name);
     }
+
   }, user.user !== undefined ? [user.user.name] : []);
+
 
   return (
     <div className="app-wrapper">

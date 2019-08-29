@@ -78,6 +78,21 @@
       margin-bottom: 2rem;
     }
   }
+
+  .listing {
+    // h3 {
+    //   &:hover {
+    //     color: red;
+    //   }
+    // }
+
+    &:hover {
+      h3 {
+        color: #8d87ff;
+      }
+      cursor: pointer;
+    }
+  }
 }
 
 //scrollbar stylings for desktop view

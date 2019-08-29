@@ -11,7 +11,7 @@ import FileUpload from '../Owner/FileUpload';
 import EditPicModal from './EditPicModal';
 import axios from 'axios'
 const EditProfile = props => {
-  // console.log(credentials.user)
+  /// console.log(credentials.user)
   const [previewPics, setPreview] = useState([]);
   const [profile_picture, setPicture] = useState([]);
   const [editName, setEditName] = useState(false);

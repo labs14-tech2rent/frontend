@@ -1,9 +1,7 @@
 /* eslint-disable no-shadow */
 /* eslint no-restricted-globals: 0 */
-import createAuth0Client from '@auth0/auth0-spa-js';
 import auth0 from 'auth0-js';
 import axios from 'axios';
-import RunRegister from './RunRegister';
 
 const LOGIN_EXISTS_PAGE =
   localStorage.getItem('targetUrl') !== null
@@ -19,8 +17,8 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'dev-gco3gwsp.auth0.com',
     clientID: 'kFpGm0tbpc2lUax1Il5S0vS54opwh3iv',
-    redirectUri: 'https://tech2rent.co/callback',
-    // redirectUri: 'http://localhost:3000/callback',
+    // redirectUri: 'https://tech2rent.co/callback',
+    redirectUri: 'http://localhost:3000/callback',
     // redirectUri: 'https://sharp-wozniak-279070.netlify.com/callback',
     responseType: 'token id_token',
     audience: 'https://dev-gco3gwsp.auth0.com/userinfo',
@@ -73,8 +71,7 @@ export default class Auth {
             if (users.includes(authResults.idTokenPayload.sub)) {
               // if they exists in our db, then reroute them to the home page
 
-              // if local storage has a pathname of a route they tried to visit before logging in, route them there
-              // console.log(authResults);
+              // if local storage has a pathname of a route they tried to visit before logging in, route them there<div></div>
               location.pathname = LOGIN_EXISTS_PAGE;
               // RunRegister();
             } else {
@@ -86,7 +83,6 @@ export default class Auth {
           .catch(err => console.log(err));
       } else if (err) {
         // if failure, reroute to the login page to try again
-        console.log('broken function');
         location.pathname = LOGIN_FAILURE_PAGE;
       }
     });

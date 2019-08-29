@@ -4,13 +4,8 @@ const StateSelection = props => {
   const [state, setStates] = useState(props.state);
 
   const handleChange = e => {
-    console.log(e.target.value);
-
-    // console.log(e.target.value);
     setStates(e.target.value);
-    // console.log(state);
     props.handleState(e.target.value);
-    // setStates(e.target.value);
   };
 
   return (

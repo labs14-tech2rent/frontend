@@ -26,7 +26,6 @@ const Register = props => {
     e.preventDefault();
 
     dispatch(registerUser(credentials));
-    console.log(props);
     props.handleName(credentials.name);
     props.handleEmail(credentials.email);
     dispatch(registered());

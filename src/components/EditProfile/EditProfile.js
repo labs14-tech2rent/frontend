@@ -9,7 +9,6 @@ import cameratwo from '../../Images/Bitmap-10.png';
 import blankpic from '../../Images/blankprofile.jpg';
 
 const EditProfile = props => {
-  // console.log(credentials.user)
   const [editName, setEditName] = useState(false);
   const [editPic, setEditPic] = useState(false);
   const [editLocation, setEditLocation] = useState(false);
@@ -33,9 +32,9 @@ const EditProfile = props => {
       email: props.email,
       id: props.id,
       street: props.street !== null ? props.street : '123 Nowhere',
-      city: props.city !== null ? props.city : "Noplace",
-      zip_code: props.zip !== null ? props.zip : "12345",
-      state: props.state !== null ? props.state : "NY",
+      city: props.city !== null ? props.city : 'Noplace',
+      zip_code: props.zip !== null ? props.zip : '12345',
+      state: props.state !== null ? props.state : 'NY',
     });
   }, [
     props.city,
@@ -44,24 +43,23 @@ const EditProfile = props => {
     props.name,
     props.state,
     props.street,
-    props.zip
+    props.zip,
+    userInfo,
   ]);
 
   const handleInput = e => {
-    //setName(e.target.value)
+    // setName(e.target.value)
     setUserInfo({
       ...userInfo,
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   };
-
-
 
   const handleState = e => {
     setUserInfo({
       ...userInfo,
-      state: e
-    })
+      state: e,
+    });
   };
 
   return (

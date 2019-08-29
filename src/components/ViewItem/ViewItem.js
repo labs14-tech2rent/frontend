@@ -6,9 +6,10 @@ import ImageViewer from './ImageViewer';
 const ViewItem = props => {
   const [id, setId] = useState(props.match.params.id);
   const [item, setItem] = useState();
-  const [images, setImages] = useState([
+  const [images, setImages] = useState([]);
+  const defaultImg = [
     'http://www.stuartsteel.com/wp-content/themes/asenka/images/default-no-image.png',
-  ]);
+  ];
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -38,7 +39,7 @@ const ViewItem = props => {
         {item && (
           <div className="view-item__content">
             <div className="view-item__content__left">
-              <ImageViewer images={images}></ImageViewer>
+              <ImageViewer images={images || defaultImg}></ImageViewer>
             </div>
             <div className="view-item__content__right">
               <h2>{item.name}</h2>

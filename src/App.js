@@ -106,7 +106,7 @@ const App = props => {
               />
             )}
           />
-          <Route path="/create-listing" component={CreateListing} />
+          <Route path="/create-listing" render={props => <CreateListing  {...props} id={userId}/>} />
 
           <PrivateRoute
             exact

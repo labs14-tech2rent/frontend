@@ -16,7 +16,7 @@ import { getUserId } from '../../actions/Users/USERID/getIdOfUser';
 import cameraBanner from '../../Images/banner.png';
 import Form from './Form';
 
-const CreateListing = () => {
+const CreateListing = props => {
   const dispatch = useDispatch();
   const userToken = { auth0_user_id: localStorage.getItem('user_id') };
   const userId = useSelector(store => {
@@ -45,11 +45,10 @@ const CreateListing = () => {
   }, []);
 
   const handleSubmit = (id, list) => {
-    dispatch(createItem(id, list));
+    dispatch(createItem(props.id, list));
   };
 
   const listing = {
-    userId,
     name,
     price,
     category,
@@ -71,7 +70,7 @@ const CreateListing = () => {
         <img src={cameraBanner} alt="" />
       </div>
       <div className="form-body">
-        <Form listing={listing} />
+        <Form listing={listing} id={props.id} />
       </div>
     </div>
   );

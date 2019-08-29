@@ -12,11 +12,65 @@ import FileUpload from './FileUploader';
 
 const Form = props => {
   const [previewPics, setPreview] = useState([]);
-
+  const [validated, setValidated] = useState(false);
+  const [picture, setPicture] = useState([]);
+  const [success, setSuccess] = useState(false);
+  const [fail, setFail] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  
+  const [itemInfo, setItemInfo] = useState({
+    name: props.listing.name,
+    price: props.listing.price,
+    city: props.listing.city,
+    state: props.listing.state,
+    zipcode: props.listing.zipcode,
+    category: props.listing.category,
+    description: props.listing.description,
+    paymentType: props.listing.paymentType,
+    condition: props.listing.condition,
+    picture: '',
+  });
   const savePhotos = photo => {
     setPreview([...previewPics, photo]);
   };
 
+  const uploadPhotos = form => {
+    const photosAdded = [];
+    console.log(form.length);
+
+    form.map((photo, i) => {
+      const formData = new FormData();
+      console.log(photo.file);
+      setUploading(true);
+      formData.append('name', photo.file);
+      axios
+        .post(
+          'https://labstech2rentstaging.herokuapp.com/api/items/uploadProfilePicture',
+          formData
+        )
+        .then(res => {
+          console.log(res);
+          photosAdded.push(res.data.Location);
+          setPicture(photosAdded);
+          console.log('photo is ADDED');
+          setItemInfo({
+            ...itemInfo,
+            picture: res.data.Location,
+          });
+          console.log(photosAdded);
+          console.log(itemInfo);
+          setFail(false);
+          setSuccess(true);
+          setUploading(false);
+        })
+        .catch(err => {
+          console.log(err);
+          setSuccess(false);
+          setFail(true);
+          setUploading(false);
+        });
+    });
+  };
   // function that uploads the photos and submits the form
   const uploadAndSubmit = (photos, id, listing) => {
     // empty array to store the links I recieve from the api.
@@ -45,7 +99,7 @@ const Form = props => {
             // assigning picture to listing
             Object.assign(listing, images);
             // sending the form data to the api.
-            props.listing.handleSubmit(id, listing);
+            props.listing.handleSubmit(props.id, listing);
           }
           // if it is not the last photo it will just keep looping until it is.
           photosAdded.push(res.data.Location);
@@ -98,7 +152,7 @@ const Form = props => {
         };
 
         // calling the function
-        uploadAndSubmit(previewPics, list.users_ownerId, list);
+        uploadAndSubmit(previewPics, props.id, list);
       }}
     >
       {({
@@ -110,14 +164,15 @@ const Form = props => {
         handleSubmit,
       }) => (
         <div className="form-wrapper">
-          <form>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
             {/* conditional render for image preview, will change this later on.  */}
             <div className="left-side">
               <FileUpload
                 previewPics={previewPics}
                 savePhotos={savePhotos}
+                uploadPhotos={uploadPhotos}
                 removePhoto={removePhoto}
-              ></FileUpload>
+              />
               <div className="condition">
                 Condition <br />
                 <select
@@ -289,7 +344,7 @@ const Form = props => {
                 touched={touched}
               /> */}
             </div>
-          </form>
+          </Form>
           <div className="bottom-row">
             <div
               className={`payment ${
@@ -346,7 +401,7 @@ const Form = props => {
               <button className="cancel">Cancel</button>
               <button
                 type="submit"
-                onClick={handleSubmit}
+                onClick={props.listing.handleSubmit}
                 className={`${
                   props.listing.isSubmitting
                     ? 'footer-button__dark border-dark__hover disabled'

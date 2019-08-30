@@ -10,6 +10,7 @@ import blankpic from '../../Images/blankprofile.jpg';
 import FileUpload from '../Owner/FileUpload';
 import EditPicModal from './EditPicModal';
 import axios from 'axios'
+import { Button} from 'react-bootstrap';
 const EditProfile = props => {
   /// console.log(credentials.user)
   const [previewPics, setPreview] = useState([]);
@@ -102,8 +103,9 @@ const EditProfile = props => {
         
         </div>
         {editName ? (
-          <form>
+          <form className="edit-form">
             <input
+             className="edit-input"
               type="text"
               onChange={handleInput}
               name="name"
@@ -111,6 +113,7 @@ const EditProfile = props => {
               placeholder={userInfo.name}
             />
             <button
+              className="edit-button"
               onClick={e => {
                 e.preventDefault();
                 dispatch(editUser(userInfo.id, userInfo));
@@ -124,6 +127,7 @@ const EditProfile = props => {
           <div className="edit-content-container">
             <p className="profile-edit-text">{userInfo.name}</p>
             <button
+              className="edit-button"
               onClick={() => {
                 setEditName(!editName);
               }}
@@ -133,8 +137,9 @@ const EditProfile = props => {
           </div>
         )}
         {editLocation ? (
-          <form>
+          <form className="edit-form">
             <input
+              className="edit-input"
               type="text"
               onChange={handleInput}
               name="street"
@@ -144,6 +149,7 @@ const EditProfile = props => {
               value={userInfo.street}
             />
             <input
+              className="edit-input"
               type="text"
               onChange={handleInput}
               name="city"
@@ -153,6 +159,7 @@ const EditProfile = props => {
 
             <StateSelect state={userInfo.state} handleState={handleState} />
             <input
+              className="edit-input"
               type="text"
               onChange={handleInput}
               name="zip_code"
@@ -161,6 +168,7 @@ const EditProfile = props => {
             />
 
             <button
+              className="edit-button"
               onClick={e => {
                 e.preventDefault();
                 setEditLocation(!editLocation);
@@ -173,7 +181,7 @@ const EditProfile = props => {
         ) : (
           <div className="edit-content-container">
             <p className="profile-edit-text">{`${userInfo.city} ${userInfo.state}, ${userInfo.zip_code}`}</p>
-            <button onClick={() => setEditLocation(!editLocation)}>
+            <button  className="edit-button" onClick={() => setEditLocation(!editLocation)}>
               Edit Location
             </button>
           </div>

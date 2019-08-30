@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
 // import {connect} from 'react-redux';
 // import {login, signUp, reset} from '../../actions';
+import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
-
+import { Parallax } from 'react-scroll-parallax';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faAngleDown} from '@fortawesome/free-solid-svg-icons';
@@ -30,9 +30,35 @@ const Login = props => {
 
 
   const auth = useSelector(store => store.submit.auth);
+
+  const [disabled, setDisabled] = useState(false);
+  // function myFunction(x) {
+  //   if (x.matches) { // If media query matches
+  //     setDisabled(true)
+  //   }
+  // }
+  const screen = document.querySelector('html');
+  window.addEventListener('load', event => {
+    window.innerWidth < 700 ? setDisabled(true) : setDisabled(false);
+  });
+  const x = window.matchMedia('(max-width: 700px)');
+  // myFunction(x) // Call listener function at run time
+  x.addListener(x => {
+    if (x.matches) {
+      setDisabled(true);
+      console.log('hello');
+    } else {
+      setDisabled(false);
+    }
+  });
   const content = ( //  conditionally renders content based on login form or sign up form state.
     <div className="App mainContent">
-      <div className="section-1">
+      <Parallax
+      disabled={disabled}
+      className="section-1"
+      y={[30, -30]}
+      tagOuter="figure"
+    >
       <h1>Rent the tech you need</h1>
       <h2>Welcome back to the community.</h2>
         <button onClick={auth.login} className="login-button">
@@ -42,10 +68,15 @@ const Login = props => {
             <a href="#listings"><FontAwesomeIcon className="section-1__arrows__icon" icon={faAngleDown} /></a>
             <a href="#listings"><FontAwesomeIcon className="section-1__arrows__icon" icon={faAngleDown} /></a>
         </div>
-      </div>
+      </Parallax>
 
 
-      <div className="section-6">
+      <Parallax
+        disabled={disabled}
+        className="section-6"
+        x={[-30, 0]}
+        tagOuter="figure"
+      >
         <div className="section-6__content">
 
             <div id="listings" className="section-6__content_card card-1">
@@ -82,26 +113,43 @@ const Login = props => {
         <div className="section-7">
           <button ><Link to="/view-listings">view more equipment</Link></button>
         </div>
-      </div>
+      </Parallax>
 
       <div className="section-5">
 
-            <div className="section-5__left">
-              Tech 2 Rent looks to ensure a high quality platform for creatives of all sorts. We allow the invests you make into your equipment become a source of your icome as well. As creatives we all are dreamers, we all invision the world as our canvas, Tech 2 Rent allows everyone to paint together while sharing paint and paing brushes. 
-            </div>
+      <Parallax
+      className="section-5__left"
+      disabled={disabled}
+      x={[-40, 0]}
+      tagOuter="figure"
+    >
+              Tech 2 Rent looks to ensure a high quality platform for creatives of all sorts. We allow the investments you make into your equipment become a source of income as well. As creatives we are all dreamers, and we all envision the world as our canvas, Tech 2 Rent allows everyone to paint together while sharing paint and paint brushes. 
+            </Parallax>
 
                      
             <div className="section-5__right" style={section5Style}>
-              <h2>Welcome</h2>
-              <h2>To</h2>
-              <h2>The</h2>
-              <h2>Community</h2>
+            <Parallax
+            className="section-5__right"
+            disabled={disabled}
+            x={[40, 0]}
+            tagOuter="figure"
+          >
+            <h2>Welcome</h2>
+            <h2>To</h2>
+            <h2>The</h2>
+            <h2>Community</h2>
+          </Parallax>
             </div>
       </div>
 
       <div className="section-4" style={section4Style}>
           <div className="section-3__content section-4__content">
-            <div className="section-4__left">
+          <Parallax
+          disabled={disabled}
+          className="section-4__left"
+          tagOuter="figure"
+          x={[-20, 20]}
+        >
               <div>
                 <h2>Search</h2>
                 <p>Search through the most high end and advanced technology available on the market.</p>
@@ -116,19 +164,29 @@ const Login = props => {
                 <h2>Ship or Meet Up</h2>
                 <p>Two options, the owner decides. Either reserve and expect shipping or even meet up locally.</p>  
               </div>
-            </div>
+            </Parallax>
 
-            <div className="section-4__right">
+            <Parallax
+            disabled={disabled}
+            className="section-4__right"
+            tagOuter="figure"
+            x={[20, 0]}
+          >
               <h2>It's Simple.</h2>
               <h2>We'll Prove it.</h2>
               <p>We are the platform that helps everyone capitalize on opportunity. An apportunity to create, an opportunity to share, and opportunity to grow. </p>
-            </div> 
+            </Parallax> 
           </div> 
       </div>
 
       <div className="section-3">
         <div className="section-3__content">
-          <div className="section-3__content__left">
+        <Parallax
+        disabled={disabled}
+        className="section-3__content__left"
+        tagOuter="figure"
+        x={[-30, 0]}
+      >
               <h2 className="section-3__heading">
                 <span>
                   <h4 className="section-3__heading__first">TWO</h4>
@@ -146,11 +204,18 @@ const Login = props => {
                 <span>Learn more </span>
                 <span><FontAwesomeIcon  icon={faArrowAltCircleRight} /></span>
               </p>
-          </div>
+          </Parallax>
+          <Parallax
+            disabled={disabled}
+            className="section-3__content__right"
+            tagOuter="figure"
+            x={[20, -30]}
+          >
           <div className="section-3__content__right">
               <img src={home_phone} alt="Picture of mobile phone" className="section-3__content__right__img1"/>
               <img src={home_googleplay} alt="Googleplay logo"/>
           </div>
+          </Parallax>
         </div>
       </div>
 

@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-shadow */
 
 import React, { useState, useEffect } from 'react';
 
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Auth from './Auth';
 import HomePage from './components/HomePage/HomePage';
 import Callback from './components/HomePage/Callback';
 import Login from './components/Login/Login';
@@ -22,16 +22,16 @@ import ViewListing from './components/ViewListing/ViewListing';
 const App = props => {
   const submit = useSelector(store => store.submit);
   const user = useSelector(store => store.getUser);
-  const registered = useSelector(store => store.registered);
+
   const [userId, setUserId] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [pic, setPic] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [zip, setZip] = useState('');
   const [state, setState] = useState('');
-  const [gettingUser, setGettingUser] = useState(false);
-  const [id, setId] = useState({
+  const [id] = useState({
     auth0_user_id: localStorage.getItem('user_id'),
   });
   const dispatch = useDispatch();
@@ -44,24 +44,11 @@ const App = props => {
     setEmail(e);
   };
 
-  const handleStreet = e => {
-    setStreet(e);
-  };
 
-  const handleCity = e => {
-    setCity(e);
-  };
 
-  const handleZip = e => {
-    setZip(e);
-  };
-
-  const handleState = e => {
-    setState(e);
-  };
+  
 
   useEffect(() => {
-    console.log(user.user);
     if (id) {
       dispatch(getUserId(id));
     }
@@ -73,11 +60,12 @@ const App = props => {
       setStreet(user.user.street);
       setCity(user.user.city);
       setState(user.user.state);
+      setPic(user.user.profile_picture)
       setZip(user.user.zip_code);
-
-      console.log(user.user.name);
     }
-  }, [dispatch, id, user.user]);
+
+  }, user.user !== undefined ? [user.user.name] : []);
+
 
   return (
     <div className="app-wrapper">
@@ -96,7 +84,9 @@ const App = props => {
             exact
             path="/profile"
             name={name}
-            render={props => <Profile {...props} name={name} />}
+
+            render={props => (<Profile {...props} name={name} user={user} pic={pic} />)}
+
           />
           <PrivateRoute
             exact
@@ -111,11 +101,8 @@ const App = props => {
                 state={state}
                 street={street}
                 zip={zip}
-                handleName={handleName}
-                handleCity={handleCity}
-                handleZip={handleZip}
-                handleState={handleState}
-                handleStreet={handleStreet}
+                pic={pic}
+                
               />
             )}
           />

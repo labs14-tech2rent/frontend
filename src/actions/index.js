@@ -89,6 +89,10 @@ export {
 } from './flickrAPI';
 
 export {
-  REGISTERED,
-} from './registered';
+  EDIT_ITEM_START,
+  EDIT_ITEM_SUCCESS,
+  EDIT_ITEM_FAIL,
+  editItem,
+} from './Items/CRUD/editItem';
 
+export { REGISTERED } from './registered';

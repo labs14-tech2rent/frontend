@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
-import axios from 'axios';
 // import {connect} from 'react-redux';
 // import {login, signUp, reset} from '../../actions';
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Parallax } from 'react-scroll-parallax';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -111,7 +111,7 @@ const Login = props => {
 
         </div>
         <div className="section-7">
-          <button onClick={auth.login}>view more equipment</button>
+          <button ><Link to="/view-listings">view more equipment</Link></button>
         </div>
       </Parallax>
 
@@ -123,7 +123,7 @@ const Login = props => {
       x={[-40, 0]}
       tagOuter="figure"
     >
-              Tech 2 Rent looks to ensure a high quality platform for creatives of all sorts. We allow the invests you make into your equipment become a source of your icome as well. As creatives we all are dreamers, we all invision the world as our canvas, Tech 2 Rent allows everyone to paint together while sharing paint and paing brushes. 
+              Tech 2 Rent looks to ensure a high quality platform for creatives of all sorts. We allow the investments you make into your equipment become a source of income as well. As creatives we are all dreamers, and we all envision the world as our canvas, Tech 2 Rent allows everyone to paint together while sharing paint and paint brushes. 
             </Parallax>
 
                      

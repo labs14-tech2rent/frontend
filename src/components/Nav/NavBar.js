@@ -120,9 +120,14 @@ const NavBar = props => {
     fetchData();
   }, [filter]); // only call or run fn again if a new filter has been ran
 
-  // //////////////////////////
-  // /// END OF USE EFFECT/////
-  // //////////////////////////
+  function setClearSearch() {
+    setDisplayed([])
+    setFilter('');
+  }
+
+  ////////////////////////////
+  ///// END OF USE EFFECT/////
+  ////////////////////////////
 
   // ////////////////
   // /// FILTER /////
@@ -148,6 +153,8 @@ const NavBar = props => {
   // /// END FILTER /////
   // ////////////////
 
+
+  
   return (
     <div className="nav-container">
       <nav className="navbar">
@@ -174,11 +181,12 @@ const NavBar = props => {
               type="text"
               placeholder='Try "Nikon"'
               name="item"
-              // value={item.item}
-              onChange={e => {
-                setFilter(e.target.value); // set filter of state to the value typed in
-              }}
-              onKeyPress={e => handleKeyPress(e)}
+              value={filter}
+              onChange={ (e) => {
+                setFilter(e.target.value) //set filter of state to the value typed in
+                
+                }}
+              onKeyPress={(e) => handleKeyPress(e)}
             />
             <div className="navbar-searched">
               {displayed.length > 0 &&
@@ -194,23 +202,13 @@ const NavBar = props => {
                       }
                     />
                     <div className="navbar-searched__text">
-                      <p className="navbar-searched__name">{item.name}</p>
-                      <p className="navbar-searched__location">
-                        {item.city.charAt(0).toUpperCase() + item.city.slice(1)}
-                        , {item.state}
-                      </p>
+                      <p className="navbar-searched__name"><Link className="navbar-searched__name__link" to={`/view-item/${item.id}`} onClick={setClearSearch}>{item.name}</Link></p>
+                      <p className="navbar-searched__location">{item.city.charAt(0).toUpperCase() + item.city.slice(1)}, {item.state}</p>
                     </div>
                   </div>
                 ))}
 
-              {displayed.length > 0 && displayed[0].name !== 'No match found' && (
-                <h4
-                  className="navbar-searched__more"
-                  onClick={() => props.history.push('/view-listings')}
-                >
-                  View More Listings
-                </h4>
-              )}
+              {displayed.length > 0 && displayed[0].name !== 'No match found' && <h4 className="navbar-searched__more" onClick={()=> props.history.push('/view-listings')}>View More Listings</h4>}
 
               {displayed.length > 0 &&
               displayed[0].name === 'No match found' ? (

@@ -28,6 +28,7 @@ const ListingForm = props => {
     description: props.listing.description,
     payment_type: props.listing.paymentType,
     condition: props.listing.condition,
+    available: true,
     picture: '',
   });
 

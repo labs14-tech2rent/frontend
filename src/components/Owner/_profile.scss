@@ -20,6 +20,7 @@
   flex-direction: row;
   justify-content: space-around;
   width: 50%;
+  flex-wrap: wrap;
   & img {
     width: 25%;
   }
@@ -107,13 +108,21 @@
 }
 
 .profile-pic {
-  width:145px;
+  width: 145px;
   height: 145px;
   max-width: 100%;
 }
 
+.delete-btn {
+  background-color: #ff0000 !important;
+  border: #ff0000 !important;
+  color: #fff;
+  margin-right: 1rem;
+}
+
 .listed-item {
-  cursor:pointer;
+  cursor: pointer;
+  margin: 1rem;
   width: 150px;
   height: auto;
   & img {

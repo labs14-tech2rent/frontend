@@ -6,13 +6,13 @@ import { Modal, Button, Form, Col, InputGroup } from 'react-bootstrap';
 import yup from 'yup';
 import { props } from 'bluebird';
 import FileUpload from './FileUpload';
-import { editItem } from '../../actions';
+import { deleteItem } from '../../actions';
 import { editUser } from '../../actions/Users/CRUD/editUser';
 
 function FormExample(props) {
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
-
+  const [doubleCheck, setDoubleCheck] = useState(false)
   const [uploading, setUploading] = useState(false);
   const [itemInfo, setItemInfo] = useState({
     name: '',
@@ -144,6 +144,27 @@ function FormExample(props) {
     e.preventDefault()
     uploadAndSubmit(previewPics, itemInfo.users_ownerId, itemInfo);
   };
+
+  const checkItem = e => {
+    e.preventDefault()
+    setDoubleCheck(true)
+
+  }
+
+  const deleteItem = e => {
+   ///// e.preventDefault()
+   axios
+   .delete(`https://labstech2rentstaging.herokuapp.com/api/items/${itemInfo.id}`)
+   .then(res => {
+     console.log('success')
+     window.location.reload()
+   })
+   .catch(err => {
+    console.log('fail')
+   });
+    console.log(itemInfo.id)
+
+  }
 
   const handleSubmit = (e, msg) => {
     e.preventDefault();
@@ -339,7 +360,11 @@ function FormExample(props) {
         Submit
       </Button>
       <p className="error">{fail && "Error submitting changes. Please check that all form fields are filled in or try again later"}</p>
-    </Form>
+      {doubleCheck && <p className="error">Are you sure?</p>}
+      {doubleCheck !== true ? <Button onClick={checkItem} className="delete-btn">Delete Item</Button>
+       : <Button onClick={deleteItem} className="delete-btn">Yes</Button>}
+       {doubleCheck && <Button onClick={() => setDoubleCheck(false)}>Cancel</Button>}
+      </Form>
   );
 }
 

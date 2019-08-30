@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Formik, Field } from 'formik';
-
+import { Modal, Button, Form, Col, InputGroup } from 'react-bootstrap';
 // regex for later on will delete later.
 // .match(/(https:\/\/labs14-tech2rent-image-upload.s3.amazonaws.com\/[0-9][0-9][0-9][0-9][0-9][0-9])/)
 
@@ -10,22 +10,52 @@ import { validationSchema } from './yupSchema';
 
 import FileUpload from './FileUploader';
 
-const Form = props => {
+const ListingForm = props => {
   const [previewPics, setPreview] = useState([]);
+  const [validated, setValidated] = useState(false);
+  const [picture, setPicture] = useState([]);
+  const [success, setSuccess] = useState(false);
+  const [fail, setFail] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  const [itemInfo, setItemInfo] = useState({
+    name: props.listing.name,
+    price: props.listing.price,
+    city: props.listing.city,
+    state: props.listing.state,
+    zipcode: props.listing.zipcode,
+    category: props.listing.category,
+    description: props.listing.description,
+    payment_type: props.listing.paymentType,
+    condition: props.listing.condition,
+    picture: '',
+  });
+
+  const handleChange = e => {
+    //
+    setItemInfo({
+      ...itemInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const savePhotos = photo => {
     setPreview([...previewPics, photo]);
   };
 
-  // function that uploads the photos and submits the form
-  const uploadAndSubmit = (photos, id, listing) => {
-    // empty array to store the links I recieve from the api.
+  const photoHandler = e => {
+    e.preventDefault();
+    uploadAndSubmit(previewPics, props.id, itemInfo);
+  };
+
+  const uploadPhotos = form => {
     const photosAdded = [];
+    console.log(form.length);
 
-    // looping through the data in photos.
-    photos.map((photo, i) => {
+    form.map((photo, i) => {
       const formData = new FormData();
-
+      console.log(photo.file);
+      setUploading(true);
       formData.append('name', photo.file);
       axios
         .post(
@@ -33,28 +63,54 @@ const Form = props => {
           formData
         )
         .then(res => {
-          // here I am check if it is the last photo so I can send the form if it is.
-          if (i === photos.length - 1) {
-            photosAdded.push(res.data.Location);
-
-            // I turn the array into an object to append to the listing.
-            const images = {
-              picture: photosAdded,
-            };
-
-            // assigning picture to listing
-            Object.assign(listing, images);
-            // sending the form data to the api.
-            props.listing.handleSubmit(id, listing);
-          }
-          // if it is not the last photo it will just keep looping until it is.
+          console.log(res);
           photosAdded.push(res.data.Location);
+          setPicture(photosAdded);
+          console.log('photo is ADDED');
+          setItemInfo({
+            ...itemInfo,
+            picture: res.data.Location,
+          });
+          console.log(photosAdded);
+          console.log(itemInfo);
+          setFail(false);
+          setSuccess(true);
+          setUploading(false);
         })
         .catch(err => {
           console.log(err);
+          setSuccess(false);
+          setFail(true);
+          setUploading(false);
         });
     });
   };
+  /// function that uploads the photos and submits the form
+  const uploadAndSubmit = (photos, id, itemInfo) => {
+    console.log(photos);
+
+    uploadPhotos(photos);
+
+    const images = { picture };
+
+    Object.assign(itemInfo, images);
+
+    console.log(picture);
+
+    axios
+      .post(
+        `https://labstech2rentstaging.herokuapp.com/api/users/${props.id}/items`,
+        itemInfo
+      )
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+ 
 
   // this is to remove an unwanted photo from the list that gets submitted.
   const removePhoto = file => {
@@ -63,6 +119,37 @@ const Form = props => {
     );
 
     setPreview(removeFilter);
+  };
+
+  const handleSubmit = (e, msg) => {
+    e.preventDefault();
+    // setItemInfo({
+    //   ...itemInfo,
+    // });
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      // setItemInfo({
+      //   ...itemInfo,
+      // });
+
+      axios
+        .post(
+          `https://labstech2rentstaging.herokuapp.com/api/users/${props.id}/items`,
+          itemInfo
+        )
+        .then(res => {
+          window.location.pathname = '/profile';
+        })
+        .catch(err => {
+          setFail(true);
+        });
+    }
+    // uploadAndSubmit()
+    setValidated(true);
+    console.log(itemInfo);
   };
 
   return (
@@ -75,7 +162,7 @@ const Form = props => {
         zipcode: props.listing.zipcode,
         category: props.listing.category,
         description: props.listing.description,
-        paymentType: props.listing.paymentType,
+        payment_type: props.listing.paymentType,
         condition: props.listing.condition,
       }}
       validationSchema={validationSchema}
@@ -98,6 +185,7 @@ const Form = props => {
         };
 
         // calling the function
+        console.log(values);
         uploadAndSubmit(previewPics, list.users_ownerId, list);
       }}
     >
@@ -105,177 +193,180 @@ const Form = props => {
         values,
         errors,
         touched,
-        handleChange,
+
         handleBlur,
-        handleSubmit,
       }) => (
         <div className="form-wrapper">
-          <form>
+          <Form noValidate validated={validated} onSubmit={handleSubmit}>
             {/* conditional render for image preview, will change this later on.  */}
             <div className="left-side">
               <FileUpload
                 previewPics={previewPics}
                 savePhotos={savePhotos}
+                uploadPhotos={uploadPhotos}
                 removePhoto={removePhoto}
-              ></FileUpload>
+              />
+
+              <button className="upload-btn" onClick={photoHandler}>
+                Upload Photo
+              </button>
+              <p className="uploading">{uploading && 'Uploading...'}</p>
+              <p className="success">
+                {success &&
+                  "Image uploaded successfully!\nClick 'Submit' to Save Changes"}
+              </p>
+              <p className="error">
+                {fail &&
+                  'Image failed. Please try again, or select another image.'}
+              </p>
+
               <div className="condition">
-                Condition <br />
-                <select
-                  name="condition"
-                  value={values.condition}
+                <Form.Label>Condition</Form.Label>
+                <Form.Control
                   type="text"
-                  onBlur={handleBlur}
                   onChange={handleChange}
-                  className={`long-input ${
-                    errors.condition && touched.condition ? 'input-error' : ''
-                  } ${
-                    touched.condition && !errors.condition
-                      ? 'input-correct'
-                      : ''
-                  }`}
+                  placeholder="Condition"
+                  name="condition"
+                  className="long-input"
+                  value={itemInfo.condition}
+                  as="select"
+                  required
                 >
-                  <option value="" disabled>
-                    Choose Condition
+                  <option selected hidden>
+                    Choose Condition:
                   </option>
-                  <option>Like New</option>
-                  <option>Used (normal wear)</option>
-                  <option>Other (see description)</option>
-                </select>
-                <div className="isa_error">
-                  {errors.condition && touched.condition
-                    ? errors.condition
-                    : null}
-                </div>
+                  <option>New</option>
+                  <option>Like New </option>
+                  <option>Used</option>
+                </Form.Control>
               </div>
               <div className="description-div">
-                <span>Description </span>
-                <textarea
-                  name="description"
-                  value={values.description}
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  required
                   type="text"
+                  name="description"
+                  className="description"
                   onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={`description ${
-                    errors.description && touched.description
-                      ? 'input-error'
-                      : ''
-                  } ${
-                    touched.description && !errors.description
-                      ? 'input-correct'
-                      : ''
-                  }`}
+                  value={itemInfo.description}
+                  as="textarea"
+                  maxLength="100"
                 />
-                <div className="isa_error">
-                  {errors.description && touched.description
-                    ? errors.description
-                    : null}
-                </div>
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">
+                  Please fill out description.
+                </Form.Control.Feedback>
               </div>
             </div>
             <div className="right-side">
               <div>
-                Product
-                <Field
-                  component="input"
+                <Form.Label>Item Name</Form.Label>
+                <Form.Control
+                  required
+                  type="text"
                   name="name"
-                  className={`long-input ${
-                    errors.name && touched.name ? 'input-error' : ''
-                  } ${touched.name && !errors.name ? 'input-correct' : ''}`}
+                  className="long-input"
+                  placeholder="Item Name"
+                  value={itemInfo.name}
+                  onChange={handleChange}
                 />
-                <div className="isa_error">
-                  {errors.name && touched.name ? errors.name : null}
-                </div>
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">
+                  Please input an item name.
+                </Form.Control.Feedback>
               </div>
               <div>
-                Price{' '}
-                <input
-                  name="price"
-                  value={values.price}
-                  type="number"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  className={`long-input ${
-                    errors.price && touched.price ? 'input-error' : ''
-                  } ${touched.price && !errors.price ? 'input-correct' : ''}`}
-                />
-                <div className="isa_error">
-                  {errors.price && touched.price ? errors.price : null}
-                </div>
+                <Form.Label>Price</Form.Label>
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text
+                      id="inputGroupPrepend"
+                      className="price-tag"
+                    >
+                      $
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    type="number"
+                    name="price"
+                    className="long-input price"
+                    onChange={handleChange}
+                    placeholder="Price"
+                    aria-describedby="inputGroupPrepend"
+                    value={itemInfo.price}
+                    required
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">
+                    Please input a price.
+                  </Form.Control.Feedback>
+                </InputGroup>
               </div>
               <div className="middle-row">
                 <div className="city-input-field">
-                  City{' '}
-                  <input
-                    name="city"
-                    value={values.city}
+                  <Form.Label>City</Form.Label>
+                  <Form.Control
                     type="text"
-                    onBlur={handleBlur}
+                    name="city"
+                    className="long-input city"
                     onChange={handleChange}
-                    className={`medium-input ${
-                      errors.city && touched.city ? 'input-error' : ''
-                    } ${touched.city && !errors.city ? 'input-correct' : ''}`}
+                    placeholder="City"
+                    aria-describedby="inputGroupPrepend"
+                    value={itemInfo.city}
+                    required
                   />
-                  <div className="isa_error">
-                    {errors.city && touched.city ? errors.city : null}
-                  </div>
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">
+                    Please input a city.
+                  </Form.Control.Feedback>
                 </div>
                 <div className="middle-row-field">
                   State
                   {/* put this into its own component */}
-                  <StateDropDown
-                    handleChange={handleChange}
-                    onBlur={handleBlur}
-                    className={`${
-                      errors.state && touched.state ? 'input-error' : ''
-                    } ${touched.state && !errors.state ? 'input-correct' : ''}`}
-                  />
-                  <div className="isa_error">
-                    {errors.state && touched.state ? errors.state : null}
-                  </div>
+                  <StateDropDown handleChange={handleChange} />
                 </div>
                 <div className="middle-row-field">
                   Zipcode{' '}
-                  <input
-                    name="zipcode"
-                    value={values.zipcode}
+                  <Form.Control
                     type="number"
-                    onBlur={handleBlur}
+                    name="zipcode"
+                    className="long-input city"
                     onChange={handleChange}
-                    className={`small-input ${
-                      errors.zipcode && touched.zipcode ? 'input-error' : ''
-                    } ${
-                      touched.zipcode && !errors.zipcode ? 'input-correct' : ''
-                    }`}
+                    placeholder="Zip"
+                    aria-describedby="inputGroupPrepend"
+                    value={itemInfo.zipcode}
+                    required
                   />
-                  <div className="isa_error">
-                    {errors.zipcode && touched.zipcode ? errors.zipcode : null}
-                  </div>
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">
+                    Please input a zip code.
+                  </Form.Control.Feedback>
                 </div>
               </div>
               <div>
-                Category{' '}
-                <select
-                  name="category"
-                  value={values.category}
+                <Form.Label>Category</Form.Label>
+                <Form.Control
                   type="text"
-                  onBlur={handleBlur}
+                  name="category"
+                  className="long-input"
                   onChange={handleChange}
-                  className={`long-input ${
-                    errors.category && touched.category ? 'input-error' : ''
-                  } ${
-                    touched.category && !errors.category ? 'input-correct' : ''
-                  }`}
+                  value={itemInfo.category}
+                  placeholder="Category"
+                  as="select"
+                  required
                 >
-                  <option value="" disabled>
-                    Choose Category
+                  <option selected hidden>
+                    Select Category:
                   </option>
-                  <option>Mounts</option>
                   <option>Cameras</option>
-                  <option>Lenses</option>
+                  <option>Camera Accessories </option>
                   <option>Lighting</option>
-                  <option>Support Equipment</option>
-                  <option>Accessories</option>
-                </select>
+                  <option>3D Printers</option>
+                  <option>Computers</option>
+                </Form.Control>
+                <Form.Control.Feedback type="invalid">
+                  Please select a category.
+                </Form.Control.Feedback>
                 <div className="isa_error">
                   {errors.category && touched.category ? errors.category : null}
                 </div>
@@ -288,60 +379,32 @@ const Form = props => {
                 errors={errors}
                 touched={touched}
               /> */}
-            </div>
-          </form>
-          <div className="bottom-row">
-            <div
-              className={`payment ${
-                errors.paymentType && touched.paymentType ? 'isa_error' : ''
-              }`}
-            >
-              Payment Preference
               <div className="payment-options">
-                <div className="option">
-                  <input
-                    className={`${
-                      errors.paymentType && touched.paymentType
-                        ? 'input-error'
-                        : ''
-                    } ${
-                      touched.paymentType && !errors.paymentType
-                        ? 'input-correct'
-                        : ''
-                    }`}
-                    name="paymentType"
-                    value="cash"
-                    type="radio"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    checked={values.paymentType === 'cash'}
-                  />{' '}
-                  Cash
-                </div>
-                <div className="option">
-                  <input
-                    name="paymentType"
-                    value="card"
-                    type="radio"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    checked={values.paymentType === 'card'}
-                  />{' '}
-                  <span>Card</span>
-                </div>
-                <div className="option">
-                  <input
-                    name="paymentType"
-                    value="both"
-                    type="radio"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    checked={values.paymentType === 'both'}
-                  />{' '}
-                  Both
-                </div>
+                <Form.Label>Payment Type</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Payment Type"
+                  as="select"
+                  name="payment_type"
+                  className="long-input payment-input"
+                  onChange={handleChange}
+                  value={itemInfo.payment_type}
+                  required
+                >
+                  <option selected disabled hidden>
+                    Payment Type:
+                  </option>
+                  <option>Online</option>
+                  <option>Meet Up</option>
+                  <option>Both</option>
+                </Form.Control>
+                <Form.Control.Feedback type="invalid">
+                  Please provide a payment type.
+                </Form.Control.Feedback>
               </div>
             </div>
+          </Form>
+          <div className="bottom-row">
             <div className="lower-buttons">
               <button className="cancel">Cancel</button>
               <button
@@ -364,4 +427,4 @@ const Form = props => {
   );
 };
 
-export default Form;
+export default ListingForm;

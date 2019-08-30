@@ -30,7 +30,7 @@ const Login = props => {
 
 
   const auth = useSelector(store => store.submit.auth);
-
+ 
   const [disabled, setDisabled] = useState(false);
   // function myFunction(x) {
   //   if (x.matches) { // If media query matches
@@ -46,9 +46,11 @@ const Login = props => {
   x.addListener(x => {
     if (x.matches) {
       setDisabled(true);
+ 
       console.log('hello');
     } else {
       setDisabled(false);
+  
     }
   });
   const content = ( //  conditionally renders content based on login form or sign up form state.
@@ -74,7 +76,7 @@ const Login = props => {
       <Parallax
         disabled={disabled}
         className="section-6"
-        x={[-30, 0]}
+        x={[-15, 0]}
         tagOuter="figure"
       >
         <div className="section-6__content">
@@ -120,7 +122,7 @@ const Login = props => {
       <Parallax
       className="section-5__left"
       disabled={disabled}
-      x={[-40, 0]}
+      x={[-40, 20]}
       tagOuter="figure"
     >
               Tech 2 Rent looks to ensure a high quality platform for creatives of all sorts. We allow the investments you make into your equipment become a source of income as well. As creatives we are all dreamers, and we all envision the world as our canvas, Tech 2 Rent allows everyone to paint together while sharing paint and paint brushes. 
@@ -131,7 +133,7 @@ const Login = props => {
             <Parallax
             className="section-5__right"
             disabled={disabled}
-            x={[40, 0]}
+            x={[70, -30]}
             tagOuter="figure"
           >
             <h2>Welcome</h2>
@@ -170,7 +172,7 @@ const Login = props => {
             disabled={disabled}
             className="section-4__right"
             tagOuter="figure"
-            x={[20, 0]}
+            x={[5, -30]}
           >
               <h2>It's Simple.</h2>
               <h2>We'll Prove it.</h2>
@@ -209,11 +211,11 @@ const Login = props => {
             disabled={disabled}
             className="section-3__content__right"
             tagOuter="figure"
-            x={[20, -30]}
+            x={[0, -30]}
           >
           <div className="section-3__content__right">
               <img src={home_phone} alt="Picture of mobile phone" className="section-3__content__right__img1"/>
-              <img src={home_googleplay} alt="Googleplay logo"/>
+              <div className="google-logo-div"><img className="google-logo" src={home_googleplay} alt="Googleplay logo"/></div>
           </div>
           </Parallax>
         </div>

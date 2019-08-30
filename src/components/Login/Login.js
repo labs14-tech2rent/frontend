@@ -31,28 +31,28 @@ const Login = props => {
 
   const auth = useSelector(store => store.submit.auth);
  
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   // function myFunction(x) {
   //   if (x.matches) { // If media query matches
   //     setDisabled(true)
   //   }
   // }
-  const screen = document.querySelector('html');
-  window.addEventListener('load', event => {
-    window.innerWidth < 700 ? setDisabled(true) : setDisabled(false);
-  });
-  const x = window.matchMedia('(max-width: 700px)');
-  // myFunction(x) // Call listener function at run time
-  x.addListener(x => {
-    if (x.matches) {
-      setDisabled(true);
+  // const screen = document.querySelector('html');
+  // window.addEventListener('load', event => {
+  //   window.innerWidth < 700 ? setDisabled(true) : setDisabled(false);
+  // });
+  // const x = window.matchMedia('(max-width: 700px)');
+  // // myFunction(x) // Call listener function at run time
+  // x.addListener(x => {
+  //   if (x.matches) {
+  //     setDisabled(true);
  
-      console.log('hello');
-    } else {
-      setDisabled(false);
+  //     console.log('hello');
+  //   } else {
+  //     setDisabled(false);
   
-    }
-  });
+  //   }
+  // });
   const content = ( //  conditionally renders content based on login form or sign up form state.
     <div className="App mainContent">
       <Parallax

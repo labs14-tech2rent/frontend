@@ -215,7 +215,7 @@ const Login = props => {
           >
           <div className="section-3__content__right">
               <img src={home_phone} alt="Picture of mobile phone" className="section-3__content__right__img1"/>
-              <img src={home_googleplay} alt="Googleplay logo"/>
+              <div className="google-logo-div"><img className="google-logo" src={home_googleplay} alt="Googleplay logo"/></div>
           </div>
           </Parallax>
         </div>

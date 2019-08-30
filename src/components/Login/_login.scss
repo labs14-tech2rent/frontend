@@ -544,11 +544,20 @@ p {
   }
 
   .section-5__left {
+    text-align: center;
     width: 100%;
   }
 
   .section-5__right {
     width: 100%;
+  }
+}
+
+.google-logo-div {
+  width: 100%;
+  & .google-logo {
+    margin: 0 auto;
+    display: block;
   }
 }
 

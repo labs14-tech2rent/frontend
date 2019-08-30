@@ -10,7 +10,6 @@ const ViewItem = props => {
   const defaultImg = [
     'http://www.stuartsteel.com/wp-content/themes/asenka/images/default-no-image.png',
   ];
-
   useEffect(() => {
     const fetchItem = async () => {
       const result = await axios(
@@ -19,7 +18,7 @@ const ViewItem = props => {
       setItem(result.data);
       setImages(
         result.data.picture.match(
-          /(https:\/\/labs14-tech2rent-image-upload.s3.amazonaws.com\/[0-9][0-9][0-9][0-9][0-9][0-9])/
+          /(https:\/\/labs14-tech2rent-image-upload.s3.amazonaws.com\/[0-9][0-9][0-9][0-9][0-9][0-9])/gm
         )
       );
     };

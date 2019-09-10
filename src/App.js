@@ -66,7 +66,7 @@ const App = props => {
 
   return (
     <div className="app-wrapper">
-      {console.log(user.user.id)}
+    
       <BrowserRouter>
         <header>
           <NavBar {...props} />
